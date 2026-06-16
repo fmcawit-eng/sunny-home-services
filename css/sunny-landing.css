@@ -1,0 +1,206 @@
+/* Sunny Home Services - AC landing pages
+   Layered on top of sunny-engine.css. Reuses brand tokens, buttons,
+   hero, marquee, testimonials, contact-form, family-plan, reveal. */
+
+/* ---------- Hero additions ---------- */
+.hero-sub {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--sun-gold);
+  margin-bottom: 22px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+.hero-mascot {
+  position: absolute;
+  right: 5%;
+  bottom: 70px;
+  width: clamp(180px, 20vw, 340px);
+  z-index: 2;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,0.45));
+  pointer-events: none;
+}
+/* ---------- Offers / Specials (tear-off coupons) ---------- */
+.section-offers { background: var(--sand); }
+.offers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+.coupon {
+  --c: var(--sky);
+  position: relative;
+  background: #fff;
+  border: 2px dashed var(--c);
+  border-radius: 18px;
+  padding: 40px 22px 26px;
+  text-align: center;
+  box-shadow: 0 10px 26px rgba(35,39,43,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.coupon:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(14,30,50,0.16); }
+.coupon-sky { --c: var(--sky); }
+.coupon-orange { --c: var(--yellow); }
+.coupon-ribbon {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--sun-gold); color: var(--charcoal);
+  font-family: var(--font-body); font-weight: 900; font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.14);
+  white-space: nowrap;
+}
+.coupon-value {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 40px; line-height: 1; text-transform: uppercase;
+  letter-spacing: -0.02em; color: var(--c); margin-bottom: 8px;
+}
+.coupon-desc {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 15px; text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--charcoal); margin-bottom: 20px; line-height: 1.2;
+}
+.coupon-perf {
+  position: relative;
+  border-top: 2px dashed var(--c);
+  margin: 0 -22px 18px;
+}
+.coupon-perf::before, .coupon-perf::after {
+  content: ""; position: absolute; top: -12px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--sand);
+}
+.coupon-perf::before { left: -13px; }
+.coupon-perf::after { right: -13px; }
+.coupon-code {
+  display: inline-block;
+  font-family: var(--font-body); font-weight: 900; font-size: 13px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal);
+  border: 1.5px dashed var(--c); border-radius: 8px;
+  padding: 8px 16px; margin-bottom: 12px;
+}
+.coupon-code b { color: var(--c); }
+.coupon-exp { font-family: var(--font-body); font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* ---------- Why Sunny checklist ---------- */
+.section-why { background: var(--off-sky); }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 40px; }
+.why-grid .check-list { margin: 0; max-width: none; }
+@media (max-width: 800px) { .why-grid { grid-template-columns: 1fr; } }
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+.check { display: flex; align-items: center; gap: 14px; }
+.check-badge {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--success, #2D9C5A);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-body); font-weight: 900; font-size: 15px;
+}
+.check-text { font-family: var(--font-body); font-weight: 500; font-size: 19px; color: var(--charcoal); }
+:root { --success: #2D9C5A; }
+
+/* ---------- Awards marquee band ---------- */
+.section-awards { padding: 32px 0; background: var(--white); border-bottom: 1px solid var(--hairline); }
+
+/* ---------- AC Body cards ---------- */
+.section-body { background: var(--sand); }
+.section-body .lead { margin: 24px auto 0; text-align: center; }
+.body-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.body-card {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 36px;
+}
+.body-card h3 {
+  font-family: var(--font-display);
+  font-weight: 900; font-size: 24px;
+  text-transform: uppercase; color: var(--charcoal);
+  margin-bottom: 14px;
+}
+.body-card p { font-size: 16px; color: var(--ink); line-height: 1.55; margin-bottom: 14px; }
+.body-card ul { list-style: none; margin: 0 0 14px; padding: 0; }
+.body-card li {
+  position: relative; padding-left: 22px;
+  font-family: var(--font-body); font-weight: 500; font-size: 16px;
+  color: var(--charcoal); margin-bottom: 10px; line-height: 1.5;
+}
+.body-card li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--yellow);
+}
+.body-card .outro { font-size: 15px; color: var(--ink); opacity: 0.9; }
+
+/* ---------- CTA banner ---------- */
+.section-cta-banner { background: var(--sky-deep); text-align: center; color: #fff; }
+.section-cta-banner .display-h1 { color: #fff; }
+.section-cta-banner p {
+  max-width: 760px; margin: 20px auto 36px;
+  color: #fff; opacity: 0.94; font-size: 19px; line-height: 1.65;
+}
+.cta-row-center { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- Our Services (3-up) ---------- */
+.services-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+
+/* ---------- Form ---------- */
+.form-centered { max-width: 760px; margin: 40px auto 0; }
+.consent { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.consent-box {
+  flex-shrink: 0;
+  width: 24px; height: 24px; border-radius: 6px;
+  background: var(--yellow); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+}
+.consent label { font-family: var(--font-body); font-weight: 500; font-size: 16px; color: var(--charcoal); }
+.form-fine { font-family: var(--font-body); font-size: 11px; color: var(--muted); line-height: 1.5; margin-top: 16px; opacity: 0.85; }
+
+/* ---------- Centered footer + bottom bar ---------- */
+.footer-center { background: var(--charcoal); color: #fff; text-align: center; padding: 56px 0 40px; }
+.footer-center .footer-logo { height: 84px; margin: 0 auto 14px; }
+.footer-center .cn { font-family: var(--font-body); font-weight: 900; font-size: 16px; margin-bottom: 8px; }
+.footer-center p { font-size: 14px; opacity: 0.78; margin: 3px 0; }
+.footer-center .copyright { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-top: 18px; }
+.bottom-bar {
+  background: var(--yellow);
+  text-align: center; padding: 18px;
+  font-family: var(--font-display); font-weight: 900;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--charcoal); font-size: 16px;
+}
+
+/* ---------- Family Plan: 2-line heading, animated tiles, bolder CTA (all pages) ---------- */
+.section-family-plan .display-h1 { font-size: clamp(24px, 2.6vw, 40px); line-height: 1.05; }
+.fp-benefit { transition: transform 0.3s ease, background 0.35s ease, border-color 0.35s ease; }
+.fp-benefit:hover { transform: translateX(8px); background: rgba(0,0,0,0.30); border-color: var(--sun-gold); }
+.fp-icon { animation: fp-float 3s ease-in-out infinite; }
+.fp-benefit:nth-child(2) .fp-icon { animation-delay: 0.5s; }
+.fp-benefit:nth-child(3) .fp-icon { animation-delay: 1s; }
+@keyframes fp-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(-5deg); } }
+.section-family-plan .btn-primary { font-family: var(--font-display); font-weight: 900; letter-spacing: 0.12em; }
+
+/* ---------- CTA banner with photo background ---------- */
+.section-cta-banner .section-bg img { opacity: 1; }
+.section-cta-banner .cta-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.74)); }
+
+@media (max-width: 1000px) {
+  .offers { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+  .body-cards { grid-template-columns: 1fr; }
+  .services-3 { grid-template-columns: 1fr; }
+  .hero-mascot { display: none; }
+}

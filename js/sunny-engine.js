@@ -1,4 +1,4 @@
-// Sunny Home Services — V2 prototype engine
+// Sunny Home Services - V2 prototype engine
 // Lenis smooth scroll + GSAP ScrollTrigger
 // Mirrors V2 Figma: interactive hero title, section reveals, trust marquee,
 // counter animations, interactive booking tiles. No canvas scrubbing.
@@ -18,20 +18,74 @@ gsap.ticker.add(t => lenis.raf(t * 1000));
 gsap.ticker.lagSmoothing(0);
 
 /* ============================================================
-   HERO TITLE — interactive (hover, click, mouse parallax)
+   TYPEWRITER - types a hero title in, character by character
+============================================================ */
+function typeInTitle(title, startDelay) {
+  startDelay = startDelay || 0;
+  const allWords = [...title.querySelectorAll(".word")];
+  if (!allWords.length) return;
+  // If some words are flagged .alt-font, type only those - the rest are handled elsewhere.
+  const altWords = allWords.filter(w => w.classList.contains("alt-font"));
+  const typeWords = altWords.length ? altWords : allWords;
+  // Split into hidden chars immediately so the typed words stay invisible until typing begins.
+  const chars = [];
+  typeWords.forEach(w => {
+    const text = w.textContent;
+    w.textContent = "";
+    [...text].forEach(ch => {
+      const s = document.createElement("span");
+      s.className = "char";
+      s.textContent = ch;
+      s.style.display = "none";
+      w.appendChild(s);
+      chars.push(s);
+    });
+  });
+  const caret = document.createElement("span");
+  caret.className = "type-caret";
+  caret.style.display = "none";
+  const first = typeWords[0];
+  first.insertBefore(caret, first.firstChild);
+  let i = 0;
+  function step() {
+    if (i < chars.length) {
+      const c = chars[i++];
+      c.style.display = "inline";
+      c.after(caret);
+      setTimeout(step, /[ ,?.!]/.test(c.textContent) ? 90 : 58);
+    } else {
+      setTimeout(() => caret.remove(), 2000);
+    }
+  }
+  setTimeout(() => { caret.style.display = ""; step(); }, startDelay);
+}
+
+/* ============================================================
+   HERO TITLE - typewriter entrance + interactive (hover, click, parallax)
 ============================================================ */
 function initInteractiveHero() {
   const title = document.getElementById("hero-title");
   if (!title) return;
-  const words = title.querySelectorAll(".word");
+  const words = [...title.querySelectorAll(".word")];
 
-  // Staggered entrance
-  gsap.set(words, { y: 60, opacity: 0, rotationX: -40 });
-  gsap.to(words, {
-    y: 0, opacity: 1, rotationX: 0,
-    stagger: 0.08, duration: 0.9, ease: "power3.out",
-    delay: 0.2,
-  });
+  // If a line is flagged .alt-font, fade the rest of the title in first, then type the flagged line.
+  const altWords = words.filter(w => w.classList.contains("alt-font"));
+  const fadeWords = words.filter(w => !w.classList.contains("alt-font"));
+  if (altWords.length && fadeWords.length) {
+    gsap.set(fadeWords, { opacity: 0, y: 20 });
+    gsap.to(fadeWords, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", delay: 0.2 });
+    typeInTitle(title, 1100); // hides the typed line now, starts typing after the fade
+  } else {
+    typeInTitle(title, 280);
+  }
+
+  // Supporting hero copy fades up after the headline sequence
+  const heroSection = title.closest(".section-hero");
+  if (heroSection) {
+    const support = heroSection.querySelectorAll(".hero-sub, .lead-on-video, .cta-row");
+    gsap.set(support, { y: 16, opacity: 0 });
+    gsap.to(support, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: "power3.out", delay: 1.4 });
+  }
 
   // Click → "pop" animation
   words.forEach(w => {
@@ -43,7 +97,7 @@ function initInteractiveHero() {
     });
   });
 
-  // Subtle mouse parallax — title shifts opposite cursor with damped lerp
+  // Subtle mouse parallax - title shifts opposite cursor with damped lerp
   const hero = document.querySelector(".section-hero");
   if (!hero) return;
   let rafId = null;
@@ -78,7 +132,7 @@ function initInteractiveHero() {
 }
 
 /* ============================================================
-   SECTION REVEALS — each .reveal section animates as one unit
+   SECTION REVEALS - each .reveal section animates as one unit
 ============================================================ */
 function initSectionReveals() {
   document.querySelectorAll(".reveal").forEach(el => {
@@ -108,7 +162,41 @@ function initSectionReveals() {
 }
 
 /* ============================================================
-   TRUST MARQUEE — continuous horizontal scroll
+   PARALLAX - elements with [data-parallax] drift on scroll
+============================================================ */
+function initParallax() {
+  if (typeof ScrollTrigger === "undefined") return;
+  document.querySelectorAll("[data-parallax]").forEach(el => {
+    const amt = parseFloat(el.dataset.parallax) || 10;
+    const container = el.parentElement || el;
+    gsap.fromTo(el,
+      { yPercent: -amt },
+      {
+        yPercent: amt, ease: "none",
+        scrollTrigger: { trigger: container, start: "top bottom", end: "bottom top", scrub: true },
+      }
+    );
+  });
+}
+
+/* ============================================================
+   FAMILY PLAN TILES - staggered slide-in on scroll
+============================================================ */
+function initFamilyPlanTiles() {
+  if (typeof ScrollTrigger === "undefined") return;
+  document.querySelectorAll(".fp-right").forEach(group => {
+    const items = group.querySelectorAll(".fp-benefit");
+    if (!items.length) return;
+    gsap.set(items, { x: 50, opacity: 0 });
+    ScrollTrigger.create({
+      trigger: group, start: "top 82%", once: true,
+      onEnter: () => gsap.to(items, { x: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" }),
+    });
+  });
+}
+
+/* ============================================================
+   TRUST MARQUEE - continuous horizontal scroll
 ============================================================ */
 function initMarquee() {
   const track = document.getElementById("marquee-track");
@@ -123,7 +211,7 @@ function initMarquee() {
 }
 
 /* ============================================================
-   COUNTERS — numeric stats count up when in view
+   COUNTERS - numeric stats count up when in view
 ============================================================ */
 function initCounters() {
   document.querySelectorAll("[data-value]").forEach(el => {
@@ -155,7 +243,7 @@ function initCounters() {
 }
 
 /* ============================================================
-   INTERACTIVE BOOKING TILES — click to "select" a service
+   INTERACTIVE BOOKING TILES - click to "select" a service
 ============================================================ */
 function initBookingTiles() {
   const tiles = document.querySelectorAll("#booking-options .opt");
@@ -170,11 +258,27 @@ function initBookingTiles() {
 }
 
 /* ============================================================
+   HEADER - entrance animation (items reveal in sequence)
+============================================================ */
+function initHeaderEntrance() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+  gsap.set(header, { y: -22, opacity: 0 });
+  gsap.to(header, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" });
+  const items = header.querySelectorAll(".header-logo, .header-nav a, .header-phone, .header-cta .btn");
+  gsap.set(items, { y: -10, opacity: 0 });
+  gsap.to(items, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out", delay: 0.12 });
+}
+
+/* ============================================================
    BOOT
 ============================================================ */
 function boot() {
+  initHeaderEntrance();
   initInteractiveHero();
   initSectionReveals();
+  initParallax();
+  initFamilyPlanTiles();
   initMarquee();
   initCounters();
   initBookingTiles();

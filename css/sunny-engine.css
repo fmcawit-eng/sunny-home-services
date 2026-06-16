@@ -1,27 +1,60 @@
-/* Sunny Home Services — V2 prototype
+/* Sunny Home Services - V2 prototype
    Mirrors the V2 Figma layout 1:1 with brand-color decorations,
    2-column services split, sun-shape About Us mascot, bold coupons,
    real Utah map, contact form. Hero stays a full-cover video with
    interactive title (hover/click/parallax). */
 
+/* ---------- Brand fonts (local: Degular Bold + Rubik) ---------- */
+@font-face {
+  font-family: 'Degular';
+  src: local('Degular Demo Bold'), local('DegularDemo-Bold'),
+       url('../assets/fonts/degular-bold-demo.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: local('Rubik Regular'), local('Rubik-Regular'),
+       url('../assets/fonts/Rubik-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --sky:        #1BB5DD;
-  --sky-deep:   #0F7A99;
-  --sky-darker: #0A5878;
-  --yellow:     #FFA424;
-  --orange:     #FF7A1A;
-  --sun-gold:   #FFC727;
-  --charcoal:   #1E2832;
-  --ink:        #2A2A2A;
+  /* Brand guide palette */
+  --sky:        #00BFEA;   /* Sunny Blue */
+  --sky-deep:   #0090B5;   /* darker Sunny Blue - dark sections */
+  --sky-darker: #00667F;   /* deepest blue */
+  --yellow:     #F5A800;   /* Sun gold - primary warm / CTA */
+  --orange:     #E8620E;   /* deep orange (Sun Gradient start) */
+  --sun-gold:   #FFD84D;   /* Sun Yellow - bright accent */
+  --charcoal:   #2D2D2D;
+  --ink:        #2D2D2D;
   --muted:      #6B7480;
-  --off-sky:    #EBF7FB;
+  --off-sky:    #E5F8FD;   /* light Sunny Blue tint */
   --sand:       #FAF4ED;
   --white:      #ffffff;
-  --hairline:   #DBDFE3;
-  --font-display: 'Work Sans', 'Inter', sans-serif;
-  --font-body:    'Roboto', 'Inter', sans-serif;
+  --hairline:   #DBE3E6;
+  --sun-gradient: linear-gradient(90deg, #E8620E 0%, #F5A800 100%);
+  --font-display: 'Degular', 'Arial Narrow', sans-serif;
+  --font-body:    'Rubik', system-ui, sans-serif;
   --container:   1280px;
 }
+
+/* ---------- Typewriter caret ---------- */
+.type-caret {
+  display: inline-block;
+  width: 4px;
+  height: 0.9em;
+  background: var(--yellow);
+  margin-left: 6px;
+  vertical-align: -0.06em;
+  border-radius: 2px;
+  animation: caret-blink 0.7s steps(1) infinite;
+}
+@keyframes caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { overflow-x: clip; }
@@ -33,6 +66,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -178,8 +212,8 @@ img { max-width: 100%; display: block; }
 .btn-pill { border-radius: 32px; }
 .btn-lg   { padding: 18px 36px; font-size: 14px; letter-spacing: 0.3em; }
 .btn-full { width: 100%; }
-.btn-primary { background: var(--yellow); color: var(--white); }
-.btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+.btn-primary { background: var(--sun-gradient); color: var(--white); }
+.btn-primary:hover { background: var(--sun-gradient); filter: brightness(0.93); transform: translateY(-2px); }
 .btn-sky { background: var(--sky); color: var(--white); }
 .btn-sky:hover { background: var(--sky-deep); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--charcoal); border-color: var(--charcoal); }
@@ -241,7 +275,7 @@ img { max-width: 100%; display: block; }
   .header-nav { display: none; }
 }
 
-/* ---------- 01 Hero — video bg + interactive title ---------- */
+/* ---------- 01 Hero - video bg + interactive title ---------- */
 .section-hero {
   position: relative;
   min-height: 100vh;
@@ -392,7 +426,7 @@ img { max-width: 100%; display: block; }
   white-space: nowrap;
 }
 
-/* ---------- 03 Services — 2-column split ---------- */
+/* ---------- 03 Services - 2-column split ---------- */
 .section-services { background: var(--white); }
 .section-services .display-h1 { margin-bottom: 24px; }
 .section-services .lead { margin: 0 auto 64px; text-align: center; }
@@ -486,7 +520,7 @@ img { max-width: 100%; display: block; }
   .services-divider { display: none; }
 }
 
-/* ---------- 04 Booking — sand bg ---------- */
+/* ---------- 04 Booking - sand bg ---------- */
 .section-booking { background: var(--sand); }
 .section-booking .display-h1 { margin-bottom: 56px; }
 
@@ -591,7 +625,7 @@ img { max-width: 100%; display: block; }
   .booking-options { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ---------- 05 About Us — sister brand + sun-shape mascot ---------- */
+/* ---------- 05 About Us - sister brand + sun-shape mascot ---------- */
 .section-about {
   background: var(--sky-deep);
   position: relative;
@@ -609,7 +643,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 20px;
 }
-/* Sun-burst container — 14-point starburst made with CSS clip-path */
+/* Sun-burst container - 14-point starburst made with CSS clip-path */
 .sun-frame {
   position: relative;
   width: 440px;
@@ -693,7 +727,7 @@ img { max-width: 100%; display: block; }
   .sun-frame  { width: 320px; height: 320px; }
 }
 
-/* ---------- 06 Specials — bold filled coupons ---------- */
+/* ---------- 06 Specials - bold filled coupons ---------- */
 .section-specials { background: var(--sand); }
 .section-specials .display-h1 { margin-bottom: 56px; }
 .coupons-grid {

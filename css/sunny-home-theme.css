@@ -1,0 +1,82 @@
+/* Sunny Home Services - shared theme
+   Brand color palette, Rubik Medium body, AC service tiles,
+   scrolling testimonials, faint parallax backgrounds, van story frame.
+   Loaded after sunny-engine.css + sunny-landing.css on every page. */
+
+/* Rubik Medium body (distinct family so it always wins over the installed Rubik Regular) */
+@font-face {
+  font-family: 'Rubik Medium';
+  src: url('../assets/fonts/rubik-500.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-body:  'Rubik Medium', system-ui, sans-serif;
+  /* Brand color palette */
+  --sky:        #04cfff;
+  --sky-deep:   #03a6cc;
+  --sky-darker: #0288a8;
+  --yellow:     #ffc704;
+  --orange:     #f17601;
+  --sun-gold:   #ffc704;
+  --charcoal:   #454545;
+  --ink:        #454545;
+  --off-sky:    #e6fbff;
+  --sun-gradient: linear-gradient(90deg, #f17601 0%, #ffc704 100%);
+}
+
+/* Compact auto-scrolling testimonials */
+.testi-scroll {
+  overflow: hidden;
+  margin-top: 48px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.testi-track { display: flex; gap: 20px; width: max-content; animation: testi-scroll 45s linear infinite; }
+.testi-scroll:hover .testi-track { animation-play-state: paused; }
+@keyframes testi-scroll { to { transform: translateX(-50%); } }
+.testi-scroll .testimonial { flex: 0 0 320px; width: 320px; padding: 22px 24px; border-radius: 14px; border-top-width: 3px; }
+.testi-scroll .stars { font-size: 15px; margin-bottom: 12px; }
+.testi-scroll .quote { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+.testi-scroll .testi-meta { padding-top: 12px; gap: 10px; }
+.testi-scroll .avatar { width: 34px; height: 34px; font-size: 15px; }
+.testi-scroll .name { font-size: 13px; }
+.testi-scroll .city { font-size: 10px; }
+
+/* AC service tiles */
+.ac-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 56px; }
+.ac-tile {
+  position: relative; display: block; height: 380px; border-radius: 18px; overflow: hidden;
+  text-decoration: none; box-shadow: 0 14px 32px rgba(0,0,0,0.14);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ac-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.2); }
+.ac-tile-img {
+  position: absolute; top: -8%; left: 0; width: 100%; height: 116%;
+  background-size: cover; background-position: center; will-change: transform;
+}
+.ac-tile::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 28%, rgba(0,0,0,0.82) 100%);
+}
+.ac-tile-body { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 24px; color: #fff; }
+.ac-tile-title { font-family: var(--font-display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+.ac-tile-desc { font-family: var(--font-body); font-size: 14px; line-height: 1.4; opacity: 0.94; }
+@media (max-width: 1150px) { .ac-tiles { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .ac-tiles { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .ac-tiles { grid-template-columns: 1fr; } }
+
+/* Faint parallax section backgrounds */
+.section-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.section-bg img { position: absolute; top: -20%; left: 0; width: 100%; height: 140%; object-fit: cover; opacity: 0.10; will-change: transform; }
+
+/* Story section: van + compact (homepage) */
+.section-about { padding: 64px 0; }
+.section-about .about-grid { gap: 48px; align-items: center; }
+.van-frame { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,0.30); }
+.van-img { position: absolute; top: -8%; left: 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
+.section-about .about-headline { font-size: clamp(28px, 3.2vw, 44px); margin-bottom: 16px; }
+.section-about .lead { margin-bottom: 22px; }
+.section-about .stat-row { margin-bottom: 22px; }

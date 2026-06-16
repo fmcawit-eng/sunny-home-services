@@ -3,19 +3,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunny Home Services — HVAC + Plumbing in Northern Utah</title>
+  <title>Sunny Home Services - HVAC + Plumbing in Northern Utah</title>
+  <!-- Brand fonts (Degular Bold + Rubik) load locally via @font-face in css/sunny-engine.css -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700;800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/sunny-engine.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/sunny-engine.css?v=5">
+  <link rel="stylesheet" href="css/sunny-landing.css?v=5">
+  <!-- Homepage overrides: Rubik Medium body + brand color palette -->
+  <style>
+    @font-face {
+      font-family: 'Rubik Test Medium';
+      src: url('assets/fonts/rubik-500.woff2') format('woff2');
+      font-weight: 100 900; font-style: normal; font-display: swap;
+    }
+    :root {
+      --font-body: 'Rubik Test Medium', system-ui, sans-serif;
+      /* Homepage color palette */
+      --sky:        #04cfff;   /* Cyan */
+      --sky-deep:   #03a6cc;   /* darker cyan - dark sections */
+      --sky-darker: #0288a8;
+      --yellow:     #ffc704;   /* Yellow */
+      --orange:     #f17601;   /* Orange */
+      --sun-gold:   #ffc704;
+      --charcoal:   #454545;   /* Deep Gray - text + dark UI */
+      --ink:        #454545;
+      --off-sky:    #e6fbff;   /* light cyan tint */
+      --sun-gradient: linear-gradient(90deg, #f17601 0%, #ffc704 100%);
+    }
+    /* Hero: keep each title line on one line; "of Home Services" in a distinct font (still types in) */
+    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(40px, 5.6vw, 80px); white-space: nowrap; }
+    .section-hero .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.84em; }
+    /* Compact auto-scrolling testimonials (homepage) */
+    .testi-scroll {
+      overflow: hidden;
+      margin-top: 48px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+    .testi-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: testi-scroll 45s linear infinite;
+    }
+    .testi-scroll:hover .testi-track { animation-play-state: paused; }
+    @keyframes testi-scroll { to { transform: translateX(-50%); } }
+    .testi-scroll .testimonial {
+      flex: 0 0 320px;
+      width: 320px;
+      padding: 22px 24px;
+      border-radius: 14px;
+      border-top-width: 3px;
+    }
+    .testi-scroll .stars { font-size: 15px; margin-bottom: 12px; }
+    .testi-scroll .quote { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+    .testi-scroll .testi-meta { padding-top: 12px; gap: 10px; }
+    .testi-scroll .avatar { width: 34px; height: 34px; font-size: 15px; }
+    .testi-scroll .name { font-size: 13px; }
+    .testi-scroll .city { font-size: 10px; }
+    /* AC service tiles (homepage) */
+    .ac-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 56px; }
+    .ac-tile {
+      position: relative; display: block; height: 380px; border-radius: 18px; overflow: hidden;
+      text-decoration: none; box-shadow: 0 14px 32px rgba(0,0,0,0.14);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ac-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.2); }
+    .ac-tile-img {
+      position: absolute; top: -8%; left: 0; width: 100%; height: 116%;
+      background-size: cover; background-position: center; will-change: transform;
+    }
+    .ac-tile::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 28%, rgba(0,0,0,0.82) 100%);
+    }
+    .ac-tile-body { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 24px; color: #fff; }
+    .ac-tile-eyebrow { font-family: var(--font-body); font-weight: 700; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sun-gold); margin-bottom: 8px; }
+    .ac-tile-title { font-family: var(--font-display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+    .ac-tile-desc { font-family: var(--font-body); font-size: 14px; line-height: 1.4; opacity: 0.94; }
+    @media (max-width: 1150px) { .ac-tiles { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 760px) { .ac-tiles { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .ac-tiles { grid-template-columns: 1fr; } }
+    /* Faint parallax section backgrounds */
+    .section-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .section-bg img { position: absolute; top: -20%; left: 0; width: 100%; height: 140%; object-fit: cover; opacity: 0.10; will-change: transform; }
+    /* Story section: van image + more compact */
+    .section-about { padding: 64px 0; }
+    .section-about .about-grid { gap: 48px; align-items: center; }
+    .van-frame {
+      position: relative; width: 100%; aspect-ratio: 3 / 2;
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.30);
+    }
+    .van-img { position: absolute; top: -8%; left: 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
+    .section-about .about-headline { font-size: clamp(22px, 2.4vw, 36px); line-height: 1.08; margin-bottom: 16px; }
+    .section-about .lead { margin-bottom: 22px; }
+    .section-about .stat-row { margin-bottom: 22px; }
+  </style>
 </head>
 <body>
 
   <!-- Fixed header -->
   <header class="site-header">
     <div class="header-logo">
-      <img src="assets/sunny-logo.png" alt="Sunny Home Services" class="logo-mark">
-      <img src="assets/sunny-mascot.png" alt="" class="logo-mascot">
+      <img src="assets/brand-logo.png" alt="Sunny Home Services" class="logo-mark">
+      <img src="assets/brand-ray.png" alt="" class="logo-mascot">
     </div>
     <nav class="header-nav">
       <a href="#services">Services</a>
@@ -27,17 +120,17 @@
     </nav>
     <div class="header-cta">
       <div class="header-phone">
-        <div class="phone-num">(801) 515-4010</div>
+        <div class="phone-num">801.649.COOL (2665)</div>
         <div class="phone-meta">Available 24 / 7</div>
       </div>
       <a class="btn btn-primary btn-pill" href="#contact">Book Now</a>
     </div>
   </header>
 
-  <!-- 01 Hero — full-cover video + interactive title -->
+  <!-- 01 Hero - full-cover video + interactive title -->
   <section class="section section-hero" id="hero">
     <video class="hero-video" autoplay muted loop playsinline poster="">
-      <source src="assets/hero.mp4" type="video/mp4">
+      <source src="assets/hero2.mp4" type="video/mp4">
     </video>
     <div class="hero-video-overlay"></div>
 
@@ -47,14 +140,14 @@
         <span class="word">Sunny</span>
         <span class="word">Side</span>
         <br>
-        <span class="word">of</span>
-        <span class="word">Home</span>
-        <span class="word">Services</span>
+        <span class="word alt-font">of</span>
+        <span class="word alt-font">Home</span>
+        <span class="word alt-font">Services</span>
       </h1>
-      <p class="lead lead-on-video">Heating, cooling, and plumbing repairs done right the first time — every time. Same-day appointments, transparent pricing, and a 100% satisfaction guarantee.</p>
+      <p class="lead lead-on-video">Heating, cooling, and plumbing repairs done right the first time - every time. Same-day appointments, transparent pricing, and a 100% satisfaction guarantee.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book Service</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18015154010">Call (801) 515-4010</a>
+        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18016492665">Call 801.649.COOL (2665)</a>
       </div>
     </div>
 
@@ -93,128 +186,67 @@
     </div>
   </section>
 
-  <!-- 03 Services — 2-column split (HVAC + Plumbing) with vertical divider -->
+  <!-- 03 Services - 2-column split (HVAC + Plumbing) with vertical divider -->
   <section class="section section-services reveal" data-animation="fade-up" id="services">
     <div class="bg-orb bg-orb-sky" style="top:-200px; left:-200px; width:540px;"></div>
     <div class="bg-orb bg-orb-orange" style="bottom:-220px; right:-100px; width:420px;"></div>
     <div class="bg-dot-pattern" style="bottom:32px; left:80px;"></div>
 
     <div class="container">
-      <h2 class="display-h1 align-center">HVAC + Plumbing,<br>One Trusted Crew</h2>
-      <p class="lead align-center">From sweltering summers to surprise leaks, our certified technicians handle every comfort and water system in your home with same-day service and upfront pricing.</p>
+      <h2 class="display-h1 align-center">AC Services to<br>Beat the Heat</h2>
+      <p class="lead align-center">From new installs to emergency repairs, our certified techs keep your home cool all summer - with same-day service and upfront, flat-rate pricing across the Wasatch Front. (Heating &amp; plumbing too - just ask.)</p>
 
-      <div class="services-split">
-        <div class="services-col">
-          <h3 class="services-col-head">HVAC Services</h3>
-          <span class="services-col-accent services-col-accent-sky"></span>
-          <a class="service-row" href="#contact">
-            <div class="service-icon service-icon-sky">❄</div>
-            <div class="service-body">
-              <div class="service-title">AC Repair &amp; Install</div>
-              <div class="service-desc">Cooling tune-ups, repairs, and full-system replacements.</div>
-            </div>
-            <div class="service-arrow service-arrow-sky">→</div>
-          </a>
-          <a class="service-row" href="#contact">
-            <div class="service-icon service-icon-sky">♨</div>
-            <div class="service-body">
-              <div class="service-title">Heating &amp; Furnace</div>
-              <div class="service-desc">Heat repair, furnace replacement, heat pump experts.</div>
-            </div>
-            <div class="service-arrow service-arrow-sky">→</div>
-          </a>
-          <a class="service-row" href="#contact">
-            <div class="service-icon service-icon-sky">⌇</div>
-            <div class="service-body">
-              <div class="service-title">Air Quality</div>
-              <div class="service-desc">Whole-home filtration, UV lights, humidifiers, duct sealing.</div>
-            </div>
-            <div class="service-arrow service-arrow-sky">→</div>
-          </a>
-        </div>
-
-        <div class="services-divider"></div>
-
-        <div class="services-col">
-          <h3 class="services-col-head">Plumbing Services</h3>
-          <span class="services-col-accent services-col-accent-orange"></span>
-          <a class="service-row" href="#contact">
-            <div class="service-icon service-icon-orange">≋</div>
-            <div class="service-body">
-              <div class="service-title">Drain Cleaning</div>
-              <div class="service-desc">Clogs, sewer cleaning, camera inspections, hydro-jetting.</div>
-            </div>
-            <div class="service-arrow service-arrow-orange">→</div>
-          </a>
-          <a class="service-row" href="#contact">
-            <div class="service-icon service-icon-orange">⊙</div>
-            <div class="service-body">
-              <div class="service-title">Water Heaters</div>
-              <div class="service-desc">Tank + tankless install, repair, and same-day replacement.</div>
-            </div>
-            <div class="service-arrow service-arrow-orange">→</div>
-          </a>
-          <a class="service-row" href="#contact">
-            <div class="service-icon service-icon-orange">⌬</div>
-            <div class="service-body">
-              <div class="service-title">Repairs &amp; Repipe</div>
-              <div class="service-desc">Leaks, fixtures, slab repairs, full whole-home repipes.</div>
-            </div>
-            <div class="service-arrow service-arrow-orange">→</div>
-          </a>
-        </div>
+      <div class="ac-tiles">
+        <a class="ac-tile" href="ac-installation.html">
+          <div class="ac-tile-img" data-parallax="6" style="background-image:url('assets/services/installation.png')"></div>
+          <div class="ac-tile-body">            <div class="ac-tile-title">AC Installation</div>
+            <div class="ac-tile-desc">New, high-SEER systems sized right for your home, with financing available.</div>
+          </div>
+        </a>
+        <a class="ac-tile" href="ac-repair.html">
+          <div class="ac-tile-img" data-parallax="6" style="background-image:url('assets/services/repair.png')"></div>
+          <div class="ac-tile-body">            <div class="ac-tile-title">AC Repair</div>
+            <div class="ac-tile-desc">Fast, dependable repairs for all makes and models.</div>
+          </div>
+        </a>
+        <a class="ac-tile" href="#contact">
+          <div class="ac-tile-img" data-parallax="6" style="background-image:url('assets/services/tuneup.png')"></div>
+          <div class="ac-tile-body">            <div class="ac-tile-title">AC Tune-Up</div>
+            <div class="ac-tile-desc">Seasonal 21-point inspection to prevent summer breakdowns.</div>
+          </div>
+        </a>
+        <a class="ac-tile" href="#contact">
+          <div class="ac-tile-img" data-parallax="6" style="background-image:url('assets/services/maintenance.png')"></div>
+          <div class="ac-tile-body">            <div class="ac-tile-title">Maintenance Plan</div>
+            <div class="ac-tile-desc">Family Plan tune-ups twice a year, with priority service.</div>
+          </div>
+        </a>
+        <a class="ac-tile" href="#contact">
+          <div class="ac-tile-img" data-parallax="6" style="background-image:url('assets/services/garage.png')"></div>
+          <div class="ac-tile-body">
+            <div class="ac-tile-title">Garage Doors</div>
+            <div class="ac-tile-desc">Repair, replacement, and tune-ups for the door that started it all.</div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 04 Booking widget — sand bg to separate from services -->
-  <section class="section section-booking reveal" data-animation="fade-up" id="booking">
-    <div class="accent-stripe accent-stripe-gold"></div>
-    <div class="container">
-      <h2 class="display-h1 align-center">Schedule Service<br>From Your Couch</h2>
-      <div class="booking-steps">
-        <div class="step step-active"><div class="step-dot">1</div><span>Service</span></div>
-        <div class="step-line"></div>
-        <div class="step"><div class="step-dot">2</div><span>When</span></div>
-        <div class="step-line"></div>
-        <div class="step"><div class="step-dot">3</div><span>Where</span></div>
-        <div class="step-line"></div>
-        <div class="step"><div class="step-dot">4</div><span>Contact</span></div>
-        <div class="step-line"></div>
-        <div class="step"><div class="step-dot">5</div><span>Confirm</span></div>
-      </div>
-      <div class="booking-card">
-        <div class="booking-card-note">Tap a service — tile highlights in brand orange when selected</div>
-        <h4>Pick a service to get started</h4>
-        <div class="booking-options" id="booking-options">
-          <div class="opt" data-svc="cooling"><div class="opt-icon">❄</div><div class="opt-label">Cooling</div></div>
-          <div class="opt" data-svc="heating"><div class="opt-icon">♨</div><div class="opt-label">Heating</div></div>
-          <div class="opt" data-svc="plumbing"><div class="opt-icon">≋</div><div class="opt-label">Plumbing</div></div>
-          <div class="opt" data-svc="emergency"><div class="opt-icon">☎</div><div class="opt-label">Emergency</div></div>
-        </div>
-      </div>
-      <div class="booking-continue">
-        <a class="btn btn-sky btn-pill btn-lg" href="#contact">Continue →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 About Us — sister brand, sun-shape mascot -->
+  <!-- 05 About Us - sister brand, sun-shape mascot -->
   <section class="section section-about on-dark reveal" data-animation="fade-up" id="about">
+    <div class="section-bg"><img src="assets/services/garage.png" alt="" data-parallax="15"></div>
     <div class="accent-stripe accent-stripe-orange"></div>
     <div class="bg-orb bg-orb-gold-dark" style="top:-200px; right:-120px; width:520px;"></div>
 
     <div class="container about-grid">
       <div class="about-left">
-        <div class="sun-frame">
-          <img src="assets/sunny-mascot.png" alt="Mr. Sunny" class="sun-mascot">
+        <div class="van-frame">
+          <img src="assets/van.png" alt="Sunny branded service van" class="van-img" data-parallax="6">
         </div>
-        <div class="meet-sunny-pill">Meet Mr. Sunny</div>
       </div>
       <div class="about-right">
-        <span class="section-label section-label-gold">Our Story</span>
-        <h2 class="display-h1 about-headline">From Garage to Plumbing to HVAC<br>We Have Your Home Covered</h2>
-        <p class="lead lead-on-dark">Sunny Home Services is the new sister brand to Sunny Garage Doors — Northern Utah's local pros since 2019. Same family of trucks, same friendly Mr. Sunny on every visit, expanded to keep every part of your home humming. Heating, cooling, plumbing, and the garage door that started it all.</p>
+        <h2 class="display-h1 about-headline">From Garage to HVAC to Plumbing<br>We Have Your Home Covered</h2>
+        <p class="lead lead-on-dark">Sunny Home Services is the new sister brand to Sunny Garage Doors - Northern Utah's local pros since 2019. Same family of trucks, same friendly Ray on every visit, expanded to keep every part of your home humming. Heating, cooling, plumbing, and the garage door that started it all.</p>
         <div class="stat-row">
           <div class="stat-card">
             <div class="stat-big">2019</div>
@@ -234,41 +266,47 @@
     </div>
   </section>
 
-  <!-- 06 Specials — bold filled coupons with ribbon -->
+  <!-- 06 Specials - bold filled coupons with ribbon -->
   <section class="section section-specials reveal" data-animation="fade-up" id="specials">
+    <div class="section-bg"><img src="assets/bg/ac-unit.png" alt="" data-parallax="15"></div>
     <div class="accent-stripe accent-stripe-orange"></div>
     <div class="bg-orb bg-orb-sky" style="top:-100px; right:-100px; width:460px;"></div>
     <div class="bg-orb bg-orb-orange" style="bottom:-160px; left:-120px; width:320px;"></div>
 
     <div class="container">
       <h2 class="display-h1 align-center">Save On Service<br>This Season</h2>
-      <div class="coupons-grid">
+      <div class="offers">
         <div class="coupon coupon-sky">
           <div class="coupon-ribbon">Sunny Deal</div>
-          <div class="coupon-amount">$89</div>
-          <div class="coupon-unit">AC Tune-Up</div>
-          <div class="coupon-divider"></div>
-          <div class="coupon-kicker">21-Point Inspection</div>
-          <div class="coupon-terms">Expires 09/30/2026</div>
-          <div class="coupon-code">Code: SUNNY26</div>
+          <div class="coupon-value">$50 Off</div>
+          <div class="coupon-desc">Any Repair</div>
+          <div class="coupon-perf"></div>
+          <div class="coupon-code">Code: <b>SUNNY50</b></div>
+          <div class="coupon-exp">*Min. $250 repair · Expires 09/30/2026</div>
         </div>
         <div class="coupon coupon-orange">
           <div class="coupon-ribbon">Sunny Deal</div>
-          <div class="coupon-amount">$50</div>
-          <div class="coupon-unit">Off Any Repair</div>
-          <div class="coupon-divider"></div>
-          <div class="coupon-kicker">New customers</div>
-          <div class="coupon-terms">Minimum $250 repair</div>
-          <div class="coupon-code">Code: SUNNY26</div>
+          <div class="coupon-value">$89</div>
+          <div class="coupon-desc">System Tune-Up</div>
+          <div class="coupon-perf"></div>
+          <div class="coupon-code">Code: <b>SUNNY89</b></div>
+          <div class="coupon-exp">*21-point inspection · Expires 09/30/2026</div>
         </div>
         <div class="coupon coupon-sky">
           <div class="coupon-ribbon">Sunny Deal</div>
-          <div class="coupon-amount">0%</div>
-          <div class="coupon-unit">Financing 12 mo</div>
-          <div class="coupon-divider"></div>
-          <div class="coupon-kicker">On approved credit</div>
-          <div class="coupon-terms">New installs only</div>
-          <div class="coupon-code">Code: SUNNY26</div>
+          <div class="coupon-value">0% APR</div>
+          <div class="coupon-desc">12-Month Financing</div>
+          <div class="coupon-perf"></div>
+          <div class="coupon-code">Code: <b>SUNNY0</b></div>
+          <div class="coupon-exp">*On approved credit · New installs</div>
+        </div>
+        <div class="coupon coupon-orange">
+          <div class="coupon-ribbon">Sunny Deal</div>
+          <div class="coupon-value">Free</div>
+          <div class="coupon-desc">Service Quote</div>
+          <div class="coupon-perf"></div>
+          <div class="coupon-code">Code: <b>SUNNYQUOTE</b></div>
+          <div class="coupon-exp">*No obligation · New customers</div>
         </div>
       </div>
     </div>
@@ -280,11 +318,11 @@
     <div class="family-plan-stripe family-plan-stripe-bottom"></div>
     <div class="container fp-grid">
       <div class="fp-left">
-        <h2 class="display-h1">Join the Sunny<br>Family Plan</h2>
-        <p class="lead lead-on-dark">Twice-a-year tune-ups for your HVAC and plumbing, priority booking when emergencies strike, and member-only discounts on every repair. Comfort on autopilot — for one fair price.</p>
+        <h2 class="display-h1">Become a Sunny<br>Family Plan Member</h2>
+        <p class="lead lead-on-dark">Twice-a-year tune-ups for your HVAC and plumbing, priority booking when emergencies strike, and member-only discounts on every repair. Comfort on autopilot - for one fair price.</p>
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Join the Plan</a>
         <div class="fp-pricing">Starting at $19 / mo. · No contracts</div>
-        <img src="assets/sunny-mascot.png" alt="" class="fp-mascot">
+        <img src="assets/brand-ray.png" alt="" class="fp-mascot">
       </div>
       <div class="fp-right">
         <div class="fp-benefit">
@@ -320,48 +358,26 @@
     <div class="bg-dot-pattern bg-dot-pattern-gold" style="bottom:80px; left:100px;"></div>
 
     <div class="container">
-      <h2 class="display-h1 align-center">5.0 Stars Across<br>Google, Yelp + BBB</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <div class="stars">★ ★ ★ ★ ★</div>
-          <p class="quote">[ Customer review placeholder — short story about a same-day repair experience, honest pricing, and a positive outcome with the technician. ]</p>
-          <div class="testi-meta">
-            <div class="avatar">A</div>
-            <div>
-              <div class="name">Customer A</div>
-              <div class="city">Salt Lake City, UT · Google · 5.0</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <div class="stars">★ ★ ★ ★ ★</div>
-          <p class="quote">[ Customer review placeholder — emergency call experience, fast dispatcher response, transparent flat-rate quote on the spot. ]</p>
-          <div class="testi-meta">
-            <div class="avatar">B</div>
-            <div>
-              <div class="name">Customer B</div>
-              <div class="city">Ogden, UT · Yelp · 5.0</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <div class="stars">★ ★ ★ ★ ★</div>
-          <p class="quote">[ Customer review placeholder — switched to Sunny from a competitor, membership plan caught issues early, positive ongoing relationship. ]</p>
-          <div class="testi-meta">
-            <div class="avatar">C</div>
-            <div>
-              <div class="name">Customer C</div>
-              <div class="city">Park City, UT · BBB · A+</div>
-            </div>
-          </div>
+      <h2 class="display-h1 align-center">What Our<br>Customers Think</h2>
+      <div class="testi-scroll">
+        <div class="testi-track">
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - same-day repair, honest pricing, friendly tech. ]</p><div class="testi-meta"><div class="avatar">A</div><div><div class="name">Customer A</div><div class="city">Salt Lake City, UT · Google</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - fast emergency response, clear flat-rate quote. ]</p><div class="testi-meta"><div class="avatar">B</div><div><div class="name">Customer B</div><div class="city">Ogden, UT · Yelp</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - membership plan caught an issue early. ]</p><div class="testi-meta"><div class="avatar">C</div><div><div class="name">Customer C</div><div class="city">Park City, UT · BBB</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - upfront pricing, no surprises on the bill. ]</p><div class="testi-meta"><div class="avatar">D</div><div><div class="name">Customer D</div><div class="city">Layton, UT · Google</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - same-day repair, honest pricing, friendly tech. ]</p><div class="testi-meta"><div class="avatar">A</div><div><div class="name">Customer A</div><div class="city">Salt Lake City, UT · Google</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - fast emergency response, clear flat-rate quote. ]</p><div class="testi-meta"><div class="avatar">B</div><div><div class="name">Customer B</div><div class="city">Ogden, UT · Yelp</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - membership plan caught an issue early. ]</p><div class="testi-meta"><div class="avatar">C</div><div><div class="name">Customer C</div><div class="city">Park City, UT · BBB</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - upfront pricing, no surprises on the bill. ]</p><div class="testi-meta"><div class="avatar">D</div><div><div class="name">Customer D</div><div class="city">Layton, UT · Google</div></div></div></div>
         </div>
       </div>
       <div class="testi-more">Read all reviews →</div>
     </div>
   </section>
 
-  <!-- 09 Service Areas — Utah + real map -->
+  <!-- 09 Service Areas - Utah + real map -->
   <section class="section section-areas reveal" data-animation="fade-up" id="locations">
+    <div class="section-bg"><img src="assets/bg/neighborhood.jpg" alt="" data-parallax="15"></div>
     <div class="accent-stripe accent-stripe-gold"></div>
     <div class="bg-orb bg-orb-orange" style="top:-100px; left:-160px; width:380px;"></div>
     <div class="bg-orb bg-orb-sky" style="bottom:-160px; right:-100px; width:380px;"></div>
@@ -369,7 +385,7 @@
     <div class="container areas-grid">
       <div class="areas-left">
         <h2 class="display-h1">Proudly Serving<br>Northern Utah</h2>
-        <p class="lead">Northern Utah &amp; Southern Idaho — our trucks roll daily from Salt Lake City to Ogden, Layton, Park City, Logan, and a long list of communities in between.</p>
+        <p class="lead">Northern Utah &amp; Southern Idaho - our trucks roll daily from Salt Lake City to Ogden, Layton, Park City, Logan, and a long list of communities in between.</p>
         <div class="city-grid">
           <span class="city-pill">Salt Lake City</span>
           <span class="city-pill">Ogden</span>
@@ -380,11 +396,11 @@
           <span class="city-pill">Clearfield</span>
           <span class="city-pill">Farmington</span>
         </div>
-        <p class="muted">Don't see your town? Give us a call — we likely cover it.</p>
+        <p class="muted">Don't see your town? Give us a call - we likely cover it.</p>
       </div>
       <div class="areas-right">
         <div class="map-wrap">
-          <img src="assets/map.png" alt="Service area map — Northern Utah" class="map-img">
+          <img src="assets/map.png" alt="Service area map - Northern Utah" class="map-img">
           <div class="map-overlay">
             <span class="map-overlay-big" data-value="15" data-suffix="+">15+</span>
             <div>
@@ -397,16 +413,30 @@
     </div>
   </section>
 
+  <!-- Assessment scheduler CTA banner -->
+  <section class="section section-cta-banner reveal" data-animation="fade-up">
+    <div class="section-bg"><img src="assets/bg/neighborhood.jpg" alt="" data-parallax="15"></div>
+    <div class="cta-overlay"></div>
+    <div class="container">
+      <h2 class="display-h1">Schedule an In-Home<br>Assessment Today</h2>
+      <p>Our team sizes up your home comfort needs and recommends the best options with upfront, flat-rate pricing. Same-day service and free quotes across Northern Utah.</p>
+      <div class="cta-row-center">
+        <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book Now</a>
+        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18016492665">Call 801.649.COOL</a>
+      </div>
+    </div>
+  </section>
+
   <!-- 10 Contact Form -->
   <section class="section section-contact reveal" data-animation="fade-up" id="contact">
+    <div class="section-bg"><img src="assets/bg/skyline.jpg" alt="" data-parallax="15"></div>
     <div class="accent-stripe accent-stripe-orange"></div>
     <div class="bg-orb bg-orb-sky" style="top:-100px; right:-200px; width:480px;"></div>
     <div class="bg-orb bg-orb-gold" style="bottom:-200px; left:-200px; width:420px;"></div>
 
     <div class="container">
-      <span class="section-label section-label-orange">Get in Touch</span>
       <h2 class="display-h1 align-center">Let's Get Your<br>Home Comfortable</h2>
-      <p class="lead align-center">Schedule a visit or get a free quote — we'll be in touch within one business day.</p>
+      <p class="lead align-center">Schedule a visit or get a free quote - we'll be in touch within one business day.</p>
 
       <div class="contact-grid">
         <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').classList.add('is-visible');">
@@ -441,14 +471,14 @@
             </select>
           </div>
           <button type="submit" class="btn btn-primary btn-pill btn-lg btn-full">Send Request</button>
-          <div class="form-success">✓ Thanks — we'll be in touch within one business day.</div>
+          <div class="form-success">✓ Thanks - we'll be in touch within one business day.</div>
         </form>
 
         <aside class="contact-info">
           <h3>Reach Us Directly</h3>
           <div class="info-block">
             <div class="info-label">Call or Text</div>
-            <a class="info-value-big" href="tel:+18015154010">(801) 515-4010</a>
+            <a class="info-value-big" href="tel:+18016492665">801.649.COOL (2665)</a>
           </div>
           <div class="info-block">
             <div class="info-label">Email</div>
@@ -472,8 +502,8 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/sunny-logo.png" alt="Sunny Home Services" class="footer-logo">
-          <img src="assets/sunny-mascot.png" alt="" class="footer-mascot">
+          <img src="assets/brand-logo.png" alt="Sunny Home Services" class="footer-logo">
+          <img src="assets/brand-ray.png" alt="" class="footer-mascot">
         </div>
         <div class="footer-tag">HVAC &amp; Plumbing Service · Northern Utah</div>
       </div>
@@ -495,7 +525,7 @@
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
-          <a href="tel:+18015154010">(801) 515-4010</a>
+          <a href="tel:+18016492665">801.649.COOL (2665)</a>
           <a href="mailto:hello@sunnyhomeservices.com">hello@sunnyhomeservices.com</a>
           <span>640 N 2075 W<br>Marriott-Slaterville, UT 84404</span>
           <span>Mon–Sun · 24 / 7</span>
@@ -512,6 +542,6 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script src="js/sunny-engine.js"></script>
+  <script src="js/sunny-engine.js?v=6"></script>
 </body>
 </html>
