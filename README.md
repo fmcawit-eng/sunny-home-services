@@ -6,12 +6,12 @@ A static HTML prototype for the **Sunny Home Services** website — a sister bra
 
 | File | Page |
 |---|---|
-| **`index-v2.html`** | **Homepage (current)** — built from the latest Figma |
+| **`index.html`** | **Homepage (current)** — built from the latest Figma |
 | `ac-installation.html` | AC Installation / Replacement landing page |
 | `ac-repair.html` | AC Repair landing page |
 | `furnace-repair.html` | Furnace Repair landing page |
 | `furnace-replacement.html` | Furnace Installation / Replacement landing page |
-| `index.html` | Original V2 homepage (superseded by `index-v2.html`) |
+| `index.html` | Original V2 homepage (superseded by `index.html`) |
 
 All pages share `css/sunny-engine.css` + `sunny-landing.css` + `sunny-home-theme.css` + `sunny-v2.css` and `js/sunny-engine.js`. The nav and footer links are unified across every page.
 
