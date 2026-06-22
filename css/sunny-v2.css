@@ -1,0 +1,73 @@
+/* Sunny Home Services - v2 shared additions
+   Loaded LAST (after engine + landing + home-theme).
+   Adds: header mega-menu dropdowns, tucked logo lockup, 4-up service tiles,
+   real two-coupon offers, and the footer nav-link row. */
+
+/* ---------- Header brand lockup (larger logo, mascot tucked) ---------- */
+.header-logo { gap: 4px; }
+.logo-mark { height: 52px; }
+.logo-mascot { height: 46px; margin-left: -4px; }
+
+/* ---------- Header nav with hover mega-menu dropdowns ---------- */
+.header-nav { gap: 22px; align-self: stretch; align-items: stretch; }
+.nav-item { display: flex; align-items: center; position: relative; }
+.nav-item > a {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-body); font-weight: 700; font-size: 15px;
+  color: var(--charcoal); transition: color 0.2s ease; white-space: nowrap;
+}
+.nav-item > a:hover { color: var(--sky-deep); }
+.nav-item.has-menu > a::after {
+  content: "\25BE"; font-size: 9px; color: #9aa3ad; transition: transform 0.2s ease, color 0.2s ease;
+}
+.nav-item.has-menu:hover > a::after { transform: rotate(180deg); color: var(--orange); }
+.nav-menu {
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #fff; border: 1px solid var(--hairline); border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(5,8,18,0.16);
+  padding: 12px; min-width: 248px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease; z-index: 300;
+}
+.nav-item.has-menu:hover .nav-menu {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-menu .nav-menu-eyebrow {
+  display: block; font-family: var(--font-body); font-weight: 800; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange);
+  padding: 4px 14px 8px; border-bottom: 1px solid var(--hairline); margin-bottom: 6px;
+}
+.nav-menu a {
+  display: block; padding: 10px 14px; border-radius: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 14px;
+  color: var(--charcoal); white-space: nowrap; transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-menu a:hover { background: var(--off-sky); color: var(--sky-deep); }
+
+/* ---------- Service tiles: 4-up (override 5-up) ---------- */
+.ac-tiles { grid-template-columns: repeat(4, 1fr); }
+.ac-tile-eyebrow { font-family: var(--font-body); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sun-gold); margin-bottom: 8px; }
+@media (max-width: 1100px) { .ac-tiles { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .ac-tiles { grid-template-columns: 1fr; } }
+
+/* ---------- Featured two-coupon layout (real door-hanger offers, no codes) ---------- */
+.offers-two { grid-template-columns: repeat(2, minmax(0, 380px)); justify-content: center; align-items: stretch; max-width: 800px; margin-inline: auto; }
+.coupon-feature { padding-top: 28px; }
+.coupon-feature .coupon-value { font-size: 56px; }
+.coupon-feature.coupon-orange { --c: var(--orange); }
+.coupon-feature.coupon-sky { --c: var(--sky-deep); }
+.coupon-includes { list-style: none; padding: 0; margin: 6px 0 4px; text-align: left; display: grid; gap: 9px; }
+.coupon-includes li { position: relative; padding-left: 28px; font-family: var(--font-body); font-size: 14px; line-height: 1.3; color: var(--charcoal); }
+.coupon-includes li::before { content: "\2713"; position: absolute; left: 0; top: 0; font-weight: 900; color: var(--c); }
+.coupon-includes-label { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.04em; color: var(--charcoal); margin-bottom: 6px; }
+.coupon-guarantee { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; color: var(--c); margin: 14px 0 0; }
+@media (max-width: 760px) { .offers-two { grid-template-columns: 1fr; max-width: 380px; } }
+
+/* ---------- Footer nav-link row (centered landing footer) ---------- */
+.footer-center .footer-brand-row { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 10px; }
+.footer-center .footer-mascot { height: 40px; width: auto; margin-left: -4px; }
+.footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin: 4px 0 18px; }
+.footer-nav a { font-family: var(--font-body); font-weight: 600; font-size: 14px; color: rgba(255,255,255,0.9); transition: color 0.2s ease; }
+.footer-nav a:hover { color: var(--sun-gold); }

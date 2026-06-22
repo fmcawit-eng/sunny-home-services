@@ -1,13 +1,26 @@
 # Sunny Home Services — Homepage Prototype
 
-A static HTML prototype for the **Sunny Home Services** homepage — a sister brand to **Sunny Garage Doors** (Northern Utah & Southern Idaho). Mirrors the V2 Figma design 1:1 with brand-color decorations, interactive hero, animated reveals, and a working contact form.
+A static HTML prototype for the **Sunny Home Services** website — a sister brand to **Sunny Garage Doors** (Northern Utah & Southern Idaho). Mirrors the Figma design with brand-color decorations, an interactive video hero, animated reveals, a 7-item mega-menu nav, and a working contact form.
+
+## Pages
+
+| File | Page |
+|---|---|
+| **`index-v2.html`** | **Homepage (current)** — built from the latest Figma |
+| `ac-installation.html` | AC Installation / Replacement landing page |
+| `ac-repair.html` | AC Repair landing page |
+| `furnace-repair.html` | Furnace Repair landing page |
+| `furnace-replacement.html` | Furnace Installation / Replacement landing page |
+| `index.html` | Original V2 homepage (superseded by `index-v2.html`) |
+
+All pages share `css/sunny-engine.css` + `sunny-landing.css` + `sunny-home-theme.css` + `sunny-v2.css` and `js/sunny-engine.js`. The nav and footer links are unified across every page.
 
 ## Stack
 
 - **HTML + CSS + JS** (vanilla, no build step)
 - **Lenis** — smooth scroll
 - **GSAP + ScrollTrigger** — section reveals, marquee, counters, hero animations
-- **Work Sans + Roboto** — Google Fonts (matches sunnygaragedoors.com)
+- **Degular (display) + Rubik (body)** — loaded locally via `@font-face` (`assets/fonts/`)
 
 ## Run locally
 
@@ -54,7 +67,11 @@ Must be served over HTTP (not opened as `file://`) — the hero video and Lenis 
 
 ## Companion Figma file
 
-Layout was designed in Figma first. V1 + V2 desktop variants live in a single working file.
+Layout was designed in Figma first — that file is the **source of truth for the design**, with its own version history. This repo holds the **code** built from it.
+
+**Figma:** https://www.figma.com/design/3EDkJCu1UQF5m0q2aptfix/
+
+The file contains the homepage (desktop + mobile), the four landing pages (desktop + mobile), and a 🧩 Components page (button/coupon/nav-dropdown/mobile-menu components) for dev handoff.
 
 ## Roadmap (not yet wired)
 

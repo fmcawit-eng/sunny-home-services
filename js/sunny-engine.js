@@ -274,6 +274,8 @@ function initHeaderEntrance() {
    BOOT
 ============================================================ */
 function boot() {
+  // ?noanim renders every section in its final/visible state (for screenshots/QA)
+  if (/[?&]noanim/.test(location.search)) { initMarquee(); return; }
   initHeaderEntrance();
   initInteractiveHero();
   initSectionReveals();
