@@ -12,198 +12,7 @@
   <link rel="stylesheet" href="css/sunny-landing.css?v=6">
   <link rel="stylesheet" href="css/sunny-hub.css?v=1">
   <!-- Homepage overrides: Rubik Medium body + brand color palette + Figma-matched sections -->
-  <style>
-    @font-face {
-      font-family: 'Rubik Test Medium';
-      src: url('assets/fonts/rubik-500.woff2') format('woff2');
-      font-weight: 100 900; font-style: normal; font-display: swap;
-    }
-    /* Colors come from the single :root token block in css/sunny-engine.css.
-       Never redefine a brand color here: this page used to carry its own palette,
-       which is how the mockup drifted into two conflicting sets of brand colors. */
-    :root {
-      --font-body: 'Rubik Test Medium', system-ui, sans-serif;
-    }
-    /* Hero: keep each title line on one line; the second line types in via the typewriter */
-    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(40px, 5.6vw, 80px); white-space: nowrap; }
-    .section-hero .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.84em; }
-
-    /* ---------- Header brand lockup (larger logo, mascot tucked) ---------- */
-    .header-logo { gap: 4px; }
-    .logo-mark { height: 52px; }
-    .logo-mascot { height: 46px; margin-left: -4px; }
-
-    /* ---------- Header nav with hover mega-menu dropdowns ---------- */
-    .header-nav { gap: 16px; align-self: stretch; align-items: stretch; }
-    .nav-item { display: flex; align-items: center; position: relative; }
-    .nav-item > a {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-family: var(--font-body); font-weight: 700; font-size: 14px;
-      color: var(--charcoal); transition: color 0.2s ease; white-space: nowrap;
-    }
-    .nav-item > a:hover { color: var(--sky-deep); }
-    .nav-item.has-menu > a::after {
-      content: "\25BE"; font-size: 9px; color: var(--muted); transition: transform 0.2s ease, color 0.2s ease;
-    }
-    .nav-item.has-menu:hover > a::after { transform: rotate(180deg); color: var(--orange); }
-    .nav-menu {
-      position: absolute; top: 100%; left: 50%;
-      transform: translateX(-50%) translateY(8px);
-      background: #fff; border: 1px solid var(--hairline); border-radius: 14px;
-      box-shadow: 0 18px 44px rgba(5,8,18,0.16);
-      padding: 12px; min-width: 248px;
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity 0.18s ease, transform 0.18s ease; z-index: 300;
-    }
-    .nav-item.has-menu:hover .nav-menu {
-      opacity: 1; visibility: visible; pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav-menu .nav-menu-eyebrow {
-      display: block; font-family: var(--font-body); font-weight: 800; font-size: 11px;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange);
-      padding: 4px 14px 8px; border-bottom: 1px solid var(--hairline); margin-bottom: 6px;
-    }
-    .nav-menu a {
-      display: block; padding: 10px 14px; border-radius: 8px;
-      font-family: var(--font-body); font-weight: 600; font-size: 14px;
-      color: var(--charcoal); white-space: nowrap; transition: background 0.15s ease, color 0.15s ease;
-    }
-    .nav-menu a:hover { background: var(--off-sky); color: var(--sky-deep); }
-
-    /* ---------- Compact auto-scrolling testimonials ---------- */
-    .testi-scroll {
-      overflow: hidden; margin-top: 48px;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-    }
-    .testi-track { display: flex; gap: 20px; width: max-content; animation: testi-scroll 45s linear infinite; }
-    .testi-scroll:hover .testi-track { animation-play-state: paused; }
-    @keyframes testi-scroll { to { transform: translateX(-50%); } }
-    .testi-scroll .testimonial { flex: 0 0 320px; width: 320px; padding: 22px 24px; border-radius: 14px; border-top-width: 3px; }
-    .testi-scroll .stars { font-size: 15px; margin-bottom: 12px; }
-    .testi-scroll .quote { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
-    .testi-scroll .testi-meta { padding-top: 12px; gap: 10px; }
-    .testi-scroll .avatar { width: 34px; height: 34px; font-size: 15px; }
-    .testi-scroll .name { font-size: 13px; }
-    .testi-scroll .city { font-size: 10px; }
-
-    /* ---------- Service tiles (6-up: the brief's 6 service lines, 3 across x 2 rows) ---------- */
-    .ac-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
-    .ac-tiles-six { grid-template-columns: repeat(3, 1fr); }
-    .ac-tiles-six .ac-tile { height: 340px; }
-    @media (max-width: 1100px) { .ac-tiles-six { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 640px)  { .ac-tiles-six { grid-template-columns: 1fr; } }
-
-    /* ---------- Why Choose Us (restored section) ---------- */
-    .section-why { padding: 88px 0; background: var(--off-sky); position: relative; }
-    .section-why .display-h2 { margin-bottom: 18px; text-wrap: balance; }
-    .section-why .check-list { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
-    .section-why .hub-split { align-items: start; }
-
-    /* ---------- Coupon CTA + standalone guarantee line ---------- */
-    .coupon-cta { margin-top: 20px; }
-    .coupon-guarantee.align-center {
-      color: var(--ink);
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .coupon-guarantee.align-center::before,
-    .coupon-guarantee.align-center::after {
-      content: ""; width: 40px; height: 2px; background: var(--orange);
-    }
-
-    /* ---------- Family Plan benefit icons (real SVGs, not text glyphs) ---------- */
-    .fp-icon svg { width: 26px; height: 26px; }
-
-    /* ---------- ZIP coverage, collapsed (SEO content without the page-eating wall) ---------- */
-    .zip-details { margin-top: 44px; border-top: 1px solid var(--hairline); padding-top: 22px; }
-    .zip-details > summary.zip-title {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      cursor: pointer; list-style: none;
-      font-family: var(--font-display); font-weight: 900; font-size: 20px;
-      color: var(--ink); text-align: center;
-    }
-    .zip-details > summary.zip-title::-webkit-details-marker { display: none; }
-    .zip-details > summary.zip-title::after {
-      content: "+"; font-family: var(--font-body); font-weight: 700; font-size: 22px; color: var(--orange);
-      transition: transform 0.2s ease;
-    }
-    .zip-details[open] > summary.zip-title::after { transform: rotate(45deg); }
-    .zip-details > summary.zip-title:hover { color: var(--sky-deep); }
-    .zip-details .zip-groups { margin-top: 26px; }
-    .ac-tile {
-      position: relative; display: block; height: 380px; border-radius: 18px; overflow: hidden;
-      text-decoration: none; box-shadow: 0 14px 32px rgba(0,0,0,0.14);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .ac-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.2); }
-    .ac-tile-img { position: absolute; top: -8%; left: 0; width: 100%; height: 116%; background-size: cover; background-position: center; will-change: transform; }
-    .ac-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 28%, rgba(0,0,0,0.82) 100%); }
-    .ac-tile-body { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 24px; color: #fff; }
-    .ac-tile-title { font-family: var(--font-display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
-    .ac-tile-desc { font-family: var(--font-body); font-size: 14px; line-height: 1.4; opacity: 0.94; }
-    @media (max-width: 1100px) { .ac-tiles { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .ac-tiles { grid-template-columns: 1fr; } }
-
-    /* ---------- Faint parallax section backgrounds ---------- */
-    .section-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-    .section-bg img { position: absolute; top: -20%; left: 0; width: 100%; height: 140%; object-fit: cover; opacity: 0.10; will-change: transform; }
-
-    /* ---------- About: van image ---------- */
-    .section-about { padding: 64px 0; }
-    .section-about .about-grid { gap: 48px; align-items: center; }
-    .van-frame { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,0.30); }
-    .van-img { position: absolute; top: -8%; left: 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
-    .section-about .about-headline { font-size: clamp(22px, 2.4vw, 36px); line-height: 1.08; margin-bottom: 16px; }
-    .section-about .lead { margin-bottom: 22px; }
-    .section-about .stat-row { margin-bottom: 22px; }
-
-    /* ---------- Featured two-coupon layout (real door-hanger offers, no codes) ---------- */
-    .offers-two { grid-template-columns: repeat(2, minmax(0, 380px)); justify-content: center; align-items: stretch; max-width: 800px; margin-inline: auto; }
-    .coupon-feature .coupon-value { font-size: 56px; }
-    .coupon-feature.coupon-orange { --c: var(--orange); }
-    .coupon-includes { list-style: none; padding: 0; margin: 6px 0 4px; text-align: left; display: grid; gap: 9px; }
-    .coupon-includes li { position: relative; padding-left: 28px; font-family: var(--font-body); font-size: 14px; line-height: 1.3; color: var(--charcoal); }
-    .coupon-includes li::before { content: "\2713"; position: absolute; left: 0; top: 0; font-weight: 900; color: var(--c); }
-    .coupon-includes-label { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.04em; color: var(--charcoal); margin-bottom: 6px; }
-    .coupon-guarantee { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; color: var(--c); margin: 14px 0 0; }
-    @media (max-width: 760px) { .offers-two { grid-template-columns: 1fr; max-width: 380px; } }
-
-    /* ---------- Service area ZIP coverage ---------- */
-    .zip-coverage { position: relative; z-index: 2; margin-top: 48px; }
-    .zip-title { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 22px; letter-spacing: 0.02em; color: var(--charcoal); margin: 0 0 18px; }
-    .zip-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .zip-group { background: #fff; border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 18px; box-shadow: 0 6px 18px rgba(5,8,18,0.05); }
-    .zip-region { font-family: var(--font-body); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sky-deep); margin-bottom: 6px; }
-    .zip-list { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--charcoal); }
-    .zip-catchall { font-family: var(--font-body); font-size: 15px; color: var(--charcoal); margin-top: 22px; }
-    .zip-catchall a { font-weight: 800; color: var(--orange); }
-    @media (max-width: 900px) { .zip-groups { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .zip-groups { grid-template-columns: 1fr; } }
-
-    /* ---------- Contact form consent fine print ---------- */
-    .form-consent { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0 14px; }
-    .form-consent input[type="checkbox"] { flex: 0 0 auto; margin-top: 3px; width: 16px; height: 16px; accent-color: var(--sky-deep); }
-    .form-consent label { font-family: var(--font-body); font-size: 11px; line-height: 1.5; color: var(--muted, #6b6b6b); font-weight: 400; letter-spacing: 0; text-transform: none; }
-    .form-legal { font-family: var(--font-body); font-size: 11px; color: var(--muted, #6b6b6b); margin: 12px 0 0; text-align: center; }
-    .form-legal a { color: var(--sky-deep); text-decoration: underline; }
-
-    /* ---------- Footer: landing-style centered ---------- */
-    .footer-centered { background: #232323; color: #fff; text-align: center; padding: 56px 0 40px; }
-    .footer-centered .footer-brand { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 10px; }
-    .footer-centered .footer-logo { height: 46px; width: auto; }
-    .footer-centered .footer-mascot { height: 40px; width: auto; margin-left: -4px; }
-    .footer-name { font-family: var(--font-display); font-weight: 900; font-size: 22px; text-transform: uppercase; color: #fff; margin-bottom: 14px; letter-spacing: -0.01em; }
-    .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin-bottom: 18px; }
-    .footer-nav a { font-family: var(--font-body); font-weight: 600; font-size: 14px; color: rgba(255,255,255,0.9); transition: color 0.2s ease; }
-    .footer-nav a:hover { color: var(--sun-gold); }
-    .footer-centered .f-phone { font-family: var(--font-display); font-weight: 900; font-size: 20px; color: #fff; margin-bottom: 8px; }
-    .footer-centered .f-line { font-family: var(--font-body); font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 6px; }
-    .footer-centered .f-line a { color: rgba(255,255,255,0.82); }
-    .footer-centered .f-line a:hover { color: var(--sun-gold); }
-    .footer-centered .f-licensed { font-family: var(--font-body); font-weight: 900; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sun-gold); margin: 12px 0; }
-    .footer-centered .f-copy { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.5); }
-  </style>
+  <link rel="stylesheet" href="css/sunny-home.css?v=1">
 </head>
 <body>
 
@@ -289,7 +98,7 @@
     <div class="header-cta">
       <div class="header-phone">
         <div class="phone-num">801.887.9650</div>
-        <div class="phone-meta">Available 24 / 7</div>
+        <div class="phone-meta">Mon-Fri · 7am - 7pm</div>
       </div>
       <a class="btn btn-primary btn-pill" href="#contact">Book Now</a>
     </div>
@@ -329,8 +138,8 @@
         <span>Plumbing</span><span class="dot"></span>
         <span>Sewer and Drains</span><span class="dot"></span>
         <span>Air Quality</span><span class="dot"></span>
-        <span>Same-Day Service</span><span class="dot"></span>
-        <span>24 / 7 Emergency</span>
+        <span>Water Heaters</span><span class="dot"></span>
+        <span>Same-Day Service</span>
       </div>
     </div>
   </section>
@@ -339,19 +148,25 @@
   <section class="section section-trust-marquee">
     <div class="accent-stripe accent-stripe-orange"></div>
     <div class="marquee-wrap">
+      <!-- Every pill below is supported by the copywriter brief. The previous set claimed
+           BBB A+, Carrier Authorized, Bosch Pro, ACCA Member, Trane Comfort and "5.0 Google" -
+           none of which are stated anywhere, and the Google rating is provably false
+           (Sunny has no public reviews yet). Do not re-add a claim without a source. -->
       <div class="marquee-track" id="marquee-track">
-        <span class="cred-pill">BBB A+</span>
         <span class="cred-pill">NATE Certified</span>
-        <span class="cred-pill">EPA Approved</span>
-        <span class="cred-pill">Carrier Authorized</span>
-        <span class="cred-pill">Bosch Pro</span>
-        <span class="cred-pill">ACCA Member</span>
-        <span class="cred-pill">Trane Comfort</span>
-        <span class="cred-pill">★ 5.0 Google</span>
-        <span class="cred-pill" aria-hidden="true">BBB A+</span>
+        <span class="cred-pill">EPA Certified</span>
+        <span class="cred-pill">RMGA Certified</span>
+        <span class="cred-pill">Licensed · Bonded · Insured</span>
+        <span class="cred-pill">30+ Years Combined Experience</span>
+        <span class="cred-pill">Same-Day Emergency Response</span>
+        <span class="cred-pill">Upfront Flat-Rate Pricing</span>
+        <span class="cred-pill">Background-Checked Technicians</span>
+        <span class="cred-pill">Financing Available</span>
         <span class="cred-pill" aria-hidden="true">NATE Certified</span>
-        <span class="cred-pill" aria-hidden="true">EPA Approved</span>
-        <span class="cred-pill" aria-hidden="true">Carrier Authorized</span>
+        <span class="cred-pill" aria-hidden="true">EPA Certified</span>
+        <span class="cred-pill" aria-hidden="true">RMGA Certified</span>
+        <span class="cred-pill" aria-hidden="true">Licensed · Bonded · Insured</span>
+        <span class="cred-pill" aria-hidden="true">30+ Years Combined Experience</span>
       </div>
     </div>
   </section>
