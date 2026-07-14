@@ -200,3 +200,53 @@
     .footer-centered .f-line a:hover { color: var(--sun-gold); }
     .footer-centered .f-licensed { font-family: var(--font-body); font-weight: 900; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sun-gold); margin: 12px 0; }
     .footer-centered .f-copy { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ---------- Service tile photo placeholders ----------
+   Four of the six service lines have no photography yet (Plumbing, Drain and
+   Sewers, Water Heaters, Indoor Air Quality). These branded icon panels stand in
+   so the grid reads as deliberate rather than broken. To swap in a real photo,
+   drop the file in assets/services/ and replace the placeholder div with:
+     <div class="ac-tile-img" data-parallax="6" style="background-image:url('...')"></div>
+   Generation prompts: assets/PHOTO-PROMPTS.md */
+.ac-tile-ph {
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.92);
+}
+.ac-tile-ph svg { width: 88px; height: 88px; }
+.ac-tile-ph-sky    { background: linear-gradient(150deg, var(--sky) 0%, var(--sky-deep) 100%); }
+.ac-tile-ph-deep   { background: linear-gradient(150deg, var(--sky-deep) 0%, var(--sky-darker) 100%); }
+.ac-tile-ph-orange { background: linear-gradient(150deg, var(--orange) 0%, #c85f00 100%); }
+.ac-tile-ph-gold   { background: linear-gradient(150deg, var(--yellow) 0%, var(--orange) 100%); }
+
+/* ---------- Body copy: constrained measure, LEFT aligned, block centered ----------
+   These paragraphs were centre-aligned. Centring is fine for a line or two, but a
+   4-6 line paragraph centred gives a ragged left edge that is measurably harder to
+   read. Keep the block centred in the section; keep the text left-aligned. */
+.hub-prose.align-center {
+  max-width: 760px; margin-left: auto; margin-right: auto;
+  text-align: left !important;
+}
+.section-services .lead.align-center {
+  max-width: 780px; margin-left: auto; margin-right: auto;
+  text-align: left;
+}
+
+/* The intro band was floating in a large empty void. Tighten it and let it sit
+   closer to the hero it is explaining. */
+#intro.section-hub { padding: 64px 0 56px; }
+
+/* Tile caption breathing room (the description was crowding the scrim) */
+.ac-tile-body { padding: 26px 24px 22px; }
+.ac-tile-desc { line-height: 1.5; }
+
+/* ---------- Service Areas ----------
+   The brief's heading ("Proudly Serving West Jordan and the Surrounding Wasatch
+   Front Areas") is long and was wrapping to 5 lines at display-h1 size, swallowing
+   the section. Step it down and let it wrap on its own terms. */
+.section-areas .display-h1 {
+  font-size: clamp(28px, 3.0vw, 44px);
+  line-height: 1.08;
+  text-wrap: balance;
+  margin-bottom: 16px;
+}
+.map-wrap { min-height: 320px; }
