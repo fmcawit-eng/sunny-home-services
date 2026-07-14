@@ -152,3 +152,24 @@ source images. Higgsfield `soul_2` job IDs:
 | services/air-quality.jpg (filter + vent) | acb97dcf-e489-43f4-8973-934415e55de2 |
 | bg/wasatch.jpg (neighborhood + mountains) | b5d9ca12-620e-4532-b5c2-220190d57d26 |
 | bg/tools.jpg (tool flat-lay) | 60bd23f3-0f98-4f57-bd40-4579cbab295e |
+
+---
+
+# GENERATED 2026-07-14 (round 3) - unbranded equipment, Utah cues, logo uniform
+
+User feedback: no branded equipment, Utah location feel, and the Why Choose Us photo
+should wear the real Sunny logo. All Higgsfield, no third-party source images.
+
+| File | Job | Note |
+|---|---|---|
+| services/air-conditioning.jpg | 03317c5b-6df8-48c2-9f5b-0271b246c35e | condenser, Wasatch peaks |
+| services/heating.jpg | ec48b6c5-ac8b-47ba-82ef-1f11acff8afb | text-scrub edit of 78af24b2 |
+| services/plumbing.jpg | dbe0be0c-ae71-4be1-808f-e1ee10d0761d | faucet, foothills window |
+| services/drains.jpg | 968d07c4-3c8f-4d9f-a4a6-2d5299f92617 | text-scrub edit of 7b74c50f |
+| services/water-heater.jpg | 1815bf95-6dd5-429f-8a8d-551722549bc0 | text-scrub edit of 18f6b42f |
+| services/air-quality.jpg | 4182a63d-99a5-4219-a6d0-bc6fb32ec460 | filter + blank thermostat |
+| services/why-team.jpg | 2d3815e6-06fa-465e-9091-17f96d92921c | Sunny logo added to OUR generated photo (da67b543) using the client's own brand-logo.png as reference. Clean provenance: generated person + client's own logo. |
+
+Lesson: soul_2 invents gibberish brand text on equipment even when told not to.
+The reliable recipe is generate, then run a nano_banana_pro edit: "remove ALL text,
+letters, stickers, labels, badges and logos from every surface."
