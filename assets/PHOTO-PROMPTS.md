@@ -173,3 +173,16 @@ should wear the real Sunny logo. All Higgsfield, no third-party source images.
 Lesson: soul_2 invents gibberish brand text on equipment even when told not to.
 The reliable recipe is generate, then run a nano_banana_pro edit: "remove ALL text,
 letters, stickers, labels, badges and logos from every surface."
+
+---
+
+# GENERATED 2026-07-14 (round 4) - service-recognizable + fully clean
+
+| File | Job | Note |
+|---|---|---|
+| services/heating.jpg | 2b90fed1-2e37-4dc0-806d-cedabf0717b6 | furnace w/ visible burner flame; text-scrub of 26666ba7 |
+| services/drains.jpg | 09f4fb35-b75c-4266-ab48-d23efaf7cc36 | drum auger cable into cleanout; text-scrub of be52c24e |
+| services/why-team.jpg | 443a5e90-71fd-453a-a5b0-7789daa99d5a | belt clutter removed from 2d3815e6 |
+
+Confirmed recipe: soul_2 ALWAYS invents gibberish brand text on equipment, so every
+equipment shot needs the nano_banana_pro "remove ALL text..." edit pass afterward.
