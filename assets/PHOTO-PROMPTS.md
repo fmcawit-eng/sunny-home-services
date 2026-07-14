@@ -111,3 +111,24 @@ image, so it can never go stale again.
 ## 3. Copy - FIXED IN CODE
 The page title and the About section said "Northern Utah" (the old market). Both now
 say West Jordan / the Wasatch Front, matching the brief.
+
+---
+
+# GENERATED 2026-07-14 - clean provenance record
+
+All seven images were generated in Higgsfield (`soul_2` / text2image_soul_v2) from the
+TEXT-ONLY prompts above. **No source photo of any person was used as input.** Job IDs,
+kept so provenance is auditable:
+
+| File | Higgsfield job |
+|---|---|
+| air-conditioning.jpg | 0e31b256-ac38-47d2-be2d-b16092a7c879 |
+| heating.jpg | 72534eb2-9533-42ff-b478-0b0510cfa2af |
+| plumbing.jpg | 2a5ccaa7-b41c-4411-9aeb-677849a1a288 |
+| drains.jpg | 0b3c5918-e341-4cb1-846f-3025f89b8df0 |
+| water-heater.jpg | a3723174-0e8f-4c4c-ba25-f2b8e0f96efa |
+| air-quality.jpg | 3569334b-f681-4a3f-af0f-c645d78a2977 |
+| why-team.jpg | da67b543-99da-4dca-aff5-0f6b0506b972 |
+
+The old re-skinned files (repair*.png, maintenance*.png, installation*.png, tuneup*.png,
+garage.png) remain quarantined here for reference only. Do not use them on any page.
