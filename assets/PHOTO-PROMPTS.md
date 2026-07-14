@@ -132,3 +132,23 @@ kept so provenance is auditable:
 
 The old re-skinned files (repair*.png, maintenance*.png, installation*.png, tuneup*.png,
 garage.png) remain quarantined here for reference only. Do not use them on any page.
+
+---
+
+# GENERATED 2026-07-14 (round 2) - equipment set + section backgrounds
+
+User feedback: the technician set's uniform is not Sunny's real branding, so the tiles
+now use EQUIPMENT-ONLY shots (no people, no uniform question). The people set is kept
+as `team-*.jpg` for a possible logo-branded redo later. All text-only prompts, no
+source images. Higgsfield `soul_2` job IDs:
+
+| File | Job |
+|---|---|
+| services/air-conditioning.jpg (condenser) | 83845b7e-e3b9-43c5-8256-238d06544209 |
+| services/heating.jpg (furnace/air handler) | 27671279-3cf4-4e03-af6e-a18ed206fe5d |
+| services/plumbing.jpg (faucet) | 289982c3-2ed2-4749-9051-82b151a313c7 |
+| services/drains.jpg (drain machine) | 19ff9bed-808d-4073-95a3-a1495ce2039c |
+| services/water-heater.jpg (tank + tankless) | 479c47f9-457c-4a24-bf54-f3eda9f023bf |
+| services/air-quality.jpg (filter + vent) | acb97dcf-e489-43f4-8973-934415e55de2 |
+| bg/wasatch.jpg (neighborhood + mountains) | b5d9ca12-620e-4532-b5c2-220190d57d26 |
+| bg/tools.jpg (tool flat-lay) | 60bd23f3-0f98-4f57-bd40-4579cbab295e |

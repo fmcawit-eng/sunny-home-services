@@ -26,9 +26,9 @@
     .section-hero .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.84em; }
 
     /* ---------- Header brand lockup (larger logo, mascot tucked) ---------- */
-    .header-logo { gap: 4px; }
-    .logo-mark { height: 52px; }
-    .logo-mascot { height: 46px; margin-left: -4px; }
+    .header-logo { gap: 5px; }
+    .logo-mark { height: 68px; }
+    .logo-mascot { height: 62px; margin-left: -5px; }
 
     /* ---------- Header nav with hover mega-menu dropdowns ---------- */
     .header-nav { gap: 16px; align-self: stretch; align-items: stretch; }
@@ -261,3 +261,18 @@
   box-shadow: 0 18px 40px rgba(5,8,18,0.22);
 }
 .why-media-ph img { width: 42%; max-width: 220px; height: auto; }
+
+/* ---------- Section background opacity variants ----------
+   .section-bg (sunny-engine.css) defaults its img to opacity .10 with a parallax
+   overscan. These tune it per surface: faint on white/tinted, soft for whisper-level,
+   dark for image-under-color sections (Family Plan), where a brand overlay keeps
+   text contrast. */
+.section-bg-faint img { opacity: 0.08; }
+.section-bg-soft  img { opacity: 0.05; }
+.section-bg-dark  img { opacity: 0.16; }
+.section-bg-dark::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(2,136,168,0.55), rgba(3,166,204,0.35));
+}
+/* container content must sit above the bg layer on hub sections */
+.section-hub > .container { position: relative; z-index: 1; }

@@ -226,9 +226,12 @@ img { max-width: 100%; display: block; }
 .btn-pill { border-radius: 32px; }
 .btn-lg   { padding: 18px 36px; font-size: 14px; letter-spacing: 0.3em; }
 .btn-full { width: 100%; }
-.btn-primary { background: var(--sun-gradient); color: var(--white); }
-.btn-primary:hover { background: var(--sun-gradient); filter: brightness(0.93); transform: translateY(-2px); }
-.btn-sky { background: var(--sky); color: var(--white); }
+/* background-origin: border-box makes the gradient paint the full border-box.
+   Without it, the gradient sizes to the padding box and its edge pixels smear
+   under .btn's 2px transparent border, reading as a clipped ring at the corners. */
+.btn-primary { background: var(--sun-gradient); background-origin: border-box; background-clip: border-box; color: var(--white); }
+.btn-primary:hover { background: var(--sun-gradient); background-origin: border-box; background-clip: border-box; filter: brightness(0.93); transform: translateY(-2px); }
+.btn-sky { background: var(--sky); background-origin: border-box; background-clip: border-box; color: var(--white); }
 .btn-sky:hover { background: var(--sky-deep); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--charcoal); border-color: var(--charcoal); }
 .btn-outline:hover { background: var(--charcoal); color: var(--white); }
