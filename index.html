@@ -41,11 +41,11 @@
     .logo-mascot { height: 46px; margin-left: -4px; }
 
     /* ---------- Header nav with hover mega-menu dropdowns ---------- */
-    .header-nav { gap: 22px; align-self: stretch; align-items: stretch; }
+    .header-nav { gap: 16px; align-self: stretch; align-items: stretch; }
     .nav-item { display: flex; align-items: center; position: relative; }
     .nav-item > a {
       display: inline-flex; align-items: center; gap: 5px;
-      font-family: var(--font-body); font-weight: 700; font-size: 15px;
+      font-family: var(--font-body); font-weight: 700; font-size: 14px;
       color: var(--charcoal); transition: color 0.2s ease; white-space: nowrap;
     }
     .nav-item > a:hover { color: var(--sky-deep); }
@@ -136,6 +136,25 @@
     .coupon-guarantee { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; color: var(--c); margin: 14px 0 0; }
     @media (max-width: 760px) { .offers-two { grid-template-columns: 1fr; max-width: 380px; } }
 
+    /* ---------- Service area ZIP coverage ---------- */
+    .zip-coverage { position: relative; z-index: 2; margin-top: 48px; }
+    .zip-title { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 22px; letter-spacing: 0.02em; color: var(--charcoal); margin: 0 0 18px; }
+    .zip-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .zip-group { background: #fff; border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 18px; box-shadow: 0 6px 18px rgba(5,8,18,0.05); }
+    .zip-region { font-family: var(--font-body); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sky-deep); margin-bottom: 6px; }
+    .zip-list { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--charcoal); }
+    .zip-catchall { font-family: var(--font-body); font-size: 15px; color: var(--charcoal); margin-top: 22px; }
+    .zip-catchall a { font-weight: 800; color: var(--orange); }
+    @media (max-width: 900px) { .zip-groups { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .zip-groups { grid-template-columns: 1fr; } }
+
+    /* ---------- Contact form consent fine print ---------- */
+    .form-consent { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0 14px; }
+    .form-consent input[type="checkbox"] { flex: 0 0 auto; margin-top: 3px; width: 16px; height: 16px; accent-color: var(--sky-deep); }
+    .form-consent label { font-family: var(--font-body); font-size: 11px; line-height: 1.5; color: var(--muted, #6b6b6b); font-weight: 400; letter-spacing: 0; text-transform: none; }
+    .form-legal { font-family: var(--font-body); font-size: 11px; color: var(--muted, #6b6b6b); margin: 12px 0 0; text-align: center; }
+    .form-legal a { color: var(--sky-deep); text-decoration: underline; }
+
     /* ---------- Footer: landing-style centered ---------- */
     .footer-centered { background: #232323; color: #fff; text-align: center; padding: 56px 0 40px; }
     .footer-centered .footer-brand { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 10px; }
@@ -163,83 +182,97 @@
     </a>
     <nav class="header-nav">
       <div class="nav-item has-menu">
+        <a href="#services">Heating</a>
+        <div class="nav-menu">
+          <span class="nav-menu-eyebrow">Heating</span>
+          <a href="furnace-repair.html">Furnace Repair</a>
+          <a href="furnace-replacement.html">Furnace Replacement</a>
+          <a href="index.html#services">Furnace Maintenance</a>
+          <a href="index.html#services">Heat Pumps</a>
+          <a href="furnace-repair.html">Emergency Heating Repair</a>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
         <a href="#services">Cooling</a>
         <div class="nav-menu">
           <span class="nav-menu-eyebrow">Cooling</span>
           <a href="ac-repair.html">Air Conditioner Repair</a>
           <a href="ac-installation.html">Air Conditioner Installation</a>
-          <a href="#services">Air Conditioner Maintenance</a>
-          <a href="#services">Mini Splits</a>
-          <a href="#services">Heat Pumps</a>
+          <a href="index.html#services">Air Conditioner Maintenance</a>
+          <a href="index.html#services">Mini Splits</a>
           <a href="ac-repair.html">Emergency Air Conditioner Repair</a>
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="#services">Heating</a>
-        <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Heating</span>
-          <a href="furnace-repair.html">Furnace Repair</a>
-          <a href="furnace-replacement.html">Furnace Installation</a>
-          <a href="#services">Furnace Maintenance</a>
-          <a href="#services">Heat Pumps</a>
-          <a href="furnace-repair.html">Emergency Heating Repair</a>
-        </div>
-      </div>
-      <div class="nav-item has-menu">
-        <a href="#services">Plumbing</a>
+        <a href="index.html#services">Plumbing</a>
         <div class="nav-menu">
           <span class="nav-menu-eyebrow">Plumbing</span>
-          <a href="#services">Water Heater Repair</a>
-          <a href="#services">Water Heater Installation</a>
-          <a href="#services">Water Heater Maintenance</a>
-          <a href="#services">Tankless Water Heaters</a>
-          <a href="#services">Gas Lines</a>
-          <a href="#services">Garbage Disposals</a>
-          <a href="#services">Toilets</a>
-          <a href="#services">Plumbing Fixtures</a>
-          <a href="#services">Leak Detection</a>
-          <a href="#services">Emergency Plumbing Repair</a>
+          <a href="index.html#services">Gas Lines</a>
+          <a href="index.html#services">Garbage Disposals</a>
+          <a href="index.html#services">Toilets</a>
+          <a href="index.html#services">Plumbing Fixtures</a>
+          <a href="index.html#services">Leak Detection</a>
+          <a href="index.html#services">Emergency Plumbing Repair</a>
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="#services">Sewer and Drains</a>
+        <a href="index.html#services">Drains</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Sewer and Drains</span>
-          <a href="#services">Drain Cleaning</a>
-          <a href="#services">Sewer Line Repair</a>
-          <a href="#services">Sewer Line Installation</a>
-          <a href="#services">Trenchless Sewer Line Repair</a>
-          <a href="#services">Hydro Jetting</a>
-          <a href="#services">Camera Inspection</a>
+          <span class="nav-menu-eyebrow">Drains</span>
+          <a href="index.html#services">Drain Cleaning</a>
+          <a href="index.html#services">Sewer Line Repair</a>
+          <a href="index.html#services">Sewer Line Installation</a>
+          <a href="index.html#services">Trenchless Sewer Line Repair</a>
+          <a href="index.html#services">Hydro Jetting</a>
+          <a href="index.html#services">Camera Inspection</a>
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="#services">Air Quality</a>
+        <a href="index.html#services">Water Heaters</a>
+        <div class="nav-menu">
+          <span class="nav-menu-eyebrow">Water Heaters</span>
+          <a href="index.html#services">Water Heater Repair</a>
+          <a href="index.html#services">Water Heater Installation</a>
+          <a href="index.html#services">Water Heater Maintenance</a>
+          <a href="index.html#services">Tankless Water Heaters</a>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#services">Air Quality</a>
         <div class="nav-menu">
           <span class="nav-menu-eyebrow">Air Quality</span>
-          <a href="#services">Duct Cleaning</a>
-          <a href="#services">Whole Home Humidifiers</a>
-          <a href="#services">Thermostats</a>
-          <a href="#services">Ductwork</a>
+          <a href="index.html#services">Duct Cleaning</a>
+          <a href="index.html#services">Whole Home Humidifiers</a>
+          <a href="index.html#services">Thermostats</a>
+          <a href="index.html#services">Ductwork</a>
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="#about">About Us</a>
+        <a href="index.html#services">Repairs</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">About Us</span>
-          <a href="#about">Meet the Team</a>
-          <a href="#locations">Service Area</a>
-          <a href="#specials">Offers</a>
-          <a href="#family-plan">Membership</a>
-          <a href="#contact">Financing</a>
-          <a href="#reviews">Blog</a>
+          <span class="nav-menu-eyebrow">Repairs</span>
+          <a href="ac-repair.html">Air Conditioner Repair</a>
+          <a href="furnace-repair.html">Furnace Repair</a>
+          <a href="index.html#services">Plumbing Repair</a>
+          <a href="index.html#services">Water Heater Repair</a>
+          <a href="index.html#services">24 / 7 Emergency Repair</a>
         </div>
       </div>
-      <div class="nav-item"><a href="#contact">Contact Us</a></div>
+      <div class="nav-item has-menu">
+        <a href="index.html#services">Installs</a>
+        <div class="nav-menu">
+          <span class="nav-menu-eyebrow">Installs</span>
+          <a href="ac-installation.html">Air Conditioner Installation</a>
+          <a href="furnace-replacement.html">Furnace Replacement</a>
+          <a href="index.html#services">Water Heater Installation</a>
+          <a href="index.html#services">Thermostats</a>
+          <a href="index.html#services">Ductwork</a>
+        </div>
+      </div>
     </nav>
     <div class="header-cta">
       <div class="header-phone">
-        <div class="phone-num">801.649.COOL (2665)</div>
+        <div class="phone-num">801.887.9650</div>
         <div class="phone-meta">Available 24 / 7</div>
       </div>
       <a class="btn btn-primary btn-pill" href="#contact">Book Now</a>
@@ -266,7 +299,7 @@
       <p class="lead lead-on-video">Heating, cooling, and plumbing repairs done right the first time - every time. Same-day appointments, transparent pricing, and a 100% satisfaction guarantee.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18016492665">Call 801.649.COOL (2665)</a>
+        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18018879650">Call 801.887.9650</a>
       </div>
     </div>
 
@@ -473,14 +506,14 @@
       <h2 class="display-h1 align-center">What Our<br>Customers Think</h2>
       <div class="testi-scroll">
         <div class="testi-track">
-          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - same-day repair, honest pricing, friendly tech. ]</p><div class="testi-meta"><div class="avatar">A</div><div><div class="name">Customer A</div><div class="city">Salt Lake City, UT · Google</div></div></div></div>
-          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - fast emergency response, clear flat-rate quote. ]</p><div class="testi-meta"><div class="avatar">B</div><div><div class="name">Customer B</div><div class="city">Ogden, UT · Yelp</div></div></div></div>
-          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - membership plan caught an issue early. ]</p><div class="testi-meta"><div class="avatar">C</div><div><div class="name">Customer C</div><div class="city">Park City, UT · BBB</div></div></div></div>
-          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - upfront pricing, no surprises on the bill. ]</p><div class="testi-meta"><div class="avatar">D</div><div><div class="name">Customer D</div><div class="city">Layton, UT · Google</div></div></div></div>
-          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - same-day repair, honest pricing, friendly tech. ]</p><div class="testi-meta"><div class="avatar">A</div><div><div class="name">Customer A</div><div class="city">Salt Lake City, UT · Google</div></div></div></div>
-          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - fast emergency response, clear flat-rate quote. ]</p><div class="testi-meta"><div class="avatar">B</div><div><div class="name">Customer B</div><div class="city">Ogden, UT · Yelp</div></div></div></div>
-          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - membership plan caught an issue early. ]</p><div class="testi-meta"><div class="avatar">C</div><div><div class="name">Customer C</div><div class="city">Park City, UT · BBB</div></div></div></div>
-          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">[ Review placeholder - upfront pricing, no surprises on the bill. ]</p><div class="testi-meta"><div class="avatar">D</div><div><div class="name">Customer D</div><div class="city">Layton, UT · Google</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">Same day repair. Honest pricing and a friendly tech who explained everything. Couldn't ask for more.</p><div class="testi-meta"><div class="avatar">A</div><div><div class="name">Customer A</div><div class="city">Salt Lake City, UT · Google</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">Fast emergency response and a clear flat-rate quote before any work began. No surprises.</p><div class="testi-meta"><div class="avatar">B</div><div><div class="name">Customer B</div><div class="city">Ogden, UT · Yelp</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">The membership plan caught an issue on our AC before it became an expensive fix.</p><div class="testi-meta"><div class="avatar">C</div><div><div class="name">Customer C</div><div class="city">Park City, UT · BBB</div></div></div></div>
+          <div class="testimonial"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">Upfront pricing, no surprises on the bill and the crew left everything working and clean.</p><div class="testi-meta"><div class="avatar">D</div><div><div class="name">Customer D</div><div class="city">Layton, UT · Google</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">Same day repair. Honest pricing and a friendly tech who explained everything. Couldn't ask for more.</p><div class="testi-meta"><div class="avatar">A</div><div><div class="name">Customer A</div><div class="city">Salt Lake City, UT · Google</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">Fast emergency response and a clear flat-rate quote before any work began. No surprises.</p><div class="testi-meta"><div class="avatar">B</div><div><div class="name">Customer B</div><div class="city">Ogden, UT · Yelp</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">The membership plan caught an issue on our AC before it became an expensive fix.</p><div class="testi-meta"><div class="avatar">C</div><div><div class="name">Customer C</div><div class="city">Park City, UT · BBB</div></div></div></div>
+          <div class="testimonial" aria-hidden="true"><div class="stars">★ ★ ★ ★ ★</div><p class="quote">Upfront pricing, no surprises on the bill and the crew left everything working and clean.</p><div class="testi-meta"><div class="avatar">D</div><div><div class="name">Customer D</div><div class="city">Layton, UT · Google</div></div></div></div>
         </div>
       </div>
       <div class="testi-more">Read all reviews →</div>
@@ -496,8 +529,8 @@
 
     <div class="container areas-grid">
       <div class="areas-left">
-        <h2 class="display-h1">Proudly Serving<br>Northern Utah</h2>
-        <p class="lead">Northern Utah &amp; Southern Idaho - our trucks roll daily from Salt Lake City to Ogden, Layton, Park City, Logan, and a long list of communities in between.</p>
+        <h2 class="display-h1">Proudly Serving<br>The Wasatch Front</h2>
+        <p class="lead">Our trucks roll daily from Salt Lake City to Ogden, Layton and Park City.</p>
         <div class="city-grid">
           <span class="city-pill">Salt Lake City</span>
           <span class="city-pill">Ogden</span>
@@ -508,7 +541,6 @@
           <span class="city-pill">Clearfield</span>
           <span class="city-pill">Farmington</span>
         </div>
-        <p class="muted">Don't see your town? Give us a call - we likely cover it.</p>
       </div>
       <div class="areas-right">
         <div class="map-wrap">
@@ -523,6 +555,49 @@
         </div>
       </div>
     </div>
+
+    <div class="container zip-coverage">
+      <h3 class="zip-title">ZIP Codes We Cover</h3>
+      <div class="zip-groups">
+        <div class="zip-group">
+          <div class="zip-region">Salt Lake City</div>
+          <div class="zip-list">84101, 84102, 84103, 84104, 84105, 84106, 84108, 84109, 84111, 84112, 84115, 84116</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">West Valley City and Kearns</div>
+          <div class="zip-list">84118, 84119, 84120, 84128</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">West Jordan and Taylorsville</div>
+          <div class="zip-list">84123, 84129, 84081, 84084, 84088</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">Sandy and Cottonwood Heights</div>
+          <div class="zip-list">84047, 84070, 84092, 84093, 84094, 84121</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">South Jordan, Herriman and Riverton</div>
+          <div class="zip-list">84009, 84020, 84065, 84095, 84096</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">Other Communities</div>
+          <div class="zip-list">84006, 84044, 84081</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">Davis County</div>
+          <div class="zip-list">84010, 84014, 84015, 84025, 84037, 84040, 84041, 84054, 84056, 84075, 84087, 84405</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">Weber County</div>
+          <div class="zip-list">84401, 84403, 84404, 84405, 84414, 84315, 84067</div>
+        </div>
+        <div class="zip-group">
+          <div class="zip-region">Utah County</div>
+          <div class="zip-list">84003, 84043, 84048, 84005, 84045, 84062, 84042, 84057, 84058, 84097, 84601, 84604, 84606</div>
+        </div>
+      </div>
+      <p class="zip-catchall">Don't see your town? Give us a call, we likely cover it. <a href="tel:+18018879650">801.887.9650</a></p>
+    </div>
   </section>
 
   <!-- Assessment scheduler CTA banner -->
@@ -534,7 +609,7 @@
       <p>Our team sizes up your home comfort needs and recommends the best options with upfront pricing. Same-day service and free quotes across Northern Utah.</p>
       <div class="cta-row-center">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18016492665">Call 801.649.COOL</a>
+        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+18018879650">Call 801.887.9650</a>
       </div>
     </div>
   </section>
@@ -554,27 +629,27 @@
         <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').classList.add('is-visible');">
           <div class="form-row">
             <div class="form-field">
-              <label>First Name</label>
-              <input type="text" placeholder="Jane">
+              <label for="cf-first">First Name</label>
+              <input id="cf-first" type="text" placeholder="Jane" required>
             </div>
             <div class="form-field">
-              <label>Last Name</label>
-              <input type="text" placeholder="Smith">
+              <label for="cf-last">Last Name</label>
+              <input id="cf-last" type="text" placeholder="Smith" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-field">
-              <label>Email</label>
-              <input type="email" placeholder="jane@email.com">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" placeholder="jane@email.com" required>
             </div>
             <div class="form-field">
-              <label>Phone</label>
-              <input type="tel" placeholder="(801) 555-0000">
+              <label for="cf-phone">Phone</label>
+              <input id="cf-phone" type="tel" placeholder="(801) 555-0000" required>
             </div>
           </div>
           <div class="form-field">
-            <label>Service Needed</label>
-            <select>
+            <label for="cf-service">Service Needed</label>
+            <select id="cf-service" required>
               <option>Cooling</option>
               <option>Heating</option>
               <option>Plumbing</option>
@@ -583,27 +658,32 @@
               <option>Other</option>
             </select>
           </div>
+          <div class="form-consent">
+            <input id="cf-consent" type="checkbox" required>
+            <label for="cf-consent">By checking this box, you agree to receive informational messages (appointment reminders, service updates, etc.) and SMS marketing messages, such as sales, coupons, and seasonal offers, from Sunny Home Services at the number provided. We will never share your personal information with third parties for marketing purposes. Consent is not a condition of purchase. Message frequency may vary. Standard Message and Data Rates may apply. Unsubscribe at any time by replying STOP and no further messages will be sent. Reply HELP for help or email us at hello@sunnyhomeservices.com.</label>
+          </div>
           <button type="submit" class="btn btn-primary btn-pill btn-lg btn-full">Send Request</button>
+          <p class="form-legal"><a href="#">Privacy Policy</a> · <a href="#">Terms and Conditions</a></p>
           <div class="form-success">✓ Thanks - we'll be in touch within one business day.</div>
         </form>
 
         <aside class="contact-info">
           <h3>Reach Us Directly</h3>
           <div class="info-block">
-            <div class="info-label">Call or Text</div>
-            <a class="info-value-big" href="tel:+18016492665">801.649.COOL (2665)</a>
+            <div class="info-label">Phone</div>
+            <a class="info-value-big" href="tel:+18018879650">801.887.9650</a>
           </div>
           <div class="info-block">
-            <div class="info-label">Website</div>
-            <a class="info-value" href="https://sunnyhomeservices.com" target="_blank" rel="noopener">sunnyhomeservices.com</a>
+            <div class="info-label">Email</div>
+            <a class="info-value" href="mailto:hello@sunnyhomeservices.com">hello@sunnyhomeservices.com</a>
           </div>
           <div class="info-block">
             <div class="info-label">Office</div>
-            <div class="info-value">640 N 2075 W<br>Marriott-Slaterville, UT 84404</div>
+            <div class="info-value">8461 Old Bingham Hwy<br>West Jordan, UT 84088</div>
           </div>
           <div class="info-block">
             <div class="info-label">Hours</div>
-            <div class="info-value">Mon-Fri · 24 / 7<br>Sat-Sun · By appointment</div>
+            <div class="info-value">Mon-Fri · 7am - 7pm<br>Sat-Sun · By appointment</div>
           </div>
         </aside>
       </div>
@@ -624,12 +704,14 @@
         <a href="#services">Plumbing</a>
         <a href="#services">Sewer and Drains</a>
         <a href="#services">Air Quality</a>
+        <a href="#services">Repairs and Installs</a>
         <a href="#about">About Us</a>
         <a href="#contact">Contact Us</a>
+        <a href="#">Privacy Policy</a>
       </nav>
-      <div class="f-phone"><a href="tel:+18016492665">801.649.COOL (2665)</a></div>
-      <div class="f-line">640 N 2075 W · Marriott-Slaterville, UT 84404</div>
-      <div class="f-line"><a href="https://sunnyhomeservices.com" target="_blank" rel="noopener">sunnyhomeservices.com</a></div>
+      <div class="f-phone"><a href="tel:+18018879650">801.887.9650</a></div>
+      <div class="f-line">8461 Old Bingham Hwy · West Jordan, UT 84088</div>
+      <div class="f-line"><a href="mailto:hello@sunnyhomeservices.com">hello@sunnyhomeservices.com</a></div>
       <div class="f-licensed">Licensed · Bonded · Insured</div>
       <div class="f-copy">© 2026 Sunny Home Services. All rights reserved.</div>
     </div>
