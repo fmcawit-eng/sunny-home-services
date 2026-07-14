@@ -12,19 +12,13 @@
   font-display: swap;
 }
 
+/* Brand colors are defined ONCE, in sunny-engine.css :root.
+   This file must never redefine them: it used to override --sky/--orange/--yellow/
+   --ink/--charcoal, and because index.html does not load this file, the homepage and
+   the landing pages silently rendered two different palettes. Colors belong to the
+   token block in sunny-engine.css, which is also the source for Elementor Global Colors. */
 :root {
-  --font-body:  'Rubik Medium', system-ui, sans-serif;
-  /* Brand color palette */
-  --sky:        #04cfff;
-  --sky-deep:   #03a6cc;
-  --sky-darker: #0288a8;
-  --yellow:     #ffc704;
-  --orange:     #f17601;
-  --sun-gold:   #ffc704;
-  --charcoal:   #454545;
-  --ink:        #454545;
-  --off-sky:    #e6fbff;
-  --sun-gradient: linear-gradient(90deg, #f17601 0%, #ffc704 100%);
+  --font-body: 'Rubik Medium', system-ui, sans-serif;
 }
 
 /* Compact auto-scrolling testimonials */

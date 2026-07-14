@@ -22,22 +22,36 @@
   font-display: swap;
 }
 
+/* ============================================================================
+   BRAND TOKENS - THE SINGLE SOURCE OF TRUTH
+   ----------------------------------------------------------------------------
+   Defined here ONCE. No other stylesheet and no page may redefine a color.
+   Values verified against the live Elementor kit on sunnyhomeservices.com, so
+   they already agree with the site's Global Colors:
+
+     Elementor Primary    #03A6CC  -> --sky-deep
+     Elementor Secondary  #FFC704  -> --yellow
+     Elementor custom     #F17601  -> --orange
+     Elementor Text       #454545  -> --ink / --charcoal
+     Elementor fonts      Rubik (body), Degular (display)
+
+   For the WordPress rebuild, this block IS the Elementor Global Colors panel.
+   ============================================================================ */
 :root {
-  /* Brand guide palette */
-  --sky:        #00BFEA;   /* Sunny Blue */
-  --sky-deep:   #0090B5;   /* darker Sunny Blue - dark sections */
-  --sky-darker: #00667F;   /* deepest blue */
-  --yellow:     #F5A800;   /* Sun gold - primary warm / CTA */
-  --orange:     #E8620E;   /* deep orange (Sun Gradient start) */
-  --sun-gold:   #FFD84D;   /* Sun Yellow - bright accent */
-  --charcoal:   #2D2D2D;
-  --ink:        #2D2D2D;
+  --sky:        #04cfff;   /* Sunny Blue */
+  --sky-deep:   #03A6CC;   /* Elementor Primary - dark sections */
+  --sky-darker: #0288a8;   /* deepest blue */
+  --yellow:     #FFC704;   /* Elementor Secondary - primary warm / CTA */
+  --orange:     #F17601;   /* deep orange (Sun Gradient start) */
+  --sun-gold:   #FFC704;   /* Sun Yellow - bright accent */
+  --charcoal:   #454545;
+  --ink:        #454545;   /* Elementor Text */
   --muted:      #6B7480;
-  --off-sky:    #E5F8FD;   /* light Sunny Blue tint */
+  --off-sky:    #e6fbff;   /* light Sunny Blue tint */
   --sand:       #FAF4ED;
   --white:      #ffffff;
   --hairline:   #DBE3E6;
-  --sun-gradient: linear-gradient(90deg, #E8620E 0%, #F5A800 100%);
+  --sun-gradient: linear-gradient(90deg, #F17601 0%, #FFC704 100%);
   --font-display: 'Degular', 'Arial Narrow', sans-serif;
   --font-body:    'Rubik', system-ui, sans-serif;
   --container:   1280px;

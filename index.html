@@ -17,19 +17,11 @@
       src: url('assets/fonts/rubik-500.woff2') format('woff2');
       font-weight: 100 900; font-style: normal; font-display: swap;
     }
+    /* Colors come from the single :root token block in css/sunny-engine.css.
+       Never redefine a brand color here: this page used to carry its own palette,
+       which is how the mockup drifted into two conflicting sets of brand colors. */
     :root {
       --font-body: 'Rubik Test Medium', system-ui, sans-serif;
-      /* Homepage color palette (matches Figma tokens) */
-      --sky:        #04cfff;
-      --sky-deep:   #03a6cc;
-      --sky-darker: #0288a8;
-      --yellow:     #ffc704;
-      --orange:     #f17601;
-      --sun-gold:   #ffc704;
-      --charcoal:   #454545;
-      --ink:        #454545;
-      --off-sky:    #e6fbff;
-      --sun-gradient: linear-gradient(90deg, #f17601 0%, #ffc704 100%);
     }
     /* Hero: keep each title line on one line; "of Home Services" in a distinct font (still types in) */
     .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(40px, 5.6vw, 80px); white-space: nowrap; }
@@ -180,33 +172,36 @@
       <img src="assets/brand-logo.png" alt="Sunny Home Services" class="logo-mark">
       <img src="assets/brand-ray.png" alt="" class="logo-mascot">
     </a>
-    <nav class="header-nav">
+    <!-- Nav IA per SEO Workbook > Menu Nav Layout. Top-level items link to their hub page. -->
+    <nav class="header-nav" data-block="primary-nav">
       <div class="nav-item has-menu">
-        <a href="#services">Heating</a>
+        <a href="air-conditioner.html">Cooling</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Heating</span>
-          <a href="furnace-repair.html">Furnace Repair</a>
-          <a href="furnace-replacement.html">Furnace Replacement</a>
-          <a href="index.html#services">Furnace Maintenance</a>
-          <a href="index.html#services">Heat Pumps</a>
-          <a href="furnace-repair.html">Emergency Heating Repair</a>
+          <a href="ac-repair.html">Air Conditioner Repair</a>
+          <a href="ac-installation.html">Air Conditioner Installation</a>
+          <a href="air-conditioner.html">Air Conditioner Maintenance</a>
+          <a href="mini-splits.html">Mini Splits</a>
+          <a href="heat-pumps.html">Heat Pumps</a>
+          <a href="ac-repair.html">Emergency Air Conditioner Repair</a>
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="#services">Cooling</a>
+        <a href="heating.html">Heating</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Cooling</span>
-          <a href="ac-repair.html">Air Conditioner Repair</a>
-          <a href="ac-installation.html">Air Conditioner Installation</a>
-          <a href="index.html#services">Air Conditioner Maintenance</a>
-          <a href="index.html#services">Mini Splits</a>
-          <a href="ac-repair.html">Emergency Air Conditioner Repair</a>
+          <a href="furnace-repair.html">Furnace Repair</a>
+          <a href="furnace-replacement.html">Furnace Installation</a>
+          <a href="heating.html">Furnace Maintenance</a>
+          <a href="heat-pumps.html">Heat Pumps</a>
+          <a href="furnace-repair.html">Emergency Heating Repair</a>
         </div>
       </div>
       <div class="nav-item has-menu">
         <a href="index.html#services">Plumbing</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Plumbing</span>
+          <a href="index.html#services">Water Heater Repair</a>
+          <a href="index.html#services">Water Heater Installation</a>
+          <a href="index.html#services">Water Heater Maintenance</a>
+          <a href="index.html#services">Tankless Water Heaters</a>
           <a href="index.html#services">Gas Lines</a>
           <a href="index.html#services">Garbage Disposals</a>
           <a href="index.html#services">Toilets</a>
@@ -216,9 +211,8 @@
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="index.html#services">Drains</a>
+        <a href="index.html#services">Sewer and Drains</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Drains</span>
           <a href="index.html#services">Drain Cleaning</a>
           <a href="index.html#services">Sewer Line Repair</a>
           <a href="index.html#services">Sewer Line Installation</a>
@@ -228,46 +222,27 @@
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="index.html#services">Water Heaters</a>
+        <a href="indoor-air-quality.html">Air Quality</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Water Heaters</span>
-          <a href="index.html#services">Water Heater Repair</a>
-          <a href="index.html#services">Water Heater Installation</a>
-          <a href="index.html#services">Water Heater Maintenance</a>
-          <a href="index.html#services">Tankless Water Heaters</a>
+          <a href="indoor-air-quality.html">Duct Cleaning</a>
+          <a href="indoor-air-quality.html">Whole Home Humidifiers</a>
+          <a href="indoor-air-quality.html">Thermostats</a>
+          <a href="indoor-air-quality.html">Ductwork</a>
         </div>
       </div>
       <div class="nav-item has-menu">
-        <a href="index.html#services">Air Quality</a>
+        <a href="index.html#about">About Us</a>
         <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Air Quality</span>
-          <a href="index.html#services">Duct Cleaning</a>
-          <a href="index.html#services">Whole Home Humidifiers</a>
-          <a href="index.html#services">Thermostats</a>
-          <a href="index.html#services">Ductwork</a>
+          <a href="index.html#about">Meet the Team</a>
+          <a href="index.html#locations">Service Area</a>
+          <a href="index.html#specials">Offers</a>
+          <a href="index.html#family-plan">Membership</a>
+          <a href="index.html#contact">Financing</a>
+          <a href="index.html#contact">Blog</a>
         </div>
       </div>
-      <div class="nav-item has-menu">
-        <a href="index.html#services">Repairs</a>
-        <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Repairs</span>
-          <a href="ac-repair.html">Air Conditioner Repair</a>
-          <a href="furnace-repair.html">Furnace Repair</a>
-          <a href="index.html#services">Plumbing Repair</a>
-          <a href="index.html#services">Water Heater Repair</a>
-          <a href="index.html#services">24 / 7 Emergency Repair</a>
-        </div>
-      </div>
-      <div class="nav-item has-menu">
-        <a href="index.html#services">Installs</a>
-        <div class="nav-menu">
-          <span class="nav-menu-eyebrow">Installs</span>
-          <a href="ac-installation.html">Air Conditioner Installation</a>
-          <a href="furnace-replacement.html">Furnace Replacement</a>
-          <a href="index.html#services">Water Heater Installation</a>
-          <a href="index.html#services">Thermostats</a>
-          <a href="index.html#services">Ductwork</a>
-        </div>
+      <div class="nav-item">
+        <a href="index.html#contact">Contact Us</a>
       </div>
     </nav>
     <div class="header-cta">
@@ -698,15 +673,16 @@
         <img src="assets/brand-ray.png" alt="" class="footer-mascot">
       </div>
       <div class="footer-name">Sunny Home Services</div>
-      <nav class="footer-nav">
-        <a href="#services">Cooling</a>
-        <a href="#services">Heating</a>
-        <a href="#services">Plumbing</a>
-        <a href="#services">Sewer and Drains</a>
-        <a href="#services">Air Quality</a>
-        <a href="#services">Repairs and Installs</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact Us</a>
+      <nav class="footer-nav" data-block="footer-nav">
+        <a href="air-conditioner.html">Cooling</a>
+        <a href="heating.html">Heating</a>
+        <a href="index.html#services">Plumbing</a>
+        <a href="index.html#services">Sewer and Drains</a>
+        <a href="indoor-air-quality.html">Air Quality</a>
+        <a href="mini-splits.html">Mini Splits</a>
+        <a href="heat-pumps.html">Heat Pumps</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#contact">Contact Us</a>
         <a href="#">Privacy Policy</a>
       </nav>
       <div class="f-phone"><a href="tel:+18018879650">801.887.9650</a></div>
