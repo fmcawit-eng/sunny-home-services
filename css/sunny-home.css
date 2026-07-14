@@ -377,3 +377,38 @@
 @media (max-width: 900px) {
   .offers-two { grid-template-columns: 1fr; }
 }
+
+
+/* ---------- Why Choose Us: balance the split ----------
+   The 5-item checklist runs much taller than a 4:3 image, leaving the media column
+   floating in space. The image now stretches to match the text column height, and
+   the checklist is tightened so the section reads as one balanced block. */
+.section-why .hub-split { align-items: stretch; }
+.section-why .hub-split-media {
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 100%;
+  align-self: stretch;
+}
+.section-why .check-list { gap: 10px; }
+.section-why .check-text { font-size: 15px; line-height: 1.5; }
+.section-why .check-badge { transform: scale(0.92); }
+.section-why .hub-prose p { font-size: 16px; line-height: 1.6; margin-bottom: 14px; }
+
+/* ---------- Coupons: bigger, more visual price; everything fits the frame ---------- */
+.coupon-feature { grid-template-columns: 190px 1fr; }
+.coupon-feature::before { left: 212px; }
+.coupon-feature .coupon-value {
+  font-size: 64px;
+  line-height: 0.95;
+  color: var(--c, var(--sky));
+  text-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+.coupon-feature .coupon-desc {
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+.coupon-feature .coupon-includes { gap: 5px; }
+.coupon-feature .coupon-includes li { font-size: 13px; line-height: 1.35; }
+.coupon-feature .coupon-includes-label { font-size: 12px; }

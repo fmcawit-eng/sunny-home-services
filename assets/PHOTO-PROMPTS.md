@@ -186,3 +186,23 @@ letters, stickers, labels, badges and logos from every surface."
 
 Confirmed recipe: soul_2 ALWAYS invents gibberish brand text on equipment, so every
 equipment shot needs the nano_banana_pro "remove ALL text..." edit pass afterward.
+
+---
+
+# GENERATED 2026-07-14 (round 5) - clear product-style tiles + van number fix
+
+Switched tile generation to nano_banana_pro text-to-image: it follows "no text"
+reliably (soul_2 does not) and produces cleaner product-style compositions.
+
+| File | Job |
+|---|---|
+| services/air-conditioning.jpg | fa3b6608-8952-483b-8ffd-93c58511efe0 |
+| services/heating.jpg | ffa579bc-2116-4abf-9077-0eb26137d2d1 |
+| services/plumbing.jpg | 4505ce10-65bb-443c-8d52-871863b72f1d |
+| services/drains.jpg | 08dbed42-4490-448c-944b-9d48303ee76f |
+| services/water-heater.jpg | b4d4f066-07b4-4c55-b42b-c87c34c7ca7c |
+| services/air-quality.jpg | cc7ae432-a37e-47bb-bcda-4a42939ff233 |
+| van2-current.jpg | 8df36e82-f90e-440a-ac94-4723675ce7a2 - phone on the wrap updated from 801.649.COOL (2665) to 801.887.9650 (edit of the client's own van photo). Original preserved as van2.png. |
+
+hero2.mp4: re-encoded with a 2.5s hold on the final frame (logo) via ffmpeg tpad.
+Original preserved as hero2-original.mp4.
