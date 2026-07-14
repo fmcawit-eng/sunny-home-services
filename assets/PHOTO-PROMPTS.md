@@ -1,12 +1,21 @@
 # Service Tile Photography Prompts (Gemini)
 
-Four of the six homepage service tiles have no image yet. These prompts are written to
-**match the existing AI-generated set** (`assets/services/repair2.png`,
-`maintenance2.png`, `installation2.png`) so the grid stays visually consistent.
+**All six** homepage service tiles need clean imagery. The previous AC/Heating photos
+(`repair2.png`, `maintenance2.png`, `installation2.png`) were removed because they were
+AI re-skins of third-party marketing photographs: the Higgsfield job history shows a
+220x220 and a 460x559 web-thumbnail source image with prompts like *"replace the uniform
+... to blue branded polo"* and *"change man's shirt and hat color to black, keep all
+other elements the same."* The person, pose, equipment (a branded Lennox furnace), and
+setting were all retained from a photo we do not own. Those files are still in
+`assets/services/` for reference but must not be used on the site.
+
+**Generate all six from these TEXT-ONLY prompts. Do not feed any source photo of a
+person into the generator** - that is exactly what created the provenance problem. A
+brand logo/mascot reference image for the uniform is fine; a real person's photo is not.
 
 ## Match these constraints in every prompt
 
-Pulled from the existing images so the new ones sit alongside them without clashing:
+So the six tiles look like one coherent set:
 
 - **Technician wardrobe:** black short-sleeve polo shirt, black baseball cap, tan/khaki work pants, work boots. (The `2` variants of the existing files are the black-shirt versions. Match those, not the blue-shirt originals.)
 - **Look:** photorealistic editorial photography, natural daylight, shallow depth of field, warm and friendly, not corporate-stiff.
@@ -22,6 +31,14 @@ Append this to each prompt:
 Save results into `assets/services/` as `plumbing.png`, `drains.png`, `water-heater.png`, `air-quality.png`.
 
 ---
+
+## 0a. Air Conditioning → `air-conditioning.png`
+
+> A professional HVAC technician in a black short-sleeve polo shirt, black baseball cap, and tan khaki work pants kneeling beside an outdoor residential air-conditioning condenser unit next to a brick house, using a gauge to check the system. An open tool bag sits on the grass beside him. He looks focused and friendly. Bright natural daylight, green lawn.
+
+## 0b. Heating → `heating.png`
+
+> A professional HVAC technician in a black short-sleeve polo shirt, black baseball cap, and tan khaki work pants kneeling in front of an open residential gas furnace in a clean garage utility area, testing a component with a multimeter. An open tool bag rests on the concrete floor beside him. Warm indoor light, focused and friendly expression.
 
 ## 1. Plumbing → `plumbing.png`
 
