@@ -240,3 +240,58 @@ reference image renders the branded uniform directly (no separate logo-edit pass
 | services/water-heater.jpg | 718b2839 | side profile, garage corner |
 | services/air-quality.jpg | 07eaec73 | low angle, hallway |
 | van2-current.jpg | 88a8f875 | outpainted to 4:3 so cover fills the About band with the whole van in frame |
+
+## Round 8 - Hub page imagery (2026-07-14)
+
+All nano_banana_pro (model id resolves to nano_banana_2), text2image with brand-logo.png
+(media c2af1527-3e81-4b77-991d-d4d73ad4e47b) as the logo reference for any technician shot;
+equipment-only shots are plain text prompts. Heroes 16:9, cards 4:3. One generation per slot.
+
+### Cooling (air-conditioner.html)
+- heroes/cooling.jpg - d1254f1d-bb57-4d89-9208-458af57b7b69 (tech at condenser, brick home, Wasatch backdrop)
+- services/card-ac-repair.jpg - f0a7d19e-c701-4749-9802-060dec4c71a5 (gauges on condenser)
+- services/card-ac-maintenance.jpg - 743faee8-ec5e-41b0-aaa0-04ae50fb3aeb (coil rinse)
+- services/card-ac-install.jpg - 79c733db-2e53-4b85-a3ce-12487c9f05a4 (two techs setting new unit; clean SUNNY back print)
+- services/card-ac-emergency.jpg - 60353540-5e01-44c6-be61-85255e738f52 (dusk arrival)
+- split reuses services/air-conditioning.jpg (round 7)
+
+### Heating (heating.html)
+- heroes/heating.jpg - 10e1d339-aed0-4728-9b40-51bb15bd4b7c (furnace inspection, utility room)
+- services/card-heating-install.jpg - ba8ef6ad-3ecb-4ce9-8336-0fc5c2ca01f... (ba8ef6ad-3ecb-4ce9-8336-e0fc5c2ca01f) (two techs, new furnace)
+- services/card-heating-repair.jpg - 01057a4c-6ebe-404c-a8c5-095a6835b145 (multimeter diagnosis)
+- services/card-heating-maintenance.jpg - adaac655 base, FIXED by edit 1e943257-1673-49eb-98e2-c20fb98e4c2c
+  (original had an Amazon-branded box on the shelf; edit replaced boxes with plain cartons)
+- services/card-heating-emergency.jpg - 2e2dbdd8-537d-4eec-89ef-65c2e0e54d2a (snowy night walk-up)
+- splits reuse services/heating.jpg + services/team-heating.jpg (rounds 6-7)
+
+### Mini Splits (mini-splits.html)
+- heroes/mini-splits.jpg - a37725f0-c828-4064-9f31-2961ce08949b (living room, wall unit, tech on step stool)
+- services/minisplit-system.jpg - 87e8efc5-cf96-4fff-b069-23760a7bd12a (outdoor unit on bracket, no people)
+- services/card-ms-install.jpg - d46fd8a8-fff2-4145-b352-9be886dcde58
+- services/card-ms-repair.jpg - 23e01a6e-f63b-4643-a6a9-688b4ed47e65
+- services/card-ms-maintenance.jpg - 8ac0db8b-9698-452e-a8a8-a863e13b4858
+
+### Heat Pumps (heat-pumps.html)
+- heroes/heat-pumps.jpg - 3607cc73-c85a-4a56-afe5-50abf4299053 (unit in snow, Wasatch, no people)
+- services/heatpump-service.jpg - fb10acda base, logo cleaned by edit 1526e87c-3d13-48f3-9f7e-fdb996c70522
+  (jacket back patch re-rendered from the logo reference)
+
+### Indoor Air Quality (indoor-air-quality.html)
+- heroes/indoor-air-quality.jpg - aecea83d base, FIXED by edit 7c22de8d-a9d7-4c89-b26c-11c1fc217ac6
+  (removed a floating holographic screen artifact)
+- services/card-iaq-duct-cleaning.jpg - REGENERATED as 2c1f429c-b0b4-4238-a7c1-455bf234fc3d
+  (first take 463be6c5 had gibberish cap text "ELANY"; logo-patch edit 21b05635 did not fix it;
+  final take frames the tech from behind with the logo on the shirt back - back prints render reliably)
+- services/card-iaq-ductwork.jpg - 70d237f6-fe53-4260-8585-d517b87bfedc (no people)
+- services/card-iaq-humidifier.jpg - ae11526c-7ec8-4306-b16f-71f44eaa2fb4 (no people)
+- services/card-iaq-dehumidifier.jpg - c655890f-9e27-4d21-96e8-6aa36df45c73 (no people)
+- services/card-iaq-uv.jpg - 7acdedb5-2130-4a6d-a146-e1ff19b5177f (no people)
+- filtration card reuses services/air-quality.jpg (round 7)
+
+### Lessons this round
+- Editing garbled text ON CLOTHING rarely converges; regenerating with the logo on the
+  SHIRT BACK (tech facing away) is the reliable recipe.
+- nano_banana edit calls default to 3:4 portrait - ALWAYS pass aspect_ratio explicitly
+  when editing a 4:3/16:9 source or the crop shifts.
+- Watch for third-party props (Amazon boxes) in utility-room scenes; scrub with a
+  "plain unmarked boxes" edit.

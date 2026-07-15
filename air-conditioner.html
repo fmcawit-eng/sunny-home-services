@@ -11,52 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/sunny-engine.css?v=6">
   <link rel="stylesheet" href="css/sunny-landing.css?v=6">
-  <link rel="stylesheet" href="css/sunny-hub.css?v=1">
-  <style>
-    /* Colors come from the single :root token block in css/sunny-engine.css. Never redefine one here. */
-    @font-face {
-      font-family: 'Rubik Test Medium';
-      src: url('assets/fonts/rubik-500.woff2') format('woff2');
-      font-weight: 100 900; font-style: normal; font-display: swap;
-    }
-    :root { --font-body: 'Rubik Test Medium', system-ui, sans-serif; }
-
-    /* Header nav with hover dropdowns (identical to index.html; becomes one Elementor Theme Builder header) */
-    .header-logo { gap: 4px; }
-    .logo-mark { height: 52px; }
-    .logo-mascot { height: 46px; margin-left: -4px; }
-    .header-nav { gap: 16px; align-self: stretch; align-items: stretch; }
-    .nav-item { display: flex; align-items: center; position: relative; }
-    .nav-item > a {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-family: var(--font-body); font-weight: 700; font-size: 14px;
-      color: var(--charcoal); transition: color 0.2s ease; white-space: nowrap;
-    }
-    .nav-item > a:hover { color: var(--sky-deep); }
-    .nav-item.has-menu > a::after {
-      content: "\25BE"; font-size: 9px; color: var(--muted); transition: transform 0.2s ease, color 0.2s ease;
-    }
-    .nav-item.has-menu:hover > a::after { transform: rotate(180deg); color: var(--orange); }
-    .nav-menu {
-      position: absolute; top: 100%; left: 50%;
-      transform: translateX(-50%) translateY(8px);
-      background: #fff; border: 1px solid var(--hairline); border-radius: 14px;
-      box-shadow: 0 18px 44px rgba(5,8,18,0.16);
-      padding: 12px; min-width: 248px;
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity 0.18s ease, transform 0.18s ease; z-index: 300;
-    }
-    .nav-item.has-menu:hover .nav-menu {
-      opacity: 1; visibility: visible; pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav-menu a {
-      display: block; padding: 10px 14px; border-radius: 8px;
-      font-family: var(--font-body); font-weight: 600; font-size: 14px;
-      color: var(--charcoal); white-space: nowrap; transition: background 0.15s ease, color 0.15s ease;
-    }
-    .nav-menu a:hover { background: var(--off-sky); color: var(--sky-deep); }
-  </style>
+  <link rel="stylesheet" href="css/sunny-hub.css?v=2">
+  <!-- Shared homepage design layer: Rubik Medium body, header nav dropdowns,
+       larger brand lockup, section backgrounds, footer. Same file the homepage
+       (Markup 2) loads, so hubs and homepage stay one design system. -->
+  <link rel="stylesheet" href="css/sunny-home.css?v=1">
 </head>
 <body>
 
@@ -151,7 +110,7 @@
   <!-- 01 Hub hero -->
   <section class="hub-hero" id="hero" data-block="hub-hero">
     <div class="hub-hero-bg">
-      <img src="assets/frames-hvac/frame_0042.jpg" alt="" data-parallax="8">
+      <img src="assets/heroes/cooling.jpg" alt="" data-parallax="8">
     </div>
     <div class="container">
       <div class="hub-hero-copy">
@@ -172,6 +131,7 @@
 
   <!-- 02 Intro -->
   <section class="section-hub" id="intro" data-block="hub-prose">
+    <div class="section-bg section-bg-faint"><img src="assets/bg/wasatch.jpg" alt="" data-parallax="12"></div>
     <div class="container">
       <div class="hub-prose reveal" data-animation="fade-up">
         <p>When your air conditioner fails in the middle of a West Jordan heat wave, you need a company that can be there fast, with clear pricing and lasting solutions that keep you cool when you need it most. At Sunny Home Services, we offer expert, technology-driven air conditioner services across West Jordan and the surrounding Wasatch Front. Whether you need an emergency repair, routine maintenance, or a new installation, you can count on our team to show up on time, provide honest pricing, and recommend real solutions without the pressure.</p>
@@ -181,31 +141,44 @@
 
   <!-- 03 Services we offer (cards link down to child pages) -->
   <section class="section-hub section-hub-tint" id="services" data-block="hub-cards">
+    <div class="section-bg"><img src="assets/bg/ac-unit.png" alt="" data-parallax="15"></div>
     <div class="container">
       <h2 class="display-h2 reveal" data-animation="fade-up">Air Conditioning Services We Offer in West Jordan</h2>
       <div class="hub-prose reveal" data-animation="fade-up">
         <p>We offer a full range of air conditioner services to keep your West Jordan home cool through the summer heat waves and triple-digit afternoons. Our certified technicians handle everything from quick repairs and preventative maintenance to full system installs and same-day emergency services. We show up on time, keep you informed every step of the way, and provide technology-driven solutions that keep your home safe, comfortable, and efficient.</p>
       </div>
-      <div class="hub-cards">
-        <a class="hub-card reveal" data-animation="fade-up" href="ac-repair.html">
-          <div class="hub-card-title">AC Repair</div>
-          <p class="hub-card-desc">Noticing strange smells, unusual sounds, or uneven temperatures? Our certified air conditioning contractors handle repairs fast, with accurate diagnostics and lasting solutions that restore comfort to your Utah home.</p>
-          <span class="hub-card-link">Learn More &rsaquo;</span>
+      <div class="hub-cards hub-cards-4">
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="ac-repair.html">
+          <div class="hub-card-media"><img src="assets/services/card-ac-repair.jpg" alt="Sunny Home Services technician repairing an air conditioner in West Jordan"></div>
+          <div class="hub-card-body">
+            <div class="hub-card-title">AC Repair</div>
+            <p class="hub-card-desc">Noticing strange smells, unusual sounds, or uneven temperatures? Our certified air conditioning contractors handle repairs fast, with accurate diagnostics and lasting solutions that restore comfort to your Utah home.</p>
+            <span class="hub-card-link">Learn More &rsaquo;</span>
+          </div>
         </a>
-        <a class="hub-card reveal" data-animation="fade-up" href="air-conditioner.html">
-          <div class="hub-card-title">AC Maintenance</div>
-          <p class="hub-card-desc">Our AC maintenance services keep your system clean, efficient, and reliable, so you have peace of mind that it is ready to handle whatever the Utah summer brings. With an annual tune-up from our team, you will boost efficiency, prevent unexpected breakdowns, and get the most out of your investment.</p>
-          <span class="hub-card-link">Learn More &rsaquo;</span>
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="air-conditioner.html">
+          <div class="hub-card-media"><img src="assets/services/card-ac-maintenance.jpg" alt="Sunny Home Services technician performing air conditioner maintenance"></div>
+          <div class="hub-card-body">
+            <div class="hub-card-title">AC Maintenance</div>
+            <p class="hub-card-desc">Our AC maintenance services keep your system clean, efficient, and reliable, so you have peace of mind that it is ready to handle whatever the Utah summer brings. With an annual tune-up from our team, you will boost efficiency, prevent unexpected breakdowns, and get the most out of your investment.</p>
+            <span class="hub-card-link">Learn More &rsaquo;</span>
+          </div>
         </a>
-        <a class="hub-card reveal" data-animation="fade-up" href="ac-installation.html">
-          <div class="hub-card-title">AC Replacement &amp; Installation</div>
-          <p class="hub-card-desc">When the West Jordan heat becomes too much for your system to handle, we are ready to help with AC replacements and new installations. We will help you size and select the right system for your home and install it right the first time.</p>
-          <span class="hub-card-link">Learn More &rsaquo;</span>
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="ac-installation.html">
+          <div class="hub-card-media"><img src="assets/services/card-ac-install.jpg" alt="Sunny Home Services technicians installing a new air conditioner"></div>
+          <div class="hub-card-body">
+            <div class="hub-card-title">AC Replacement &amp; Installation</div>
+            <p class="hub-card-desc">When the West Jordan heat becomes too much for your system to handle, we are ready to help with AC replacements and new installations. We will help you size and select the right system for your home and install it right the first time.</p>
+            <span class="hub-card-link">Learn More &rsaquo;</span>
+          </div>
         </a>
-        <a class="hub-card reveal" data-animation="fade-up" href="ac-repair.html">
-          <div class="hub-card-title">Emergency AC Service</div>
-          <p class="hub-card-desc">Arrive home to no cool air on the hottest day of the year? We offer same-day AC service for no-cool emergencies so your family is not left sweating in the summer heat.</p>
-          <span class="hub-card-link">Learn More &rsaquo;</span>
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="ac-repair.html">
+          <div class="hub-card-media"><img src="assets/services/card-ac-emergency.jpg" alt="Sunny Home Services technician arriving for an emergency AC call"></div>
+          <div class="hub-card-body">
+            <div class="hub-card-title">Emergency AC Service</div>
+            <p class="hub-card-desc">Arrive home to no cool air on the hottest day of the year? We offer same-day AC service for no-cool emergencies so your family is not left sweating in the summer heat.</p>
+            <span class="hub-card-link">Learn More &rsaquo;</span>
+          </div>
         </a>
       </div>
     </div>
@@ -224,7 +197,7 @@
           </div>
         </div>
         <div class="hub-split-media reveal" data-animation="slide-left">
-          <img src="assets/frames-hvac/frame_0088.jpg" alt="Sunny Home Services technician servicing an air conditioner" data-parallax="6">
+          <img src="assets/services/air-conditioning.jpg" alt="Sunny Home Services technician servicing an air conditioner" data-parallax="6">
         </div>
       </div>
     </div>
@@ -232,6 +205,7 @@
 
   <!-- 05 Why choose us -->
   <section class="section-hub section-hub-tint" id="why" data-block="hub-checklist">
+    <div class="section-bg section-bg-faint"><img src="assets/bg/tools.jpg" alt="" data-parallax="12"></div>
     <div class="container">
       <h2 class="display-h2 reveal" data-animation="fade-up">Why Choose Sunny Home Services as Your Local AC Company</h2>
       <div class="hub-prose reveal" data-animation="fade-up">
@@ -269,6 +243,8 @@
 
   <!-- 06 CTA banner -->
   <section class="section section-cta-banner" id="cta" data-block="hub-cta">
+    <div class="section-bg"><img src="assets/bg/neighborhood.jpg" alt="" data-parallax="15"></div>
+    <div class="cta-overlay"></div>
     <div class="container">
       <h2 class="display-h2 reveal" data-animation="fade-up">Need AC Services in West Jordan? Call Sunny Home Services Today</h2>
       <div class="hub-prose on-dark reveal" data-animation="fade-up">
@@ -284,6 +260,7 @@
 
   <!-- 07 FAQ -->
   <section class="section-hub" id="faq" data-block="hub-faq">
+    <div class="section-bg section-bg-soft"><img src="assets/bg/tools.jpg" alt="" data-parallax="10"></div>
     <div class="container">
       <h2 class="display-h2 reveal" data-animation="fade-up">Frequently Asked Questions</h2>
       <div class="hub-faq">

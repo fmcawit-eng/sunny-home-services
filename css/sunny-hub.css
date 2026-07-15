@@ -71,6 +71,9 @@
   gap: 22px;
   margin-top: 46px;
 }
+/* Four-card sections read as a balanced 2x2 instead of an orphaned 3+1 */
+.hub-cards-4 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .hub-cards-4 { grid-template-columns: 1fr; } }
 .hub-card {
   display: flex; flex-direction: column;
   padding: 30px 28px 28px;
@@ -103,6 +106,21 @@
   color: var(--muted);
   flex: 1;
 }
+/* Photo-forward variant to match the homepage service tiles: image header on the
+   card, copy below. In Elementor: an Image widget above the text inside the same
+   Container; keep the card's border/hover on the Container. */
+.hub-card.has-media { padding: 0; overflow: hidden; }
+.hub-card-media { width: 100%; height: 185px; overflow: hidden; }
+.hub-card-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.hub-card:hover .hub-card-media img { transform: scale(1.05); }
+.hub-card-body {
+  display: flex; flex-direction: column; flex: 1;
+  padding: 24px 26px 26px;
+}
 .hub-card-link {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: 18px;
@@ -122,6 +140,15 @@
 }
 .hub-prose p:last-child { margin-bottom: 0; }
 .hub-prose.on-dark p { color: rgba(255,255,255,0.9); }
+/* In-prose sub-heading (a brief's H3 under an H2 section) */
+.hub-prose .hub-sub-h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 21px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 26px 0 10px;
+}
 
 /* ---------- hub-split: copy beside a photo ---------- */
 .hub-split {
