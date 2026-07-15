@@ -152,6 +152,9 @@
   margin-bottom: 18px;
 }
 .hub-prose p:last-child { margin-bottom: 0; }
+/* .on-dark in sunny-engine.css is a SECTION utility that also paints a --sky-deep
+   background. On a prose block it's only a text treatment, so cancel the surface. */
+.hub-prose.on-dark { background: transparent; }
 .hub-prose.on-dark p { color: rgba(255,255,255,0.9); }
 /* In-prose sub-heading (a brief's H3 under an H2 section) */
 .hub-prose .hub-sub-h3 {
@@ -259,6 +262,34 @@
 .hub-faq-body {
   padding: 0 24px 22px;
   font-family: var(--font-body); font-size: 16px; line-height: 1.65; color: var(--muted);
+}
+
+/* ---------- hub CTA banner fixes ----------
+   sunny-landing.css only styles .display-h1 and bare <p> inside .section-cta-banner
+   (the homepage variant). Hub and child pages use .display-h2 + .hub-prose there,
+   which inherited light-surface styles: a charcoal heading on the dark photo and a
+   left-anchored 900px prose block with body-scale type. Scope banner styles to both. */
+.section-cta-banner .display-h2 {
+  color: var(--white);
+  text-wrap: balance;
+  margin-bottom: 0;
+}
+.section-cta-banner .hub-prose {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section-cta-banner .hub-prose p,
+.section-cta-banner .hub-prose.on-dark p {
+  margin: 20px auto 0;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--white);
+  opacity: 0.94;
+}
+.section-cta-banner .hub-prose p:last-child,
+.section-cta-banner .hub-prose.on-dark p:last-child {
+  margin-bottom: 36px;
 }
 
 /* ---------- hub-locations: the service-area city list ---------- */
