@@ -295,3 +295,26 @@ equipment-only shots are plain text prompts. Heroes 16:9, cards 4:3. One generat
   when editing a 4:3/16:9 source or the crop shifts.
 - Watch for third-party props (Amazon boxes) in utility-room scenes; scrub with a
   "plain unmarked boxes" edit.
+
+## Round 9 - Child pages + index promotion (2026-07-14)
+
+All nano_banana_pro text2image with brand-logo.png reference (media c2af1527-3e81-4b77-991d-d4d73ad4e47b),
+16:9 heroes, technicians working the page's exact service in branded Sunny uniform, wide angle,
+"logo printed large and clean across his upper back" phrasing used where the back faces camera
+(back prints render reliably; front cap patches occasionally garble at close range but heroes sit
+under the 0.42-opacity teal overlay).
+
+- heroes/ac-repair.jpg - f1a56bf0-dc67-4e0a-a507-38ab29abdee2 (multimeter at open condenser panel)
+- heroes/ac-installation.jpg - 9f10e7a4-a548-4fe4-83dc-cfaec2d3c270 (two techs, hand truck, new pad; clean SUNNY back print)
+- heroes/ac-maintenance.jpg - e240ecf3-459e-464c-8277-d0a86dc8fdf3 (gauges + tablet tune-up)
+- heroes/emergency-ac-repair.jpg - 1d3db169-84ce-4ca0-8fe7-17168601378f (dusk work-light repair, back print)
+- heroes/furnace-repair.jpg - aa8145c5-0a4b-485e-97ad-e46c47dc1703 (igniter replacement, utility room)
+- heroes/furnace-installation.jpg - 81870c20-7463-40ef-bf53-f3fdac2af287 (two techs setting new furnace, back print)
+- heroes/furnace-maintenance.jpg - 5d125c65-9241-4b0e-8503-2151606cc02c (combustion analyzer tune-up)
+- heroes/emergency-heating-repair.jpg - 04c3862d-fe95-4f64-b105-e584cf12c654 (night no-heat call, back print)
+- services/heating-work.jpg - 81feca76-5714-4f88-92e1-d4ea293a9b64 (4:3; replaces team-heating.jpg on heating.html)
+
+Retired from the repo this round (git history keeps them): the AI re-skin quarantine
+(repair/repair2/installation/installation2/maintenance/maintenance2/tuneup/tuneup2/garage .png),
+van.png + van2.png (old phone number; van2-current.jpg with 801.887.9650 is the only van asset),
+and map.png (Ogden pin). team-*.jpg close-up set kept on disk but no longer referenced by any page.

@@ -121,6 +121,19 @@
   display: flex; flex-direction: column; flex: 1;
   padding: 24px 26px 26px;
 }
+/* Bullet list inside a text card (e.g. repair-vs-replace comparisons) */
+.hub-card-list {
+  list-style: none; padding: 0; margin: 4px 0 0;
+  display: grid; gap: 9px;
+}
+.hub-card-list li {
+  position: relative; padding-left: 26px;
+  font-family: var(--font-body); font-size: 15px; line-height: 1.5; color: var(--muted);
+}
+.hub-card-list li::before {
+  content: "\2713"; position: absolute; left: 0; top: 0;
+  font-weight: 900; color: var(--sky-deep);
+}
 .hub-card-link {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: 18px;
