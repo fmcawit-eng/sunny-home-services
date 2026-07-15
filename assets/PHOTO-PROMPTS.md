@@ -344,3 +344,7 @@ Recolor edit job IDs (target <- edit):
 
 26 edits x 2 credits = 52 credits. Recolor edits preserve composition and logos reliably;
 this is the cheapest fix for a wardrobe-color mistake (vs regenerating).
+
+## Round 11 - Service Area page (2026-07-15)
+- heroes/service-area.jpg - 7d50101e-a8fc-461c-846b-64deae9a8581 (golden-hour aerial of a Wasatch Front
+  neighborhood, no people/text; also reused as the coming-soon.html hero). Text-only prompt, 2 credits.
