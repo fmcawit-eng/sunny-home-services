@@ -223,3 +223,20 @@ own brand-logo.png as a chest patch + cap mark. Clean provenance throughout.
 | services/drains.jpg | b4e56e88 (0b3c5918) |
 | services/water-heater.jpg | bc87ed8f (11f0c1a1, + tank text scrub) |
 | services/air-quality.jpg | ebbc9960 (3569334b) |
+
+---
+
+# GENERATED 2026-07-15 (round 7) - wide-angle branded set + 4:3 van
+
+Single-step recipe discovered: nano_banana_pro text-to-image WITH brand-logo.png as a
+reference image renders the branded uniform directly (no separate logo-edit pass).
+
+| File | Job | Angle |
+|---|---|---|
+| services/air-conditioning.jpg | bdb9bbae | low three-quarter, backyard + Wasatch |
+| services/heating.jpg | c6d55ea6 | over-the-shoulder, mechanical room |
+| services/plumbing.jpg | f16e5ba5 | doorway into kitchen |
+| services/drains.jpg | 7f7a7334 | high angle, side yard |
+| services/water-heater.jpg | 718b2839 | side profile, garage corner |
+| services/air-quality.jpg | 07eaec73 | low angle, hallway |
+| van2-current.jpg | 88a8f875 | outpainted to 4:3 so cover fills the About band with the whole van in frame |
