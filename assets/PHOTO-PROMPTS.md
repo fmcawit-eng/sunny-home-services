@@ -206,3 +206,20 @@ reliably (soul_2 does not) and produces cleaner product-style compositions.
 
 hero2.mp4: re-encoded with a 2.5s hold on the final frame (logo) via ffmpeg tpad.
 Original preserved as hero2-original.mp4.
+
+---
+
+# GENERATED 2026-07-15 (round 6) - technicians in BRANDED Sunny uniform
+
+Final direction per user: technicians in the proper branded uniform. Each is a
+nano_banana_pro edit of OUR OWN round-1 technician generation, adding the client's
+own brand-logo.png as a chest patch + cap mark. Clean provenance throughout.
+
+| File | Job (edit of) |
+|---|---|
+| services/air-conditioning.jpg | 2539fc6c (0e31b256) |
+| services/heating.jpg | 750ab739 (72534eb2) |
+| services/plumbing.jpg | dbca933b (2a5ccaa7) |
+| services/drains.jpg | b4e56e88 (0b3c5918) |
+| services/water-heater.jpg | bc87ed8f (11f0c1a1, + tank text scrub) |
+| services/air-quality.jpg | ebbc9960 (3569334b) |

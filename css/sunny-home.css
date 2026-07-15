@@ -285,10 +285,12 @@
   position: absolute; top: 0; bottom: 0; left: 0;
   z-index: 0; overflow: hidden; pointer-events: none;
 }
+/* object-fit: contain so the full van is always in frame (cover was cropping it).
+   The letterbox areas show the section teal, which the gradient already blends into. */
 .about-van-bg img {
-  position: absolute; top: -6%; left: 0;
-  width: 100%; height: 112%;
-  object-fit: cover; object-position: center left;
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: left center;
   will-change: transform;
 }
 .about-van-bg { width: 52%; }
@@ -396,11 +398,11 @@
 .section-why .hub-prose p { font-size: 16px; line-height: 1.6; margin-bottom: 14px; }
 
 /* ---------- Coupons: bigger, more visual price; everything fits the frame ---------- */
-.coupon-feature { grid-template-columns: 190px 1fr; }
-.coupon-feature::before { left: 212px; }
+.coupon-feature { grid-template-columns: 210px 1fr; }
+.coupon-feature::before { left: 232px; }
 .coupon-feature .coupon-value {
-  font-size: 64px;
-  line-height: 0.95;
+  font-size: 84px;
+  line-height: 0.9;
   color: var(--c, var(--sky));
   text-shadow: 0 2px 0 rgba(0,0,0,0.06);
 }
