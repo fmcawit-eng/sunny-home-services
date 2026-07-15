@@ -318,3 +318,29 @@ Retired from the repo this round (git history keeps them): the AI re-skin quaran
 (repair/repair2/installation/installation2/maintenance/maintenance2/tuneup/tuneup2/garage .png),
 van.png + van2.png (old phone number; van2-current.jpg with 801.887.9650 is the only van asset),
 and map.png (Ogden pin). team-*.jpg close-up set kept on disk but no longer referenced by any page.
+
+## Round 10 - Black uniform correction (2026-07-15)
+
+BRAND RULE (permanent): Sunny technician uniforms are BLACK - black polo, black cap/beanie,
+black winter jacket, blue hexagon Sunny logo patch. The round-7 homepage set and why-team.jpg
+were already correct; rounds 8-9 were generated in light gray by mistake and all 26 technician
+images were recolored via nano_banana_pro edits (source job + logo ref, aspect_ratio pinned,
+prompt: "Change the technician's light-gray polo shirt and light-gray cap to a solid BLACK work
+polo and BLACK cap... keep the Sunny Home Services logo patch clearly readable").
+
+Recolor edit job IDs (target <- edit):
+- heroes/cooling.jpg <- 63a225f3 | heroes/heating.jpg <- 81a44399 | heroes/mini-splits.jpg <- 5f22bd03
+- heroes/indoor-air-quality.jpg <- a8298c2d | services/heatpump-service.jpg <- fb211c9e (navy->black jacket)
+- services/heating-work.jpg <- 426e187d
+- card-ac-repair <- 457c14a7 | card-ac-maintenance <- 1b2d3b82 | card-ac-install <- 3f2666e7
+- card-ac-emergency <- c50c60f2 | card-heating-install <- 8fbca7e4 | card-heating-repair <- 33687f2b
+- card-heating-maintenance <- 6ccdb217 | card-heating-emergency <- 25c5a33d (tan->black jacket)
+- card-ms-install <- ee3efb7b | card-ms-repair <- 9f674d0b | card-ms-maintenance <- aa2a4720
+- card-iaq-duct-cleaning <- c69cd87f
+- heroes/ac-repair <- 87ad00ea | heroes/ac-installation <- a049dd91 | heroes/ac-maintenance <- 6b60b4a1
+- heroes/emergency-ac-repair <- f6a7a133 | heroes/furnace-repair <- 46943be7
+- heroes/furnace-installation <- ea7705aa | heroes/furnace-maintenance <- 28b4af6d
+- heroes/emergency-heating-repair <- ad1f5475
+
+26 edits x 2 credits = 52 credits. Recolor edits preserve composition and logos reliably;
+this is the cheapest fix for a wardrobe-color mistake (vs regenerating).
