@@ -88,7 +88,7 @@ address). Replaced with a live embed of 8461 Old Bingham Hwy, West Jordan. The o
 PNG is now unused and can be deleted.
 
 ## 2. `assets/van2.png` and `assets/van.png` - NEEDS A DECISION
-The van wrap in the photo reads **801.649.COOL (2665)**, not the 801.887.9650 used
+The van wrap in the photo reads **801.649.COOL (2665)**, not the 385.853.8116 used
 everywhere else on the site. It is legible at full size on the homepage.
 
 This is a real photo of a real wrapped van, so it is a client question, not a bug we
@@ -202,7 +202,7 @@ reliably (soul_2 does not) and produces cleaner product-style compositions.
 | services/drains.jpg | 08dbed42-4490-448c-944b-9d48303ee76f |
 | services/water-heater.jpg | b4d4f066-07b4-4c55-b42b-c87c34c7ca7c |
 | services/air-quality.jpg | cc7ae432-a37e-47bb-bcda-4a42939ff233 |
-| van2-current.jpg | 8df36e82-f90e-440a-ac94-4723675ce7a2 - phone on the wrap updated from 801.649.COOL (2665) to 801.887.9650 (edit of the client's own van photo). Original preserved as van2.png. |
+| van2-current.jpg | 8df36e82-f90e-440a-ac94-4723675ce7a2 - phone on the wrap updated from 801.649.COOL (2665) to 385.853.8116 (edit of the client's own van photo). Original preserved as van2.png. |
 
 hero2.mp4: re-encoded with a 2.5s hold on the final frame (logo) via ffmpeg tpad.
 Original preserved as hero2-original.mp4.
@@ -316,7 +316,7 @@ under the 0.42-opacity teal overlay).
 
 Retired from the repo this round (git history keeps them): the AI re-skin quarantine
 (repair/repair2/installation/installation2/maintenance/maintenance2/tuneup/tuneup2/garage .png),
-van.png + van2.png (old phone number; van2-current.jpg with 801.887.9650 is the only van asset),
+van.png + van2.png (old phone number; van2-current.jpg with 385.853.8116 is the only van asset),
 and map.png (Ogden pin). team-*.jpg close-up set kept on disk but no longer referenced by any page.
 
 ## Round 10 - Black uniform correction (2026-07-15)
