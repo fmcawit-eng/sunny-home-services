@@ -367,3 +367,11 @@ The primary community-van.jpg generated a generic sun character on the van. Edit
 place the EXACT Sunny mascot (brand-ray.png uploaded as media 7bd87db3-48f0-4fb9-8164-91b8e40dba1c)
 onto the van wrap. Final: job 51445da6-43ed-491e-8011-0f1442540fc3 -> heroes/community-van.jpg.
 Lesson: van scenes invent a stand-in mascot; pass brand-ray.png as a reference and edit it in.
+
+## Round 13 - Phone number update on van wraps (2026-07-21)
+Live-site number changed to 385.853.8116. Van wrap edits (nano_banana_pro, "change the
+number ... keep font/position"):
+- assets/van2-current.jpg (About section) - job d44154a1-f57a-495d-bd2a-f324125b5f9e
+- assets/heroes/community-van.jpg (hero) - job b7522da9-c1de-4e7b-b08d-416a55863a45
+STILL OLD: heroes/community-van-golden.jpg (alt, near-side wrap already garbled - regenerate
+if ever used). hero2.mp4 - van appears but number not legibly shown; no edit needed.
