@@ -348,3 +348,22 @@ this is the cheapest fix for a wardrobe-color mistake (vs regenerating).
 ## Round 11 - Service Area page (2026-07-15)
 - heroes/service-area.jpg - 7d50101e-a8fc-461c-846b-64deae9a8581 (golden-hour aerial of a Wasatch Front
   neighborhood, no people/text; also reused as the coming-soon.html hero). Text-only prompt, 2 credits.
+
+## Round 12 - Community van hero backgrounds (2026-07-16)
+
+For landing-page hero backgrounds (replacing the missing hero video on new pages).
+Van uploaded fresh as media fea7a97b-f5b3-4aff-87b5-c5feda9f8e4d (= assets/van2-current.jpg
+with corrected 801.887.9650); logo ref c2af1527. nano_banana_pro, 16:9.
+
+- heroes/community-van.jpg - f566d55c-561e-49b3-b31f-a87fa6ee16e9  (PRIMARY: van at curb,
+  two-story home, snow-capped Wasatch, clean blue sky + open upper-left for headline text.
+  Van wrap + number rendered clean.)
+- heroes/community-van-golden.jpg - f3334304-a203-4647-b18e-9342bd15965c  (ALT: golden-hour,
+  black-uniform tech opening rear van doors in a driveway. Warmer mood; near-side wrap text
+  slightly garbled - use only if cropped so the far/clean side faces camera.)
+
+### Round 12b - mascot correction
+The primary community-van.jpg generated a generic sun character on the van. Edited to
+place the EXACT Sunny mascot (brand-ray.png uploaded as media 7bd87db3-48f0-4fb9-8164-91b8e40dba1c)
+onto the van wrap. Final: job 51445da6-43ed-491e-8011-0f1442540fc3 -> heroes/community-van.jpg.
+Lesson: van scenes invent a stand-in mascot; pass brand-ray.png as a reference and edit it in.
