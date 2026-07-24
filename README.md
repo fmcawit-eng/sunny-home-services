@@ -8,16 +8,14 @@ A static HTML prototype for the **Sunny Home Services** website — a sister bra
 > animation-to-Elementor mapping, and a dev checklist. Full-page visual
 > references are in [`handoff/`](handoff/).
 
-## Pages
+## Pages (current mockup — Batch 1 of the SEO Workbook sitemap)
 
-| File | Page |
-|---|---|
-| **`index.html`** | **Homepage (current)** — built from the latest Figma |
-| `ac-installation.html` | AC Installation / Replacement landing page |
-| `ac-repair.html` | AC Repair landing page |
-| `furnace-repair.html` | Furnace Repair landing page |
-| `furnace-replacement.html` | Furnace Installation / Replacement landing page |
-| `index.html` | Original V2 homepage (superseded by `index.html`) |
+**Homepage:** `index.html`
+**Hubs (5):** `air-conditioner.html` · `heating.html` · `indoor-air-quality.html` · `heat-pumps.html` · `mini-splits.html`
+**Child service pages (8):** `ac-repair.html` · `ac-installation.html` · `ac-maintenance.html` · `emergency-ac-repair.html` · `furnace-repair.html` · `furnace-installation.html` · `furnace-maintenance.html` · `emergency-heating-repair.html`
+**Other:** `service-area.html` (Service Area hub) · `coming-soon.html` (placeholder — every not-yet-built sitemap link routes here)
+
+Production URLs are **nested** (`/air-conditioner/repair/`, `/heating/furnace-repair/`, …) — the flat filenames are the prototype only. The full page list, nested URLs, nav map, service areas, and SEO targets are in **[HANDOFF.md](HANDOFF.md)** (mirroring the SEO Workbook). Planned pages not yet built: the Plumbing hub + children, Sewer & Drains, additional IAQ children, About/Meet-the-Team/Offers/Membership/Financing/Blog, and City pages.
 
 All pages share `css/sunny-engine.css` + `sunny-landing.css` + `sunny-home-theme.css` + `sunny-v2.css` and `js/sunny-engine.js`. The nav and footer links are unified across every page.
 
