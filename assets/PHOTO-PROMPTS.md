@@ -88,7 +88,7 @@ address). Replaced with a live embed of 8461 Old Bingham Hwy, West Jordan. The o
 PNG is now unused and can be deleted.
 
 ## 2. `assets/van2.png` and `assets/van.png` - NEEDS A DECISION
-The van wrap in the photo reads **801.649.COOL (2665)**, not the 385.853.8116 used
+The van wrap in the photo reads **801.649.COOL (2665)**, not the 801.887.9650 used
 everywhere else on the site. It is legible at full size on the homepage.
 
 This is a real photo of a real wrapped van, so it is a client question, not a bug we
@@ -202,7 +202,7 @@ reliably (soul_2 does not) and produces cleaner product-style compositions.
 | services/drains.jpg | 08dbed42-4490-448c-944b-9d48303ee76f |
 | services/water-heater.jpg | b4d4f066-07b4-4c55-b42b-c87c34c7ca7c |
 | services/air-quality.jpg | cc7ae432-a37e-47bb-bcda-4a42939ff233 |
-| van2-current.jpg | 8df36e82-f90e-440a-ac94-4723675ce7a2 - phone on the wrap updated from 801.649.COOL (2665) to 385.853.8116 (edit of the client's own van photo). Original preserved as van2.png. |
+| van2-current.jpg | 8df36e82-f90e-440a-ac94-4723675ce7a2 - phone on the wrap updated from 801.649.COOL (2665) to 801.887.9650 (edit of the client's own van photo). Original preserved as van2.png. |
 
 hero2.mp4: re-encoded with a 2.5s hold on the final frame (logo) via ffmpeg tpad.
 Original preserved as hero2-original.mp4.
@@ -316,7 +316,7 @@ under the 0.42-opacity teal overlay).
 
 Retired from the repo this round (git history keeps them): the AI re-skin quarantine
 (repair/repair2/installation/installation2/maintenance/maintenance2/tuneup/tuneup2/garage .png),
-van.png + van2.png (old phone number; van2-current.jpg with 385.853.8116 is the only van asset),
+van.png + van2.png (old phone number; van2-current.jpg with 801.887.9650 is the only van asset),
 and map.png (Ogden pin). team-*.jpg close-up set kept on disk but no longer referenced by any page.
 
 ## Round 10 - Black uniform correction (2026-07-15)
@@ -344,3 +344,34 @@ Recolor edit job IDs (target <- edit):
 
 26 edits x 2 credits = 52 credits. Recolor edits preserve composition and logos reliably;
 this is the cheapest fix for a wardrobe-color mistake (vs regenerating).
+
+## Round 11 - Service Area page (2026-07-15)
+- heroes/service-area.jpg - 7d50101e-a8fc-461c-846b-64deae9a8581 (golden-hour aerial of a Wasatch Front
+  neighborhood, no people/text; also reused as the coming-soon.html hero). Text-only prompt, 2 credits.
+
+## Round 12 - Community van hero backgrounds (2026-07-16)
+
+For landing-page hero backgrounds (replacing the missing hero video on new pages).
+Van uploaded fresh as media fea7a97b-f5b3-4aff-87b5-c5feda9f8e4d (= assets/van2-current.jpg
+with corrected 801.887.9650); logo ref c2af1527. nano_banana_pro, 16:9.
+
+- heroes/community-van.jpg - f566d55c-561e-49b3-b31f-a87fa6ee16e9  (PRIMARY: van at curb,
+  two-story home, snow-capped Wasatch, clean blue sky + open upper-left for headline text.
+  Van wrap + number rendered clean.)
+- heroes/community-van-golden.jpg - f3334304-a203-4647-b18e-9342bd15965c  (ALT: golden-hour,
+  black-uniform tech opening rear van doors in a driveway. Warmer mood; near-side wrap text
+  slightly garbled - use only if cropped so the far/clean side faces camera.)
+
+### Round 12b - mascot correction
+The primary community-van.jpg generated a generic sun character on the van. Edited to
+place the EXACT Sunny mascot (brand-ray.png uploaded as media 7bd87db3-48f0-4fb9-8164-91b8e40dba1c)
+onto the van wrap. Final: job 51445da6-43ed-491e-8011-0f1442540fc3 -> heroes/community-van.jpg.
+Lesson: van scenes invent a stand-in mascot; pass brand-ray.png as a reference and edit it in.
+
+## Round 13 - Phone number update on van wraps (2026-07-21)
+Live-site number changed to 385.853.8116. Van wrap edits (nano_banana_pro, "change the
+number ... keep font/position"):
+- assets/van2-current.jpg (About section) - job d44154a1-f57a-495d-bd2a-f324125b5f9e
+- assets/heroes/community-van.jpg (hero) - job b7522da9-c1de-4e7b-b08d-416a55863a45
+STILL OLD: heroes/community-van-golden.jpg (alt, near-side wrap already garbled - regenerate
+if ever used). hero2.mp4 - van appears but number not legibly shown; no edit needed.
