@@ -2,6 +2,12 @@
 
 A static HTML prototype for the **Sunny Home Services** website — a sister brand to **Sunny Garage Doors** (Northern Utah & Southern Idaho). Mirrors the Figma design with brand-color decorations, an interactive video hero, animated reveals, a 7-item mega-menu nav, and a working contact form.
 
+> ### 👉 Migrating to WordPress / Elementor? Read **[HANDOFF.md](HANDOFF.md)** first.
+> It's the build spec: global tokens (already mapped to Elementor roles), the
+> three page templates that cover all 15 pages, the nav/footer link map, the
+> animation-to-Elementor mapping, and a dev checklist. Full-page visual
+> references are in [`handoff/`](handoff/).
+
 ## Pages
 
 | File | Page |
