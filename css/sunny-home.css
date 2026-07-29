@@ -297,12 +297,15 @@
 #intro.section-hub .section-bg-faint img { opacity: 0.26; }
 .section-intro .intro-prose {
   max-width: 880px; margin: 0 auto; position: relative; z-index: 1; overflow: visible;
-  background: #fff; border-radius: 22px; padding: 44px 54px 48px;
+  background: #fff; border-radius: 22px; padding: 58px 54px 48px;
   box-shadow: 0 28px 64px rgba(5,8,18,0.16);
   border: 1px solid var(--hairline);
 }
-/* brand mark heading the card */
-.section-intro .intro-logo { display: block; width: 176px; height: auto; margin-bottom: 24px; }
+/* brand mark pinned to the top-left, hanging outside the card edge (mirrors the mascot on the right) */
+.section-intro .intro-logo {
+  position: absolute; top: -42px; left: -8px; width: 190px; height: auto; z-index: 5;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.20));
+}
 /* mascot stands just past the card's right edge (clear of the text), in the scene */
 .section-intro { overflow: hidden; }
 .section-intro .intro-mascot {
@@ -313,7 +316,8 @@
   .section-intro .intro-mascot { right: -70px; width: 120px; }
 }
 @media (max-width: 640px) {
-  .section-intro .intro-logo { width: 148px; }
+  .section-intro .intro-logo { width: 150px; top: -28px; left: 6px; }
+  .section-intro .intro-prose { padding-top: 46px; }
   .section-intro .intro-mascot { display: none; }
 }
 .section-intro .intro-prose p { font-size: 17px; line-height: 1.72; color: var(--ink); margin-bottom: 18px; }
