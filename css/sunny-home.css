@@ -23,37 +23,41 @@
     }
     /* Hero SPLIT: headline on a brand panel (left), van covers the right, gradient divider between */
     .section-hero-split {
-      --hero-panel: #0b3a4a;               /* divider blend color - both panel bg and fade must match */
+      --hero-panel: #0b3a4a;
       min-height: 86vh;
       background: var(--hero-panel);
       position: relative; overflow: hidden;
       display: flex; align-items: center;
     }
-    /* soft sky glow behind the headline for depth */
-    .section-hero-split::before {
-      content: ""; position: absolute; left: -8%; top: -10%; width: 58%; height: 120%; z-index: 0;
-      background: radial-gradient(closest-side, rgba(4,207,255,0.18), transparent 72%);
-      pointer-events: none;
+    /* brand art (sun rays + mountains) fills the left background, matching the van wrap */
+    .section-hero-split .hero-art { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .section-hero-split .hero-art img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: left center;
     }
-    .section-hero-split .hero-van-panel {
-      position: absolute; top: 0; right: 0; bottom: 0; width: 64%; z-index: 0; overflow: hidden;
-    }
-    .section-hero-split .hero-van-panel .hero-video {
-      position: absolute; top: -6%; left: 0; width: 100%; height: 112%;
-      object-fit: cover; object-position: 50% center; z-index: 0;
-    }
-    /* gradient divider: only the van's left edge dissolves into the panel, so the van stays prominent */
-    .section-hero-split .hero-van-fade {
+    /* scrim: darkens the left so the headline reads crisp, fades out toward the van */
+    .section-hero-split .hero-scrim {
       position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background: linear-gradient(90deg,
-        var(--hero-panel) 0%,
-        rgba(11,58,74,0.72) 12%,
-        rgba(11,58,74,0.0) 32%);
+        rgba(9,42,55,0.90) 0%,
+        rgba(9,42,55,0.74) 26%,
+        rgba(9,42,55,0.32) 45%,
+        rgba(9,42,55,0.0) 62%);
+    }
+    .section-hero-split .hero-van-panel {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 60%; z-index: 2; overflow: hidden;
+    }
+    /* van image; its left edge is masked to transparent so it dissolves into the art -> soft divider, no hard line */
+    .section-hero-split .hero-van-panel .hero-video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% center; z-index: 0;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 15%, #000 42%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 15%, #000 42%);
     }
     /* subtle top/bottom vignette so the photo seats into the section */
     .section-hero-split .hero-van-panel::after {
       content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(180deg, rgba(11,58,74,0.30) 0%, transparent 18%, transparent 80%, rgba(11,58,74,0.40) 100%);
+      background: linear-gradient(180deg, rgba(11,58,74,0.26) 0%, transparent 20%, transparent 82%, rgba(11,58,74,0.36) 100%);
     }
     .section-hero-split .hero-content {
       position: relative; z-index: 2; max-width: 100%;
@@ -286,7 +290,34 @@
 
 /* The intro band was floating in a large empty void. Tighten it and let it sit
    closer to the hero it is explaining. */
-#intro.section-hub { padding: 64px 0 56px; }
+#intro.section-hub { padding: 72px 0 64px; }
+
+/* ---------- Intro: two-column layout with trust highlight cards ---------- */
+.section-intro-split .intro-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center;
+  position: relative; z-index: 1;
+}
+.section-intro-split .intro-heading { margin-bottom: 18px; text-wrap: balance; }
+.section-intro-split .intro-copy p { font-size: 16px; line-height: 1.6; margin-bottom: 14px; color: var(--ink); }
+.section-intro-split .intro-copy p:last-child { margin-bottom: 0; }
+.section-intro-split .intro-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.intro-card {
+  background: #fff; border: 1px solid var(--hairline); border-radius: 16px;
+  padding: 24px 22px; box-shadow: 0 12px 30px rgba(5,8,18,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.intro-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(5,8,18,0.12); }
+.intro-card { border-top: 4px solid var(--sky-deep); }
+.intro-card-orange { border-top-color: var(--orange); }
+.intro-card-num {
+  font-family: var(--font-display); font-weight: 900; line-height: 1;
+  font-size: clamp(30px, 3vw, 40px); color: var(--sky-deep); margin-bottom: 8px;
+}
+.intro-card-orange .intro-card-num { color: var(--orange); }
+.intro-card-lbl { font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--muted); line-height: 1.35; }
+@media (max-width: 860px) {
+  .section-intro-split .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+}
 
 /* Tile caption breathing room (the description was crowding the scrim) */
 .ac-tile-body { padding: 26px 24px 22px; }
