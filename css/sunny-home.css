@@ -292,13 +292,23 @@
    closer to the hero it is explaining. */
 #intro.section-hub { padding: 72px 0 64px; }
 
-/* ---------- Intro: same 3 paragraphs, lifted with a larger lead + generous measure ---------- */
-.section-intro .intro-prose { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+/* ---------- Intro: same 3 paragraphs on a white card floating over the mountains ---------- */
+/* Bring the mountain backdrop forward a touch so the card has something to float over. */
+#intro.section-hub .section-bg-faint img { opacity: 0.26; }
+.section-intro .intro-prose {
+  max-width: 880px; margin: 0 auto; position: relative; z-index: 1;
+  background: #fff; border-radius: 22px; padding: 48px 54px;
+  box-shadow: 0 28px 64px rgba(5,8,18,0.16);
+  border: 1px solid var(--hairline);
+}
 .section-intro .intro-prose p { font-size: 17px; line-height: 1.72; color: var(--ink); margin-bottom: 18px; }
 .section-intro .intro-prose p:last-child { margin-bottom: 0; }
 .section-intro .intro-lead {
   font-size: clamp(21px, 2.1vw, 26px); line-height: 1.5; font-weight: 500; color: var(--charcoal);
   margin-bottom: 22px;
+}
+@media (max-width: 640px) {
+  .section-intro .intro-prose { padding: 32px 24px; border-radius: 18px; }
 }
 
 /* Tile caption breathing room (the description was crowding the scrim) */
