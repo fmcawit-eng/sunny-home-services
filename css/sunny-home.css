@@ -21,20 +21,58 @@
     :root {
       --font-body: 'Rubik Test Medium', system-ui, sans-serif;
     }
-    /* Hero: two intentional lines (no orphan words); sized to sit left of the van */
-    .section-hero { min-height: 86vh; }
-    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(32px, 3.25vw, 48px); line-height: 1.06; letter-spacing: -0.01em; }
-    .section-hero .hero-content { padding-left: 4vw; padding-top: 220px; padding-bottom: 90px; }
-    .section-hero .hero-line { display: block; white-space: nowrap; }
-    .section-hero .hero-line-2 { margin-top: 4px; }
-    .section-hero .hero-line-2 .word { color: var(--yellow); }
-    .section-hero .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.94em; }
-    .section-hero .hero-content .lead-on-video,
-    .section-hero .hero-content .cta-row { max-width: 520px; }
-    .section-hero .hero-video { object-position: 84% center; }
-    @media (max-width: 720px) {
-      .section-hero .hero-line { white-space: normal; }
-      .section-hero .display-hero { font-size: clamp(30px, 8vw, 44px); }
+    /* Hero SPLIT: headline on a brand panel (left), van covers the right, gradient divider between */
+    .section-hero-split {
+      --hero-panel: #0b3a4a;               /* divider blend color - both panel bg and fade must match */
+      min-height: 86vh;
+      background: var(--hero-panel);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    /* soft sky glow behind the headline for depth */
+    .section-hero-split::before {
+      content: ""; position: absolute; left: -8%; top: -10%; width: 58%; height: 120%; z-index: 0;
+      background: radial-gradient(closest-side, rgba(4,207,255,0.18), transparent 72%);
+      pointer-events: none;
+    }
+    .section-hero-split .hero-van-panel {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 56%; z-index: 0; overflow: hidden;
+    }
+    .section-hero-split .hero-van-panel .hero-video {
+      position: absolute; top: -6%; left: 0; width: 100%; height: 112%;
+      object-fit: cover; object-position: 46% center; z-index: 0;
+    }
+    /* the gradient divider: van dissolves into the panel color across the middle */
+    .section-hero-split .hero-van-fade {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(90deg,
+        var(--hero-panel) 0%,
+        rgba(11,58,74,0.85) 16%,
+        rgba(11,58,74,0.0) 44%);
+    }
+    /* subtle top/bottom vignette so the photo seats into the section */
+    .section-hero-split .hero-van-panel::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(11,58,74,0.30) 0%, transparent 18%, transparent 80%, rgba(11,58,74,0.40) 100%);
+    }
+    .section-hero-split .hero-content {
+      position: relative; z-index: 2;
+      padding-left: 5vw; padding-top: 40px; padding-bottom: 60px;
+    }
+    .section-hero-split .display-hero { font-family: var(--font-display); font-size: clamp(32px, 3.4vw, 52px); line-height: 1.06; letter-spacing: -0.01em; }
+    .section-hero-split .hero-line { display: block; white-space: nowrap; }
+    .section-hero-split .hero-line-2 { margin-top: 4px; }
+    .section-hero-split .hero-line-2 .word { color: var(--yellow); }
+    .section-hero-split .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.94em; }
+    .section-hero-split .hero-content .lead-on-video,
+    .section-hero-split .hero-content .cta-row { max-width: 520px; }
+    @media (max-width: 860px) {
+      .section-hero-split .hero-van-panel { width: 100%; }
+      .section-hero-split .hero-van-fade {
+        background: linear-gradient(180deg, rgba(11,58,74,0.55) 0%, rgba(11,58,74,0.35) 40%, rgba(11,58,74,0.85) 100%);
+      }
+      .section-hero-split .hero-line { white-space: normal; }
+      .section-hero-split .display-hero { font-size: clamp(30px, 8vw, 44px); }
     }
 
     /* ---------- Header brand lockup (larger logo, mascot tucked) ---------- */
