@@ -21,9 +21,12 @@
     :root {
       --font-body: 'Rubik Test Medium', system-ui, sans-serif;
     }
-    /* Hero: keep each title line on one line; the second line types in via the typewriter */
-    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(40px, 5.6vw, 80px); white-space: nowrap; }
+    /* Hero: text kept to a left column so it clears the van; wraps instead of one long line */
+    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(36px, 4.6vw, 62px); white-space: normal; max-width: 560px; }
     .section-hero .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.84em; }
+    .section-hero .hero-content .lead-on-video,
+    .section-hero .hero-content .cta-row { max-width: 560px; }
+    .section-hero .hero-video { object-position: 70% center; }
 
     /* ---------- Header brand lockup (larger logo, mascot tucked) ---------- */
     .header-logo { gap: 5px; }
@@ -87,8 +90,11 @@
 
     /* ---------- Service tiles (6-up: the brief's 6 service lines, 3 across x 2 rows) ---------- */
     .ac-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
-    .ac-tiles-six { grid-template-columns: repeat(3, 1fr); }
-    .ac-tiles-six .ac-tile { height: 340px; }
+    .ac-tiles-six { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .ac-tiles-six .ac-tile { height: 270px; }
+    .ac-tiles-six .ac-tile-title { font-size: 22px; }
+    .ac-tiles-six .ac-tile-desc { font-size: 13px; }
+    .ac-tiles-six .ac-tile-body { padding: 20px; }
     @media (max-width: 1100px) { .ac-tiles-six { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px)  { .ac-tiles-six { grid-template-columns: 1fr; } }
 

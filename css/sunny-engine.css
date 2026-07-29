@@ -317,7 +317,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(14,30,50,0.75) 0%, rgba(14,30,50,0.35) 55%, rgba(14,30,50,0.55) 100%),
+    linear-gradient(90deg, rgba(14,30,50,0.88) 0%, rgba(14,30,50,0.62) 38%, rgba(14,30,50,0.12) 70%, rgba(14,30,50,0.22) 100%),
     linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.45) 100%);
   pointer-events: none;
 }
