@@ -22,15 +22,16 @@
       --font-body: 'Rubik Test Medium', system-ui, sans-serif;
     }
     /* Hero: two intentional lines (no orphan words); sized to sit left of the van */
-    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(30px, 3vw, 44px); line-height: 1.06; letter-spacing: -0.01em; }
-    .section-hero .hero-content { padding-left: 4vw; }
+    .section-hero { min-height: 86vh; }
+    .section-hero .display-hero { font-family: var(--font-display); font-size: clamp(32px, 3.25vw, 48px); line-height: 1.06; letter-spacing: -0.01em; }
+    .section-hero .hero-content { padding-left: 4vw; padding-top: 220px; padding-bottom: 90px; }
     .section-hero .hero-line { display: block; white-space: nowrap; }
     .section-hero .hero-line-2 { margin-top: 4px; }
     .section-hero .hero-line-2 .word { color: var(--yellow); }
     .section-hero .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.94em; }
     .section-hero .hero-content .lead-on-video,
     .section-hero .hero-content .cta-row { max-width: 520px; }
-    .section-hero .hero-video { object-position: 78% center; }
+    .section-hero .hero-video { object-position: 84% center; }
     @media (max-width: 720px) {
       .section-hero .hero-line { white-space: normal; }
       .section-hero .display-hero { font-size: clamp(30px, 8vw, 44px); }
