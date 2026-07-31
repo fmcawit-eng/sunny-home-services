@@ -3,6 +3,7 @@
 **Live preview:** https://sunny-home-services.vercel.app
 **Sitemap / SEO source of truth:** the **Sunny Home Services SEO Workbook** (spreadsheet) — the authoritative page list, production URLs, nav, keyword targets, and service areas. This doc mirrors it; when they differ, the spreadsheet wins.
 **Design source of truth:** the Figma file (link in [README](README.md)).
+**Page status (live vs coming-soon):** [`handoff/Sunny-Home-Services-Page-Status.pdf`](handoff/Sunny-Home-Services-Page-Status.pdf) — built pages vs planned pages routed to coming-soon, with production URLs.
 **Visual QA references:** [`handoff/home-full.jpg`](handoff/home-full.jpg) · [`handoff/hub-air-conditioner-full.jpg`](handoff/hub-air-conditioner-full.jpg) · [`handoff/child-ac-repair-full.jpg`](handoff/child-ac-repair-full.jpg) · [`handoff/service-area-full.jpg`](handoff/service-area-full.jpg) · [`handoff/coming-soon-full.jpg`](handoff/coming-soon-full.jpg)
 
 This repo is the approved static prototype (West Jordan / Wasatch Front, UT —
