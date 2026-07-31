@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Coming Soon | Sunny Home Services</title>
-  <meta name="description" content="This page is on its way. In the meantime, Sunny Home Services is ready to help with your heating, cooling, and plumbing needs in West Jordan, UT.">
-  <meta name="robots" content="noindex">
+  <title>Contact Sunny Home Services | HVAC &amp; Plumbing in West Jordan, UT</title>
+  <meta name="description" content="Contact Sunny Home Services in West Jordan, UT. Call 385.853.8116 or send a request and our HVAC and plumbing team will reach out within one business day.">
+  <!-- Production URL: https://sunnyhomeservices.com/contact/ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -22,7 +22,6 @@
       <img src="assets/brand-logo.png" alt="Sunny Home Services" class="logo-mark">
       <img src="assets/brand-ray.png" alt="" class="logo-mascot">
     </a>
-    <!-- Nav IA per SEO Workbook > Menu Nav Layout. Top-level items link to their hub page. -->
     <nav class="header-nav" data-block="primary-nav">
       <div class="nav-item has-menu">
         <a href="air-conditioner.html">Cooling</a>
@@ -104,55 +103,103 @@
     </div>
   </header>
 
-  <!-- Coming-soon band: hub-hero at full height so the page feels intentional -->
-  <section class="hub-hero" id="hero" data-block="coming-soon" style="min-height: 640px;">
+  <!-- 01 Hero -->
+  <section class="hub-hero" id="hero" data-block="hub-hero">
     <div class="hub-hero-bg">
-      <img src="assets/heroes/service-area.jpg" alt="" data-parallax="8">
+      <img src="assets/bg/skyline.jpg" alt="" data-parallax="8">
     </div>
     <div class="container">
       <div class="hub-hero-copy">
         <div class="hub-crumb">
           <a href="index.html">Home</a>
           <span>/</span>
-          <span>Coming Soon</span>
+          <span>Contact Us</span>
         </div>
-        <h1 class="reveal" data-animation="fade-up">This Page Is Coming Soon</h1>
-        <p class="hub-hero-sub reveal" data-animation="fade-up">We're building this page right now. In the meantime, our team is ready to help with your heating, cooling, and plumbing needs.</p>
+        <h1 class="reveal" data-animation="fade-up">Contact Sunny Home Services</h1>
+        <p class="hub-hero-sub reveal" data-animation="fade-up">West Jordan and the Wasatch Front. We answer fast.</p>
         <div class="cta-row reveal" data-animation="fade-up">
-          <a class="btn btn-primary btn-pill btn-lg" href="coming-soon.html">Book Now</a>
-          <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13858538116">Call 385.853.8116</a>
+          <a class="btn btn-primary btn-pill btn-lg" href="tel:+13858538116">Call 385.853.8116</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Where to go instead -->
-  <section class="section-hub" id="explore" data-block="hub-cards">
-    <div class="section-bg section-bg-faint"><img src="assets/bg/wasatch.jpg" alt="" data-parallax="12"></div>
+  <!-- 02 Contact form + info (reused from the homepage contact block) -->
+  <section class="section section-contact reveal" data-animation="fade-up" id="contact">
+    <div class="section-bg"><img src="assets/bg/skyline.jpg" alt="" data-parallax="15"></div>
+    <div class="accent-stripe accent-stripe-orange"></div>
+    <div class="bg-orb bg-orb-sky" style="top:-100px; right:-200px; width:480px;"></div>
+    <div class="bg-orb bg-orb-gold" style="bottom:-200px; left:-200px; width:420px;"></div>
+
     <div class="container">
-      <h2 class="display-h2 reveal" data-animation="fade-up">Explore Our Services</h2>
-      <div class="hub-cards">
-        <a class="hub-card has-media reveal" data-animation="fade-up" href="air-conditioner.html">
-          <div class="hub-card-media"><img src="assets/services/air-conditioning.jpg" alt="Sunny Home Services air conditioning services"></div>
-          <div class="hub-card-body">
-            <div class="hub-card-title">Cooling</div>
-            <span class="hub-card-link">View Cooling Services &rsaquo;</span>
+      <h2 class="display-h1 align-center">Let's Get Your<br>Home Comfortable</h2>
+      <p class="lead align-center">Schedule a visit or get a free quote. We'll be in touch within one business day.</p>
+
+      <div class="contact-grid">
+        <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').classList.add('is-visible');">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-first">First Name</label>
+              <input id="cf-first" type="text" placeholder="Jane" required>
+            </div>
+            <div class="form-field">
+              <label for="cf-last">Last Name</label>
+              <input id="cf-last" type="text" placeholder="Smith" required>
+            </div>
           </div>
-        </a>
-        <a class="hub-card has-media reveal" data-animation="fade-up" href="heating.html">
-          <div class="hub-card-media"><img src="assets/services/heating.jpg" alt="Sunny Home Services heating services"></div>
-          <div class="hub-card-body">
-            <div class="hub-card-title">Heating</div>
-            <span class="hub-card-link">View Heating Services &rsaquo;</span>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" placeholder="jane@email.com" required>
+            </div>
+            <div class="form-field">
+              <label for="cf-phone">Phone</label>
+              <input id="cf-phone" type="tel" placeholder="(801) 555-0000" required>
+            </div>
           </div>
-        </a>
-        <a class="hub-card has-media reveal" data-animation="fade-up" href="indoor-air-quality.html">
-          <div class="hub-card-media"><img src="assets/services/air-quality.jpg" alt="Sunny Home Services indoor air quality services"></div>
-          <div class="hub-card-body">
-            <div class="hub-card-title">Indoor Air Quality</div>
-            <span class="hub-card-link">View Air Quality Services &rsaquo;</span>
+          <div class="form-field">
+            <label for="cf-service">Service Needed</label>
+            <select id="cf-service" required>
+              <option>Cooling</option>
+              <option>Heating</option>
+              <option>Plumbing</option>
+              <option>Sewer and Drains</option>
+              <option>Air Quality</option>
+              <option>Other</option>
+            </select>
           </div>
-        </a>
+          <div class="form-consent">
+            <input id="cf-consent" type="checkbox" required>
+            <label for="cf-consent">By checking this box, you agree to receive informational messages (appointment reminders, service updates, etc.) and SMS marketing messages, such as sales, coupons, and seasonal offers, from Sunny Home Services at the number provided. We will never share your personal information with third parties for marketing purposes. Consent is not a condition of purchase. Message frequency may vary. Standard Message and Data Rates may apply. Unsubscribe at any time by replying STOP and no further messages will be sent. Reply HELP for help or email us at hello@sunnyhomeservices.com.</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-pill btn-lg btn-full">Send Request</button>
+          <p class="form-legal"><a href="coming-soon.html">Privacy Policy</a> · <a href="coming-soon.html">Terms and Conditions</a></p>
+          <div class="form-success">✓ Thanks, we'll be in touch within one business day.</div>
+        </form>
+
+        <aside class="contact-info">
+          <h3>Reach Us Directly</h3>
+          <div class="info-block">
+            <div class="info-label">Phone</div>
+            <a class="info-value-big" href="tel:+13858538116">385.853.8116</a>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Email</div>
+            <a class="info-value" href="mailto:hello@sunnyhomeservices.com">hello@sunnyhomeservices.com</a>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Office</div>
+            <div class="info-value">8461 Old Bingham Hwy<br>West Jordan, UT 84088</div>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Hours</div>
+            <div class="info-value">Mon-Fri · 7am - 7pm<br>Sat-Sun · By appointment</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="contact-map reveal" data-animation="fade-up" style="margin-top:36px; border-radius:18px; overflow:hidden; box-shadow:0 18px 40px rgba(5,8,18,0.18); position:relative; z-index:1;">
+        <iframe title="Sunny Home Services on Google Maps" width="100%" height="360" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=8461%20Old%20Bingham%20Hwy%20West%20Jordan%20UT%2084088&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
       </div>
     </div>
   </section>
