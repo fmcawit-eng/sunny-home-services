@@ -73,7 +73,7 @@
     @media (max-width: 860px) {
       /* Single-image mobile hero: one portrait van photo full-bleed, copy at the bottom over a gradient */
       .section-hero-split {
-        min-height: 90vh; display: flex; align-items: flex-end; padding-top: 84px; overflow: hidden;
+        min-height: 92vh; display: flex; align-items: flex-end; padding-top: 84px; overflow: hidden;
         background: #0b3a4a url('../assets/hero-van-mobile.jpg') center top / cover no-repeat;
       }
       .section-hero-split .hero-art,
@@ -81,9 +81,7 @@
       .section-hero-split .hero-subnav { display: none; }
       .section-hero-split .hero-scrim {
         display: block;
-        background: linear-gradient(180deg,
-          rgba(9,42,55,0.30) 0%, rgba(9,42,55,0.10) 26%, rgba(9,42,55,0.20) 46%,
-          rgba(9,42,55,0.62) 66%, rgba(9,42,55,0.94) 100%);
+        background: linear-gradient(180deg, transparent 0%, transparent 52%, rgba(9,42,55,0.55) 78%, rgba(9,42,55,0.85) 100%);
       }
       .section-hero-split .hero-content { position: relative; z-index: 3; width: 100%; padding: 0 6vw 40px; }
       .section-hero-split .hero-line { white-space: normal; }
