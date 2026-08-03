@@ -74,7 +74,7 @@
       /* Single-image mobile hero: one portrait van photo full-bleed, copy at the bottom over a gradient */
       .section-hero-split {
         min-height: 88vh; display: flex; align-items: flex-end; padding-top: 84px; overflow: hidden;
-        background: #0b3a4a url('../assets/hero-van-mobile.jpg') 50% 32% / cover no-repeat;
+        background: #0b3a4a url('../assets/hero-van-mobile.jpg') 68% 32% / cover no-repeat;
       }
       .section-hero-split .hero-art,
       .section-hero-split .hero-van-panel,
@@ -337,9 +337,8 @@
   .section-intro .intro-mascot { right: -70px; width: 120px; }
 }
 @media (max-width: 640px) {
-  .section-intro .intro-logo { width: 150px; top: -28px; left: 6px; }
-  .section-intro .intro-prose { padding-top: 46px; }
-  .section-intro .intro-mascot { display: none; }
+  .section-intro .intro-logo { width: 140px; top: -30px; left: 50%; transform: translateX(-50%); }
+  .section-intro .intro-mascot { display: block; width: 88px; height: auto; right: 12px; left: auto; bottom: -30px; }
 }
 .section-intro .intro-prose p { font-size: 17px; line-height: 1.72; color: var(--ink); margin-bottom: 18px; }
 .section-intro .intro-prose p:last-child { margin-bottom: 0; }
@@ -371,12 +370,12 @@
   #intro.section-hub .hub-prose:not(.intro-prose)::after { right: -70px; width: 120px; height: 137px; }
 }
 @media (max-width: 640px) {
-  #intro.section-hub .hub-prose:not(.intro-prose) { padding: 46px 24px 32px; }
-  #intro.section-hub .hub-prose:not(.intro-prose)::before { width: 150px; height: 78px; top: -30px; left: 6px; }
-  #intro.section-hub .hub-prose:not(.intro-prose)::after { display: none; }
+  #intro.section-hub .hub-prose:not(.intro-prose) { padding: 58px 22px 62px; }
+  #intro.section-hub .hub-prose:not(.intro-prose)::before { width: 140px; height: 73px; top: -30px; left: 50%; transform: translateX(-50%); }
+  #intro.section-hub .hub-prose:not(.intro-prose)::after { display: block; width: 88px; height: 101px; right: 12px; left: auto; bottom: -30px; }
 }
 @media (max-width: 640px) {
-  .section-intro .intro-prose { padding: 32px 24px; border-radius: 18px; }
+  .section-intro .intro-prose { padding: 58px 22px 62px; border-radius: 18px; }
 }
 
 /* Tile caption breathing room (the description was crowding the scrim) */
