@@ -74,7 +74,7 @@
       /* Single-image mobile hero: one portrait van photo full-bleed, copy at the bottom over a gradient */
       .section-hero-split {
         min-height: 88vh; display: flex; align-items: flex-end; padding-top: 84px; overflow: hidden;
-        background: #0b3a4a url('../assets/hero-van-mobile.jpg') 68% 32% / cover no-repeat;
+        background: #0b3a4a url('../assets/hero-van-mobile.jpg') 80% 32% / cover no-repeat;
       }
       .section-hero-split .hero-art,
       .section-hero-split .hero-van-panel,
