@@ -271,9 +271,63 @@ function initHeaderEntrance() {
 }
 
 /* ============================================================
+   MOBILE NAV - hamburger + slide-in menu, built from the existing header nav
+   so no per-page HTML changes are needed.
+============================================================ */
+function initMobileNav() {
+  const header = document.querySelector(".site-header");
+  const nav = header && header.querySelector(".header-nav");
+  if (!header || !nav || document.querySelector(".nav-toggle")) return;
+
+  const btn = document.createElement("button");
+  btn.className = "nav-toggle";
+  btn.setAttribute("aria-label", "Open menu");
+  btn.setAttribute("aria-expanded", "false");
+  btn.innerHTML = "<span></span><span></span><span></span>";
+  header.appendChild(btn);
+
+  const panel = document.createElement("div");
+  panel.className = "mobile-menu";
+  let html = '<div class="mm-top">' +
+    '<a class="mm-phone" href="tel:+13858538116">385.853.8116</a>' +
+    '<a class="btn btn-primary btn-pill mm-book" href="coming-soon.html">Book Now</a>' +
+    '</div><nav class="mm-nav">';
+  nav.querySelectorAll(".nav-item").forEach(item => {
+    const top = item.querySelector(":scope > a");
+    const menu = item.querySelector(".nav-menu");
+    if (!top) return;
+    if (menu) {
+      html += '<div class="mm-group"><button class="mm-parent" type="button">' + top.textContent.trim() + "</button><div class=\"mm-sub\">";
+      html += '<a href="' + top.getAttribute("href") + '">All ' + top.textContent.trim() + "</a>";
+      menu.querySelectorAll("a").forEach(a => {
+        html += '<a href="' + a.getAttribute("href") + '">' + a.textContent.trim() + "</a>";
+      });
+      html += "</div></div>";
+    } else {
+      html += '<a class="mm-link" href="' + top.getAttribute("href") + '">' + top.textContent.trim() + "</a>";
+    }
+  });
+  html += "</nav>";
+  panel.innerHTML = html;
+  document.body.appendChild(panel);
+
+  const setOpen = (o) => {
+    document.body.classList.toggle("mm-open", o);
+    btn.setAttribute("aria-expanded", o ? "true" : "false");
+    btn.setAttribute("aria-label", o ? "Close menu" : "Open menu");
+  };
+  btn.addEventListener("click", () => setOpen(!document.body.classList.contains("mm-open")));
+  panel.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
+  panel.querySelectorAll(".mm-parent").forEach(p => {
+    p.addEventListener("click", () => p.parentElement.classList.toggle("open"));
+  });
+}
+
+/* ============================================================
    BOOT
 ============================================================ */
 function boot() {
+  initMobileNav();
   // ?noanim renders every section in its final/visible state (for screenshots/QA)
   if (/[?&]noanim/.test(location.search)) { initMarquee(); return; }
   initHeaderEntrance();
