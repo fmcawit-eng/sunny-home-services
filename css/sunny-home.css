@@ -359,6 +359,12 @@
   background: #fff; border: 1px solid var(--hairline); border-radius: 22px;
   padding: 76px 54px 48px; box-shadow: 0 28px 64px rgba(5,8,18,0.16);
 }
+/* When a section heading sits directly above the card, drop the card so the
+   pinned logo clears the heading instead of overlapping it. */
+#intro.section-hub h2 + .hub-prose:not(.intro-prose) { margin-top: 56px; }
+@media (max-width: 640px) {
+  #intro.section-hub h2 + .hub-prose:not(.intro-prose) { margin-top: 44px; }
+}
 #intro.section-hub .hub-prose:not(.intro-prose)::before {
   content: ""; position: absolute; top: -42px; left: -8px; width: 190px; height: 98px; z-index: 5;
   background: url('../assets/sunny-logo.png') no-repeat left center; background-size: contain;
