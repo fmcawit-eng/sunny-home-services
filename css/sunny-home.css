@@ -319,7 +319,7 @@
 #intro.section-hub .section-bg-faint img { opacity: 0.26; }
 .section-intro .intro-prose {
   max-width: 880px; margin: 0 auto; position: relative; z-index: 1; overflow: visible;
-  background: #fff; border-radius: 22px; padding: 58px 54px 48px;
+  background: #fff; border-radius: 22px; padding: 76px 54px 48px;
   box-shadow: 0 28px 64px rgba(5,8,18,0.16);
   border: 1px solid var(--hairline);
 }
@@ -357,7 +357,7 @@
 #intro.section-hub .hub-prose:not(.intro-prose) {
   position: relative; z-index: 1; max-width: 880px; margin: 0 auto;
   background: #fff; border: 1px solid var(--hairline); border-radius: 22px;
-  padding: 58px 54px 48px; box-shadow: 0 28px 64px rgba(5,8,18,0.16);
+  padding: 76px 54px 48px; box-shadow: 0 28px 64px rgba(5,8,18,0.16);
 }
 #intro.section-hub .hub-prose:not(.intro-prose)::before {
   content: ""; position: absolute; top: -42px; left: -8px; width: 190px; height: 98px; z-index: 5;
@@ -373,12 +373,12 @@
   #intro.section-hub .hub-prose:not(.intro-prose)::after { right: -70px; width: 120px; height: 137px; }
 }
 @media (max-width: 640px) {
-  #intro.section-hub .hub-prose:not(.intro-prose) { padding: 58px 22px 62px; }
+  #intro.section-hub .hub-prose:not(.intro-prose) { padding: 66px 22px 62px; }
   #intro.section-hub .hub-prose:not(.intro-prose)::before { width: 140px; height: 73px; top: -30px; left: 50%; transform: translateX(-50%); }
   #intro.section-hub .hub-prose:not(.intro-prose)::after { display: block; width: 88px; height: 101px; right: 12px; left: auto; bottom: -30px; }
 }
 @media (max-width: 640px) {
-  .section-intro .intro-prose { padding: 58px 22px 62px; border-radius: 18px; }
+  .section-intro .intro-prose { padding: 66px 22px 62px; border-radius: 18px; }
 }
 
 /* Tile caption breathing room (the description was crowding the scrim) */
