@@ -88,7 +88,7 @@
       .section-hero-split .hero-content { position: relative; z-index: 3; width: 100%; padding: 0 6vw 40px; }
       /* keep each line on one line at a size that fits, so no orphan words wrap off */
       .section-hero-split .hero-line { white-space: nowrap; }
-      .section-hero-split .display-hero { font-size: clamp(22px, 6.3vw, 32px); }
+      .section-hero-split .display-hero { font-size: clamp(19px, 5.6vw, 28px); }
       .section-hero-split .hero-content .lead-on-video { font-size: 15px; max-width: 100%; margin-top: 12px; }
       .section-hero-split .hero-content .cta-row {
         max-width: 100%; margin-top: 22px; flex-direction: column; align-items: stretch; gap: 12px;
