@@ -1288,3 +1288,27 @@ img { max-width: 100%; display: block; }
 /* ---------- Reveal init hidden state ---------- */
 .reveal { opacity: 0; }
 .reveal.is-visible { opacity: 1; }
+
+/* ---------- 09b Service Areas: city chips are links (homepage only) ---------- */
+.city-grid { grid-template-columns: repeat(3, 1fr); }
+a.city-pill {
+  display: block;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+a.city-pill:hover,
+a.city-pill:focus-visible {
+  background: var(--white);
+  border-color: var(--sky);
+  transform: translateY(-2px);
+}
+.city-pill-more {
+  background: var(--white);
+  border-color: var(--hairline);
+  color: var(--sky-deep);
+}
+.city-pill-more:hover { background: var(--off-sky); }
+@media (max-width: 900px) {
+  .city-grid { grid-template-columns: repeat(2, 1fr); }
+}
