@@ -199,14 +199,17 @@ function initFamilyPlanTiles() {
    TRUST MARQUEE - continuous horizontal scroll
 ============================================================ */
 function initMarquee() {
-  const track = document.getElementById("marquee-track");
-  if (!track) return;
-  const trackWidth = track.scrollWidth;
-  gsap.to(track, {
-    x: -trackWidth / 2,
-    duration: 28,
-    ease: "none",
-    repeat: -1,
+  // Every .marquee-track holds its content twice, so travelling half the
+  // scroll width loops seamlessly. data-duration overrides the default pace.
+  document.querySelectorAll(".marquee-track").forEach(track => {
+    const trackWidth = track.scrollWidth;
+    if (!trackWidth) return;
+    gsap.to(track, {
+      x: -trackWidth / 2,
+      duration: parseFloat(track.dataset.duration) || 28,
+      ease: "none",
+      repeat: -1,
+    });
   });
 }
 
