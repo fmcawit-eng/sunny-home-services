@@ -569,3 +569,66 @@
 .coupon-feature .coupon-includes { gap: 5px; }
 .coupon-feature .coupon-includes li { font-size: 13px; line-height: 1.35; }
 .coupon-feature .coupon-includes-label { font-size: 12px; }
+
+/* ---------- Offers page: 3-up coupon grid ----------
+   Reuses the .coupon ticket (dashed border, perforation, --c accent).
+   .coupon-card is the vertical variant; .coupon-feature stays the 2-up horizontal one. */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  align-items: stretch;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0;
+  overflow: hidden;
+}
+/* readable ink + a soft tint behind the number, per accent */
+.coupon-card.coupon-sky    { --c-ink: var(--sky-darker); --c-tint: var(--off-sky); }
+.coupon-card.coupon-orange { --c-ink: var(--orange);     --c-tint: #FFF3D6; }
+
+.coupon-head {
+  background: var(--c-tint);
+  padding: 34px 24px 24px;
+}
+.coupon-card .coupon-value {
+  font-size: clamp(54px, 4.6vw, 68px);
+  line-height: 0.95;
+  color: var(--c-ink);
+  margin: 0 0 10px;
+  letter-spacing: -0.03em;
+}
+.coupon-card .coupon-value-sm { font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; }
+.coupon-card .coupon-desc {
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: var(--charcoal);
+  margin: 0;
+}
+.coupon-card .coupon-perf { margin: 0; border-top-color: var(--c); }
+.coupon-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 24px 26px;
+}
+.coupon-card .coupon-note {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  margin: 0 0 20px;
+}
+.coupon-card .coupon-includes { margin: 0 0 20px; }
+.coupon-card .coupon-includes li { font-size: 14.5px; line-height: 1.45; }
+.coupon-card .coupon-includes-label { font-size: 14px; margin-bottom: 10px; }
+.coupon-card .coupon-cta { margin-top: auto; }
+@media (max-width: 1000px) { .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 660px)  { .offers-grid { grid-template-columns: 1fr; } }
