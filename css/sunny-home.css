@@ -634,50 +634,82 @@
 @media (max-width: 660px)  { .offers-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Homepage: offers marquee ----------
-   Compact tickets that scroll horizontally. Full detail lives on offers.html. */
+   Ticket-shaped chips: a value stub, a dashed tear line, and semicircular
+   notches cut out of both edges. The notches are a mask so they read as real
+   cut-outs over the section photo; the shadow lives on a wrapper using
+   drop-shadow so it follows the notched silhouette instead of a plain box. */
 .offers-marquee {
   width: 100%;
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  padding: 6px 0 10px;
+  padding: 10px 0 14px;
 }
-.offers-marquee .marquee-track { gap: 22px; align-items: stretch; }
-.offer-chip {
+.offers-marquee .marquee-track { gap: 26px; align-items: stretch; }
+
+.offer-chip-wrap {
   flex: 0 0 auto;
-  width: 252px;
-  min-height: 152px;
-  display: flex;
-  flex-direction: column;
+  filter: drop-shadow(0 10px 16px rgba(35, 39, 43, 0.20));
+}
+.offer-chip {
+  --notch: 13px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 22px 20px;
-  border-radius: 18px;
+  width: 356px;
+  min-height: 158px;
+  border-radius: 14px;
   background: var(--c-tint);
   border: 2px dashed var(--c);
-  box-shadow: 0 8px 20px rgba(35, 39, 43, 0.10);
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000 100%),
+    radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000 100%),
+    radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000 100%);
+  mask-composite: intersect;
 }
 .offer-chip.is-sky  { --c: var(--sky);    --c-ink: var(--sky-darker); --c-tint: var(--off-sky); }
 .offer-chip.is-gold { --c: var(--yellow); --c-ink: var(--orange);     --c-tint: #FFF3D6; }
+
+.offer-chip-stub {
+  border-right: 2px dashed var(--c);
+  padding: 18px 10px;
+  overflow: hidden;
+  text-align: center;
+}
+.offer-chip-main {
+  padding: 18px 18px 18px 16px;
+}
 .offer-chip-value {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 42px;
+  font-size: 50px;
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--c-ink);
+  white-space: nowrap;
 }
-.offer-chip-value.is-small { font-size: 26px; line-height: 1.1; }
+.offer-chip-value.is-small { font-size: 25px; line-height: 1.15; }
+.offer-chip-value.is-med   { font-size: 40px; }
+.offer-chip-value.is-long  { font-size: 32px; }
 .offer-chip-label {
   font-family: var(--font-body);
   font-weight: 900;
-  font-size: 12.5px;
-  line-height: 1.35;
-  letter-spacing: 0.06em;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--charcoal);
-  margin-top: 10px;
 }
 .offers-marquee-cta { margin-top: 26px; }
-@media (max-width: 700px) { .offer-chip { width: 208px; min-height: 138px; } }
+
+/* the intro sentence should hold one line on desktop */
+.section-specials .lead.align-center { max-width: 820px; }
+
+@media (max-width: 700px) {
+  .offer-chip { width: 300px; min-height: 142px; grid-template-columns: 120px 1fr; }
+  .offer-chip-value { font-size: 40px; }
+  .offer-chip-label { font-size: 13.5px; }
+}
