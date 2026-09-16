@@ -569,3 +569,37 @@
 .coupon-feature .coupon-includes { gap: 5px; }
 .coupon-feature .coupon-includes li { font-size: 13px; line-height: 1.35; }
 .coupon-feature .coupon-includes-label { font-size: 12px; }
+
+/* ---------- Offers page: 3-up coupon grid ----------
+   Reuses the .coupon ticket (dashed border, perforation, --c accent).
+   .coupon-card is the vertical variant; .coupon-feature stays the 2-up horizontal one. */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  align-items: stretch;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 34px 26px 26px;
+}
+.coupon-card .coupon-value { font-size: 50px; margin-bottom: 6px; }
+.coupon-card .coupon-value-sm { font-size: 26px; line-height: 1.15; }
+.coupon-card .coupon-desc { margin-bottom: 0; }
+.coupon-card .coupon-perf { margin: 18px -26px 16px; }
+.coupon-card .coupon-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.coupon-card .coupon-includes { margin: 0 0 18px; }
+.coupon-card .coupon-cta { margin-top: auto; }
+@media (max-width: 1000px) { .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 660px)  { .offers-grid { grid-template-columns: 1fr; } }
