@@ -198,14 +198,37 @@ function initFamilyPlanTiles() {
 /* ============================================================
    TRUST MARQUEE - continuous horizontal scroll
 ============================================================ */
+/* ============================================================
+   SHRINK-ON-SCROLL HEADER - phones only
+   The brand lockup fills most of a 72px bar on a phone, so the header
+   starts tall and shrinks once you scroll. Desktop is never touched:
+   the class is only added while the phone media query matches.
+============================================================ */
+function initShrinkHeader() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+  const phone = window.matchMedia("(max-width: 700px)");
+  const THRESHOLD = 40;
+  let ticking = false;
+  function apply() {
+    ticking = false;
+    if (!phone.matches) { header.classList.remove("is-shrunk"); return; }
+    header.classList.toggle("is-shrunk", window.scrollY > THRESHOLD);
+  }
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(apply);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  phone.addEventListener("change", apply);
+  apply();
+}
+
 function initMarquee() {
   // Every .marquee-track holds its content twice, so travelling half the
   // scroll width loops seamlessly. data-duration overrides the default pace.
   document.querySelectorAll(".marquee-track").forEach(track => {
-    // On phones the offers marquee becomes a swipeable snap carousel, so
-    // leave its transform alone or it fights the user's scroll.
-    if (window.matchMedia("(max-width: 700px)").matches &&
-        track.closest(".offers-marquee")) return;
     const trackWidth = track.scrollWidth;
     if (!trackWidth) return;
     gsap.to(track, {
@@ -336,7 +359,7 @@ function initMobileNav() {
 function boot() {
   initMobileNav();
   // ?noanim renders every section in its final/visible state (for screenshots/QA)
-  if (/[?&]noanim/.test(location.search)) { initMarquee(); return; }
+  if (/[?&]noanim/.test(location.search)) { initMarquee(); initShrinkHeader(); return; }
   initHeaderEntrance();
   initInteractiveHero();
   initSectionReveals();
@@ -345,6 +368,7 @@ function boot() {
   initMarquee();
   initCounters();
   initBookingTiles();
+  initShrinkHeader();
   setTimeout(() => ScrollTrigger.refresh(), 120);
 }
 boot();
