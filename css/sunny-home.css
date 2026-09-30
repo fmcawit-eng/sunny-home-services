@@ -783,27 +783,38 @@
         animation is skipped in JS, the duplicate loop set is hidden so
         offers are not announced twice, and each ticket snaps fully
         into view. */
+  /* keeps scrolling on phones, same as desktop. The ticket is narrowed so a
+     whole coupon is readable as it passes instead of the price stub sitting
+     half off-screen, and the edge fade is tightened so less is hidden. */
   .offers-marquee {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-mask-image: none;
-    mask-image: none;
-    padding-left: 16px;
-    padding-right: 16px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
   }
-  .offers-marquee::-webkit-scrollbar { display: none; }
-  .offers-marquee .marquee-track {
-    transform: none !important;
-    width: max-content;
-    gap: 14px;
-  }
-  .offers-marquee .offer-chip-wrap[aria-hidden="true"] { display: none; }
-  .offers-marquee .offer-chip-wrap { scroll-snap-align: center; }
+  .offers-marquee .marquee-track { gap: 14px; }
   .offers-marquee .offer-chip {
-    width: min(330px, calc(100vw - 58px));
-    grid-template-columns: 128px 1fr;
+    width: 246px;
+    min-height: 118px;
+    grid-template-columns: 96px 1fr;
+  }
+  .offers-marquee .offer-chip-value { font-size: 30px; }
+  .offers-marquee .offer-chip-value.is-med  { font-size: 25px; }
+  .offers-marquee .offer-chip-value.is-long { font-size: 20px; }
+  .offers-marquee .offer-chip-value.is-small{ font-size: 15px; }
+  .offers-marquee .offer-chip-label { font-size: 12px; letter-spacing: 0.02em; }
+  .offers-marquee .offer-chip-stub { padding: 14px 8px; }
+  .offers-marquee .offer-chip-main { padding: 14px 12px 14px 10px; }
+
+  /* 3b. Orphan words. Headings were dropping a single short word onto the
+        last line ("call." at 34px against a 356px line). text-wrap balance
+        evens the lines out and pretty specifically prevents a lone last
+        word. Both are mobile-only, so desktop line breaks are untouched. */
+  h1, h2, h3, h4,
+  .display-hero, .display-h1, .display-h2,
+  .ac-tile-title, .offer-chip-label, .coupon-desc {
+    text-wrap: balance;
+  }
+  p, .lead, .hub-prose p, .coupon-note, .ac-tile-desc {
+    text-wrap: pretty;
   }
 
   /* 4. CTA rows. Measured 33 of 84 pages pushing a button off-screen at
@@ -812,12 +823,59 @@
         and labels wrap instead of being silently cut. */
   .cta-row {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
     gap: 12px;
+    text-align: center;
+  }
+  /* the homepage hero sits in a 6vw gutter while every other section uses the
+     16px container gutter, so its buttons came out narrower than the rest of
+     the page. Pull the hero CTA row out to the same edge so every button down
+     the page is the same width. */
+  .section-hero-split .hero-content .cta-row {
+    align-items: center;
+    max-width: none;
+    margin-left: calc(16px - 6vw);
+    margin-right: calc(16px - 6vw);
   }
   .cta-row .btn {
     width: 100%;
+    max-width: 420px;
     white-space: normal;
     line-height: 1.25;
+    text-align: center;
   }
+  /* centre the CTA block itself, not just the text inside the buttons, so
+     rows sitting in a left-aligned column line up with the ones that do not */
+  .hub-prose + .cta-row,
+  .areas-left .cta-row,
+  .hub-split .cta-row,
+  .section-why .cta-row { margin-left: auto; margin-right: auto; }
+}
+
+/* ---------- Shrink-on-scroll header (phones only) ----------
+   The logo was 68px inside a 72px header, so the brand ate nearly the whole
+   bar. It now starts large and shrinks once the page scrolls, giving the
+   content more room without losing the brand at the top. The `is-shrunk`
+   class is added by sunny-engine.js and only ever on phones. */
+@media (max-width: 700px) {
+  .site-header {
+    height: 86px;
+    transition: height .26s ease, box-shadow .26s ease;
+    will-change: height;
+  }
+  .logo-mark   { height: 58px; transition: height .26s ease; }
+  .logo-mascot { height: 52px; transition: height .26s ease; }
+
+  .site-header.is-shrunk { height: 58px; box-shadow: 0 4px 14px rgba(14,30,50,.10); }
+  .site-header.is-shrunk .logo-mark   { height: 36px; }
+  .site-header.is-shrunk .logo-mascot { height: 32px; }
+
+  /* the drawer hangs off the header, so it has to follow the new height */
+  .mobile-menu { inset: 86px 0 0 0; transition: inset .26s ease; }
+  .site-header.is-shrunk ~ .mobile-menu,
+  .site-header.is-shrunk + .mobile-menu { inset: 58px 0 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .logo-mark, .logo-mascot, .mobile-menu { transition: none; }
 }
