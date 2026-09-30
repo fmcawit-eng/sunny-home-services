@@ -713,3 +713,111 @@
   .offer-chip-value { font-size: 40px; }
   .offer-chip-label { font-size: 13.5px; }
 }
+
+/* ============================================================
+   MOBILE POLISH  (audited at 360 / 390 / 430, September 30, 2026)
+   Fixes found by measuring the live site and this build on real
+   device emulation, not by eye. Scoped to phones so desktop is
+   untouched.
+   ============================================================ */
+@media (max-width: 700px) {
+
+  /* 1. Tap targets. 412 links measured under Apple's 44px minimum,
+        almost all in the footer. Calling is the primary action on a
+        home services site, so the phone and email links matter most. */
+  .footer-nav a,
+  footer .footer-col a,
+  footer .footer-links a {
+    display: inline-block;
+    padding: 11px 6px;
+    line-height: 1.25;
+  }
+  .hub-crumb a {
+    display: inline-block;
+    padding: 9px 3px;
+  }
+  footer .f-phone a,
+  footer .f-line a,
+  footer .f-licensed a {
+    display: inline-block;
+    padding: 10px 4px;
+  }
+  /* the consent fine print under the contact form, and any bare inline
+     link inside a contact/locations block */
+  .form-legal a,
+  .form-consent a,
+  .cf-fineprint a,
+  .contact-form-note a { font-size: 12px; display: inline-block; padding: 9px 3px; }
+  #locations a[href^="tel:"] { display: inline-block; padding: 9px 2px; }
+
+  a.info-value-big,
+  a.info-value {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 6px 0;
+  }
+  .contact-consent input[type="checkbox"],
+  #cf-consent {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+  a.city-pill, span.city-pill { padding: 14px 10px; }
+
+  /* 2. Legibility. Uppercase letterspaced micro-labels drift to 10-11px,
+        which is below the 12px floor once letter-spacing is applied. */
+  .stat-lbl,
+  .info-label,
+  .map-overlay-sub,
+  .gform-field-label__text,
+  .phone-meta { font-size: 12px; }
+  .city-pill { font-size: 12px; letter-spacing: 0.12em; }
+  .contact-form label,
+  .cf-consent label,
+  form label { font-size: 12px; }
+
+  /* 3. Offers marquee. At 393px only one ticket fits, so the auto-scroll
+        left the price stub half off-screen at almost every moment. On
+        phones it becomes a swipeable, snapping carousel instead: the
+        animation is skipped in JS, the duplicate loop set is hidden so
+        offers are not announced twice, and each ticket snaps fully
+        into view. */
+  .offers-marquee {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .offers-marquee::-webkit-scrollbar { display: none; }
+  .offers-marquee .marquee-track {
+    transform: none !important;
+    width: max-content;
+    gap: 14px;
+  }
+  .offers-marquee .offer-chip-wrap[aria-hidden="true"] { display: none; }
+  .offers-marquee .offer-chip-wrap { scroll-snap-align: center; }
+  .offers-marquee .offer-chip {
+    width: min(330px, calc(100vw - 58px));
+    grid-template-columns: 128px 1fr;
+  }
+
+  /* 4. CTA rows. Measured 33 of 84 pages pushing a button off-screen at
+        360px: two buttons sharing one flex row cannot hold a label like
+        "Get Same-Day Heating Service". Each gets its own full-width row,
+        and labels wrap instead of being silently cut. */
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .cta-row .btn {
+    width: 100%;
+    white-space: normal;
+    line-height: 1.25;
+  }
+}

@@ -202,6 +202,10 @@ function initMarquee() {
   // Every .marquee-track holds its content twice, so travelling half the
   // scroll width loops seamlessly. data-duration overrides the default pace.
   document.querySelectorAll(".marquee-track").forEach(track => {
+    // On phones the offers marquee becomes a swipeable snap carousel, so
+    // leave its transform alone or it fights the user's scroll.
+    if (window.matchMedia("(max-width: 700px)").matches &&
+        track.closest(".offers-marquee")) return;
     const trackWidth = track.scrollWidth;
     if (!trackWidth) return;
     gsap.to(track, {
