@@ -1,0 +1,881 @@
+/* ============================================================================
+   SUNNY HOMEPAGE BLOCKS
+   ----------------------------------------------------------------------------
+   Extracted from a 152-line inline <style> block that used to live in the page.
+   Half the homepage's visual identity was page-local (.ac-tiles, .offers-two,
+   .zip-*, .footer-centered, .nav-menu, .testi-scroll existed in no stylesheet),
+   which made the page impossible to rebuild consistently.
+
+   NO COLORS ARE DEFINED HERE. All brand values come from the single :root token
+   block in sunny-engine.css, which is the source for Elementor Global Colors.
+   ============================================================================ */
+
+    @font-face {
+      font-family: 'Rubik Test Medium';
+      src: url('assets/fonts/rubik-500.woff2') format('woff2');
+      font-weight: 100 900; font-style: normal; font-display: swap;
+    }
+    /* Colors come from the single :root token block in css/sunny-engine.css.
+       Never redefine a brand color here: this page used to carry its own palette,
+       which is how the mockup drifted into two conflicting sets of brand colors. */
+    :root {
+      --font-body: 'Rubik Test Medium', system-ui, sans-serif;
+    }
+    /* Hero SPLIT: headline on a brand panel (left), van covers the right, gradient divider between */
+    .section-hero-split {
+      --hero-panel: #0b3a4a;
+      min-height: 86vh;
+      background: var(--hero-panel);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    /* brand art (sun rays + mountains) fills the left background, matching the van wrap */
+    .section-hero-split .hero-art { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .section-hero-split .hero-art img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: left center;
+    }
+    /* scrim: darkens the left so the headline reads crisp, fades out toward the van */
+    .section-hero-split .hero-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(90deg,
+        rgba(9,42,55,0.90) 0%,
+        rgba(9,42,55,0.74) 26%,
+        rgba(9,42,55,0.32) 45%,
+        rgba(9,42,55,0.0) 62%);
+    }
+    .section-hero-split .hero-van-panel {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 60%; z-index: 2; overflow: hidden;
+    }
+    /* van image; its left edge is masked to transparent so it dissolves into the art -> soft divider, no hard line */
+    .section-hero-split .hero-van-panel .hero-video {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% center; z-index: 0;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 6%, #000 18%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 6%, #000 18%);
+    }
+    /* subtle top/bottom vignette so the photo seats into the section */
+    .section-hero-split .hero-van-panel::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(11,58,74,0.26) 0%, transparent 20%, transparent 82%, rgba(11,58,74,0.36) 100%);
+    }
+    .section-hero-split .hero-content {
+      position: relative; z-index: 2; max-width: 100%;
+      padding-left: 8vw; padding-top: 40px; padding-bottom: 60px;
+    }
+    .section-hero-split .display-hero { font-family: var(--font-display); font-size: clamp(32px, 3.3vw, 52px); line-height: 1.06; letter-spacing: -0.01em; }
+    .section-hero-split .hero-line { display: block; white-space: nowrap; }
+    .section-hero-split .hero-line-2 { margin-top: 4px; }
+    .section-hero-split .hero-line-2 .word { color: var(--yellow); }
+    .section-hero-split .alt-font { font-family: 'Archivo Black', var(--font-display); font-weight: 400; font-size: 0.94em; }
+    .section-hero-split .hero-content .lead-on-video,
+    .section-hero-split .hero-content .cta-row { max-width: 520px; }
+    @media (max-width: 860px) {
+      /* Single-image mobile hero: one portrait van photo full-bleed, copy at the bottom over a gradient */
+      .section-hero-split {
+        min-height: 88vh; display: flex; align-items: flex-end; padding-top: 84px; overflow: hidden;
+        background: #0b3a4a url(../assets/hero-van-mobile.webp) 80% 32% / cover no-repeat;
+      }
+      .section-hero-split .hero-art,
+      .section-hero-split .hero-van-panel,
+      .section-hero-split .hero-subnav { display: none; }
+      .section-hero-split .hero-scrim {
+        display: block;
+        background: linear-gradient(180deg,
+          rgba(9,42,55,0.28) 0%, rgba(9,42,55,0.08) 26%, rgba(9,42,55,0.38) 54%,
+          rgba(9,42,55,0.80) 76%, rgba(9,42,55,0.95) 100%);
+      }
+      .section-hero-split .hero-content { position: relative; z-index: 3; width: 100%; padding: 0 6vw 40px; }
+      /* keep each line on one line at a size that fits, so no orphan words wrap off */
+      .section-hero-split .hero-line { white-space: nowrap; }
+      .section-hero-split .display-hero { font-size: clamp(19px, 5.6vw, 28px); }
+      .section-hero-split .hero-content .lead-on-video { font-size: 15px; max-width: 100%; margin-top: 12px; }
+      .section-hero-split .hero-content .cta-row {
+        max-width: 100%; margin-top: 22px; flex-direction: column; align-items: stretch; gap: 12px;
+      }
+      .section-hero-split .cta-row .btn { width: 100%; letter-spacing: 0.06em; font-size: 15px; padding-left: 12px; padding-right: 12px; }
+    }
+    @media (max-width: 560px) {
+      .logo-mark { height: 46px; }
+      .logo-mascot { height: 42px; }
+      .section-hero-split { padding-top: 72px; }
+    }
+
+    /* ---------- Header brand lockup (larger logo, mascot tucked) ---------- */
+    .header-logo { gap: 5px; }
+    .logo-mark { height: 68px; }
+    .logo-mascot { height: 62px; margin-left: -5px; }
+
+    /* ---------- Header nav with hover mega-menu dropdowns ---------- */
+    .header-nav { gap: 16px; align-self: stretch; align-items: stretch; }
+    .nav-item { display: flex; align-items: center; position: relative; }
+    .nav-item > a {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: var(--font-body); font-weight: 700; font-size: 14px;
+      color: var(--charcoal); transition: color 0.2s ease; white-space: nowrap;
+    }
+    .nav-item > a:hover { color: var(--sky-deep); }
+    .nav-item.has-menu > a::after {
+      content: "\25BE"; font-size: 9px; color: var(--muted); transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .nav-item.has-menu:hover > a::after { transform: rotate(180deg); color: var(--orange); }
+    .nav-menu {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: #fff; border: 1px solid var(--hairline); border-radius: 14px;
+      box-shadow: 0 18px 44px rgba(5,8,18,0.16);
+      padding: 12px; min-width: 248px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease; z-index: 300;
+    }
+    .nav-item.has-menu:hover .nav-menu {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-menu .nav-menu-eyebrow {
+      display: block; font-family: var(--font-body); font-weight: 800; font-size: 11px;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange);
+      padding: 4px 14px 8px; border-bottom: 1px solid var(--hairline); margin-bottom: 6px;
+    }
+    .nav-menu a {
+      display: block; padding: 10px 14px; border-radius: 8px;
+      font-family: var(--font-body); font-weight: 600; font-size: 14px;
+      color: var(--charcoal); white-space: nowrap; transition: background 0.15s ease, color 0.15s ease;
+    }
+    .nav-menu a:hover { background: var(--off-sky); color: var(--sky-deep); }
+
+    /* ---------- Compact auto-scrolling testimonials ---------- */
+    .testi-scroll {
+      overflow: hidden; margin-top: 48px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+    .testi-track { display: flex; gap: 20px; width: max-content; animation: testi-scroll 45s linear infinite; }
+    .testi-scroll:hover .testi-track { animation-play-state: paused; }
+    @keyframes testi-scroll { to { transform: translateX(-50%); } }
+    .testi-scroll .testimonial { flex: 0 0 320px; width: 320px; padding: 22px 24px; border-radius: 14px; border-top-width: 3px; }
+    .testi-scroll .stars { font-size: 15px; margin-bottom: 12px; }
+    .testi-scroll .quote { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+    .testi-scroll .testi-meta { padding-top: 12px; gap: 10px; }
+    .testi-scroll .avatar { width: 34px; height: 34px; font-size: 15px; }
+    .testi-scroll .name { font-size: 13px; }
+    .testi-scroll .city { font-size: 10px; }
+
+    /* ---------- Service tiles (6-up: the brief's 6 service lines, 3 across x 2 rows) ---------- */
+    .ac-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+    .ac-tiles-six { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .ac-tiles-six .ac-tile { height: 270px; }
+    .ac-tiles-six .ac-tile-title { font-size: 22px; }
+    .ac-tiles-six .ac-tile-desc { font-size: 13px; }
+    .ac-tiles-six .ac-tile-body { padding: 20px; }
+    @media (max-width: 1100px) { .ac-tiles-six { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .ac-tiles-six { grid-template-columns: 1fr; } }
+
+    /* ---------- Why Choose Us (restored section) ---------- */
+    .section-why { padding: 88px 0; background: var(--off-sky); position: relative; }
+    .section-why .display-h2 { margin-bottom: 18px; text-wrap: balance; }
+    .section-why .check-list { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .section-why .hub-split { align-items: start; }
+
+    /* ---------- Coupon CTA + standalone guarantee line ---------- */
+    .coupon-cta { margin-top: 20px; }
+    .coupon-guarantee.align-center {
+      color: var(--ink);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .coupon-guarantee.align-center::before,
+    .coupon-guarantee.align-center::after {
+      content: ""; width: 40px; height: 2px; background: var(--orange);
+    }
+
+    /* ---------- Family Plan benefit icons (real SVGs, not text glyphs) ---------- */
+    .fp-icon svg { width: 26px; height: 26px; }
+
+    /* ---------- ZIP coverage, collapsed (SEO content without the page-eating wall) ---------- */
+    .zip-details { margin-top: 44px; border-top: 1px solid var(--hairline); padding-top: 22px; }
+    .zip-details > summary.zip-title {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      cursor: pointer; list-style: none;
+      font-family: var(--font-display); font-weight: 900; font-size: 20px;
+      color: var(--ink); text-align: center;
+    }
+    .zip-details > summary.zip-title::-webkit-details-marker { display: none; }
+    .zip-details > summary.zip-title::after {
+      content: "+"; font-family: var(--font-body); font-weight: 700; font-size: 22px; color: var(--orange);
+      transition: transform 0.2s ease;
+    }
+    .zip-details[open] > summary.zip-title::after { transform: rotate(45deg); }
+    .zip-details > summary.zip-title:hover { color: var(--sky-deep); }
+    .zip-details .zip-groups { margin-top: 26px; }
+    .ac-tile {
+      position: relative; display: block; height: 380px; border-radius: 18px; overflow: hidden;
+      text-decoration: none; box-shadow: 0 14px 32px rgba(0,0,0,0.14);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ac-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.2); }
+    .ac-tile-img { position: absolute; top: -8%; left: 0; width: 100%; height: 116%; background-size: cover; background-position: center; will-change: transform; }
+    .ac-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 28%, rgba(0,0,0,0.82) 100%); }
+    .ac-tile-body { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 24px; color: #fff; }
+    .ac-tile-title { font-family: var(--font-display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+    .ac-tile-desc { font-family: var(--font-body); font-size: 14px; line-height: 1.4; opacity: 0.94; }
+    @media (max-width: 1100px) { .ac-tiles { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .ac-tiles { grid-template-columns: 1fr; } }
+
+    /* ---------- Faint parallax section backgrounds ---------- */
+    .section-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .section-bg img { position: absolute; top: -20%; left: 0; width: 100%; height: 140%; object-fit: cover; opacity: 0.10; will-change: transform; }
+
+    /* ---------- About: van image ---------- */
+    .section-about { padding: 64px 0; }
+    .section-about .about-grid { gap: 48px; align-items: center; }
+    .van-frame { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,0.30); }
+    .van-img { position: absolute; top: -8%; left: 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
+    .section-about .about-headline { font-size: clamp(22px, 2.4vw, 36px); line-height: 1.08; margin-bottom: 16px; }
+    .section-about .lead { margin-bottom: 22px; }
+    .section-about .stat-row { margin-bottom: 22px; }
+
+    /* ---------- Featured two-coupon layout (real door-hanger offers, no codes) ---------- */
+    .offers-two { grid-template-columns: repeat(2, minmax(0, 380px)); justify-content: center; align-items: stretch; max-width: 800px; margin-inline: auto; }
+    .coupon-feature .coupon-value { font-size: 56px; }
+    .coupon-feature.coupon-orange { --c: var(--orange); }
+    .coupon-includes { list-style: none; padding: 0; margin: 6px 0 4px; text-align: left; display: grid; gap: 9px; }
+    .coupon-includes li { position: relative; padding-left: 28px; font-family: var(--font-body); font-size: 14px; line-height: 1.3; color: var(--charcoal); }
+    .coupon-includes li::before { content: "\2713"; position: absolute; left: 0; top: 0; font-weight: 900; color: var(--c); }
+    .coupon-includes-label { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.04em; color: var(--charcoal); margin-bottom: 6px; }
+    .coupon-guarantee { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; color: var(--c); margin: 14px 0 0; }
+    @media (max-width: 760px) { .offers-two { grid-template-columns: 1fr; max-width: 380px; } }
+
+    /* ---------- Service area ZIP coverage ---------- */
+    .zip-coverage { position: relative; z-index: 2; margin-top: 48px; }
+    .zip-title { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-size: 22px; letter-spacing: 0.02em; color: var(--charcoal); margin: 0 0 18px; }
+    .zip-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .zip-group { background: #fff; border: 1px solid var(--hairline); border-radius: 14px; padding: 16px 18px; box-shadow: 0 6px 18px rgba(5,8,18,0.05); }
+    .zip-region { font-family: var(--font-body); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sky-deep); margin-bottom: 6px; }
+    .zip-list { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--charcoal); }
+    .zip-catchall { font-family: var(--font-body); font-size: 15px; color: var(--charcoal); margin-top: 22px; }
+    .zip-catchall a { font-weight: 800; color: var(--orange); }
+    @media (max-width: 900px) { .zip-groups { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .zip-groups { grid-template-columns: 1fr; } }
+
+    /* ---------- Contact form consent fine print ---------- */
+    .form-consent { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0 14px; }
+    .form-consent input[type="checkbox"] { flex: 0 0 auto; margin-top: 3px; width: 16px; height: 16px; accent-color: var(--sky-deep); }
+    .form-consent label { font-family: var(--font-body); font-size: 11px; line-height: 1.5; color: var(--muted); font-weight: 400; letter-spacing: 0; text-transform: none; }
+    .form-legal { font-family: var(--font-body); font-size: 11px; color: var(--muted); margin: 12px 0 0; text-align: center; }
+    .form-legal a { color: var(--sky-deep); text-decoration: underline; }
+
+    /* ---------- Footer: landing-style centered ---------- */
+    .footer-centered { background: #232323; color: #fff; text-align: center; padding: 56px 0 40px; }
+    .footer-centered .footer-brand { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 10px; }
+    .footer-centered .footer-logo { height: 46px; width: auto; }
+    .footer-centered .footer-mascot { height: 40px; width: auto; margin-left: -4px; }
+    .footer-name { font-family: var(--font-display); font-weight: 900; font-size: 22px; text-transform: uppercase; color: #fff; margin-bottom: 14px; letter-spacing: -0.01em; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin-bottom: 18px; }
+    .footer-nav a { font-family: var(--font-body); font-weight: 600; font-size: 14px; color: rgba(255,255,255,0.9); transition: color 0.2s ease; }
+    .footer-nav a:hover { color: var(--sun-gold); }
+    .footer-centered .f-phone { font-family: var(--font-display); font-weight: 900; font-size: 20px; color: #fff; margin-bottom: 8px; }
+    .footer-centered .f-line { font-family: var(--font-body); font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 6px; }
+    .footer-centered .f-line a { color: rgba(255,255,255,0.82); }
+    .footer-centered .f-line a:hover { color: var(--sun-gold); }
+    .footer-centered .f-licensed { font-family: var(--font-body); font-weight: 900; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sun-gold); margin: 12px 0; }
+    .footer-centered .f-copy { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ---------- Service tile photo placeholders ----------
+   Four of the six service lines have no photography yet (Plumbing, Drain and
+   Sewers, Water Heaters, Indoor Air Quality). These branded icon panels stand in
+   so the grid reads as deliberate rather than broken. To swap in a real photo,
+   drop the file in assets/services/ and replace the placeholder div with:
+     <div class="ac-tile-img" data-parallax="6" style="background-image:url('...')"></div>
+   Generation prompts: assets/PHOTO-PROMPTS.md */
+.ac-tile-ph {
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.92);
+}
+.ac-tile-ph svg { width: 88px; height: 88px; }
+.ac-tile-ph-sky    { background: linear-gradient(150deg, var(--sky) 0%, var(--sky-deep) 100%); }
+.ac-tile-ph-deep   { background: linear-gradient(150deg, var(--sky-deep) 0%, var(--sky-darker) 100%); }
+.ac-tile-ph-orange { background: linear-gradient(150deg, var(--orange) 0%, #c85f00 100%); }
+.ac-tile-ph-gold   { background: linear-gradient(150deg, var(--yellow) 0%, var(--orange) 100%); }
+
+/* ---------- Body copy: constrained measure, LEFT aligned, block centered ----------
+   These paragraphs were centre-aligned. Centring is fine for a line or two, but a
+   4-6 line paragraph centred gives a ragged left edge that is measurably harder to
+   read. Keep the block centred in the section; keep the text left-aligned. */
+.hub-prose.align-center {
+  max-width: 760px; margin-left: auto; margin-right: auto;
+  text-align: left !important;
+}
+.section-services .lead.align-center {
+  max-width: 780px; margin-left: auto; margin-right: auto;
+  text-align: left;
+}
+
+/* The intro band was floating in a large empty void. Tighten it and let it sit
+   closer to the hero it is explaining. */
+#intro.section-hub { padding: 72px 0 64px; }
+
+/* ---------- Intro: same 3 paragraphs on a white card floating over the mountains ---------- */
+/* Bring the mountain backdrop forward a touch so the card has something to float over. */
+#intro.section-hub .section-bg-faint img { opacity: 0.26; }
+.section-intro .intro-prose {
+  max-width: 880px; margin: 0 auto; position: relative; z-index: 1; overflow: visible;
+  background: #fff; border-radius: 22px; padding: 76px 54px 48px;
+  box-shadow: 0 28px 64px rgba(5,8,18,0.16);
+  border: 1px solid var(--hairline);
+}
+/* brand mark pinned to the top-left, hanging outside the card edge (mirrors the mascot on the right) */
+.section-intro .intro-logo {
+  position: absolute; top: -42px; left: -8px; width: 190px; height: auto; z-index: 5;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.20));
+}
+/* mascot stands just past the card's right edge (clear of the text), in the scene */
+.section-intro { overflow: hidden; }
+.section-intro .intro-mascot {
+  position: absolute; right: -104px; bottom: 6px; width: 150px; height: auto; z-index: 4;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,0.22)); pointer-events: none;
+}
+@media (max-width: 900px) {
+  .section-intro .intro-mascot { right: -70px; width: 120px; }
+}
+@media (max-width: 640px) {
+  .section-intro .intro-logo { width: 140px; top: -30px; left: 50%; transform: translateX(-50%); }
+  .section-intro .intro-mascot { display: block; width: 88px; height: auto; right: 12px; left: auto; bottom: -30px; }
+  /* match the plain hub/city intro tiles: no enlarged lead paragraph on mobile */
+  .section-intro .intro-lead { font-size: 17px; font-weight: 400; color: var(--ink); line-height: 1.72; }
+}
+.section-intro .intro-prose p { font-size: 17px; line-height: 1.72; color: var(--ink); margin-bottom: 18px; }
+.section-intro .intro-prose p:last-child { margin-bottom: 0; }
+.section-intro .intro-lead {
+  font-size: clamp(21px, 2.1vw, 26px); line-height: 1.5; font-weight: 500; color: var(--charcoal);
+  margin-bottom: 22px;
+}
+
+/* ---------- Framed intro card (brand logo + mascot) on all hub/child/city/about intro sections.
+   Applied via pseudo-elements so no per-page HTML edits are needed. The homepage intro
+   (.intro-prose) keeps its own <img> version, so it is excluded with :not(.intro-prose). ---------- */
+#intro.section-hub { overflow: hidden; }
+#intro.section-hub .hub-prose:not(.intro-prose) {
+  position: relative; z-index: 1; max-width: 880px; margin: 0 auto;
+  background: #fff; border: 1px solid var(--hairline); border-radius: 22px;
+  padding: 76px 54px 48px; box-shadow: 0 28px 64px rgba(5,8,18,0.16);
+}
+/* When a section heading sits directly above the card, drop the card so the
+   pinned logo clears the heading instead of overlapping it. */
+#intro.section-hub h2 + .hub-prose:not(.intro-prose) { margin-top: 56px; }
+@media (max-width: 640px) {
+  #intro.section-hub h2 + .hub-prose:not(.intro-prose) { margin-top: 44px; }
+}
+#intro.section-hub .hub-prose:not(.intro-prose)::before {
+  content: ""; position: absolute; top: -42px; left: -8px; width: 190px; height: 98px; z-index: 5;
+  background: url(../assets/sunny-logo.png) no-repeat left center; background-size: contain;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.20));
+}
+#intro.section-hub .hub-prose:not(.intro-prose)::after {
+  content: ""; position: absolute; right: -104px; bottom: 6px; width: 150px; height: 172px; z-index: 4;
+  background: url(../assets/sunny-mascot.png) no-repeat center; background-size: contain;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,0.22));
+}
+@media (max-width: 900px) {
+  #intro.section-hub .hub-prose:not(.intro-prose)::after { right: -70px; width: 120px; height: 137px; }
+}
+@media (max-width: 640px) {
+  #intro.section-hub .hub-prose:not(.intro-prose) { padding: 66px 22px 62px; }
+  #intro.section-hub .hub-prose:not(.intro-prose)::before { width: 140px; height: 73px; top: -30px; left: 50%; transform: translateX(-50%); }
+  #intro.section-hub .hub-prose:not(.intro-prose)::after { display: block; width: 88px; height: 101px; right: 12px; left: auto; bottom: -30px; }
+}
+@media (max-width: 640px) {
+  .section-intro .intro-prose { padding: 66px 22px 62px; border-radius: 18px; }
+}
+
+/* Tile caption breathing room (the description was crowding the scrim) */
+.ac-tile-body { padding: 26px 24px 22px; }
+.ac-tile-desc { line-height: 1.5; }
+
+/* ---------- Service Areas ----------
+   The brief's heading ("Proudly Serving West Jordan and the Surrounding Wasatch
+   Front Areas") is long and was wrapping to 5 lines at display-h1 size, swallowing
+   the section. Step it down and let it wrap on its own terms. */
+.section-areas .display-h1 {
+  font-size: clamp(28px, 3.0vw, 44px);
+  line-height: 1.08;
+  text-wrap: balance;
+  margin-bottom: 16px;
+}
+.map-wrap { min-height: 320px; }
+
+/* ---------- Why Choose Us media placeholder ----------
+   The previous image was an AI re-skin of a third-party photo (see PHOTO-PROMPTS.md),
+   removed pending clean photography. */
+.why-media-ph {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; aspect-ratio: 4 / 3; border-radius: 18px;
+  background: linear-gradient(150deg, var(--sky) 0%, var(--sky-deep) 100%);
+  box-shadow: 0 18px 40px rgba(5,8,18,0.22);
+}
+.why-media-ph img { width: 42%; max-width: 220px; height: auto; }
+
+/* ---------- Section background opacity variants ----------
+   .section-bg (sunny-engine.css) defaults its img to opacity .10 with a parallax
+   overscan. These tune it per surface: faint on white/tinted, soft for whisper-level,
+   dark for image-under-color sections (Family Plan), where a brand overlay keeps
+   text contrast. */
+.section-bg-faint img { opacity: 0.08; }
+.section-bg-soft  img { opacity: 0.05; }
+.section-bg-dark  img { opacity: 0.16; }
+.section-bg-dark::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(2,136,168,0.55), rgba(3,166,204,0.35));
+}
+/* container content must sit above the bg layer on hub sections */
+.section-hub > .container { position: relative; z-index: 1; }
+
+/* ---------- About: van covers the left half, gradient carries it into the teal ----------
+   The van photo sits full-bleed against the section's left edge; a gradient on its
+   right edge dissolves into the section teal so the copy column stays readable. */
+.about-van-split { overflow: hidden; }
+.about-van-bg {
+  position: absolute; top: 0; bottom: 0; left: 0;
+  z-index: 0; overflow: hidden; pointer-events: none;
+}
+/* The van asset is outpainted to 4:3 so cover fills the section band while keeping
+   the whole van in frame. */
+.about-van-bg img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  will-change: transform;
+}
+.about-van-bg { width: 52%; }
+.about-van-bg::after {
+  content: ""; position: absolute; inset: 0;
+  /* end color MUST equal .section-about's background (--sky-deep) or a seam shows */
+  background: linear-gradient(90deg,
+    rgba(3,166,204,0.10) 0%,
+    rgba(3,166,204,0.18) 35%,
+    rgba(3,166,204,0.55) 68%,
+    rgba(3,166,204,0.88) 88%,
+    var(--sky-deep) 100%);
+}
+/* subtle bottom anchor so the van doesn't hard-stop at the section edge */
+.about-van-bg::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; z-index: 1;
+  background: linear-gradient(180deg, rgba(3,166,204,0) 0%, rgba(3,166,204,0.45) 100%);
+}
+.about-van-split .about-grid {
+  position: relative; z-index: 1;
+  grid-template-columns: 0.85fr 1.15fr; gap: 48px;
+}
+.about-van-split .about-left { min-height: 380px; }
+@media (max-width: 900px) {
+  .about-van-bg { position: relative; width: 100%; height: 260px; }
+  .about-van-split .about-left { display: none; }
+}
+
+/* ---------- Coupons: heavier ticket treatment ---------- */
+.coupon {
+  border-width: 3px;
+  border-style: dashed;
+  box-shadow: 0 0 0 5px #fff, 0 0 0 6px var(--c, var(--sky)), 0 14px 30px rgba(35,39,43,0.12);
+}
+.coupon .coupon-perf { border-top-width: 3px; }
+.offers { gap: 34px; }
+
+
+/* ---------- About stat cards: solid surfaces so they stay legible over the teal ---------- */
+.about-van-split .stat-card {
+  background: rgba(2, 102, 127, 0.55);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 12px;
+  backdrop-filter: blur(3px);
+}
+.about-van-split .stat-big { color: var(--white); }
+.about-van-split .stat-lbl { color: var(--yellow); }
+
+/* ---------- Offers: compact horizontal ticket layout ----------
+   The stacked value + list + CTA made the section very tall. Each coupon is now a
+   two-column ticket: value block left, includes list + CTA right. */
+.offers-two {
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  justify-content: center;
+  max-width: 1100px;
+  margin-left: auto; margin-right: auto;
+}
+.coupon-feature {
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 0 22px;
+  align-items: center;
+  text-align: left;
+  padding: 24px 24px 22px;
+}
+.coupon-feature .coupon-value { font-size: 46px; margin: 0; }
+.coupon-feature .coupon-desc { font-size: 13px; margin: 4px 0 0; }
+.coupon-feature .coupon-perf {
+  grid-column: 1; grid-row: 3;
+  border-top: none;
+  margin: 0;
+}
+.coupon-feature > .coupon-value,
+.coupon-feature > .coupon-desc { grid-column: 1; }
+.coupon-feature .coupon-includes-label { grid-column: 2; grid-row: 1; margin: 0 0 2px; }
+.coupon-feature .coupon-includes { grid-column: 2; grid-row: 2 / span 2; margin: 0; gap: 6px; }
+.coupon-feature .coupon-cta { grid-column: 1 / -1; grid-row: 4; margin-top: 16px; }
+/* value block gets its own perforated right edge */
+.coupon-feature .coupon-value,
+.coupon-feature .coupon-desc { position: relative; }
+.coupon-feature::before {
+  content: ""; position: absolute; top: 20px; bottom: 68px; left: 186px;
+  border-left: 3px dashed var(--c, var(--sky));
+  opacity: 0.55;
+}
+@media (max-width: 900px) {
+  .offers-two { grid-template-columns: 1fr; }
+}
+
+
+/* ---------- Why Choose Us: balance the split ----------
+   The 5-item checklist runs much taller than a 4:3 image, leaving the media column
+   floating in space. The image now stretches to match the text column height, and
+   the checklist is tightened so the section reads as one balanced block. */
+.section-why .hub-split { align-items: stretch; }
+.section-why .hub-split-media {
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 100%;
+  align-self: stretch;
+}
+.section-why .check-list { gap: 10px; }
+.section-why .check-text { font-size: 15px; line-height: 1.5; }
+.section-why .check-badge { transform: scale(0.92); }
+.section-why .hub-prose p { font-size: 16px; line-height: 1.6; margin-bottom: 14px; }
+
+/* ---------- Coupons: bigger, more visual price; everything fits the frame ---------- */
+.coupon-feature { grid-template-columns: 210px 1fr; }
+.coupon-feature::before { left: 232px; }
+.coupon-feature .coupon-value {
+  font-size: 84px;
+  line-height: 0.9;
+  color: var(--c, var(--sky));
+  text-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+.coupon-feature .coupon-desc {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.coupon-feature .coupon-includes { gap: 5px; }
+.coupon-feature .coupon-includes li { font-size: 13px; line-height: 1.35; }
+.coupon-feature .coupon-includes-label { font-size: 12px; }
+
+/* ---------- Offers page: 3-up coupon grid ----------
+   Reuses the .coupon ticket (dashed border, perforation, --c accent).
+   .coupon-card is the vertical variant; .coupon-feature stays the 2-up horizontal one. */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  align-items: stretch;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0;
+  overflow: hidden;
+}
+/* readable ink + a soft tint behind the number, per accent */
+.coupon-card.coupon-sky    { --c-ink: var(--sky-darker); --c-tint: var(--off-sky); }
+.coupon-card.coupon-orange { --c-ink: var(--orange);     --c-tint: #FFF3D6; }
+
+.coupon-head {
+  background: var(--c-tint);
+  padding: 34px 24px 24px;
+}
+.coupon-card .coupon-value {
+  font-size: clamp(54px, 4.6vw, 68px);
+  line-height: 0.95;
+  color: var(--c-ink);
+  margin: 0 0 10px;
+  letter-spacing: -0.03em;
+}
+.coupon-card .coupon-value-sm { font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; }
+.coupon-card .coupon-desc {
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: var(--charcoal);
+  margin: 0;
+}
+.coupon-card .coupon-perf { margin: 0; border-top-color: var(--c); }
+.coupon-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 24px 26px;
+}
+.coupon-card .coupon-note {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  margin: 0 0 20px;
+}
+.coupon-card .coupon-includes { margin: 0 0 20px; }
+.coupon-card .coupon-includes li { font-size: 14.5px; line-height: 1.45; }
+.coupon-card .coupon-includes-label { font-size: 14px; margin-bottom: 10px; }
+.coupon-card .coupon-cta { margin-top: auto; }
+@media (max-width: 1000px) { .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 660px)  { .offers-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Homepage: offers marquee ----------
+   Ticket-shaped chips: a value stub, a dashed tear line, and semicircular
+   notches cut out of both edges. The notches are a mask so they read as real
+   cut-outs over the section photo; the shadow lives on a wrapper using
+   drop-shadow so it follows the notched silhouette instead of a plain box. */
+.offers-marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  padding: 10px 0 14px;
+}
+.offers-marquee .marquee-track { gap: 26px; align-items: stretch; }
+
+.offer-chip-wrap {
+  flex: 0 0 auto;
+  filter: drop-shadow(0 10px 16px rgba(35, 39, 43, 0.20));
+}
+.offer-chip {
+  --notch: 13px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  width: 356px;
+  min-height: 158px;
+  border-radius: 14px;
+  background: var(--c-tint);
+  border: 2px dashed var(--c);
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000 100%),
+    radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000 100%),
+    radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000 100%);
+  mask-composite: intersect;
+}
+.offer-chip.is-sky  { --c: var(--sky);    --c-ink: var(--sky-darker); --c-tint: var(--off-sky); }
+.offer-chip.is-gold { --c: var(--yellow); --c-ink: var(--orange);     --c-tint: #FFF3D6; }
+
+.offer-chip-stub {
+  border-right: 2px dashed var(--c);
+  padding: 18px 10px;
+  overflow: hidden;
+  text-align: center;
+}
+.offer-chip-main {
+  padding: 18px 18px 18px 16px;
+}
+.offer-chip-value {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--c-ink);
+  white-space: nowrap;
+}
+.offer-chip-value.is-small { font-size: 25px; line-height: 1.15; }
+.offer-chip-value.is-med   { font-size: 40px; }
+.offer-chip-value.is-long  { font-size: 32px; }
+.offer-chip-label {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+.offers-marquee-cta { margin-top: 26px; }
+
+/* the intro sentence should hold one line on desktop */
+.section-specials .lead.align-center { max-width: 820px; }
+
+@media (max-width: 700px) {
+  .offer-chip { width: 300px; min-height: 142px; grid-template-columns: 120px 1fr; }
+  .offer-chip-value { font-size: 40px; }
+  .offer-chip-label { font-size: 13.5px; }
+}
+
+/* ============================================================
+   MOBILE POLISH  (audited at 360 / 390 / 430, September 30, 2026)
+   Fixes found by measuring the live site and this build on real
+   device emulation, not by eye. Scoped to phones so desktop is
+   untouched.
+   ============================================================ */
+@media (max-width: 700px) {
+
+  /* 1. Tap targets. 412 links measured under Apple's 44px minimum,
+        almost all in the footer. Calling is the primary action on a
+        home services site, so the phone and email links matter most. */
+  .footer-nav a,
+  footer .footer-col a,
+  footer .footer-links a {
+    display: inline-block;
+    padding: 11px 6px;
+    line-height: 1.25;
+  }
+  .hub-crumb a {
+    display: inline-block;
+    padding: 9px 3px;
+  }
+  footer .f-phone a,
+  footer .f-line a,
+  footer .f-licensed a {
+    display: inline-block;
+    padding: 10px 4px;
+  }
+  /* the consent fine print under the contact form, and any bare inline
+     link inside a contact/locations block */
+  .form-legal a,
+  .form-consent a,
+  .cf-fineprint a,
+  .contact-form-note a { font-size: 12px; display: inline-block; padding: 9px 3px; }
+  #locations a[href^="tel:"] { display: inline-block; padding: 9px 2px; }
+
+  a.info-value-big,
+  a.info-value {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 6px 0;
+  }
+  .contact-consent input[type="checkbox"],
+  #cf-consent {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+  a.city-pill, span.city-pill { padding: 14px 10px; }
+
+  /* 2. Legibility. Uppercase letterspaced micro-labels drift to 10-11px,
+        which is below the 12px floor once letter-spacing is applied. */
+  .stat-lbl,
+  .info-label,
+  .map-overlay-sub,
+  .gform-field-label__text,
+  .phone-meta { font-size: 12px; }
+  .city-pill { font-size: 12px; letter-spacing: 0.12em; }
+  .contact-form label,
+  .cf-consent label,
+  form label { font-size: 12px; }
+
+  /* 3. Offers marquee. At 393px only one ticket fits, so the auto-scroll
+        left the price stub half off-screen at almost every moment. On
+        phones it becomes a swipeable, snapping carousel instead: the
+        animation is skipped in JS, the duplicate loop set is hidden so
+        offers are not announced twice, and each ticket snaps fully
+        into view. */
+  /* keeps scrolling on phones, same as desktop. The ticket is narrowed so a
+     whole coupon is readable as it passes instead of the price stub sitting
+     half off-screen, and the edge fade is tightened so less is hidden. */
+  .offers-marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  }
+  .offers-marquee .marquee-track { gap: 14px; }
+  .offers-marquee .offer-chip {
+    width: 246px;
+    min-height: 118px;
+    grid-template-columns: 96px 1fr;
+  }
+  .offers-marquee .offer-chip-value { font-size: 30px; }
+  .offers-marquee .offer-chip-value.is-med  { font-size: 25px; }
+  .offers-marquee .offer-chip-value.is-long { font-size: 20px; }
+  .offers-marquee .offer-chip-value.is-small{ font-size: 15px; }
+  .offers-marquee .offer-chip-label { font-size: 12px; letter-spacing: 0.02em; }
+  .offers-marquee .offer-chip-stub { padding: 14px 8px; }
+  .offers-marquee .offer-chip-main { padding: 14px 12px 14px 10px; }
+
+  /* 3b. Orphan words. Headings were dropping a single short word onto the
+        last line ("call." at 34px against a 356px line). text-wrap balance
+        evens the lines out and pretty specifically prevents a lone last
+        word. Both are mobile-only, so desktop line breaks are untouched. */
+  h1, h2, h3, h4,
+  .display-hero, .display-h1, .display-h2,
+  .ac-tile-title, .offer-chip-label, .coupon-desc {
+    text-wrap: balance;
+  }
+  p, .lead, .hub-prose p, .coupon-note, .ac-tile-desc {
+    text-wrap: pretty;
+  }
+
+  /* 4. CTA rows. Measured 33 of 84 pages pushing a button off-screen at
+        360px: two buttons sharing one flex row cannot hold a label like
+        "Get Same-Day Heating Service". Each gets its own full-width row,
+        and labels wrap instead of being silently cut. */
+  .cta-row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+  }
+  /* the homepage hero sits in a 6vw gutter while every other section uses the
+     16px container gutter, so its buttons came out narrower than the rest of
+     the page. Pull the hero CTA row out to the same edge so every button down
+     the page is the same width. */
+  .section-hero-split .hero-content .cta-row {
+    align-items: center;
+    max-width: none;
+    margin-left: calc(16px - 6vw);
+    margin-right: calc(16px - 6vw);
+  }
+  .cta-row .btn {
+    width: 100%;
+    max-width: 420px;
+    white-space: normal;
+    line-height: 1.25;
+    text-align: center;
+  }
+  /* centre the CTA block itself, not just the text inside the buttons, so
+     rows sitting in a left-aligned column line up with the ones that do not */
+  .hub-prose + .cta-row,
+  .areas-left .cta-row,
+  .hub-split .cta-row,
+  .section-why .cta-row { margin-left: auto; margin-right: auto; }
+}
+
+/* ---------- Shrink-on-scroll header (phones only) ----------
+   The logo was 68px inside a 72px header, so the brand ate nearly the whole
+   bar. It now starts large and shrinks once the page scrolls, giving the
+   content more room without losing the brand at the top. The `is-shrunk`
+   class is added by sunny-engine.js and only ever on phones. */
+@media (max-width: 700px) {
+  .site-header {
+    height: 86px;
+    transition: height .26s ease, box-shadow .26s ease;
+    will-change: height;
+  }
+  .logo-mark   { height: 58px; transition: height .26s ease; }
+  .logo-mascot { height: 52px; transition: height .26s ease; }
+
+  .site-header.is-shrunk { height: 58px; box-shadow: 0 4px 14px rgba(14,30,50,.10); }
+  .site-header.is-shrunk .logo-mark   { height: 36px; }
+  .site-header.is-shrunk .logo-mascot { height: 32px; }
+
+  /* the drawer hangs off the header, so it has to follow the new height */
+  .mobile-menu { inset: 86px 0 0 0; transition: inset .26s ease; }
+  .site-header.is-shrunk ~ .mobile-menu,
+  .site-header.is-shrunk + .mobile-menu { inset: 58px 0 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .logo-mark, .logo-mascot, .mobile-menu { transition: none; }
+}
