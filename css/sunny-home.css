@@ -575,7 +575,11 @@
    .coupon-card is the vertical variant; .coupon-feature stays the 2-up horizontal one. */
 .offers-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* auto-fit rather than a fixed 3 columns: the offers page runs 9 coupons and
+     still fills three per row, while a landing page running 2 centres them
+     instead of leaving an empty third column on the right. */
+  grid-template-columns: repeat(auto-fit, minmax(290px, 356px));
+  justify-content: center;
   gap: 30px;
   align-items: stretch;
   max-width: 1160px;
@@ -630,7 +634,12 @@
 .coupon-card .coupon-includes li { font-size: 14.5px; line-height: 1.45; }
 .coupon-card .coupon-includes-label { font-size: 14px; margin-bottom: 10px; }
 .coupon-card .coupon-cta { margin-top: auto; }
-@media (max-width: 1000px) { .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1000px) {
+  .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* an odd number of coupons leaves the last one alone in a two-column row.
+     Centre it across both columns rather than letting it sit ragged left. */
+  .offers-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: 356px; max-width: 100%; }
+}
 @media (max-width: 660px)  { .offers-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Homepage: offers marquee ----------
