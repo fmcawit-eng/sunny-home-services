@@ -1,0 +1,374 @@
+/* Map container */
+.map_slid #map {
+            height: 500px;
+            width: 100%;
+        }
+
+        /* Custom popup content styling */
+        .map_slid .info-window {
+            width:100%;
+        }
+
+       
+        .map_slid .info-window .content {
+            padding: 10px;
+        }
+
+       .map_slid .info-window h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .map_slid .info-window p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .map_slid .info-window .metadata {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+		.map_slid .gm-style .gm-style-iw-c{
+		    width: 380px;
+			padding:5px;
+			    position: absolute;
+    top: .25rem;
+    right: .25rem;
+		}
+		.map_slid .gm-ui-hover-effect{
+		width:auto!important;
+		height:auto!important;
+		}
+		.map_slid .gm-ui-hover-effect span{
+		    width: 20px!important;
+    height: 20px!important;
+    margin: 5px!important;
+		}
+ 
+.map_slid .locallegend-swiper{
+    float: left;
+    margin: 25px 0px;
+    width: 100%;
+}
+.map_slid .owl-item {
+  height: auto!important; /* Adjust this value as needed */
+  display: flex;
+}
+.map_slid .item {
+    width: 100%;
+}
+.map_slid .card-content img{
+float:left;
+width:100%;
+}
+.fullmap_legend{
+float: left;
+display: flex;
+width: 100%;
+}
+.fullmap_legend iframe{
+    height: 500px;
+    width: 58%;
+}
+/* Make the modal full screen */
+.map_slid .modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 999999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Darker background for gallery effect */
+}
+
+.map_slid .modal-content {
+ background-color: transparent!important;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%; /* Full width */
+  height: 100%; /* Full height */
+  max-width: none; /* Remove the width limit */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.map_slid .card-content{
+    padding: .5rem;
+    font-family: Arial, sans-serif;
+    position: relative;
+display: flex;
+    height: -moz-fit-content;
+    height: fit-content;
+    cursor: pointer;
+    flex-direction: column;
+    border-radius: .75rem;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+
+}
+.map_slid .modal-content #modal-content-wrapper{
+    max-width: 36rem;
+}
+
+/*.card-content img {
+    width: 100%;
+    border-radius: .75rem;
+    height: 200px;
+    object-fit: cover;
+    object-position: top center;
+}*/
+
+/* Style the close button */
+.map_slid .close svg{
+    width: 80px;
+    height: 80px;
+    fill: #fff;
+    color: #fff;
+}
+.map_slid .close{
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Move close button to the right */
+  font-size: 32px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.map_slid .close:hover, .close:focus {
+}
+.map_slid .owl-dots{
+display:none!important;
+}
+.map_slid .img_up{
+z-index: 10;
+box-sizing: border-box;
+display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+    width: 100%;
+    padding: .5rem 1rem;
+}
+.map_slid .bott_content{
+display: flex;
+flex-direction: column;
+padding: 1rem 1rem .375rem;
+}
+.bott_content p{
+overflow: hidden;
+    display: block;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: none;
+    height: 85px;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color:#000!important;
+    text-align: left !important;
+}
+.map_slid #modal-content-wrapper .bott_content p {
+    overflow: visible!important;
+    display: block;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: none;
+    height: auto!important;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color: #000;
+    text-align: left !important;
+}
+.map_slid .bott_content .card-meta{
+margin-top: auto;
+    box-sizing: border-box;
+    display: flex;
+    height: 4.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+.map_slid .top_sec{
+position: relative;
+display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    height: 11rem;
+}
+.map_slid .top_sec_1{
+position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;	
+}
+.map_slid .top_sec_2{
+position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: .75rem;
+    --tw-bg-opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: .3s ease;
+    transition-property: opacity;	
+}
+.map_slid .top_sec_2 img{
+position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    text-align: center;
+}
+.map_slid .top_sec_2:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, .5) 80%);
+}
+.map_slid .img_up_left{
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: .5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    color: #fff;
+    text-align: left!important;
+}
+.map_slid .img_up_right{
+    white-space: nowrap;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color: #fff;
+    text-align: right !important;
+}
+.map_slid .card-meta span svg{
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    float: left;
+}
+.map_slid .card-meta span{
+box-sizing: border-box;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: .375rem .5rem;
+    color: #3d454d;
+    opacity: .65;
+    padding-left: 0;
+    font-size: .75rem;
+    line-height: 1;
+}
+.map_slid .card-meta span.loc{
+    padding-left: .5rem;
+    opacity: 1;
+}
+.map_slid .swiper-button-prev, .map_slid .swiper-button-next{
+}
+.map_slid .swiper-button-next::after{
+    content: 'next' !important;
+	font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    background: #fff !important;
+    padding: 8px 5px 5px 9px !important;
+    border-radius: 100%;
+    border: 1px solid #dcdcdc;
+    float: left;
+    width: 24px;
+    height: 12px;
+    line-height: 8px;
+}
+.map_slid .swiper-button-prev::after {
+     content: 'prev' !important;
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    background: #fff !important;
+    padding: 8px 5px 5px 7px !important;
+    border-radius: 100%;
+    border: 1px solid #dcdcdc;
+    float: left;
+    width: 24px;
+    height: 12px;
+    line-height: 8px;
+}
+.map_slid .owl-slider .owl-carousel .owl-nav button span{
+    background: #fff !important;
+    padding: 6px !important;
+    border-radius: 100%;
+    border: 1px solid #dcdcdc;
+    float: left;
+    line-height: 9px;
+}
+.custom-marker img {
+    display: block;
+}
+
+.cluster-marker {
+    background: #1a73e8;
+    color: #fff;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 0 4px rgba(26,115,232,.3);
+    cursor: pointer;
+}
+#map,
+.gm-style,
+.gmp-map {
+    content-visibility: visible !important;
+    contain: none !important;
+}
+
+@media screen and (max-width: 767px) {
+.map_slid .close svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+    color: #fff;
+}
+.fullmap_legend{
+float: left;
+display: block;
+width: 100%;
+}
+.fullmap_legend iframe{
+  height: 300px;
+    width: 100%;
+    margin-bottom: -10px;
+}
+}

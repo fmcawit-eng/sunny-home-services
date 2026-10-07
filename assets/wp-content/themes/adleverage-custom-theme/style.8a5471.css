@@ -1,0 +1,51 @@
+/*
+Theme Name: Adleverage Custom Theme
+Theme URI: https://adleverage.com/adleverage-custom-theme
+Author: Nagender
+Author URI: https://adleverage.com
+Description: A modern, lightweight, block-ready WordPress custom theme for Adleverage, built following the latest WordPress 6.x standards with full PHP 8.3+ compatibility, shortcodes, plugins, theme.json v3, Full Site Editing, and responsive layout support.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: adleverage-custom-theme
+Tags: block-patterns, full-site-editing, custom-colors, custom-menu, featured-images, responsive-layout, translation-ready
+
+All custom CSS is defined via theme.json or assets/css/main.css.
+*/
+
+/* Accessibility Screen Reader Text */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #ffffff;
+	border-radius: 4px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #000000;
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
