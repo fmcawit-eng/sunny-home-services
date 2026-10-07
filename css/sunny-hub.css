@@ -315,24 +315,3 @@
   .hub-hero { min-height: 420px; padding: 100px 0 64px; }
   .section-hub { padding: 64px 0; }
 }
-
-/* Landing-page hero: an optional body paragraph under the sub-line. It sits on
-   the dark hero image, so it has to be light; .hub-prose is charcoal and was
-   unreadable there. */
-.hub-hero-body {
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.2vw, 17px);
-  line-height: 1.6;
-  color: var(--white);
-  opacity: 0.92;
-  max-width: 620px;
-  margin: -14px 0 26px;
-}
-.hub-hero-eyebrow {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: var(--yellow);
-  margin-bottom: 10px;
-}
