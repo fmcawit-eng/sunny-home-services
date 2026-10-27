@@ -12,7 +12,7 @@
 
     @font-face {
       font-family: 'Rubik Test Medium';
-      src: url('assets/fonts/rubik-500.woff2') format('woff2');
+      src: url('../assets/fonts/rubik-500.woff2') format('woff2');
       font-weight: 100 900; font-style: normal; font-display: swap;
     }
     /* Colors come from the single :root token block in css/sunny-engine.css.
