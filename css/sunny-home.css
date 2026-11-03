@@ -278,8 +278,9 @@
     .footer-centered .f-line a { color: rgba(255,255,255,0.82); }
     .footer-centered .f-line a:hover { color: var(--sun-gold); }
     .footer-centered .f-social { display: flex; justify-content: center; gap: 14px; margin: 16px 0 4px; }
-    .footer-centered .f-social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; color: rgba(255,255,255,0.82); background: rgba(255,255,255,0.08); transition: color .2s, background .2s; }
-    .footer-centered .f-social a:hover { color: #232323; background: var(--sun-gold); }
+    .footer-centered .f-social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 10px; transition: transform .2s, opacity .2s; }
+    .footer-centered .f-social a:hover { transform: translateY(-2px); opacity: 0.88; }
+    .footer-centered .f-social svg { display: block; }
     .footer-centered .f-license { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
     .footer-centered .f-licensed { font-family: var(--font-body); font-weight: 900; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sun-gold); margin: 12px 0; }
     .footer-centered .f-copy { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.5); }
