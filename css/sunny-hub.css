@@ -420,3 +420,67 @@
   .article-author-photo { width: 96px; height: 96px; }
   .article-lede { font-size: 17px; }
 }
+
+
+/* ---------------------------------------------------------------------------
+   Blog article pages.
+   The supplied blog graphics already carry the headline inside the artwork, so
+   the image sits on its own and the H1 goes in a band underneath it. Overlaying
+   the H1 on the image would print the title twice.
+   --------------------------------------------------------------------------- */
+.post-hero { background: #232323; }
+.post-hero-media { max-width: 1240px; margin: 0 auto; }
+.post-hero-media img { display: block; width: 100%; height: auto; }
+
+.post-head { padding-top: 34px; }
+.post-head .hub-crumb { margin-bottom: 14px; }
+.post-head h1 { margin: 0 0 12px; }
+.post-head .post-meta { margin: 0 0 22px; }
+.post-head .cta-row { margin-top: 4px; }
+
+.article-body .hub-card-list { margin: 16px 0 0; padding-left: 0; list-style: none; }
+.article-body .hub-card-list li { position: relative; padding-left: 26px; margin-bottom: 10px; }
+.article-body .hub-card-list li::before {
+  content: "\2713";
+  position: absolute; left: 0; top: 0;
+  color: var(--sun-gold); font-weight: 900;
+}
+.article-body h4 {
+  font-family: var(--font-body); font-weight: 900; font-size: 15px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  margin: 18px 0 6px; color: var(--ink-soft, #555);
+}
+@media (max-width: 640px) { .post-head { padding-top: 24px; } }
+
+
+/* The newest post runs full width so the remaining twelve fill the three-column
+   grid exactly, with no half-empty last row. */
+.hub-card.is-featured { grid-column: 1 / -1; }
+@media (min-width: 981px) {
+  .hub-card.is-featured { display: grid; grid-template-columns: 1.15fr 1fr; align-items: stretch; }
+  .hub-card.is-featured .hub-card-media { height: 100%; }
+  .hub-card.is-featured .hub-card-media img { height: 100%; object-fit: cover; }
+  .hub-card.is-featured .hub-card-body { align-self: center; padding: 30px 34px; }
+  .hub-card.is-featured .hub-card-title { font-size: 26px; line-height: 1.2; }
+}
+
+
+/* The post-head band sits on white, but .hub-crumb and .btn-outline-light are
+   both built for a dark hero, so they render white on white. Re-colour them
+   for this band only. */
+.post-head .hub-crumb,
+.post-head .hub-crumb span { color: #5a5a5a; opacity: 1; }
+.post-head .hub-crumb a { color: #5a5a5a; text-decoration: underline; }
+.post-head .hub-crumb a:hover { color: var(--sun-orange, #f6861f); }
+.post-head .hub-crumb .breadcrumb_last { color: #232323; font-weight: 700; }
+.post-head .btn-outline-light {
+  color: #232323;
+  border-color: #232323;
+}
+.post-head .btn-outline-light:hover { color: #fff; background: #232323; }
+
+
+/* post-head already carries bottom padding, so the article section that follows
+   it does not need its full top padding as well. */
+.post-head { padding-bottom: 10px; }
+.post-head + .section-hub { padding-top: 26px; }

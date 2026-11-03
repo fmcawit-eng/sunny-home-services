@@ -1,19 +1,29 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- ===================================================================
+       BLOG POST TEMPLATE
+       Duplicate this file for each new article, rename it blog-<slug>.html,
+       and work top to bottom through the SWAP notes.
+
+       Everything marked SWAP changes per post.
+       Everything marked KEEP is the same on every post; leave it alone.
+
+       The slug comes from the content brief ("URL Slug"), minus /blog/.
+       A worked example to compare against:
+         blog-prevent-frozen-pipes-in-west-jordan.html
+       =================================================================== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Article Title | Sunny Home Services</title>
-  <meta name="description" content="One-sentence summary of the article. Replace before publishing.">
-  <!-- Production URL: https://sunnyhomeservices.com/plumber/sewer-line-repair/ -->
+  <title>BLOG TEMPLATE &mdash; replace this title | Sunny Home Services</title>
+  <meta name="description" content="SWAP: the meta description from the content brief, about 155 characters.">
+  <!-- Production URL: https://sunnyhomeservices.com/blog/SLUG-FROM-BRIEF/ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/sunny-engine.css?v=6">
   <link rel="stylesheet" href="css/sunny-landing.css?v=6">
   <link rel="stylesheet" href="css/sunny-hub.css?v=4">
-  <!-- Shared homepage design layer: same file the homepage loads, so every page
-       stays one design system. -->
   <link rel="stylesheet" href="css/sunny-home.css?v=1">
 </head>
 <body>
@@ -104,117 +114,130 @@
       <a class="btn btn-primary btn-pill" href="coming-soon.html">Book Now</a>
     </div>
   </header>
-  <section class="hub-hero" id="hero" data-block="hub-hero">
-    <div class="hub-hero-bg">
-      <img src="assets/heroes/ac-repair.webp" alt="" data-parallax="8">
+
+  <!-- SWAP: the featured graphic. 1200x630 WebP in assets/blog/, named
+     <slug>-hero.webp. The supplied artwork already has the headline inside
+     it, which is why the H1 sits underneath rather than on top. Alternate
+     versions of each graphic are in the same folder as <slug>-alt-1.webp. -->
+  <section class="post-hero" data-block="post-hero">
+    <div class="post-hero-media">
+      <img src="assets/blog/SLUG-hero.webp" alt="SWAP: the article title, word for word">
     </div>
+  </section>
+
+  <!-- SWAP: breadcrumb last item and the H1. Both are the article title.
+       KEEP: the two buttons. -->
+  <section class="section-hub post-head" data-block="post-head">
     <div class="container">
-      <div class="hub-hero-copy">
-        <div class="hub-crumb">
-          <a href="index.html">Home</a>
-          <span>/</span>
-          <a href="blog.html">Blog</a>
-          <span>/</span>
-          <span>Article Title</span>
-        </div>
-        <h1 class="reveal" data-animation="fade-up">Article Title Goes Here</h1>
-        <p class="hub-hero-sub reveal" data-animation="fade-up">
-          <span class="post-date">Date to be set</span>
-        </p>
+      <div class="hub-crumb"><span><span><a href="index.html">Home</a></span> / <span><a href="blog.html">Blog</a></span> / <span class="breadcrumb_last" aria-current="page">SWAP: Article Title</span></span></div>
+      <h1 class="reveal" data-animation="fade-up">SWAP: Article Title</h1>
+      <div class="cta-row reveal" data-animation="fade-up">
+        <a class="btn btn-primary btn-pill btn-lg book_button" href="coming-soon.html">Book Now</a>
+        <a class="btn btn-outline-light btn-pill btn-lg" href="blog.html">All Articles</a>
       </div>
     </div>
   </section>
 
-  <!-- ARTICLE BODY
-       Each <section class="article-sec"> is one H2 chapter. Duplicate a block to add
-       a chapter. To place an image anywhere, drop this figure where you want it:
-       <figure class="article-fig"><img src="assets/…" alt="" loading="lazy"></figure> -->
-  <section class="section-hub">
+  <!-- SWAP: the whole article body.
+       Rules that keep these pages consistent:
+         .article-lede   the opening paragraph, once per post, no heading above it
+         .article-sec    one per H2 chapter. Duplicate a block to add a chapter.
+         h2              a chapter heading, from the brief's "Recommended H2s"
+         h3              a sub-heading inside a chapter
+         h4              a small repeated label inside an h3, e.g. "Likely causes"
+         ul.hub-card-list  a bulleted list, renders with gold check marks
+       Do not skip a heading level. An h4 always sits under an h3, never alone.
+       To place an image mid-article:
+         <figure class="article-fig">
+           <img src="assets/blog/NAME.webp" alt="" loading="lazy">
+           <figcaption>Caption, or delete this line.</figcaption>
+         </figure> -->
+  <section class="section-hub" data-block="article">
     <div class="container">
       <article class="article-body hub-prose reveal" data-animation="fade-up">
 
-        <p class="article-lede">Opening paragraph. Answer the reader&rsquo;s question in the first
-          sentence, then set up what the article covers. Replace this with approved copy.</p>
+        <p class="article-lede">SWAP: the opening paragraph. Answer the reader&rsquo;s question in the first sentence, then set up what the article covers.</p>
 
         <section class="article-sec">
-          <h2>First Section Heading</h2>
-          <p>Body paragraph. Keep paragraphs short and lead each section with the answer.</p>
-          <p>Second paragraph.</p>
-          <figure class="article-fig">
-            <img src="assets/real/ac-install.webp" alt="" loading="lazy">
-            <figcaption>Caption, or delete this line.</figcaption>
-          </figure>
+          <h2>SWAP: first chapter heading</h2>
+          <p>SWAP: body paragraph. Short paragraphs, answer first.</p>
+          <p>SWAP: another paragraph, or delete this line.</p>
         </section>
 
         <section class="article-sec">
-          <h2>Second Section Heading</h2>
-          <p>Body paragraph.</p>
-          <h3>Sub-heading</h3>
-          <p>Body paragraph.</p>
+          <h2>SWAP: second chapter heading</h2>
+          <p>SWAP: body paragraph.</p>
+          <h3>SWAP: sub-heading, or delete the h3 and the list below it</h3>
           <ul class="hub-card-list">
-            <li>List item one</li>
-            <li>List item two</li>
-            <li>List item three</li>
+            <li>SWAP: list item.</li>
+            <li>SWAP: list item.</li>
+            <li>SWAP: list item.</li>
           </ul>
         </section>
 
         <section class="article-sec">
-          <h2>Third Section Heading</h2>
-          <p>Body paragraph.</p>
+          <h2>SWAP: closing chapter, usually the "contact us" paragraph</h2>
+          <p>SWAP: body paragraph. Link any service mentioned here to its own page, for example <a href="plumber.html">plumbing services</a>, and link any other article mentioned to its blog page.</p>
         </section>
 
       </article>
     </div>
   </section>
 
-  <section class="section-hub section-hub-tint">
+  <!-- SWAP: the FAQ questions and answers from the brief.
+       Delete this whole section if the brief has no FAQ block.
+       Add or remove <details> blocks to match the brief; do not invent questions. -->
+  <section class="section-hub section-hub-tint" id="faq" data-block="hub-faq">
+    <div class="section-bg section-bg-soft"><img src="assets/bg/tools.webp" alt="" data-parallax="10"></div>
     <div class="container">
-      <div class="article-author reveal" data-animation="fade-up">
-        <img class="article-author-photo" src="assets/services/why-team.webp" alt="" loading="lazy">
-        <div class="article-author-text">
-          <h2 class="article-author-name">Author Name</h2>
-          <span class="article-author-role">Role at Sunny Home Services</span>
-          <p>Short author biography. Replace with real details once confirmed.</p>
-        </div>
+      <h2 class="display-h2 reveal" data-animation="fade-up">Frequently Asked Questions</h2>
+      <div class="hub-faq">
+        <details class="reveal" data-animation="fade-up">
+          <summary>SWAP: question</summary>
+          <div class="hub-faq-body">SWAP: answer.</div>
+        </details>
+        <details class="reveal" data-animation="fade-up">
+          <summary>SWAP: question</summary>
+          <div class="hub-faq-body">SWAP: answer.</div>
+        </details>
       </div>
     </div>
   </section>
 
-  <section class="section-hub">
+  <!-- SWAP: three other articles, ideally on the same service.
+       Always three, so the row fills. Image, title and href all change together. -->
+  <section class="section-hub" id="more" data-block="hub-cards">
+    <div class="section-bg section-bg-faint"><img src="assets/bg/wasatch.webp" alt="" data-parallax="12"></div>
     <div class="container">
       <h2 class="display-h2 reveal" data-animation="fade-up">More Articles</h2>
       <div class="hub-cards hub-cards-3">
-        <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-post.html">
-          <span class="hub-card-media"><img src="assets/heroes/furnace-maintenance.webp" alt="" loading="lazy"></span>
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-SLUG.html">
+          <span class="hub-card-media"><img src="assets/blog/SLUG-hero.webp" alt="SWAP: that article's title" loading="lazy"></span>
           <span class="hub-card-body">
-            <span class="post-date">Date to be set</span>
-            <span class="hub-card-title">Related Article Title</span>
-            <span class="hub-card-desc">Placeholder excerpt.</span>
+            <span class="hub-card-title">SWAP: that article&rsquo;s title</span>
             <span class="hub-card-link">Read Article &rsaquo;</span>
           </span>
         </a>
-        <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-post.html">
-          <span class="hub-card-media"><img src="assets/services/plumbing.webp" alt="" loading="lazy"></span>
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-SLUG.html">
+          <span class="hub-card-media"><img src="assets/blog/SLUG-hero.webp" alt="SWAP: that article's title" loading="lazy"></span>
           <span class="hub-card-body">
-            <span class="post-date">Date to be set</span>
-            <span class="hub-card-title">Related Article Title</span>
-            <span class="hub-card-desc">Placeholder excerpt.</span>
+            <span class="hub-card-title">SWAP: that article&rsquo;s title</span>
             <span class="hub-card-link">Read Article &rsaquo;</span>
           </span>
         </a>
-        <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-post.html">
-          <span class="hub-card-media"><img src="assets/heroes/heating.webp" alt="" loading="lazy"></span>
+        <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-SLUG.html">
+          <span class="hub-card-media"><img src="assets/blog/SLUG-hero.webp" alt="SWAP: that article's title" loading="lazy"></span>
           <span class="hub-card-body">
-            <span class="post-date">Date to be set</span>
-            <span class="hub-card-title">Related Article Title</span>
-            <span class="hub-card-desc">Placeholder excerpt.</span>
+            <span class="hub-card-title">SWAP: that article&rsquo;s title</span>
             <span class="hub-card-link">Read Article &rsaquo;</span>
           </span>
         </a>
       </div>
     </div>
   </section>
-<section class="section section-cta-banner" id="cta" data-block="hub-cta">
+
+  <!-- KEEP: identical on every post. Do not edit per article. -->
+  <section class="section section-cta-banner" id="cta" data-block="hub-cta">
     <div class="section-bg"><img src="assets/bg/neighborhood.webp" alt="" data-parallax="15"></div>
     <div class="cta-overlay"></div>
     <div class="container">
@@ -223,12 +246,17 @@
         <p>When you need HVAC and plumbing services along the Wasatch Front, count on Sunny Home Services for fast, honest, technology-driven solutions. With same-day response, upfront flat-rate pricing, and heating, cooling, and plumbing all under one roof, you&rsquo;ll have a company you can trust for the whole home.</p>
       </div>
       <div class="cta-row cta-row-center reveal" data-animation="fade-up">
-        <a class="btn btn-primary btn-pill btn-lg" href="coming-soon.html">Book Now</a>
+        <a class="btn btn-primary btn-pill btn-lg book_button" href="coming-soon.html">Book Now</a>
         <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13858538116">Call 385.853.8116</a>
       </div>
     </div>
   </section>
-<footer class="footer-centered">
+
+  <!-- LAST STEP: add the new post to blog.html.
+       Copy one <a class="hub-card has-media"> from the grid there, point it at this
+       file, swap the image, title and description. Keep the count at
+       1 featured + a multiple of three. -->
+  <footer class="footer-centered">
     <div class="container">
       <div class="footer-brand">
         <img src="assets/brand-logo.png" alt="Sunny Home Services" class="footer-logo">
@@ -259,8 +287,6 @@
       <div class="f-copy">© 2026 Sunny Home Services. All rights reserved.</div>
     </div>
   </footer>
-
-
   <!-- CDN scripts -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
