@@ -298,7 +298,7 @@
 .ac-tile-ph-gold   { background: linear-gradient(150deg, var(--yellow) 0%, var(--orange) 100%); }
 
 /* ---------- Body copy: constrained measure, LEFT aligned, block centered ----------
-   These paragraphs were centre-aligned. Centring is fine for a line or two, but a
+   These paragraphs were center-aligned. Centering is fine for a line or two, but a
    4-6 line paragraph centred gives a ragged left edge that is measurably harder to
    read. Keep the block centred in the section; keep the text left-aligned. */
 .hub-prose.align-center {
@@ -637,7 +637,7 @@
 @media (max-width: 1000px) {
   .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* an odd number of coupons leaves the last one alone in a two-column row.
-     Centre it across both columns rather than letting it sit ragged left. */
+     Center it across both columns rather than letting it sit ragged left. */
   .offers-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: 356px; max-width: 100%; }
 }
 @media (max-width: 660px)  { .offers-grid { grid-template-columns: 1fr; } }
@@ -854,7 +854,7 @@
     line-height: 1.25;
     text-align: center;
   }
-  /* centre the CTA block itself, not just the text inside the buttons, so
+  /* center the CTA block itself, not just the text inside the buttons, so
      rows sitting in a left-aligned column line up with the ones that do not */
   .hub-prose + .cta-row,
   .areas-left .cta-row,
