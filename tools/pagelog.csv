@@ -7,7 +7,7 @@ HTML files in this package,114
 "  of those, BUILT and NEW (no live page yet)",21
 "  of those, PLACEHOLDER (wording still needed)",3
 "  of those, a TEMPLATE for dev to duplicate",1
-Pages waiting on a client decision,11
+Pages waiting on a client decision,10
 
 STATUS KEY
 BUILT,Finished. A page of the same name is already live.
@@ -93,7 +93,7 @@ Membership,,About Us,BUILT,membership.html,https://sunny-home-services.vercel.ap
 "Millcreek, UT",,Service Area,"BUILT, NEW",millcreek-ut.html,https://sunny-home-services.vercel.app/millcreek-ut,Not live yet,"Its own brief doc, verbatim","The Millcreek AC page has no brief yet, so that one link points at Coming Soon. Heating and Plumbers are built.",Client supplies Millcreek AC copy
 Mini Splits,,Cooling,BUILT,mini-splits.html,https://sunny-home-services.vercel.app/mini-splits,https://sunnyhomeservices.com/mini-splits/,The copywriter brief for this page,,
 Offers,,About Us,BUILT,offers.html,https://sunny-home-services.vercel.app/offers,https://sunnyhomeservices.com/about/offers/,The copywriter brief for this page,,
-Plumbing,Plumbing,,BUILT,plumber.html,https://sunny-home-services.vercel.app/plumber,https://sunnyhomeservices.com/plumber/,The copywriter brief for this page,"Three service cards (gas lines, garbage disposals, toilets) carry a stand-in sun character with a black cap and a blue patch instead of the brand mascot with its gray SUNNY HOME SERVICES cap. The fixtures card was redrawn on November 4; these three were left as they are.",Client decides whether to redraw them
+Plumbing,Plumbing,,BUILT,plumber.html,https://sunny-home-services.vercel.app/plumber,https://sunnyhomeservices.com/plumber/,The copywriter brief for this page,,
 Plumbing Fixtures,,Plumbing,BUILT,plumbing-fixtures.html,https://sunny-home-services.vercel.app/plumbing-fixtures,https://sunnyhomeservices.com/plumber/fixtures/,The copywriter brief for this page,,
 Privacy Policy,,,PLACEHOLDER,privacy-policy.html,https://sunny-home-services.vercel.app/privacy-policy,https://sunnyhomeservices.com/privacy-policy/,"PLACEHOLDER, not real policy text","Built and styled, but the policy wording is a placeholder. The live site serves this text from a consent platform rather than the page, so it could not be pulled and nothing was invented.",Client supplies the wording
 "Riverton, UT Air Conditioning",,Service Area,BUILT,riverton-ut-air-conditioning.html,https://sunny-home-services.vercel.app/riverton-ut-air-conditioning,https://sunnyhomeservices.com/riverton-ut/air-conditioning/,The copywriter brief for this page,,
@@ -137,6 +137,9 @@ Whole House Air Purifier,,Air Quality,"BUILT, NEW",whole-house-air-purifier.html
 
 REVISION LOG
 Date,Area,What changed
+"November 4, 2026","Service tiles, round two","The West Jordan plumbing page moved from eight photo cards to the same tiles the city pages use, run across the full column so every service title fits one line. Its eight mismatched illustrations came out; the twelve links inside that copy were kept. That section went from 2,046px to 791px."
+"November 4, 2026",Checklists,"A ticked list inside a heading rail ran as one tall column, so a short item held a whole line and left the rest empty. Two columns now, with a lone last item taking the full width. The sub-headings that follow a list no longer sit straight on top of it, and the line that introduces a list reads as a lead-in rather than body copy."
+"November 4, 2026",Artwork,Removed the three remaining plumbing illustrations that used a stand-in sun with the wrong cap. Nothing references them now. The corrected fixtures illustration stays in assets/services/ and is not in use.
 "November 4, 2026",Service tiles,Replaced the photo service cards on the city pages with compact tiles. A photo per service made those sections three screens tall and forced the same artwork onto unrelated services. Each set now lands in two rows.
 "November 4, 2026",Artwork,"Redrew the plumbing fixtures card. The earlier one had a stand-in sun character with the wrong cap rather than the brand mascot. The gas line, garbage disposal and toilet cards on the plumbing page still have the same problem and are waiting on a decision."
 "November 4, 2026",Typography,"Turned 136 straight apostrophes into curly ones across 22 pages, which had been mixed with 1,630 curly ones, and closed three stray spaces before a comma or a period. No wording changed. The four mirrored pages were left untouched so they still match the live site."

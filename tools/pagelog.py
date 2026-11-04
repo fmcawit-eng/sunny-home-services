@@ -193,13 +193,6 @@ NEEDS['kearns-ut.html'] = (
     'have no copy yet, so those links point at Coming Soon.',
     'Client decides 30 or 50')
 
-NEEDS['plumber.html'] = (
-    'Three service cards (gas lines, garbage disposals, toilets) carry a '
-    'stand-in sun character with a black cap and a blue patch instead of the '
-    'brand mascot with its gray SUNNY HOME SERVICES cap. The fixtures card was '
-    'redrawn on November 4; these three were left as they are.',
-    'Client decides whether to redraw them')
-
 NEEDS['millcreek-ut.html'] = (
     'The Millcreek AC page has no brief yet, so that one link points at Coming '
     'Soon. Heating and Plumbers are built.',
@@ -243,6 +236,22 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'Service tiles, round two',
+     'The West Jordan plumbing page moved from eight photo cards to the same '
+     'tiles the city pages use, run across the full column so every service '
+     'title fits one line. Its eight mismatched illustrations came out; the '
+     'twelve links inside that copy were kept. That section went from 2,046px '
+     'to 791px.'),
+    ('November 4, 2026', 'Checklists',
+     'A ticked list inside a heading rail ran as one tall column, so a short '
+     'item held a whole line and left the rest empty. Two columns now, with a '
+     'lone last item taking the full width. The sub-headings that follow a list '
+     'no longer sit straight on top of it, and the line that introduces a list '
+     'reads as a lead-in rather than body copy.'),
+    ('November 4, 2026', 'Artwork',
+     'Removed the three remaining plumbing illustrations that used a stand-in '
+     'sun with the wrong cap. Nothing references them now. The corrected '
+     'fixtures illustration stays in assets/services/ and is not in use.'),
     ('November 4, 2026', 'Service tiles',
      'Replaced the photo service cards on the city pages with compact tiles. A '
      'photo per service made those sections three screens tall and forced the '

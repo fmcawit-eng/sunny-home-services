@@ -69,12 +69,14 @@ def split_named(item):
     m = re.match(r'^([A-Z][^:]{2,60}):\s+(.*)$', item)
     return (m.group(1), m.group(2)) if m else (None, item)
 
-def P(text, links):   return f'<p>{copy(text, links)}</p>'
+def P(text, links, cls=''):
+    c = f' class="{cls}"' if cls else ''
+    return f'<p{c}>{copy(text, links)}</p>'
 
 def rail(h2, inner, tone, sid, bg, block='hub-cards'):
     t = ' is-tone' if tone else ''
     return f'''  <section class="section-hub{t} section-hub-tint" id="{sid}" data-block="{block}">
-    <div class="section-bg"><img src="{bg}" alt="" data-parallax="15"></div>
+    <div class="section-bg section-bg-faint"><img src="{bg}" alt="" data-parallax="15"></div>
     <div class="container">
       <div class="hub-rail">
         <div class="hub-rail-head reveal" data-animation="fade-up">
@@ -93,7 +95,7 @@ def wide_section(h2, inner, tone, sid, bg, block='hub-tiles'):
     a four-across grid inside the 740px rail body leaves them unreadable."""
     t = ' is-tone' if tone else ''
     return f'''  <section class="section-hub{t} section-hub-tint" id="{sid}" data-block="{block}">
-    <div class="section-bg"><img src="{bg}" alt="" data-parallax="15"></div>
+    <div class="section-bg section-bg-faint"><img src="{bg}" alt="" data-parallax="15"></div>
     <div class="container">
       <h2 class="display-h2 reveal" data-animation="fade-up">{h2}</h2>
 {inner}
@@ -215,8 +217,9 @@ def faq_section(qas):
 
 # ---------------------------------------------------------------- page assembly
 
-BGS = ['assets/bg/wasatch.webp', 'assets/bg/tools.webp', 'assets/bg/ac-unit.png',
-       'assets/bg/skyline.webp']
+# Textures, not scenery. skyline.webp is a colorful landscape and reads
+# through even at low opacity, which makes a text-heavy band hard to follow.
+BGS = ['assets/bg/wasatch.webp', 'assets/bg/tools.webp', 'assets/bg/ac-unit.png']
 
 CARD_IMG = [
     (r'cool|air condition|\bac\b',        'assets/services/card-ac-repair.webp',        'air-conditioner.html'),
@@ -327,7 +330,7 @@ def build(outline_json, scaffold, out_file, cfg):
             items = [(u['h3'], ' '.join(b[1] for b in u['blocks'] if b[0] == 'p')) for u in subs]
             inner = ''
             if paras:
-                inner += '      ' + P(paras[0], links) + '\n'
+                inner += '      ' + P(paras[0], links, 'hub-lead-in') + '\n'
             if is_service_set([t for t, _ in items]):
                 inner += tiles(items, links)
                 extra = [it for u in subs for b in u['blocks'] if b[0] == 'ul' for it in b[1]]
@@ -352,14 +355,14 @@ def build(outline_json, scaffold, out_file, cfg):
             titled = [t for t, _ in named if t]
             if len(titled) >= max(2, len(named) - 1) and is_service_set(titled):
                 items = [(t or d[:40], d) for t, d in named]
-                inner = ('      ' + P(paras[0], links) + '\n' if paras else '') + tiles(items, links)
+                inner = ('      ' + P(paras[0], links, 'hub-lead-in') + '\n' if paras else '') + tiles(items, links)
                 for p in paras[1:]:
                     inner += '\n      ' + P(p, links)
                 out.append(wide_section(h2, inner, tone, sid, BGS[i % len(BGS)]))
                 tone = not tone
                 continue
             # 3. plain bullets -> a checklist
-            inner = ('      ' + P(paras[0], links) + '\n' if paras else '') + checks(flat, links)
+            inner = ('      ' + P(paras[0], links, 'hub-lead-in') + '\n' if paras else '') + checks(flat, links)
             for p in paras[1:]:
                 inner += '\n      ' + P(p, links)
             out.append(rail(h2, inner, tone, sid, BGS[i % len(BGS)], 'hub-checklist'))
