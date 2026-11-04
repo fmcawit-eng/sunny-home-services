@@ -304,8 +304,8 @@
 
 /* ---------- Body copy: constrained measure, LEFT aligned, block centered ----------
    These paragraphs were center-aligned. Centering is fine for a line or two, but a
-   4-6 line paragraph centred gives a ragged left edge that is measurably harder to
-   read. Keep the block centred in the section; keep the text left-aligned. */
+   4-6 line paragraph centered gives a ragged left edge that is measurably harder to
+   read. Keep the block centered in the section; keep the text left-aligned. */
 .hub-prose.align-center {
   max-width: 760px; margin-left: auto; margin-right: auto;
   text-align: left !important;
@@ -581,7 +581,7 @@
 .offers-grid {
   display: grid;
   /* auto-fit rather than a fixed 3 columns: the offers page runs 9 coupons and
-     still fills three per row, while a landing page running 2 centres them
+     still fills three per row, while a landing page running 2 centers them
      instead of leaving an empty third column on the right. */
   grid-template-columns: repeat(auto-fit, minmax(290px, 356px));
   justify-content: center;
@@ -892,4 +892,51 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .site-header, .logo-mark, .logo-mascot, .mobile-menu { transition: none; }
+}
+
+
+/* Checklist badge alignment.
+   sunny-landing.css sets .check{align-items:center}, which is fine while an
+   item is one line but floats the tick to the middle of a three or four line
+   item. That shows up on phones, where almost every item wraps. Align to the
+   first line instead, nudged down to sit on its optical center. */
+.check { align-items: flex-start; }
+.check .check-badge { margin-top: 2px; flex: 0 0 auto; }
+
+
+/* ---------------------------------------------------------------------------
+   Tap target sizing on phones.
+   The audit at 360/390/430 found the header toggle at 46x42, the menu links
+   at roughly 40px and the city chips at 42px: all a couple of pixels under
+   the 44px minimum. Vertical padding on the breadcrumb links grows the hit
+   area without changing the line box, so the crumb row still looks the same.
+   --------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .nav-toggle { min-width: 44px; min-height: 44px; }
+  .header-nav .nav-item > a,
+  .header-nav .nav-menu a {
+    min-height: 44px; display: flex; align-items: center;
+  }
+  .hub-crumb a { padding-top: 12px; padding-bottom: 12px; }
+}
+/* The city chips are buttons, so they get the full target at any width. */
+.hub-location { min-height: 44px; display: inline-flex; align-items: center; }
+
+/* The footer link row, the ZIP accordion header and any pill button also sit
+   a few pixels under the minimum on a phone. */
+@media (max-width: 1024px) {
+  .footer-centered .footer-nav a { min-height: 44px; display: inline-flex; align-items: center; }
+  .btn { min-height: 44px; }
+  .zip-title { min-height: 44px; display: flex; align-items: center; }
+}
+
+/* Remaining controls that sat under 44px on a phone: the contact form's
+   submit, the "Learn More" link inside a card, a card that is itself a link,
+   and a card title that is a link. Inline links inside a sentence are left
+   alone on purpose, since padding them out would break the line box. */
+@media (max-width: 1024px) {
+  .gform_button, .gform-footer button, button[type="submit"] { min-height: 44px; }
+  .hub-card-link { min-height: 44px; display: inline-flex; align-items: center; }
+  a.hub-card { min-height: 44px; }
+  .hub-card-title a { display: inline-flex; align-items: center; min-height: 44px; }
 }
