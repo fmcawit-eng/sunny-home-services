@@ -1,0 +1,87 @@
+[
+ {
+  "outline": "tools/o23.json",
+  "scaffold": "salt-lake-city-ut.html",
+  "out": "millcreek-ut.html",
+  "title": "Millcreek, UT Heating, Cooling & Plumbing - Sunny Home Services",
+  "url": "/millcreek-ut/",
+  "h1": "Millcreek, UT Heating, Cooling, and Plumbing Services",
+  "crumb": " / <span class=\"breadcrumb_last\" aria-current=\"page\">Millcreek, Utah</span>",
+  "hero": "assets/heroes/heating.webp",
+  "sub": "Same-Day Response. Upfront pricing. Certified technicians.",
+  "cta": "Get Same-Day Service",
+  "lead": "Sunny Home Services is a Utah-based company specializing in residential plumbing, heating, and cooling in Millcreek, UT, and nearby areas in the Wasatch Front. We provide professional solutions for homeowners, combining technology, expertise, and care to deliver excellence on every job. We arrive on time, communicate clearly, and take care of your home with lasting solutions.",
+  "links": {
+   "a": "coming-soon.html",
+   "b": "millcreek-ut-heating.html",
+   "c": "millcreek-ut-plumber.html"
+  },
+  "splits": [
+   "assets/services/team-heating.webp",
+   "assets/services/team-plumbing.webp"
+  ]
+ },
+ {
+  "outline": "tools/o24.json",
+  "scaffold": "salt-lake-city-ut.html",
+  "out": "kearns-ut.html",
+  "title": "Kearns, UT Heating, Cooling & Plumbing - Sunny Home Services",
+  "url": "/kearns-ut/",
+  "h1": "Kearns, UT Heating, Cooling, and Plumbing Services",
+  "crumb": " / <span class=\"breadcrumb_last\" aria-current=\"page\">Kearns, Utah</span>",
+  "hero": "assets/heroes/cooling.webp",
+  "sub": "Same-Day Response. Upfront pricing. Certified technicians.",
+  "cta": "Get Same-Day Service",
+  "links": {
+   "a": "coming-soon.html",
+   "b": "coming-soon.html",
+   "c": "coming-soon.html"
+  },
+  "splits": [
+   "assets/services/team-air-conditioning.webp",
+   "assets/services/team-plumbing.webp"
+  ],
+  "lead": "At Sunny Home Services, we take pride in servicing the systems you rely on at home every day. We understand the issues homeowners face with their plumbing, heating, and cooling in Kearns, Utah, and have the knowledge and skills to fix, replace, install, and maintain these systems year-round."
+ },
+ {
+  "outline": "tools/o25.json",
+  "scaffold": "salt-lake-city-ut-heating.html",
+  "out": "millcreek-ut-heating.html",
+  "title": "Heating & Furnace Repair Millcreek, UT - Sunny Home Services",
+  "url": "/millcreek-ut/heating/",
+  "h1": "Millcreek, UT Heating & Furnace Repair, Installation & Tune-Up",
+  "crumb": " / <span><a href=\"millcreek-ut.html\">Millcreek, Utah</a></span> / <span class=\"breadcrumb_last\" aria-current=\"page\">Heating</span>",
+  "hero": "assets/heroes/furnace-repair.webp",
+  "sub": "Same-Day Response. Upfront pricing. Certified technicians.",
+  "cta": "Get Same-Day Heating Service",
+  "links": {
+   "a": "millcreek-ut.html",
+   "b": "coming-soon.html"
+  },
+  "splits": [
+   "assets/services/team-heating.webp",
+   "assets/services/heating-work.webp"
+  ],
+  "lead": "Heavy winter snowfall, air pressure fluctuations, and extreme cold can create problems for the furnace in your Millcreek home. If you\u2019re facing a furnace issue, count on the experienced team at Sunny Home Services for trusted heating and furnace repair in Millcreek, UT. Our highly skilled, local HVAC technicians are very familiar with how the weather here in Utah impacts home heating systems. That\u2019s why we\u2019re able to provide our customers with exceptional furnace repair services, new installations, routine maintenance, and more."
+ },
+ {
+  "outline": "tools/o26.json",
+  "scaffold": "salt-lake-city-ut-plumber.html",
+  "out": "millcreek-ut-plumber.html",
+  "title": "Millcreek, UT Plumbers | Water Heaters, Drains, & Sewer - Sunny Home Services",
+  "url": "/millcreek-ut/plumber/",
+  "h1": "Plumbing Services in Millcreek, UT",
+  "crumb": " / <span><a href=\"millcreek-ut.html\">Millcreek, Utah</a></span> / <span class=\"breadcrumb_last\" aria-current=\"page\">Plumbing</span>",
+  "hero": "assets/services/plumbing.webp",
+  "sub": "Same-Day Response. Upfront pricing. Certified technicians.",
+  "cta": "Get Same-Day Plumbing Service",
+  "links": {
+   "a": "millcreek-ut.html"
+  },
+  "splits": [
+   "assets/services/team-plumbing.webp",
+   "assets/services/team-water-heater.webp"
+  ],
+  "lead": "Sunny Home Services has a team of plumbers near Millcreek ready to help the same day you call. Our local team fixes clogged drains, water heaters, sewer lines, and leaks in Canyon Rim, Olympus Cove, East Millcreek, and around Millcreek Common. With our team, you\u2019ll get fast help, honest pricing, and plumbers who know Millcreek homes and plumbing challenges."
+ }
+]
