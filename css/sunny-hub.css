@@ -484,3 +484,79 @@
    it does not need its full top padding as well. */
 .post-head { padding-bottom: 10px; }
 .post-head + .section-hub { padding-top: 26px; }
+
+
+/* ---------------------------------------------------------------------------
+   Blog article rhythm.
+   A 1,200-word post in one unbroken column reads as a wall. Each H2 chapter
+   becomes its own band, alternating tint, so the page has a pulse. Figures,
+   callouts and card lists break the column further.
+   --------------------------------------------------------------------------- */
+.article-band { padding: 46px 0; }
+.article-band.is-tint { background: #f6f7f9; }
+.article-wrap { max-width: 760px; margin: 0 auto; }
+.article-band .article-wrap > *:first-child { margin-top: 0; }
+.article-band .article-wrap > *:last-child { margin-bottom: 0; }
+
+/* Opening block: lede plus the jump list */
+.article-intro { padding: 40px 0 34px; }
+.article-lede { font-size: 20px; line-height: 1.6; font-weight: 500; }
+
+.article-toc {
+  margin: 28px auto 0; max-width: 760px;
+  border-left: 4px solid var(--sun-gold, #f7b733);
+  background: #f6f7f9; border-radius: 0 10px 10px 0; padding: 20px 24px;
+}
+.article-toc h2 {
+  font-family: var(--font-body); font-size: 13px; font-weight: 900;
+  letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 12px; color: #5a5a5a;
+}
+.article-toc ol { margin: 0; padding-left: 20px; }
+.article-toc li { margin-bottom: 7px; line-height: 1.45; }
+.article-toc a { color: #232323; text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.18); }
+.article-toc a:hover { color: var(--sun-orange, #f6861f); border-bottom-color: currentColor; }
+
+/* Key takeaway */
+.article-key {
+  margin: 26px 0; padding: 22px 26px; border-radius: 12px;
+  background: #fff8e8; border: 1px solid #f3dca6;
+}
+.article-key h3 {
+  font-family: var(--font-body); font-size: 12px; font-weight: 900;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #9a6b00; margin: 0 0 8px;
+}
+.article-key p { margin: 0; font-size: 17px; line-height: 1.6; }
+
+/* Figures. A figure may run wider than the text column. */
+.article-fig { margin: 30px 0; }
+.article-fig img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.article-fig figcaption {
+  margin-top: 10px; font-size: 14px; color: #6a6a6a; text-align: center;
+}
+.article-fig.is-wide { max-width: 1000px; margin-left: auto; margin-right: auto; }
+
+/* Checklists as a two-up card grid rather than one long stack */
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 0; padding: 0; list-style: none; }
+.check-grid li {
+  position: relative; padding: 16px 18px 16px 44px;
+  background: #fff; border: 1px solid #e6e8ec; border-radius: 10px; line-height: 1.5;
+}
+.is-tint .check-grid li { background: #fff; }
+.check-grid li::before {
+  content: "\2713"; position: absolute; left: 16px; top: 15px;
+  color: var(--sun-gold, #f7b733); font-weight: 900;
+}
+/* An odd number of items would leave a lone card in the last row, so the
+   final one spans both columns instead. */
+.check-grid li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 720px) { .check-grid { grid-template-columns: 1fr; } }
+
+/* Mid-article prompt */
+.article-prompt {
+  background: #232323; color: #fff; border-radius: 14px;
+  padding: 28px 32px; margin: 0 auto; max-width: 860px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.article-prompt p { margin: 0; font-size: 18px; line-height: 1.5; }
+.article-prompt .btn { flex: none; }
+@media (max-width: 720px) { .article-prompt { flex-direction: column; align-items: flex-start; } }

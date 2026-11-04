@@ -3,14 +3,22 @@
 <head>
   <!-- ===================================================================
        BLOG POST TEMPLATE
-       Duplicate this file for each new article, rename it blog-<slug>.html,
-       and work top to bottom through the SWAP notes.
+       Duplicate this file for each article, rename it blog-<slug>.html, and
+       work top to bottom through the SWAP notes.
+         SWAP = changes on every post.
+         KEEP = identical on every post, leave it alone.
 
-       Everything marked SWAP changes per post.
-       Everything marked KEEP is the same on every post; leave it alone.
+       HOW A POST IS PUT TOGETHER
+       A 1,200-word article in one column reads as a wall of text, so each H2
+       chapter is its own band and the bands alternate tint:
+         band 1  .article-band.is-tint
+         band 2  .article-band
+         band 3  .article-band.is-tint     ... and so on.
+       Put a figure in roughly the first and middle chapters, and the dark
+       prompt strip halfway down. Everything else is text in .article-wrap,
+       which holds the 760px measure.
 
-       The slug comes from the content brief ("URL Slug"), minus /blog/.
-       A worked example to compare against:
+       Worked example to compare against:
          blog-prevent-frozen-pipes-in-west-jordan.html
        =================================================================== -->
   <meta charset="utf-8">
@@ -115,17 +123,17 @@
     </div>
   </header>
 
-  <!-- SWAP: the featured graphic. 1200x630 WebP in assets/blog/, named
-     <slug>-hero.webp. The supplied artwork already has the headline inside
-     it, which is why the H1 sits underneath rather than on top. Alternate
-     versions of each graphic are in the same folder as <slug>-alt-1.webp. -->
+  <!-- SWAP: the featured graphic, 1200x630 WebP at assets/blog/<slug>-hero.webp.
+     The artwork already carries the headline, which is why the H1 sits in the
+     band underneath instead of on top of the image. Alternate versions of each
+     graphic are beside it as <slug>-alt-1.webp. -->
   <section class="post-hero" data-block="post-hero">
     <div class="post-hero-media">
       <img src="assets/blog/SLUG-hero.webp" alt="SWAP: the article title, word for word">
     </div>
   </section>
 
-  <!-- SWAP: breadcrumb last item and the H1. Both are the article title.
+  <!-- SWAP: breadcrumb last item and the H1, both the article title.
        KEEP: the two buttons. -->
   <section class="section-hub post-head" data-block="post-head">
     <div class="container">
@@ -138,59 +146,81 @@
     </div>
   </section>
 
-  <!-- SWAP: the whole article body.
-       Rules that keep these pages consistent:
-         .article-lede   the opening paragraph, once per post, no heading above it
-         .article-sec    one per H2 chapter. Duplicate a block to add a chapter.
-         h2              a chapter heading, from the brief's "Recommended H2s"
-         h3              a sub-heading inside a chapter
-         h4              a small repeated label inside an h3, e.g. "Likely causes"
-         ul.hub-card-list  a bulleted list, renders with gold check marks
-       Do not skip a heading level. An h4 always sits under an h3, never alone.
-       To place an image mid-article:
-         <figure class="article-fig">
-           <img src="assets/blog/NAME.webp" alt="" loading="lazy">
-           <figcaption>Caption, or delete this line.</figcaption>
-         </figure> -->
-  <section class="section-hub" data-block="article">
+  <!-- SWAP: the opening paragraph, then one <li> per chapter below.
+       Each href must match the id on that chapter's <h2>. -->
+  <section class="section-hub article-intro" data-block="article-intro">
     <div class="container">
-      <article class="article-body hub-prose reveal" data-animation="fade-up">
-
+      <div class="article-wrap hub-prose reveal" data-animation="fade-up">
         <p class="article-lede">SWAP: the opening paragraph. Answer the reader&rsquo;s question in the first sentence, then set up what the article covers.</p>
-
-        <section class="article-sec">
-          <h2>SWAP: first chapter heading</h2>
-          <p>SWAP: body paragraph. Short paragraphs, answer first.</p>
-          <p>SWAP: another paragraph, or delete this line.</p>
-        </section>
-
-        <section class="article-sec">
-          <h2>SWAP: second chapter heading</h2>
-          <p>SWAP: body paragraph.</p>
-          <h3>SWAP: sub-heading, or delete the h3 and the list below it</h3>
-          <ul class="hub-card-list">
-            <li>SWAP: list item.</li>
-            <li>SWAP: list item.</li>
-            <li>SWAP: list item.</li>
-          </ul>
-        </section>
-
-        <section class="article-sec">
-          <h2>SWAP: closing chapter, usually the "contact us" paragraph</h2>
-          <p>SWAP: body paragraph. Link any service mentioned here to its own page, for example <a href="plumber.html">plumbing services</a>, and link any other article mentioned to its blog page.</p>
-        </section>
-
-      </article>
+      </div>
+      <nav class="article-toc reveal" data-animation="fade-up" aria-label="In this article">
+        <h2>In this&nbsp;article</h2>
+        <ol>
+          <li><a href="#chapter-one">SWAP: first chapter heading</a></li>
+          <li><a href="#chapter-two">SWAP: second chapter heading</a></li>
+        </ol>
+      </nav>
     </div>
   </section>
 
-  <!-- SWAP: the FAQ questions and answers from the brief.
-       Delete this whole section if the brief has no FAQ block.
-       Add or remove <details> blocks to match the brief; do not invent questions. -->
+  <!-- CHAPTER. Duplicate this whole <section> per H2 in the brief.
+       Alternate .article-band.is-tint and plain .article-band as you go.
+       The h2 id must match its link in the list above.
+       Lists: use .check-grid for four or more items so they lay out two
+       across; use .hub-card-list for three or fewer. An odd last item spans
+       the full row on its own, so no card is ever stranded. -->
+  <section class="article-band is-tint" data-block="article-chapter">
+    <div class="container">
+      <div class="article-wrap hub-prose reveal" data-animation="fade-up">
+        <h2 id="chapter-one">SWAP: first chapter&nbsp;heading</h2>
+        <p>SWAP: body paragraph. Short paragraphs, answer first.</p>
+        <ul class="check-grid">
+          <li>SWAP: list item.</li>
+          <li>SWAP: list item.</li>
+          <li>SWAP: list item.</li>
+          <li>SWAP: list item.</li>
+        </ul>
+      </div>
+      <!-- SWAP or delete. A figure sits outside .article-wrap so it can run
+           wider than the text. Pick from assets/services/, which has clean
+           illustrations and real photography with no headline baked in. -->
+      <figure class="article-fig is-wide reveal" data-animation="fade-up">
+        <img src="assets/services/team-plumbing.webp" alt="SWAP: describe what is happening in the photo" loading="lazy">
+        <figcaption>SWAP: one short line, or delete this caption.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- KEEP: the halfway prompt. Drop it in around the middle chapter. -->
+  <section class="article-band" data-block="article-prompt">
+    <div class="container">
+      <div class="article-prompt reveal" data-animation="fade-up">
+        <p>Not sure where to start? A technician can look at it the same day and tell you what it needs.</p>
+        <a class="btn btn-primary btn-pill btn-lg book_button" href="coming-soon.html">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER, untinted this time. Keep alternating. -->
+  <section class="article-band" data-block="article-chapter">
+    <div class="container">
+      <div class="article-wrap hub-prose reveal" data-animation="fade-up">
+        <h2 id="chapter-two">SWAP: second chapter&nbsp;heading</h2>
+        <p>SWAP: body paragraph. Link any service named here to its own page, for example <a href="plumber.html">plumbing services</a>, and any other article to its blog page.</p>
+        <h3>SWAP: sub-heading, or delete&nbsp;it</h3>
+        <p>SWAP: body paragraph.</p>
+        <!-- h4 exists for a small label repeated inside an h3, such as
+             "Likely causes". Never let an h4 sit without an h3 above it. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SWAP: the FAQ from the brief. Delete the whole section if there is none.
+       Do not invent questions. -->
   <section class="section-hub section-hub-tint" id="faq" data-block="hub-faq">
     <div class="section-bg section-bg-soft"><img src="assets/bg/tools.webp" alt="" data-parallax="10"></div>
     <div class="container">
-      <h2 class="display-h2 reveal" data-animation="fade-up">Frequently Asked Questions</h2>
+      <h2 class="display-h2 reveal" data-animation="fade-up">Frequently Asked&nbsp;Questions</h2>
       <div class="hub-faq">
         <details class="reveal" data-animation="fade-up">
           <summary>SWAP: question</summary>
@@ -204,8 +234,8 @@
     </div>
   </section>
 
-  <!-- SWAP: three other articles, ideally on the same service.
-       Always three, so the row fills. Image, title and href all change together. -->
+  <!-- SWAP: three other articles, ideally on the same service. Always three so
+       the row fills. Image, title and href change together. -->
   <section class="section-hub" id="more" data-block="hub-cards">
     <div class="section-bg section-bg-faint"><img src="assets/bg/wasatch.webp" alt="" data-parallax="12"></div>
     <div class="container">
@@ -214,21 +244,21 @@
         <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-SLUG.html">
           <span class="hub-card-media"><img src="assets/blog/SLUG-hero.webp" alt="SWAP: that article's title" loading="lazy"></span>
           <span class="hub-card-body">
-            <span class="hub-card-title">SWAP: that article&rsquo;s title</span>
+            <span class="hub-card-title">SWAP: that article&rsquo;s&nbsp;title</span>
             <span class="hub-card-link">Read Article &rsaquo;</span>
           </span>
         </a>
         <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-SLUG.html">
           <span class="hub-card-media"><img src="assets/blog/SLUG-hero.webp" alt="SWAP: that article's title" loading="lazy"></span>
           <span class="hub-card-body">
-            <span class="hub-card-title">SWAP: that article&rsquo;s title</span>
+            <span class="hub-card-title">SWAP: that article&rsquo;s&nbsp;title</span>
             <span class="hub-card-link">Read Article &rsaquo;</span>
           </span>
         </a>
         <a class="hub-card has-media reveal" data-animation="fade-up" href="blog-SLUG.html">
           <span class="hub-card-media"><img src="assets/blog/SLUG-hero.webp" alt="SWAP: that article's title" loading="lazy"></span>
           <span class="hub-card-body">
-            <span class="hub-card-title">SWAP: that article&rsquo;s title</span>
+            <span class="hub-card-title">SWAP: that article&rsquo;s&nbsp;title</span>
             <span class="hub-card-link">Read Article &rsaquo;</span>
           </span>
         </a>
@@ -236,12 +266,12 @@
     </div>
   </section>
 
-  <!-- KEEP: identical on every post. Do not edit per article. -->
+  <!-- KEEP: identical on every post. -->
   <section class="section section-cta-banner" id="cta" data-block="hub-cta">
     <div class="section-bg"><img src="assets/bg/neighborhood.webp" alt="" data-parallax="15"></div>
     <div class="cta-overlay"></div>
     <div class="container">
-      <h2 class="display-h2 reveal" data-animation="fade-up">Schedule HVAC or Plumbing Services with Sunny Home Services Today</h2>
+      <h2 class="display-h2 reveal" data-animation="fade-up">Schedule HVAC or Plumbing Services with Sunny Home Services&nbsp;Today</h2>
       <div class="hub-prose on-dark reveal" data-animation="fade-up">
         <p>When you need HVAC and plumbing services along the Wasatch Front, count on Sunny Home Services for fast, honest, technology-driven solutions. With same-day response, upfront flat-rate pricing, and heating, cooling, and plumbing all under one roof, you&rsquo;ll have a company you can trust for the whole home.</p>
       </div>
@@ -252,10 +282,9 @@
     </div>
   </section>
 
-  <!-- LAST STEP: add the new post to blog.html.
-       Copy one <a class="hub-card has-media"> from the grid there, point it at this
-       file, swap the image, title and description. Keep the count at
-       1 featured + a multiple of three. -->
+  <!-- LAST STEP: add the post to blog.html. Copy a card from the grid there,
+       point it at this file, swap image, title and description. Keep the count
+       at 1 featured plus a multiple of three. -->
   <footer class="footer-centered">
     <div class="container">
       <div class="footer-brand">
