@@ -1220,3 +1220,93 @@ a.hub-tile-go { text-decoration: none; }
   font-style: normal;
   font-display: swap;
 }
+
+/* ==================================================================
+   Hover, round four
+   ================================================================== */
+
+/* The reveal animation leaves `transform: translate(0px, 0px)` inline on
+   every element it touches, and an inline style beats a stylesheet rule.
+   These elements carry `reveal` themselves, so a hover lift written the
+   normal way simply never applies. The resting position belongs to the
+   animation; the hover position is claimed back here. */
+
+/* ---- Tiles ---- */
+.hub-tile {
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease,
+              border-color .2s ease, background-color .2s ease;
+}
+/* a gold bar that wipes across the top edge on hover */
+.hub-tile::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  background: var(--sun-gold, #FFC704);
+  transition: width .26s ease;
+}
+.hub-tile:hover,
+.hub-tile:focus-within {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 30px rgba(3, 166, 204, 0.18);
+  border-color: var(--sky-deep, #03A6CC);
+  background: #fff;
+}
+.hub-tile:hover::before,
+.hub-tile:focus-within::before { width: 100%; }
+
+/* the Learn More shifts with the card */
+.hub-tile-go { transition: transform .2s ease, color .2s ease; }
+.hub-tile:hover .hub-tile-go,
+.hub-tile:focus-within .hub-tile-go { transform: translateX(4px); }
+
+/* A tile that only carries information has nowhere to go, so it lifts
+   without pretending to be clickable. */
+.hub-tile.is-static { cursor: default; }
+.hub-tile.is-static:hover { transform: translateY(-3px) !important; }
+
+/* ---- Ticked cards ---- */
+.hub-rail-body .check-list .check {
+  transition: transform .18s ease, box-shadow .18s ease,
+              border-left-color .18s ease, background-color .18s ease;
+}
+.hub-rail-body .check-list .check:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 22px rgba(3, 166, 204, 0.14);
+  border-left-color: var(--sky-deep, #03A6CC);
+  background: #fff;
+}
+.hub-rail-body .check-list .check-badge { transition: transform .18s ease; }
+.hub-rail-body .check-list .check:hover .check-badge { transform: scale(1.12); }
+
+/* ---- Numbered steps ---- */
+.hub-steps .hub-step {
+  transition: transform .18s ease, box-shadow .18s ease, border-top-color .18s ease;
+}
+.hub-steps .hub-step:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 26px rgba(3, 166, 204, 0.16);
+}
+.hub-steps .hub-step-num { transition: transform .18s ease; }
+.hub-steps .hub-step:hover .hub-step-num { transform: scale(1.08); }
+
+/* Anyone who has asked for less movement gets none of it. */
+@media (prefers-reduced-motion: reduce) {
+  .hub-tile, .hub-tile::before, .hub-tile-go,
+  .hub-rail-body .check-list .check, .hub-rail-body .check-list .check-badge,
+  .hub-steps .hub-step, .hub-steps .hub-step-num { transition: none; }
+  .hub-tile:hover, .hub-tile.is-static:hover { transform: none !important; }
+  .hub-tile:hover, .hub-tile.is-static:hover,
+  .hub-rail-body .check-list .check:hover, .hub-steps .hub-step:hover { transform: none !important; }
+}
+
+/* The same inline-transform problem reached the original cards: every
+   .hub-card carries `reveal`, so the lift in sunny-hub.css has never
+   actually fired anywhere on the site. */
+.hub-card:hover,
+.hub-card:focus-within { transform: translateY(-6px) !important; }
+@media (prefers-reduced-motion: reduce) {
+  .hub-card:hover, .hub-card:focus-within { transform: none !important; }
+}
