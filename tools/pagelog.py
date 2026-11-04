@@ -193,6 +193,13 @@ NEEDS['kearns-ut.html'] = (
     'have no copy yet, so those links point at Coming Soon.',
     'Client decides 30 or 50')
 
+NEEDS['plumber.html'] = (
+    'Three service cards (gas lines, garbage disposals, toilets) carry a '
+    'stand-in sun character with a black cap and a blue patch instead of the '
+    'brand mascot with its gray SUNNY HOME SERVICES cap. The fixtures card was '
+    'redrawn on November 4; these three were left as they are.',
+    'Client decides whether to redraw them')
+
 NEEDS['millcreek-ut.html'] = (
     'The Millcreek AC page has no brief yet, so that one link points at Coming '
     'Soon. Heating and Plumbers are built.',
@@ -236,6 +243,20 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'Service tiles',
+     'Replaced the photo service cards on the city pages with compact tiles. A '
+     'photo per service made those sections three screens tall and forced the '
+     'same artwork onto unrelated services. Each set now lands in two rows.'),
+    ('November 4, 2026', 'Artwork',
+     'Redrew the plumbing fixtures card. The earlier one had a stand-in sun '
+     'character with the wrong cap rather than the brand mascot. The gas line, '
+     'garbage disposal and toilet cards on the plumbing page still have the same '
+     'problem and are waiting on a decision.'),
+    ('November 4, 2026', 'Typography',
+     'Turned 136 straight apostrophes into curly ones across 22 pages, which had '
+     'been mixed with 1,630 curly ones, and closed three stray spaces before a '
+     'comma or a period. No wording changed. The four mirrored pages were left '
+     'untouched so they still match the live site.'),
     ('November 4, 2026', 'Millcreek and Kearns',
      'Built four service-area pages from the approved briefs: the Millcreek hub, '
      'Millcreek heating, Millcreek plumbers and the Kearns hub. Both cities added '

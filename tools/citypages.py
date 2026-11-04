@@ -32,27 +32,48 @@ def ent(t):
     return t
 
 def resolve_markers(t, links):
-    """Replace 'phrase[a]' with 'phrase' linked, using the links map."""
+    """Replace 'phrase[a]' with a sentinel that ent() leaves alone.
+
+    The link has to survive escaping, so it goes in as control characters
+    first and becomes real markup in link_up(), after ent() has run.
+    """
     def rep(m):
-        key = m.group(2)
-        href = links.get(key)
+        href = links.get(m.group(2))
         phrase = m.group(1)
         if not href:
             return phrase
-        return f'<a href="{href}">{phrase}</a>'
-    # the phrase is the run of words directly before the marker, up to 6 words
-    return re.sub(r'((?:[A-Za-z0-9&’\'-]+ ){0,5}[A-Za-z0-9&’\'-]+)\[([a-z])\]', rep, t)
+        return f'\x01{href}\x02{phrase}\x03'
+    return re.sub(r"((?:[A-Za-z0-9&\u2019'-]+ ){0,5}[A-Za-z0-9&\u2019'-]+)\[([a-z])\]", rep, t)
+
+def link_up(t):
+    """Turn the sentinels left by resolve_markers into anchors."""
+    return re.sub(r'\x01([^\x02]*)\x02([^\x03]*)\x03',
+                  lambda m: f'<a href="{m.group(1)}">{m.group(2)}</a>', t)
+
+def copy(text, links):
+    """Brief copy, ready for the page: markers found, text escaped, links in."""
+    return link_up(ent(resolve_markers(text, links)))
+
+def copy_plain(text, links):
+    """Same, but with the links left as plain words.
+
+    Used inside a tile, because the tile is itself a link and HTML cannot
+    nest one link in another: the browser closes the outer one and the
+    tile falls apart on screen.
+    """
+    t = ent(resolve_markers(text, links))
+    return re.sub(r'\x01[^\x02]*\x02([^\x03]*)\x03', r'\1', t)
 
 def split_named(item):
     """'Cooling services: we do x' -> ('Cooling services', 'we do x')."""
     m = re.match(r'^([A-Z][^:]{2,60}):\s+(.*)$', item)
     return (m.group(1), m.group(2)) if m else (None, item)
 
-def P(text, links):   return f'<p>{ent(resolve_markers(text, links))}</p>'
+def P(text, links):   return f'<p>{copy(text, links)}</p>'
 
-def rail(h2, inner, tone, sid, bg):
+def rail(h2, inner, tone, sid, bg, block='hub-cards'):
     t = ' is-tone' if tone else ''
-    return f'''  <section class="section-hub{t} section-hub-tint" id="{sid}" data-block="hub-cards">
+    return f'''  <section class="section-hub{t} section-hub-tint" id="{sid}" data-block="{block}">
     <div class="section-bg"><img src="{bg}" alt="" data-parallax="15"></div>
     <div class="container">
       <div class="hub-rail">
@@ -67,31 +88,39 @@ def rail(h2, inner, tone, sid, bg):
   </section>
 '''
 
-def cards(items, imgmap, links):
-    """items = [(title, desc)]"""
+def wide_section(h2, inner, tone, sid, bg, block='hub-tiles'):
+    """Heading above, content across the full column. Tiles need the width;
+    a four-across grid inside the 740px rail body leaves them unreadable."""
+    t = ' is-tone' if tone else ''
+    return f'''  <section class="section-hub{t} section-hub-tint" id="{sid}" data-block="{block}">
+    <div class="section-bg"><img src="{bg}" alt="" data-parallax="15"></div>
+    <div class="container">
+      <h2 class="display-h2 reveal" data-animation="fade-up">{h2}</h2>
+{inner}
+    </div>
+  </section>
+'''
+
+def tiles(items, links):
+    """Compact service tiles. No photo: a photo per service made the section
+    three screens tall and forced the same art onto unrelated services.
+    Columns are chosen so the set lands in at most two rows, and a short
+    last row is closed by letting the final tile span the gap."""
     n = len(items)
-    # Pick a column count that leaves either a full last row or exactly one
-    # card on it, and let that one card span the row. Never a stranded card
-    # beside empty space.
-    if   n % 4 == 0: per = 4
-    elif n % 3 == 0: per = 3
-    elif n % 2 == 0: per = 2
-    elif n % 3 == 1: per = 3
-    else:            per = 2
-    if n <= 2: per = n
-    wide = n % per == 1 and n > per
-    out = [f'      <div class="hub-cards hub-cards-{per}">']
+    per = max(2, min(5, -(-n // 2)))        # ceil(n/2), held between 2 and 5
+    if n <= 4 and n % 2 == 0:
+        per = n // 2 if n == 4 else n
+    gap = (-n) % per                         # empty cells on the last row
+    out = [f'      <div class="hub-tiles hub-tiles-{per}">']
     for idx, (title, desc) in enumerate(items):
-        img, href = imgmap(title)
-        last = (idx == n - 1)
-        body = (f'<div class="hub-card-body"><div class="hub-card-title">{ent(title)}</div>'
-                f'<p class="hub-card-desc">{ent(resolve_markers(desc, links))}</p>'
-                f'<span class="hub-card-link">Learn More &rsaquo;</span></div>')
-        cls = 'hub-card has-media reveal' + (' is-wide' if (wide and last) else '')
-        out.append(f'''        <a class="{cls}" data-animation="fade-up" href="{href}">
-          <div class="hub-card-media"><img src="{img}" alt="{ent(title)}"></div>
-          {body}
-        </a>''')
+        href = card_target(title)[1]
+        wide = ' is-wide' if (gap and idx == n - 1) else ''
+        out.append(
+            f'        <a class="hub-tile reveal{wide}" data-animation="fade-up" href="{href}">\n'
+            f'          <span class="hub-tile-title">{ent(title)}</span>\n'
+            f'          <span class="hub-tile-desc">{copy_plain(desc, links)}</span>\n'
+            f'          <span class="hub-tile-go">Learn More &rsaquo;</span>\n'
+            f'        </a>')
     out.append('      </div>')
     return '\n'.join(out)
 
@@ -100,9 +129,9 @@ def checks(items, links):
     for it in items:
         name, rest = split_named(it)
         if name:
-            inner = f'<strong>{ent(name)}:</strong> {ent(resolve_markers(rest, links))}'
+            inner = f'<strong>{ent(name)}:</strong> {copy(rest, links)}'
         else:
-            inner = ent(resolve_markers(it, links))
+            inner = copy(it, links)
         out.append('        <li class="check reveal" data-animation="fade-up">'
                    '<span class="check-badge">&#10003;</span>'
                    f'<span class="check-text">{inner}</span></li>')
@@ -287,7 +316,7 @@ def build(outline_json, scaffold, out_file, cfg):
     tone = True
     split_used = 0
     for i, s in enumerate(body_secs):
-        h2 = ent(resolve_markers(s['h2'], links))
+        h2 = copy(s['h2'], links)
         sid = re.sub(r'[^a-z0-9]+', '-', s['h2'].lower()).strip('-')[:28]
         paras = [b[1] for b in s['blocks'] if b[0] == 'p']
         uls = [b[1] for b in s['blocks'] if b[0] == 'ul']
@@ -300,7 +329,7 @@ def build(outline_json, scaffold, out_file, cfg):
             if paras:
                 inner += '      ' + P(paras[0], links) + '\n'
             if is_service_set([t for t, _ in items]):
-                inner += cards(items, card_target, links)
+                inner += tiles(items, links)
                 extra = [it for u in subs for b in u['blocks'] if b[0] == 'ul' for it in b[1]]
                 if extra:
                     inner += '\n' + checks(extra, links)
@@ -308,7 +337,11 @@ def build(outline_json, scaffold, out_file, cfg):
                 inner += subs_prose(subs, links)
             for p in paras[1:]:
                 inner += '\n      ' + P(p, links)
-            out.append(rail(h2, inner, tone, sid, BGS[i % len(BGS)]))
+            if 'hub-tiles' in inner:
+                out.append(wide_section(h2, inner, tone, sid, BGS[i % len(BGS)]))
+            else:
+                blk = 'hub-checklist' if 'check-list' in inner else 'hub-prose'
+                out.append(rail(h2, inner, tone, sid, BGS[i % len(BGS)], blk))
             tone = not tone
             continue
 
@@ -319,18 +352,17 @@ def build(outline_json, scaffold, out_file, cfg):
             titled = [t for t, _ in named if t]
             if len(titled) >= max(2, len(named) - 1) and is_service_set(titled):
                 items = [(t or d[:40], d) for t, d in named]
-                inner = ('      ' + P(paras[0], links) + '\n' if paras else '') + cards(items, card_target, links)
+                inner = ('      ' + P(paras[0], links) + '\n' if paras else '') + tiles(items, links)
                 for p in paras[1:]:
                     inner += '\n      ' + P(p, links)
-                out.append(rail(h2, inner, tone, sid, BGS[i % len(BGS)]))
+                out.append(wide_section(h2, inner, tone, sid, BGS[i % len(BGS)]))
                 tone = not tone
                 continue
             # 3. plain bullets -> a checklist
             inner = ('      ' + P(paras[0], links) + '\n' if paras else '') + checks(flat, links)
             for p in paras[1:]:
                 inner += '\n      ' + P(p, links)
-            out.append(rail(h2, inner, tone, sid, BGS[i % len(BGS)]).replace('data-block="hub-cards"',
-                                                                             'data-block="hub-checklist"'))
+            out.append(rail(h2, inner, tone, sid, BGS[i % len(BGS)], 'hub-checklist'))
             tone = not tone
             continue
 

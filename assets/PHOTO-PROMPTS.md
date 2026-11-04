@@ -375,3 +375,22 @@ number ... keep font/position"):
 - assets/heroes/community-van.jpg (hero) - job b7522da9-c1de-4e7b-b08d-416a55863a45
 STILL OLD: heroes/community-van-golden.jpg (alt, near-side wrap already garbled - regenerate
 if ever used). hero2.mp4 - van appears but number not legibly shown; no edit needed.
+
+## Round 14 - Plumbing fixtures card redo (2026-11-04)
+The four `card-plumbing-*.webp` service cards made earlier invented a stand-in mascot:
+black cap with a blue hexagon patch, and a different face, instead of the brand
+character. Client spotted the fixtures one.
+
+Redone with brand-ray.png passed as `image_references` on gpt_image_2_5, 16:9, which
+holds the gray cap, the SUNNY HOME SERVICES wordmark, the orange rays, the white
+gloves and the gray sneakers. Same lesson as Round 12b: without the reference the
+model draws its own sun.
+
+- services/card-plumbing-fixtures.webp - job 01cf5a84-a1af-4a96-ae95-ee9149d89b98
+  (mascot with a pipe wrench beside a chrome faucet, blue sunburst). Alt that reads
+  "SUNNY" clipped under the brim: a7f44383-6ff2-4823-9c08-f563be8b70cd.
+- brand-ray.png uploaded as media 44b6f5d9-0745-4889-a00a-a2e4145a26e4.
+
+STILL WRONG CAP, not yet redone: card-plumbing-gas-lines.webp,
+card-plumbing-disposals.webp, card-plumbing-toilets.webp. All three are on
+plumber.html. Redo them the same way when the client asks.
