@@ -7,7 +7,7 @@ HTML files in this package,114
 "  of those, BUILT and NEW (no live page yet)",21
 "  of those, PLACEHOLDER (wording still needed)",3
 "  of those, a TEMPLATE for dev to duplicate",1
-Pages waiting on a client decision,10
+Pages waiting on a client decision,11
 
 STATUS KEY
 BUILT,Finished. A page of the same name is already live.
@@ -102,7 +102,7 @@ Privacy Policy,,,PLACEHOLDER,privacy-policy.html,https://sunny-home-services.ver
 "Riverton, UT",,Service Area,BUILT,riverton-ut.html,https://sunny-home-services.vercel.app/riverton-ut,https://sunnyhomeservices.com/riverton-ut/,The copywriter brief for this page,,
 "Salt Lake City, UT Air Conditioning",,Service Area,"BUILT, NEW",salt-lake-city-ut-air-conditioning.html,https://sunny-home-services.vercel.app/salt-lake-city-ut-air-conditioning,Not live yet,"Its own brief doc, verbatim",,
 "Salt Lake City, UT Heating",,Service Area,"BUILT, NEW",salt-lake-city-ut-heating.html,https://sunny-home-services.vercel.app/salt-lake-city-ut-heating,Not live yet,"Its own brief doc, verbatim",,
-"Salt Lake City, UT Plumber",,Service Area,"BUILT, NEW",salt-lake-city-ut-plumber.html,https://sunny-home-services.vercel.app/salt-lake-city-ut-plumber,Not live yet,"Its own brief doc, verbatim",,
+"Salt Lake City, UT Plumber",,Service Area,"BUILT, NEW",salt-lake-city-ut-plumber.html,https://sunny-home-services.vercel.app/salt-lake-city-ut-plumber,Not live yet,"Its own brief doc, verbatim",The Whole Home Water Filtration tile has nowhere to point: there is no water filtration page in the build and no brief for one. It goes to Coming Soon like the other unbuilt services.,Client supplies water filtration copy
 "Salt Lake City, UT",,Service Area,BUILT,salt-lake-city-ut.html,https://sunny-home-services.vercel.app/salt-lake-city-ut,https://sunnyhomeservices.com/salt-lake-city-ut/,The copywriter brief for this page,,
 "Sandy, UT Air Conditioning",,Service Area,BUILT,sandy-ut-air-conditioning.html,https://sunny-home-services.vercel.app/sandy-ut-air-conditioning,https://sunnyhomeservices.com/sandy-ut/air-conditioning/,The copywriter brief for this page,,
 "Sandy, UT Heating",,Service Area,BUILT,sandy-ut-heating.html,https://sunny-home-services.vercel.app/sandy-ut-heating,https://sunnyhomeservices.com/sandy-ut/heating/,The copywriter brief for this page,,
@@ -137,6 +137,9 @@ Whole House Air Purifier,,Air Quality,"BUILT, NEW",whole-house-air-purifier.html
 
 REVISION LOG
 Date,Area,What changed
+"November 4, 2026",No flat bands,"Every band on a service or city page now carries a washed texture. The alternating tone bands were a flat fill with their texture switched off, and 22 bands across 21 pages had no texture at all."
+"November 4, 2026",Lists and steps,"Ticked items read as cards with a gold edge rather than loose lines, so a short item no longer sits beside empty space. Numbered steps run across in one row. On the Salt Lake City plumbing page the service list became linked tiles, so each service reaches its own page; it was prose with no way through. That page lost 600px."
+"November 4, 2026",Bold,"The body font mapped every weight onto one medium file, so bold text rendered no differently from the text around it. The 700 weight was already in assets/fonts and unused; it is now wired to weights 600 and above."
 "November 4, 2026","Service tiles, round two","The West Jordan plumbing page moved from eight photo cards to the same tiles the city pages use, run across the full column so every service title fits one line. Its eight mismatched illustrations came out; the twelve links inside that copy were kept. That section went from 2,046px to 791px."
 "November 4, 2026",Checklists,"A ticked list inside a heading rail ran as one tall column, so a short item held a whole line and left the rest empty. Two columns now, with a lone last item taking the full width. The sub-headings that follow a list no longer sit straight on top of it, and the line that introduces a list reads as a lead-in rather than body copy."
 "November 4, 2026",Artwork,Removed the three remaining plumbing illustrations that used a stand-in sun with the wrong cap. Nothing references them now. The corrected fixtures illustration stays in assets/services/ and is not in use.

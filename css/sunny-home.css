@@ -1135,3 +1135,88 @@ a.hub-tile-go { text-decoration: none; }
   .hub-tile > a.hub-tile-title { padding-top: 12px; padding-bottom: 14px; }
   a.hub-tile-go { min-height: 44px; display: inline-flex; align-items: center; }
 }
+
+/* ==================================================================
+   Round three: no band is a flat fill
+   ================================================================== */
+
+/* sunny-hub.css gives a toned band a flat #f6f7f9 and hides its texture.
+   A flat fill is not allowed on any band, so the texture comes back and
+   the tone becomes the wash behind it rather than the whole surface. */
+.section-hub.is-tone > .section-bg { display: block; }
+.section-hub.is-tone > .section-bg img { opacity: 0.11; }
+.section-hub.is-tone.section-hub-tint > .section-bg img { opacity: 0.10; }
+
+/* ---- Ticked lists read as cards, not as loose lines ---- */
+.hub-rail-body .check-list .check {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--hairline, #DBE3E6);
+  border-left: 3px solid var(--sun-gold, #FFC704);
+  border-radius: 12px;
+  padding: 16px 18px;
+  align-items: flex-start;
+  gap: 12px;
+}
+.hub-rail-body .check-list .check-badge {
+  width: 22px; height: 22px;
+  margin-top: 1px;
+  font-size: 13px;
+}
+.hub-rail-body .check-list .check-text { font-size: 16px; line-height: 1.5; }
+.hub-rail-body .check-list { gap: 14px; }
+
+/* ---- Steps: across in one row, numbered ---- */
+.hub-rail-body .hub-steps,
+.container > .hub-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+.hub-steps .hub-step {
+  display: block;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--hairline, #DBE3E6);
+  border-top: 3px solid var(--sky-deep, #03A6CC);
+  border-radius: 14px;
+  padding: 22px 22px 24px;
+}
+.hub-steps .hub-step-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--sun-gold, #FFC704);
+  color: var(--ink, #454545);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.hub-steps .hub-step-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink, #454545);
+}
+@media (max-width: 900px) {
+  .hub-rail-body .hub-steps,
+  .container > .hub-steps { grid-template-columns: 1fr; }
+}
+
+/* The body face mapped the whole 100 to 900 range onto one 500 weight file,
+   so <strong> rendered identically to the text around it and the "Name:"
+   lead-in inside a ticked item did nothing. rubik-700 was already in
+   assets/fonts and unused; this gives the upper range a real bold. */
+@font-face {
+  font-family: 'Rubik Test Medium';
+  src: url('../assets/fonts/rubik-700.woff2') format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rubik Medium';
+  src: url('../assets/fonts/rubik-700.woff2') format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}

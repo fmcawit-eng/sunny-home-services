@@ -193,6 +193,12 @@ NEEDS['kearns-ut.html'] = (
     'have no copy yet, so those links point at Coming Soon.',
     'Client decides 30 or 50')
 
+NEEDS['salt-lake-city-ut-plumber.html'] = (
+    'The Whole Home Water Filtration tile has nowhere to point: there is no '
+    'water filtration page in the build and no brief for one. It goes to Coming '
+    'Soon like the other unbuilt services.',
+    'Client supplies water filtration copy')
+
 NEEDS['millcreek-ut.html'] = (
     'The Millcreek AC page has no brief yet, so that one link points at Coming '
     'Soon. Heating and Plumbers are built.',
@@ -236,6 +242,20 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'No flat bands',
+     'Every band on a service or city page now carries a washed texture. The '
+     'alternating tone bands were a flat fill with their texture switched off, '
+     'and 22 bands across 21 pages had no texture at all.'),
+    ('November 4, 2026', 'Lists and steps',
+     'Ticked items read as cards with a gold edge rather than loose lines, so a '
+     'short item no longer sits beside empty space. Numbered steps run across in '
+     'one row. On the Salt Lake City plumbing page the service list became linked '
+     'tiles, so each service reaches its own page; it was prose with no way '
+     'through. That page lost 600px.'),
+    ('November 4, 2026', 'Bold',
+     'The body font mapped every weight onto one medium file, so bold text '
+     'rendered no differently from the text around it. The 700 weight was already '
+     'in assets/fonts and unused; it is now wired to weights 600 and above.'),
     ('November 4, 2026', 'Service tiles, round two',
      'The West Jordan plumbing page moved from eight photo cards to the same '
      'tiles the city pages use, run across the full column so every service '
