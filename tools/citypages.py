@@ -28,7 +28,7 @@ def ent(t):
     t = re.sub(r"(?<=[A-Za-z])'(?=[A-Za-z])", '&rsquo;', t)
     t = re.sub(r"(?<=[A-Za-z])'(?=\s|$)", '&rsquo;', t)
     # no em or en dashes anywhere
-    t = t.replace('—', ', ').replace('–', ' to ')
+    t = t.replace('\u2014', ', ').replace('\u2013', ' to ')   # em dash, en dash
     return t
 
 def resolve_markers(t, links):
