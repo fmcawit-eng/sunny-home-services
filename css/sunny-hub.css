@@ -527,13 +527,6 @@
 }
 .article-key p { margin: 0; font-size: 17px; line-height: 1.6; }
 
-/* Figures. A figure may run wider than the text column. */
-.article-fig { margin: 30px 0; }
-.article-fig img { display: block; width: 100%; height: auto; border-radius: 12px; }
-.article-fig figcaption {
-  margin-top: 10px; font-size: 14px; color: #6a6a6a; text-align: center;
-}
-.article-fig.is-wide { max-width: 1000px; margin-left: auto; margin-right: auto; }
 
 /* Checklists as a two-up card grid rather than one long stack */
 .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 0; padding: 0; list-style: none; }
@@ -560,3 +553,32 @@
 .article-prompt p { margin: 0; font-size: 18px; line-height: 1.5; }
 .article-prompt .btn { flex: none; }
 @media (max-width: 720px) { .article-prompt { flex-direction: column; align-items: flex-start; } }
+
+
+/* ---------------------------------------------------------------------------
+   Chapter layout.
+   A single centred measure reads as one straight stack. Each chapter instead
+   runs as two columns: the heading sits in a left rail and sticks while you
+   read, the body runs beside it. Offsetting the block from centre is what
+   stops the page feeling like one column of words.
+   --------------------------------------------------------------------------- */
+.article-row {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 720px);
+  gap: 56px;
+  justify-content: start;
+  align-items: start;
+}
+.article-aside h2 {
+  position: sticky; top: 104px;
+  margin: 0; font-size: 27px; line-height: 1.22;
+  padding-left: 16px; border-left: 4px solid var(--sun-gold, #f7b733);
+}
+.article-row .article-wrap { max-width: none; margin: 0; }
+.article-intro .article-toc { margin: 0; }
+
+@media (max-width: 1040px) {
+  .article-row { grid-template-columns: 1fr; gap: 16px; max-width: 760px; margin: 0 auto; }
+  .article-aside h2 { position: static; font-size: 24px; }
+  .article-intro .article-toc { margin-top: 26px; }
+}

@@ -9,14 +9,16 @@
          KEEP = identical on every post, leave it alone.
 
        HOW A POST IS PUT TOGETHER
-       A 1,200-word article in one column reads as a wall of text, so each H2
-       chapter is its own band and the bands alternate tint:
+       A 1,200-word article in one centred column reads as a wall of text, so
+       every chapter runs as two columns inside .article-row: the H2 sits in
+       the left rail and sticks while you read, the body runs beside it. The
+       bands alternate tint:
          band 1  .article-band.is-tint
          band 2  .article-band
          band 3  .article-band.is-tint     ... and so on.
-       Put a figure in roughly the first and middle chapters, and the dark
-       prompt strip halfway down. Everything else is text in .article-wrap,
-       which holds the 760px measure.
+       Drop the dark prompt strip in around the middle chapter. Articles carry
+       no in-article images: the only picture on the page is the featured
+       graphic at the top. Below 1040px the two columns stack on their own.
 
        Worked example to compare against:
          blog-prevent-frozen-pipes-in-west-jordan.html
@@ -138,7 +140,7 @@
   <section class="section-hub post-head" data-block="post-head">
     <div class="container">
       <div class="hub-crumb"><span><span><a href="index.html">Home</a></span> / <span><a href="blog.html">Blog</a></span> / <span class="breadcrumb_last" aria-current="page">SWAP: Article Title</span></span></div>
-      <h1 class="reveal" data-animation="fade-up">SWAP: Article Title</h1>
+      <h1 class="reveal" data-animation="fade-up">SWAP: Article&nbsp;Title</h1>
       <div class="cta-row reveal" data-animation="fade-up">
         <a class="btn btn-primary btn-pill btn-lg book_button" href="coming-soon.html">Book Now</a>
         <a class="btn btn-outline-light btn-pill btn-lg" href="blog.html">All Articles</a>
@@ -150,16 +152,19 @@
        Each href must match the id on that chapter's <h2>. -->
   <section class="section-hub article-intro" data-block="article-intro">
     <div class="container">
-      <div class="article-wrap hub-prose reveal" data-animation="fade-up">
-        <p class="article-lede">SWAP: the opening paragraph. Answer the reader&rsquo;s question in the first sentence, then set up what the article covers.</p>
+      <div class="article-row">
+        <div class="article-aside"></div>
+        <div class="article-wrap hub-prose reveal" data-animation="fade-up">
+          <p class="article-lede">SWAP: the opening paragraph. Answer the reader&rsquo;s question in the first sentence, then set up what the article covers.</p>
+          <nav class="article-toc" aria-label="In this article">
+            <h2>In this&nbsp;article</h2>
+            <ol>
+              <li><a href="#chapter-one">SWAP: first chapter heading</a></li>
+              <li><a href="#chapter-two">SWAP: second chapter heading</a></li>
+            </ol>
+          </nav>
+        </div>
       </div>
-      <nav class="article-toc reveal" data-animation="fade-up" aria-label="In this article">
-        <h2>In this&nbsp;article</h2>
-        <ol>
-          <li><a href="#chapter-one">SWAP: first chapter heading</a></li>
-          <li><a href="#chapter-two">SWAP: second chapter heading</a></li>
-        </ol>
-      </nav>
     </div>
   </section>
 
@@ -171,23 +176,20 @@
        the full row on its own, so no card is ever stranded. -->
   <section class="article-band is-tint" data-block="article-chapter">
     <div class="container">
-      <div class="article-wrap hub-prose reveal" data-animation="fade-up">
-        <h2 id="chapter-one">SWAP: first chapter&nbsp;heading</h2>
-        <p>SWAP: body paragraph. Short paragraphs, answer first.</p>
-        <ul class="check-grid">
-          <li>SWAP: list item.</li>
-          <li>SWAP: list item.</li>
-          <li>SWAP: list item.</li>
-          <li>SWAP: list item.</li>
-        </ul>
+      <div class="article-row">
+        <div class="article-aside reveal" data-animation="fade-up">
+          <h2 id="chapter-one">SWAP: first chapter&nbsp;heading</h2>
+        </div>
+        <div class="article-wrap hub-prose reveal" data-animation="fade-up">
+          <p>SWAP: body paragraph. Short paragraphs, answer first.</p>
+          <ul class="check-grid">
+            <li>SWAP: list item.</li>
+            <li>SWAP: list item.</li>
+            <li>SWAP: list item.</li>
+            <li>SWAP: list item.</li>
+          </ul>
+        </div>
       </div>
-      <!-- SWAP or delete. A figure sits outside .article-wrap so it can run
-           wider than the text. Pick from assets/services/, which has clean
-           illustrations and real photography with no headline baked in. -->
-      <figure class="article-fig is-wide reveal" data-animation="fade-up">
-        <img src="assets/services/team-plumbing.webp" alt="SWAP: describe what is happening in the photo" loading="lazy">
-        <figcaption>SWAP: one short line, or delete this caption.</figcaption>
-      </figure>
     </div>
   </section>
 
@@ -204,13 +206,17 @@
   <!-- CHAPTER, untinted this time. Keep alternating. -->
   <section class="article-band" data-block="article-chapter">
     <div class="container">
-      <div class="article-wrap hub-prose reveal" data-animation="fade-up">
-        <h2 id="chapter-two">SWAP: second chapter&nbsp;heading</h2>
-        <p>SWAP: body paragraph. Link any service named here to its own page, for example <a href="plumber.html">plumbing services</a>, and any other article to its blog page.</p>
-        <h3>SWAP: sub-heading, or delete&nbsp;it</h3>
-        <p>SWAP: body paragraph.</p>
-        <!-- h4 exists for a small label repeated inside an h3, such as
-             "Likely causes". Never let an h4 sit without an h3 above it. -->
+      <div class="article-row">
+        <div class="article-aside reveal" data-animation="fade-up">
+          <h2 id="chapter-two">SWAP: second chapter&nbsp;heading</h2>
+        </div>
+        <div class="article-wrap hub-prose reveal" data-animation="fade-up">
+          <p>SWAP: body paragraph. Link any service named here to its own page, for example <a href="plumber.html">plumbing services</a>, and any other article to its blog page.</p>
+          <h3>SWAP: sub-heading, or delete&nbsp;it</h3>
+          <p>SWAP: body paragraph.</p>
+          <!-- h4 exists for a small label repeated inside an h3, such as
+               "Likely causes". Never let an h4 sit without an h3 above it. -->
+        </div>
       </div>
     </div>
   </section>
