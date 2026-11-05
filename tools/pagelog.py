@@ -263,6 +263,12 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'Uniforms',
+     'All 30 technician photographs were checked against the rule that the Sunny '
+     'logo appears on the hat, on the chest and across the back. Twenty five '
+     'already did. Five did not, all in the same set, and they carried a plain '
+     'cap and polo or a mark that was not Sunny\'s. Those five were remade with '
+     'the real logo referenced, and they appear on 33 pages between them.'),
     ('November 4, 2026', 'No fade in',
      'Sections no longer fade in on scroll. Everything is drawn with the page. '
      'A side effect worth having: the stylesheet started those elements at zero '

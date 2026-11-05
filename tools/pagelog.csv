@@ -137,6 +137,7 @@ Whole House Air Purifier,,Air Quality,"BUILT, NEW",whole-house-air-purifier.html
 
 REVISION LOG
 Date,Area,What changed
+"November 4, 2026",Uniforms,"All 30 technician photographs were checked against the rule that the Sunny logo appears on the hat, on the chest and across the back. Twenty five already did. Five did not, all in the same set, and they carried a plain cap and polo or a mark that was not Sunny's. Those five were remade with the real logo referenced, and they appear on 33 pages between them."
 "November 4, 2026",No fade in,"Sections no longer fade in on scroll. Everything is drawn with the page. A side effect worth having: the stylesheet started those elements at zero opacity so the script could animate them in, which meant a visitor with JavaScript blocked saw an almost empty page. Now the page reads either way. The markup keeps its classes so the animation can be switched back on."
 "November 4, 2026",Mini-splits,"The three ductless service cards sat two-up inside the heading rail and spilled onto a second row. They run three across the full column now, and the section came down from 1,506px to 893px. The photographs were kept."
 "November 4, 2026",Brand logos,"The furnace repair and mini-split pages now show manufacturer logos where a correct one could be sourced: Carrier, Lennox, Rheem and Goodman on one, Mitsubishi Electric and Daikin on the other. The remaining brands stay as names on an ""and more"" line. Sources and licensing are in assets/brands/SOURCES.md."

@@ -394,3 +394,36 @@ model draws its own sun.
 STILL WRONG CAP, not yet redone: card-plumbing-gas-lines.webp,
 card-plumbing-disposals.webp, card-plumbing-toilets.webp. All three are on
 plumber.html. Redo them the same way when the client asks.
+
+## Round 15 - Technician uniforms, logo placement (2026-11-04)
+**Hard rule from the client:** the Sunny logo must appear on the hat, on the left or
+right chest of the polo, and across the back of the shirt. Color of the kit was fine;
+the logo was what was missing.
+
+Audited all 30 technician images in use. The `heroes/*` and `services/card-*` sets
+already carried the badge on the cap, the chest and the back where visible, as did
+`heating-work`, `heatpump-service` and `why-team`. Five failed, all in the same set:
+
+- services/team-air-conditioning.webp - job fc36242a-3080-492b-8f52-6db102ec6dec
+- services/team-drains.webp           - job 7570b485-c605-4486-81a2-77636d581123
+- services/team-heating.webp          - job 96c74b64-449d-474a-9c11-1f8308ca330c
+- services/team-plumbing.webp         - job d9e1599f-75d2-4cba-a295-8734f8df57a9
+- services/team-water-heater.webp     - job 65886e8b-b450-4b86-b173-57f4e1eb1ff4
+
+The old five wore a plain black cap and polo with no mark, or a small mark that was
+not Sunny's. They appear on 33 pages, under alt text that calls them Sunny Home
+Services technicians, so the branding mattered.
+
+Regenerated on gpt_image_2_5, 16:9, with `assets/brand-logo.png` passed as
+`image_references` (media 4bfecac9-878c-489a-a41b-0d9770e2cdbc). The badge was
+described in words as well as referenced, because the reference alone still drifts.
+
+Poses were chosen so the placement is actually provable: front-facing shots show the
+cap badge and the chest badge, rear shots show the large back print. A cap badge sits
+on the front panel, so a rear shot correctly shows a plain cap.
+
+The first pass returned the same man in all five. The set they replaced had a mix of
+people, so three were regenerated to keep that: the AC and heating technicians are
+Black men, the plumber is older with glasses.
+
+Resized to 2048x1152 to match the files they replaced, then `cwebp -q 82`.
