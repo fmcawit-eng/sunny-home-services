@@ -1469,3 +1469,20 @@ a.hub-tile-go { text-decoration: none; }
   line-height: 1.5;
   color: #5a4a12;
 }
+
+/* Nothing may drag the page sideways on a phone.
+
+   Two things did. The slide-out menu is parked off to the right when closed,
+   and a browser still counts it as page width. And a full-bleed band is sized
+   at 100vw, which includes the scrollbar, so it sits about 20px wider than the
+   space the page actually has.
+
+   "clip" rather than "hidden" on purpose: hidden would stop the sticky
+   headings on the service pages from sticking. */
+html, body { overflow-x: clip; }
+
+/* The legal pages carry raw web addresses in their text. A long one has no
+   space in it to break at, so it ran off the side of a phone. */
+.hub-prose a[href^="http"],
+.hub-rail-body a[href^="http"],
+.legal-body a[href^="http"] { overflow-wrap: anywhere; word-break: break-word; }
