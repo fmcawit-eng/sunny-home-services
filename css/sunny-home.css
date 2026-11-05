@@ -1310,3 +1310,52 @@ a.hub-tile-go { text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .hub-card:hover, .hub-card:focus-within { transform: none !important; }
 }
+
+/* ---- Manufacturer logos ---- */
+/* Each mark sits on its own white card, because they arrive in different
+   colors and shapes and some carry a white background of their own. The
+   card gives them one surface and one optical height. */
+.hub-brand-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 104px;
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid var(--hairline, #DBE3E6);
+  border-radius: 14px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.brand-logo img {
+  max-height: 46px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+.brand-logo:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 26px rgba(3, 166, 204, 0.14);
+  border-color: var(--sky-deep, #03A6CC);
+}
+.brand-more {
+  margin-top: 22px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted, #6B7480);
+}
+.brand-more strong { color: var(--ink, #454545); }
+
+@media (max-width: 900px) { .hub-brand-logos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .hub-brand-logos { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo, .brand-logo:hover { transition: none; transform: none !important; }
+}
+/* Two marks should not stretch across four columns with the row half empty. */
+.hub-brand-logos-2 { grid-template-columns: repeat(2, minmax(0, 270px)); }
+@media (max-width: 480px) { .hub-brand-logos-2 { grid-template-columns: 1fr; } }

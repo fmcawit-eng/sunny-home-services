@@ -7,7 +7,7 @@ HTML files in this package,114
 "  of those, BUILT and NEW (no live page yet)",21
 "  of those, PLACEHOLDER (wording still needed)",3
 "  of those, a TEMPLATE for dev to duplicate",1
-Pages waiting on a client decision,11
+Pages waiting on a client decision,14
 
 STATUS KEY
 BUILT,Finished. A page of the same name is already live.
@@ -63,12 +63,12 @@ Financing,,About Us,BUILT,financing.html,https://sunny-home-services.vercel.app/
 Furnace Installation,,Heating,BUILT,furnace-installation.html,https://sunny-home-services.vercel.app/furnace-installation,https://sunnyhomeservices.com/heating/furnace-installation/,The copywriter brief for this page,,
 Furnace Maintenance,,Heating,BUILT,furnace-maintenance.html,https://sunny-home-services.vercel.app/furnace-maintenance,https://sunnyhomeservices.com/heating/furnace-maintenance/,The copywriter brief for this page,,
 Furnace Repair Experts,,,BUILT,furnace-repair-experts.html,https://sunny-home-services.vercel.app/furnace-repair-experts,https://sunnyhomeservices.com/furnace-repair-experts/,Mirrored from the live page,"Mirror of the live ad landing page, kept byte for byte. Its menu button, Book Now and BBB badge are under 44px on a phone and the review attributions are 10px. Those come from the live theme, not from this build, and cannot be reached from our stylesheet.","Client, if they want the live page fixed"
-Furnace Repair,,Heating,BUILT,furnace-repair.html,https://sunny-home-services.vercel.app/furnace-repair,https://sunnyhomeservices.com/heating/furnace-repair/,The copywriter brief for this page,,
+Furnace Repair,,Heating,BUILT,furnace-repair.html,https://sunny-home-services.vercel.app/furnace-repair,https://sunnyhomeservices.com/heating/furnace-repair/,The copywriter brief for this page,"Carrier, Lennox, Rheem and Goodman show as logos. Trane and American Standard stay as names because the only marks available are the parent company (Trane Technologies) and the plumbing fixtures business, both of which would be the wrong logo. Bryant and York had no usable file. More important: a manufacturer logo normally signals authorized dealer status, and the copy only claims that Sunny services these brands.",Client confirms which brands they are a dealer for
 Furnace Replacement Experts,,,BUILT,furnace-replacement-experts.html,https://sunny-home-services.vercel.app/furnace-replacement-experts,https://sunnyhomeservices.com/furnace-replacement-experts/,Mirrored from the live page,"Mirror of the live ad landing page, kept byte for byte. Its menu button, Book Now and BBB badge are under 44px on a phone and the review attributions are 10px. Those come from the live theme, not from this build, and cannot be reached from our stylesheet.","Client, if they want the live page fixed"
 Garbage Disposals,,Plumbing,BUILT,garbage-disposals.html,https://sunny-home-services.vercel.app/garbage-disposals,https://sunnyhomeservices.com/plumber/garbage-disposals/,The copywriter brief for this page,,
 Gas Lines,,Plumbing,BUILT,gas-lines.html,https://sunny-home-services.vercel.app/gas-lines,https://sunnyhomeservices.com/plumber/gas-lines/,The copywriter brief for this page,,
 Heat Pumps,,Cooling,BUILT,heat-pumps.html,https://sunny-home-services.vercel.app/heat-pumps,https://sunnyhomeservices.com/heat-pumps/,The copywriter brief for this page,,
-Heating,Heating,,BUILT,heating.html,https://sunny-home-services.vercel.app/heating,https://sunnyhomeservices.com/heating/,The copywriter brief for this page,,
+Heating,Heating,,BUILT,heating.html,https://sunny-home-services.vercel.app/heating,https://sunnyhomeservices.com/heating/,The copywriter brief for this page,"The section headed ""Heating Systems and Brands We Service"" lists only system types (gas furnaces, electric furnaces, heat pumps, mini-splits) and names no brand at all. Either drop ""and Brands"" from the heading or carry the furnace page's brand list here.",Client decides which
 "Herriman, UT Air Conditioning",,Service Area,BUILT,herriman-ut-air-conditioning.html,https://sunny-home-services.vercel.app/herriman-ut-air-conditioning,https://sunnyhomeservices.com/herriman-ut/air-conditioning/,The copywriter brief for this page,,
 "Herriman, UT Heating",,Service Area,BUILT,herriman-ut-heating.html,https://sunny-home-services.vercel.app/herriman-ut-heating,https://sunnyhomeservices.com/herriman-ut/heating/,The copywriter brief for this page,,
 "Herriman, UT Plumber",,Service Area,BUILT,herriman-ut-plumber.html,https://sunny-home-services.vercel.app/herriman-ut-plumber,https://sunnyhomeservices.com/herriman-ut/plumber/,The copywriter brief for this page,,
@@ -91,7 +91,7 @@ Membership,,About Us,BUILT,membership.html,https://sunny-home-services.vercel.ap
 "Millcreek, UT Heating",,Service Area,"BUILT, NEW",millcreek-ut-heating.html,https://sunny-home-services.vercel.app/millcreek-ut-heating,Not live yet,"Its own brief doc, verbatim",,
 "Millcreek, UT Plumber",,Service Area,"BUILT, NEW",millcreek-ut-plumber.html,https://sunny-home-services.vercel.app/millcreek-ut-plumber,Not live yet,"Its own brief doc, verbatim",,
 "Millcreek, UT",,Service Area,"BUILT, NEW",millcreek-ut.html,https://sunny-home-services.vercel.app/millcreek-ut,Not live yet,"Its own brief doc, verbatim","The Millcreek AC page has no brief yet, so that one link points at Coming Soon. Heating and Plumbers are built.",Client supplies Millcreek AC copy
-Mini Splits,,Cooling,BUILT,mini-splits.html,https://sunny-home-services.vercel.app/mini-splits,https://sunnyhomeservices.com/mini-splits/,The copywriter brief for this page,,
+Mini Splits,,Cooling,BUILT,mini-splits.html,https://sunny-home-services.vercel.app/mini-splits,https://sunnyhomeservices.com/mini-splits/,The copywriter brief for this page,Mitsubishi Electric and Daikin show as logos; Fujitsu and LG stay as names because no usable file was found. Same dealer question as the furnace page.,Client confirms which brands they are a dealer for
 Offers,,About Us,BUILT,offers.html,https://sunny-home-services.vercel.app/offers,https://sunnyhomeservices.com/about/offers/,The copywriter brief for this page,,
 Plumbing,Plumbing,,BUILT,plumber.html,https://sunny-home-services.vercel.app/plumber,https://sunnyhomeservices.com/plumber/,The copywriter brief for this page,,
 Plumbing Fixtures,,Plumbing,BUILT,plumbing-fixtures.html,https://sunny-home-services.vercel.app/plumbing-fixtures,https://sunnyhomeservices.com/plumber/fixtures/,The copywriter brief for this page,,
@@ -137,6 +137,7 @@ Whole House Air Purifier,,Air Quality,"BUILT, NEW",whole-house-air-purifier.html
 
 REVISION LOG
 Date,Area,What changed
+"November 4, 2026",Brand logos,"The furnace repair and mini-split pages now show manufacturer logos where a correct one could be sourced: Carrier, Lennox, Rheem and Goodman on one, Mitsubishi Electric and Daikin on the other. The remaining brands stay as names on an ""and more"" line. Sources and licensing are in assets/brands/SOURCES.md."
 "November 4, 2026",Hover,"Tiles, ticked cards and numbered steps now respond to the pointer: a lift, a shadow, a gold bar across the top of a tile, and the Learn More sliding with it. The reveal animation leaves an inline transform on everything it touches, which had been silently cancelling the lift on the original cards across the whole site; that is fixed too. Anyone who has asked their system for less movement gets the color change without the motion."
 "November 4, 2026",Information tiles,"The two card grids that carry information rather than links, on the water heater repair and furnace repair pages, now match the service tiles and run across the full column instead of inside the narrow heading rail."
 "November 4, 2026",No flat bands,"Every band on a service or city page now carries a washed texture. The alternating tone bands were a flat fill with their texture switched off, and 22 bands across 21 pages had no texture at all."

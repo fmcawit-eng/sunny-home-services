@@ -199,6 +199,27 @@ NEEDS['salt-lake-city-ut-plumber.html'] = (
     'Soon like the other unbuilt services.',
     'Client supplies water filtration copy')
 
+NEEDS['furnace-repair.html'] = (
+    'Carrier, Lennox, Rheem and Goodman show as logos. Trane and American '
+    'Standard stay as names because the only marks available are the parent '
+    'company (Trane Technologies) and the plumbing fixtures business, both of '
+    'which would be the wrong logo. Bryant and York had no usable file. More '
+    'important: a manufacturer logo normally signals authorized dealer status, '
+    'and the copy only claims that Sunny services these brands.',
+    'Client confirms which brands they are a dealer for')
+
+NEEDS['mini-splits.html'] = (
+    'Mitsubishi Electric and Daikin show as logos; Fujitsu and LG stay as names '
+    'because no usable file was found. Same dealer question as the furnace page.',
+    'Client confirms which brands they are a dealer for')
+
+NEEDS['heating.html'] = (
+    'The section headed "Heating Systems and Brands We Service" lists only '
+    'system types (gas furnaces, electric furnaces, heat pumps, mini-splits) and '
+    'names no brand at all. Either drop "and Brands" from the heading or carry '
+    'the furnace page\'s brand list here.',
+    'Client decides which')
+
 NEEDS['millcreek-ut.html'] = (
     'The Millcreek AC page has no brief yet, so that one link points at Coming '
     'Soon. Heating and Plumbers are built.',
@@ -242,6 +263,12 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'Brand logos',
+     'The furnace repair and mini-split pages now show manufacturer logos where a '
+     'correct one could be sourced: Carrier, Lennox, Rheem and Goodman on one, '
+     'Mitsubishi Electric and Daikin on the other. The remaining brands stay as '
+     'names on an "and more" line. Sources and licensing are in '
+     'assets/brands/SOURCES.md.'),
     ('November 4, 2026', 'Hover',
      'Tiles, ticked cards and numbered steps now respond to the pointer: a lift, '
      'a shadow, a gold bar across the top of a tile, and the Learn More sliding '
