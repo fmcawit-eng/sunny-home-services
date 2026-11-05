@@ -261,13 +261,11 @@ function initBookingTiles() {
    HEADER - entrance animation (items reveal in sequence)
 ============================================================ */
 function initHeaderEntrance() {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-  gsap.set(header, { y: -22, opacity: 0 });
-  gsap.to(header, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" });
-  const items = header.querySelectorAll(".header-logo, .header-nav a, .header-phone, .header-cta .btn");
-  gsap.set(items, { y: -10, opacity: 0 });
-  gsap.to(items, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out", delay: 0.12 });
+  // The header is drawn with the page. This is the copy of the script that the
+  // four mirrored ad landing pages load from the theme folder, so the same fix
+  // has to be made here: the old version faded every header link in one after
+  // another, drop-down children included, and the last ones did not appear for
+  // about three seconds.
 }
 
 /* ============================================================
