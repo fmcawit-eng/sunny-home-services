@@ -263,6 +263,17 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'Tiles everywhere',
+     'Seventy five service grids across fifty pages were still the old cards, '
+     'squeezed inside the narrow heading rail and running down the page. They are '
+     'tiles now, across the full column, and every set lands in at most two rows '
+     'with nothing stranded on the last one. Drain cleaning came down from 1,836px '
+     'to 962px. Six grids of photographs were lifted out of the rail as well; they '
+     'keep their pictures.'),
+    ('November 4, 2026', 'One animation',
+     'A card with a photograph and a tile without one now behave identically on '
+     'hover: the same lift, shadow, blue border and gold bar across the top. They '
+     'had been lifting by different amounts, and only the tile had the bar.'),
     ('November 4, 2026', 'Uniforms',
      'All 30 technician photographs were checked against the rule that the Sunny '
      'logo appears on the hat, on the chest and across the back. Twenty five '

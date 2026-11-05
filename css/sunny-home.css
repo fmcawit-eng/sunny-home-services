@@ -1365,3 +1365,86 @@ a.hub-tile-go { text-decoration: none; }
    it in, which also meant a page with the script blocked showed nothing.
    The class stays on the markup so the behavior can be restored. */
 .reveal { opacity: 1 !important; transform: none; }
+
+/* ==================================================================
+   One animation for every grid item
+   ================================================================== */
+
+/* A card with a photograph and a tile without one now behave the same
+   on hover: lift, shadow, blue border, and a gold bar that wipes across
+   the top edge. Before this they lifted by different amounts and only
+   the tile had the bar. */
+.hub-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  border: 1px solid var(--hairline, #DBE3E6);
+}
+.hub-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  background: var(--sun-gold, #FFC704);
+  transition: width .26s ease;
+  z-index: 2;
+}
+.hub-card:hover,
+.hub-card:focus-within {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 30px rgba(3, 166, 204, 0.18);
+  border-color: var(--sky-deep, #03A6CC);
+}
+.hub-card:hover::before,
+.hub-card:focus-within::before { width: 100%; }
+
+.hub-card-link { transition: transform .2s ease, color .2s ease; }
+.hub-card:hover .hub-card-link,
+.hub-card:focus-within .hub-card-link { transform: translateX(4px); }
+
+/* Column counts for the photo grids, matching the tile grids. */
+.hub-cards-2 { grid-template-columns: repeat(2, 1fr); }
+.hub-cards-5 { grid-template-columns: repeat(5, 1fr); }
+
+/* A tile whose body carries paragraphs and lists rather than one line. */
+.hub-tile-desc p { margin: 0 0 10px; }
+.hub-tile-desc p:last-child { margin-bottom: 0; }
+.hub-tile-desc ul,
+.hub-tile-desc .hub-card-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+.hub-tile-desc li { margin-bottom: 6px; }
+.hub-tile-desc li:last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-card, .hub-card::before, .hub-card-link { transition: none; }
+  .hub-card:hover, .hub-card:focus-within { transform: none !important; }
+}
+
+/* A trailing photo card fills the one empty cell beside it, not the whole
+   row. Spanning the full row pushed it onto a third row of its own, which
+   is the opposite of what it was meant to do. The rule above (1 / -1) was
+   written when these grids were two columns and a full span was the gap. */
+.hub-cards > .hub-card.is-wide { grid-column: span 2; }
+@media (max-width: 560px) {
+  .hub-cards > .hub-card.is-wide { grid-column: auto; }
+}
+
+/* Information tiles lifted less than the ones that link somewhere. Every
+   grid item now moves the same amount; the cursor and the absence of a
+   Learn More already say which ones go anywhere. */
+.hub-tile.is-static:hover,
+.hub-tile.is-static:focus-within { transform: translateY(-5px) !important; }
+@media (prefers-reduced-motion: reduce) {
+  .hub-tile.is-static:hover { transform: none !important; }
+}
+
+/* Two-column photo grids kept both columns on a phone, which left each card
+   about 160px wide. Every grid is a single column on a small screen. */
+@media (max-width: 640px) {
+  .hub-cards,
+  .hub-cards-2, .hub-cards-3, .hub-cards-4, .hub-cards-5 { grid-template-columns: 1fr; }
+  .hub-cards > .hub-card.is-wide { grid-column: auto; }
+}
