@@ -263,6 +263,16 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'No fade in',
+     'Sections no longer fade in on scroll. Everything is drawn with the page. '
+     'A side effect worth having: the stylesheet started those elements at zero '
+     'opacity so the script could animate them in, which meant a visitor with '
+     'JavaScript blocked saw an almost empty page. Now the page reads either way. '
+     'The markup keeps its classes so the animation can be switched back on.'),
+    ('November 4, 2026', 'Mini-splits',
+     'The three ductless service cards sat two-up inside the heading rail and '
+     'spilled onto a second row. They run three across the full column now, and '
+     'the section came down from 1,506px to 893px. The photographs were kept.'),
     ('November 4, 2026', 'Brand logos',
      'The furnace repair and mini-split pages now show manufacturer logos where a '
      'correct one could be sourced: Carrier, Lennox, Rheem and Goodman on one, '

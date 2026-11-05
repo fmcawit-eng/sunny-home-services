@@ -135,30 +135,15 @@ function initInteractiveHero() {
    SECTION REVEALS - each .reveal section animates as one unit
 ============================================================ */
 function initSectionReveals() {
-  document.querySelectorAll(".reveal").forEach(el => {
-    const type = el.dataset.animation || "fade-up";
-    let from = {};
-    switch (type) {
-      case "slide-left":  from = { x: -60, opacity: 0 }; break;
-      case "slide-right": from = { x:  60, opacity: 0 }; break;
-      case "scale-up":    from = { scale: 0.95, opacity: 0 }; break;
-      case "fade-up":
-      default:            from = { y: 36, opacity: 0 }; break;
-    }
-    gsap.set(el, from);
-    ScrollTrigger.create({
-      trigger: el,
-      start: "top 82%",
-      once: true,
-      onEnter: () => {
-        gsap.to(el, {
-          x: 0, y: 0, scale: 1, opacity: 1,
-          duration: 0.95,
-          ease: "power3.out",
-        });
-      },
-    });
-  });
+  // Sections no longer fade in on scroll: everything on the page is drawn
+  // straight away. The elements still carry .reveal and data-animation so the
+  // behaviour can be switched back on by restoring this function, and so the
+  // markup does not have to change on 114 pages.
+  //
+  // Nothing is set here on purpose. The old version called gsap.set(el, {opacity: 0})
+  // which also left an inline transform on every element it touched, and an
+  // inline style outranks the stylesheet, which quietly cancelled the hover
+  // lift on every card.
 }
 
 /* ============================================================

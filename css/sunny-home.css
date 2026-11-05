@@ -1359,3 +1359,9 @@ a.hub-tile-go { text-decoration: none; }
 /* Two marks should not stretch across four columns with the row half empty. */
 .hub-brand-logos-2 { grid-template-columns: repeat(2, minmax(0, 270px)); }
 @media (max-width: 480px) { .hub-brand-logos-2 { grid-template-columns: 1fr; } }
+
+/* Sections do not fade in any more: everything is drawn with the page.
+   sunny-engine.css starts .reveal at opacity 0 so the script could animate
+   it in, which also meant a page with the script blocked showed nothing.
+   The class stays on the markup so the behavior can be restored. */
+.reveal { opacity: 1 !important; transform: none; }
