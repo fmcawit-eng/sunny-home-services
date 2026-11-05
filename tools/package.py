@@ -21,9 +21,11 @@ PKG   = os.path.join(DIST, NAME)
 SITE  = os.path.join(PKG, 'HTMLs')
 SRC   = os.path.join(SITE, '_source')
 
+# trailingSlash must stay off. Every stylesheet, script and image path in these
+# pages is relative, so a trailing slash makes the browser resolve them one
+# folder deep ("/millcreek-ut/css/...") and the page loads unstyled.
 VERCEL = '''{
   "cleanUrls": true,
-  "trailingSlash": true,
   "rewrites": [
     { "source": "/", "destination": "/home-page" }
   ],
