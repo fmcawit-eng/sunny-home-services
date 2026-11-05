@@ -7,7 +7,7 @@ still needs a decision.
 Run:  python3 tools/pagelog.py
 Out:  tools/pagelog.csv  (handoff_pdf.py renders the PDF from this)
 """
-import csv, os, re, glob, datetime
+import csv, os, re, glob, json, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LIVE = 'https://sunnyhomeservices.com'
@@ -187,6 +187,15 @@ NEEDS['blog-template.html'] = (
     'blog index. Nothing links to it.',
     'Dev reference only')
 
+NEEDS['contact.html'] = (
+    'The form is the live site\'s own Gravity Forms markup, kept so dev has the '
+    'real field names and IDs. Gravity Forms is WordPress software, so it cannot '
+    'run on a static host and the form does not send from the preview. A short '
+    'script stands in for it, which keeps the page free of errors and labels the '
+    'form instead of letting it look like it sends. Delete that script when the '
+    'plugin is in place.',
+    'Dev wires the form in WordPress')
+
 NEEDS['coming-soon.html'] = (
     'Placeholder destination. Every nav or body link whose page is not built yet '
     'points here rather than nowhere.',
@@ -250,12 +259,37 @@ def copy_source(slug):
         return 'Client brief and their live home page'
     return 'The copywriter brief for this page'
 
+VS_LIVE = {}
+_vs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vs-live.json')
+if os.path.exists(_vs):
+    VS_LIVE = json.load(open(_vs, encoding='utf-8'))
+
+
+def vs_live(slug):
+    """How this page compares to the live page of the same name, in words.
+
+    Everything here is measured by tools/livecompare.py against the live site,
+    not judged by eye."""
+    d = VS_LIVE.get(slug)
+    if not d:
+        return ''
+    if not (d['ours_only'] or d['live_only']):
+        return 'Same wording as live.'
+    pct = round(d['same'] * 100)
+    return (f"{pct}% of the wording is the same. "
+            f"{d['ours_only']} words here are not on the live page, and "
+            f"{d['live_only']} words on the live page are not here.")
+
+
 def status(slug):
     if slug == 'blog-template.html': return 'TEMPLATE'
     if slug == 'coming-soon.html': return 'PLACEHOLDER'
     if slug in ('privacy-policy.html', 'terms-and-conditions.html'): return 'PLACEHOLDER'
     if slug not in LIVE_URL: return 'BUILT, NEW'
-    return 'BUILT'
+    d = VS_LIVE.get(slug)
+    if d and not (d['ours_only'] or d['live_only']):
+        return 'BUILT, LIVE MATCHES'
+    return 'BUILT, UPDATE LIVE'
 
 def nav_place(slug):
     for top, href, kids in NAV:
@@ -424,6 +458,7 @@ def main():
                                    else '/' + slug[:-5]),
             'Live Page Today': (LIVE + live) if live else 'Not live yet',
             'Where Copy Came From': copy_source(slug),
+            'How It Differs From Live': vs_live(slug),
             'Needs a Change or a Decision': need,
             'Who Decides': who,
         })
@@ -439,11 +474,15 @@ def main():
         total = len(rows)
         built = sum(1 for r in rows if r['Status'].startswith('BUILT'))
         new   = sum(1 for r in rows if r['Status'] == 'BUILT, NEW')
+        upd   = sum(1 for r in rows if r['Status'] == 'BUILT, UPDATE LIVE')
+        match = sum(1 for r in rows if r['Status'] == 'BUILT, LIVE MATCHES')
         ph    = sum(1 for r in rows if r['Status'] == 'PLACEHOLDER')
         needs = sum(1 for r in rows if r['Who Decides'].startswith(('Client', 'Dev '))
                     and r['Who Decides'] != 'Dev reference only')
         w.writerow(['HTML files in this package', total])
-        w.writerow(['  of those, BUILT and matching a live page', built - new])
+        w.writerow(['  of those, BUILT, the live page needs updating', upd])
+        if match:
+            w.writerow(['  of those, BUILT and the live page already matches', match])
         w.writerow(['  of those, BUILT and NEW (no live page yet)', new])
         w.writerow(['  of those, PLACEHOLDER (wording still needed)', ph])
         w.writerow(['  of those, a TEMPLATE for dev to duplicate',
@@ -451,7 +490,14 @@ def main():
         w.writerow(['Pages waiting on a client decision', needs])
         w.writerow([])
         w.writerow(['STATUS KEY'])
-        w.writerow(['BUILT', 'Finished. A page of the same name is already live.'])
+        w.writerow(['BUILT, UPDATE LIVE',
+                    'Finished here. A page of the same name is live, and this build '
+                    'differs from it, so the live page has to be updated. The last '
+                    'column says by how much, measured word by word against the '
+                    'live page.'])
+        w.writerow(['BUILT, LIVE MATCHES',
+                    'Finished here, and the live page already says the same thing. '
+                    'Only the look changed.'])
         w.writerow(['BUILT, NEW', 'Finished. Nothing like it is live yet.'])
         w.writerow(['PLACEHOLDER', 'Built and styled, but the wording is not real yet.'])
         w.writerow(['TEMPLATE', 'Not a page. The file dev duplicates to make more.'])

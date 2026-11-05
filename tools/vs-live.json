@@ -1,0 +1,639 @@
+{
+ "about.html": {
+  "live_only": 35,
+  "live_words": 571,
+  "ours_only": 16,
+  "ours_words": 552,
+  "same": 0.9546
+ },
+ "ac-installation.html": {
+  "live_only": 59,
+  "live_words": 1316,
+  "ours_only": 53,
+  "ours_words": 1310,
+  "same": 0.9573
+ },
+ "ac-maintenance.html": {
+  "live_only": 156,
+  "live_words": 1402,
+  "ours_only": 109,
+  "ours_words": 1355,
+  "same": 0.9039
+ },
+ "ac-repair-experts.html": {
+  "live_only": 19,
+  "live_words": 1307,
+  "ours_only": 12,
+  "ours_words": 1300,
+  "same": 0.9881
+ },
+ "ac-repair.html": {
+  "live_only": 139,
+  "live_words": 1462,
+  "ours_only": 90,
+  "ours_words": 1413,
+  "same": 0.9203
+ },
+ "ac-replacement-experts.html": {
+  "live_only": 38,
+  "live_words": 1321,
+  "ours_only": 31,
+  "ours_words": 1314,
+  "same": 0.9738
+ },
+ "air-conditioner.html": {
+  "live_only": 50,
+  "live_words": 1377,
+  "ours_only": 51,
+  "ours_words": 1378,
+  "same": 0.9633
+ },
+ "blog.html": {
+  "live_only": 50,
+  "live_words": 226,
+  "ours_only": 588,
+  "ours_words": 764,
+  "same": 0.3556
+ },
+ "camera-inspection.html": {
+  "live_only": 15,
+  "live_words": 1489,
+  "ours_only": 7,
+  "ours_words": 1481,
+  "same": 0.9926
+ },
+ "contact.html": {
+  "live_only": 26,
+  "live_words": 384,
+  "ours_only": 7,
+  "ours_words": 365,
+  "same": 0.9559
+ },
+ "cottonwood-heights-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1415,
+  "ours_only": 7,
+  "ours_words": 1407,
+  "same": 0.9922
+ },
+ "cottonwood-heights-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1430,
+  "ours_only": 7,
+  "ours_words": 1422,
+  "same": 0.9923
+ },
+ "cottonwood-heights-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1423,
+  "ours_only": 7,
+  "ours_words": 1415,
+  "same": 0.9922
+ },
+ "cottonwood-heights-ut.html": {
+  "live_only": 15,
+  "live_words": 1355,
+  "ours_only": 7,
+  "ours_words": 1347,
+  "same": 0.9919
+ },
+ "drain-cleaning.html": {
+  "live_only": 19,
+  "live_words": 1521,
+  "ours_only": 7,
+  "ours_words": 1509,
+  "same": 0.9914
+ },
+ "draper-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1423,
+  "ours_only": 7,
+  "ours_words": 1415,
+  "same": 0.9922
+ },
+ "draper-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1366,
+  "ours_only": 7,
+  "ours_words": 1358,
+  "same": 0.9919
+ },
+ "draper-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1326,
+  "ours_only": 34,
+  "ours_words": 1345,
+  "same": 0.9817
+ },
+ "draper-ut.html": {
+  "live_only": 15,
+  "live_words": 1458,
+  "ours_only": 7,
+  "ours_words": 1450,
+  "same": 0.9924
+ },
+ "duct-cleaning.html": {
+  "live_only": 131,
+  "live_words": 1548,
+  "ours_only": 78,
+  "ours_words": 1495,
+  "same": 0.9313
+ },
+ "ductwork.html": {
+  "live_only": 19,
+  "live_words": 1532,
+  "ours_only": 7,
+  "ours_words": 1520,
+  "same": 0.9915
+ },
+ "emergency-ac-repair.html": {
+  "live_only": 138,
+  "live_words": 1492,
+  "ours_only": 84,
+  "ours_words": 1438,
+  "same": 0.9242
+ },
+ "emergency-heating-repair.html": {
+  "live_only": 59,
+  "live_words": 1460,
+  "ours_only": 50,
+  "ours_words": 1451,
+  "same": 0.9626
+ },
+ "emergency-plumbing-repair.html": {
+  "live_only": 15,
+  "live_words": 1519,
+  "ours_only": 7,
+  "ours_words": 1511,
+  "same": 0.9927
+ },
+ "financing.html": {
+  "live_only": 21,
+  "live_words": 519,
+  "ours_only": 9,
+  "ours_words": 507,
+  "same": 0.9708
+ },
+ "furnace-installation.html": {
+  "live_only": 51,
+  "live_words": 1408,
+  "ours_only": 45,
+  "ours_words": 1402,
+  "same": 0.9658
+ },
+ "furnace-maintenance.html": {
+  "live_only": 41,
+  "live_words": 1361,
+  "ours_only": 38,
+  "ours_words": 1358,
+  "same": 0.9709
+ },
+ "furnace-repair-experts.html": {
+  "live_only": 57,
+  "live_words": 1307,
+  "ours_only": 56,
+  "ours_words": 1306,
+  "same": 0.9568
+ },
+ "furnace-repair.html": {
+  "live_only": 63,
+  "live_words": 1385,
+  "ours_only": 58,
+  "ours_words": 1380,
+  "same": 0.9562
+ },
+ "furnace-replacement-experts.html": {
+  "live_only": 23,
+  "live_words": 1283,
+  "ours_only": 30,
+  "ours_words": 1290,
+  "same": 0.9794
+ },
+ "garbage-disposals.html": {
+  "live_only": 19,
+  "live_words": 1554,
+  "ours_only": 7,
+  "ours_words": 1542,
+  "same": 0.9916
+ },
+ "gas-lines.html": {
+  "live_only": 23,
+  "live_words": 1534,
+  "ours_only": 7,
+  "ours_words": 1518,
+  "same": 0.9902
+ },
+ "heat-pumps.html": {
+  "live_only": 87,
+  "live_words": 1350,
+  "ours_only": 61,
+  "ours_words": 1324,
+  "same": 0.9447
+ },
+ "heating.html": {
+  "live_only": 54,
+  "live_words": 1340,
+  "ours_only": 48,
+  "ours_words": 1334,
+  "same": 0.9619
+ },
+ "herriman-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1417,
+  "ours_only": 7,
+  "ours_words": 1409,
+  "same": 0.9922
+ },
+ "herriman-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1398,
+  "ours_only": 7,
+  "ours_words": 1390,
+  "same": 0.9921
+ },
+ "herriman-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1420,
+  "ours_only": 7,
+  "ours_words": 1412,
+  "same": 0.9922
+ },
+ "herriman-ut.html": {
+  "live_only": 15,
+  "live_words": 1400,
+  "ours_only": 7,
+  "ours_words": 1392,
+  "same": 0.9921
+ },
+ "hydro-jetting.html": {
+  "live_only": 24,
+  "live_words": 1512,
+  "ours_only": 8,
+  "ours_words": 1496,
+  "same": 0.9894
+ },
+ "index.html": {
+  "live_only": 86,
+  "live_words": 1829,
+  "ours_only": 60,
+  "ours_words": 1803,
+  "same": 0.9598
+ },
+ "indoor-air-quality.html": {
+  "live_only": 58,
+  "live_words": 1440,
+  "ours_only": 44,
+  "ours_words": 1426,
+  "same": 0.9644
+ },
+ "leak-detection.html": {
+  "live_only": 15,
+  "live_words": 1470,
+  "ours_only": 7,
+  "ours_words": 1462,
+  "same": 0.9925
+ },
+ "lehi-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1427,
+  "ours_only": 7,
+  "ours_words": 1419,
+  "same": 0.9923
+ },
+ "lehi-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1374,
+  "ours_only": 7,
+  "ours_words": 1366,
+  "same": 0.992
+ },
+ "lehi-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1453,
+  "ours_only": 7,
+  "ours_words": 1445,
+  "same": 0.9924
+ },
+ "lehi-ut.html": {
+  "live_only": 15,
+  "live_words": 1428,
+  "ours_only": 7,
+  "ours_words": 1420,
+  "same": 0.9923
+ },
+ "meet-the-team.html": {
+  "live_only": 24,
+  "live_words": 522,
+  "ours_only": 14,
+  "ours_words": 512,
+  "same": 0.9632
+ },
+ "membership.html": {
+  "live_only": 21,
+  "live_words": 473,
+  "ours_only": 9,
+  "ours_words": 461,
+  "same": 0.9679
+ },
+ "midvale-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1374,
+  "ours_only": 7,
+  "ours_words": 1366,
+  "same": 0.992
+ },
+ "midvale-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1459,
+  "ours_only": 7,
+  "ours_words": 1451,
+  "same": 0.9924
+ },
+ "midvale-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1380,
+  "ours_only": 7,
+  "ours_words": 1372,
+  "same": 0.992
+ },
+ "midvale-ut.html": {
+  "live_only": 15,
+  "live_words": 1498,
+  "ours_only": 7,
+  "ours_words": 1490,
+  "same": 0.9926
+ },
+ "mini-splits.html": {
+  "live_only": 57,
+  "live_words": 1357,
+  "ours_only": 53,
+  "ours_words": 1353,
+  "same": 0.9594
+ },
+ "offers.html": {
+  "live_only": 21,
+  "live_words": 540,
+  "ours_only": 9,
+  "ours_words": 528,
+  "same": 0.9719
+ },
+ "plumber.html": {
+  "live_only": 31,
+  "live_words": 1382,
+  "ours_only": 23,
+  "ours_words": 1374,
+  "same": 0.9804
+ },
+ "plumbing-fixtures.html": {
+  "live_only": 15,
+  "live_words": 1480,
+  "ours_only": 7,
+  "ours_words": 1472,
+  "same": 0.9925
+ },
+ "privacy-policy.html": {
+  "live_only": 1445,
+  "live_words": 1605,
+  "ours_only": 9,
+  "ours_words": 169,
+  "same": 0.1804
+ },
+ "riverton-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1473,
+  "ours_only": 7,
+  "ours_words": 1465,
+  "same": 0.9925
+ },
+ "riverton-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1313,
+  "ours_only": 7,
+  "ours_words": 1305,
+  "same": 0.9916
+ },
+ "riverton-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1311,
+  "ours_only": 7,
+  "ours_words": 1303,
+  "same": 0.9916
+ },
+ "riverton-ut.html": {
+  "live_only": 15,
+  "live_words": 1430,
+  "ours_only": 7,
+  "ours_words": 1422,
+  "same": 0.9923
+ },
+ "salt-lake-city-ut.html": {
+  "live_only": 126,
+  "live_words": 1413,
+  "ours_only": 133,
+  "ours_words": 1420,
+  "same": 0.9086
+ },
+ "sandy-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1357,
+  "ours_only": 7,
+  "ours_words": 1349,
+  "same": 0.9919
+ },
+ "sandy-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1490,
+  "ours_only": 7,
+  "ours_words": 1482,
+  "same": 0.9926
+ },
+ "sandy-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1457,
+  "ours_only": 7,
+  "ours_words": 1449,
+  "same": 0.9924
+ },
+ "sandy-ut.html": {
+  "live_only": 15,
+  "live_words": 1398,
+  "ours_only": 7,
+  "ours_words": 1390,
+  "same": 0.9921
+ },
+ "service-area.html": {
+  "live_only": 19,
+  "live_words": 1132,
+  "ours_only": 24,
+  "ours_words": 1137,
+  "same": 0.981
+ },
+ "sewer-and-drains.html": {
+  "live_only": 15,
+  "live_words": 1523,
+  "ours_only": 7,
+  "ours_words": 1515,
+  "same": 0.9928
+ },
+ "sewer-line-installation.html": {
+  "live_only": 15,
+  "live_words": 1549,
+  "ours_only": 7,
+  "ours_words": 1541,
+  "same": 0.9929
+ },
+ "sewer-line-repair.html": {
+  "live_only": 19,
+  "live_words": 1551,
+  "ours_only": 7,
+  "ours_words": 1539,
+  "same": 0.9916
+ },
+ "south-jordan-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1397,
+  "ours_only": 7,
+  "ours_words": 1389,
+  "same": 0.9921
+ },
+ "south-jordan-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1440,
+  "ours_only": 7,
+  "ours_words": 1432,
+  "same": 0.9923
+ },
+ "south-jordan-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1388,
+  "ours_only": 7,
+  "ours_words": 1380,
+  "same": 0.9921
+ },
+ "south-jordan-ut.html": {
+  "live_only": 15,
+  "live_words": 1460,
+  "ours_only": 7,
+  "ours_words": 1452,
+  "same": 0.9924
+ },
+ "tankless-water-heaters.html": {
+  "live_only": 19,
+  "live_words": 1445,
+  "ours_only": 7,
+  "ours_words": 1433,
+  "same": 0.991
+ },
+ "taylorsville-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1479,
+  "ours_only": 7,
+  "ours_words": 1471,
+  "same": 0.9925
+ },
+ "taylorsville-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1438,
+  "ours_only": 7,
+  "ours_words": 1430,
+  "same": 0.9923
+ },
+ "taylorsville-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1441,
+  "ours_only": 7,
+  "ours_words": 1433,
+  "same": 0.9923
+ },
+ "taylorsville-ut.html": {
+  "live_only": 15,
+  "live_words": 1454,
+  "ours_only": 7,
+  "ours_words": 1446,
+  "same": 0.9924
+ },
+ "terms-and-conditions.html": {
+  "live_only": 15,
+  "live_words": 174,
+  "ours_only": 12,
+  "ours_words": 171,
+  "same": 0.9217
+ },
+ "thermostats.html": {
+  "live_only": 19,
+  "live_words": 1500,
+  "ours_only": 7,
+  "ours_words": 1488,
+  "same": 0.9913
+ },
+ "toilets.html": {
+  "live_only": 23,
+  "live_words": 1490,
+  "ours_only": 9,
+  "ours_words": 1476,
+  "same": 0.9892
+ },
+ "trenchless-sewer-line-repair.html": {
+  "live_only": 15,
+  "live_words": 1440,
+  "ours_only": 7,
+  "ours_words": 1432,
+  "same": 0.9923
+ },
+ "water-heater-installation.html": {
+  "live_only": 18,
+  "live_words": 1507,
+  "ours_only": 7,
+  "ours_words": 1496,
+  "same": 0.9917
+ },
+ "water-heater-maintenance.html": {
+  "live_only": 19,
+  "live_words": 1500,
+  "ours_only": 7,
+  "ours_words": 1488,
+  "same": 0.9913
+ },
+ "water-heater-repair.html": {
+  "live_only": 58,
+  "live_words": 1474,
+  "ours_only": 41,
+  "ours_words": 1457,
+  "same": 0.9662
+ },
+ "west-valley-ut-air-conditioning.html": {
+  "live_only": 15,
+  "live_words": 1389,
+  "ours_only": 7,
+  "ours_words": 1381,
+  "same": 0.9921
+ },
+ "west-valley-ut-heating.html": {
+  "live_only": 15,
+  "live_words": 1346,
+  "ours_only": 7,
+  "ours_words": 1338,
+  "same": 0.9918
+ },
+ "west-valley-ut-plumber.html": {
+  "live_only": 15,
+  "live_words": 1483,
+  "ours_only": 7,
+  "ours_words": 1475,
+  "same": 0.9926
+ },
+ "west-valley-ut.html": {
+  "live_only": 15,
+  "live_words": 1487,
+  "ours_only": 7,
+  "ours_words": 1479,
+  "same": 0.9926
+ },
+ "whole-home-humidifiers.html": {
+  "live_only": 15,
+  "live_words": 1543,
+  "ours_only": 7,
+  "ours_words": 1535,
+  "same": 0.9929
+ }
+}

@@ -24,3 +24,6 @@ node_modules/
 # Build output (the dev package; rebuild with tools/package.py)
 dist/
 tools/__pycache__/
+
+# the cached copies of the live pages, for tools/livecompare.py
+tools/.live-cache/

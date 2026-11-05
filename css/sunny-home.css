@@ -1455,3 +1455,17 @@ a.hub-tile-go { text-decoration: none; }
 .nb { white-space: nowrap; }
 /* The FAQ question is one flex item, so a nowrap span inside it stays in flow. */
 .hub-faq summary .faq-q { flex: 1 1 auto; min-width: 0; }
+
+/* The contact form is the live site's Gravity Form markup with no plugin behind
+   it on a static host. This labels it so it does not look like a working form
+   that silently fails. Remove along with the stub script once it is wired up. */
+.form-stub-note {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  background: rgba(255, 199, 4, .14);
+  border-left: 3px solid var(--sun-gold);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5a4a12;
+}

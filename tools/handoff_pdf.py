@@ -44,10 +44,11 @@ HEADN = S(name='HEADN', fontName='Helvetica-Bold', fontSize=6.9, leading=8.4,
           textColor=colors.HexColor('#CFEFF8'), alignment=TA_RIGHT)
 
 STATUS = {
-    'BUILT':       (colors.HexColor('#e2f4fa'), SKY_D),
-    'BUILT, NEW':  (colors.HexColor('#fff6d6'), AMBER),
-    'PLACEHOLDER': (SAND, ORANGE),
-    'TEMPLATE':    (colors.HexColor('#eef1f2'), MUTED),
+    'BUILT, UPDATE LIVE':  (colors.HexColor('#fdeee0'), ORANGE),
+    'BUILT, LIVE MATCHES': (colors.HexColor('#e2f4fa'), SKY_D),
+    'BUILT, NEW':          (colors.HexColor('#fff6d6'), AMBER),
+    'PLACEHOLDER':         (SAND, ORANGE),
+    'TEMPLATE':            (colors.HexColor('#eef1f2'), MUTED),
 }
 PAD = [('TOPPADDING', (0,0), (-1,-1), 2.4), ('BOTTOMPADDING', (0,0), (-1,-1), 2.4),
        ('LEFTPADDING', (0,0), (-1,-1), 5), ('RIGHTPADDING', (0,0), (-1,-1), 5)]
@@ -127,10 +128,11 @@ def main():
     F.append(Paragraph('Every page, and the file that holds it', H2))
     F.append(Spacer(1, 4))
 
-    cols = ['#', 'Page', 'Menu', 'Under', 'Status', 'Link on the preview',
-            'HTML file that holds it', 'Live page today', 'Note']
-    widths = [W*0.025, W*0.145, W*0.06, W*0.06, W*0.06, W*0.155,
-              W*0.155, W*0.13, W*0.21]
+    cols = ['#', 'Page', 'Menu', 'Status', 'Link on the preview',
+            'HTML file that holds it', 'Live page today',
+            'How it differs from the live page', 'Note']
+    widths = [W*0.023, W*0.125, W*0.055, W*0.072, W*0.135,
+              W*0.135, W*0.11, W*0.165, W*0.18]
     data = [[Paragraph('#', HEADN)] + [Paragraph(c, HEADC) for c in cols[1:]]]
     style = [('BACKGROUND', (0,0), (-1,0), SKY_D),
              ('VALIGN', (0,0), (-1,-1), 'TOP'),
@@ -145,18 +147,18 @@ def main():
         data.append([
             Paragraph(str(i), NUM),
             Paragraph(f'<b>{esc(r[0])}</b>', CELL),
-            Paragraph(esc(r[1]), CELLM),
-            Paragraph(esc(r[2]), CELLM),
+            Paragraph(esc(r[1] or r[2]), CELLM),
             Paragraph(esc(r[3]), st),
             Paragraph(f'<font face="Courier" size="5.9">{esc(prev)}</font>', CELL),
             Paragraph(f'<font face="Courier" size="5.9">{esc(r[4])}</font>', CELL),
             Paragraph(f'<font size="6">{esc(live_s)}</font>', CELLM),
             Paragraph(esc(r[8]), CELLM),
+            Paragraph(esc(r[9]), CELLM),
         ])
-        style.append(('BACKGROUND', (4, i), (4, i), bg))
+        style.append(('BACKGROUND', (3, i), (3, i), bg))
         if i % 2 == 0:
-            style.append(('BACKGROUND', (0, i), (3, i), TINT))
-            style.append(('BACKGROUND', (5, i), (-1, i), TINT))
+            style.append(('BACKGROUND', (0, i), (2, i), TINT))
+            style.append(('BACKGROUND', (4, i), (-1, i), TINT))
     t = Table(data, colWidths=widths, repeatRows=1)
     t.setStyle(TableStyle(style))
     F.append(t)
