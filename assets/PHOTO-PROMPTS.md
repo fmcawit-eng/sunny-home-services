@@ -375,3 +375,55 @@ number ... keep font/position"):
 - assets/heroes/community-van.jpg (hero) - job b7522da9-c1de-4e7b-b08d-416a55863a45
 STILL OLD: heroes/community-van-golden.jpg (alt, near-side wrap already garbled - regenerate
 if ever used). hero2.mp4 - van appears but number not legibly shown; no edit needed.
+
+## Round 14 - Plumbing fixtures card redo (2026-11-04)
+The four `card-plumbing-*.webp` service cards made earlier invented a stand-in mascot:
+black cap with a blue hexagon patch, and a different face, instead of the brand
+character. Client spotted the fixtures one.
+
+Redone with brand-ray.png passed as `image_references` on gpt_image_2_5, 16:9, which
+holds the gray cap, the SUNNY HOME SERVICES wordmark, the orange rays, the white
+gloves and the gray sneakers. Same lesson as Round 12b: without the reference the
+model draws its own sun.
+
+- services/card-plumbing-fixtures.webp - job 01cf5a84-a1af-4a96-ae95-ee9149d89b98
+  (mascot with a pipe wrench beside a chrome faucet, blue sunburst). Alt that reads
+  "SUNNY" clipped under the brim: a7f44383-6ff2-4823-9c08-f563be8b70cd.
+- brand-ray.png uploaded as media 44b6f5d9-0745-4889-a00a-a2e4145a26e4.
+
+STILL WRONG CAP, not yet redone: card-plumbing-gas-lines.webp,
+card-plumbing-disposals.webp, card-plumbing-toilets.webp. All three are on
+plumber.html. Redo them the same way when the client asks.
+
+## Round 15 - Technician uniforms, logo placement (2026-11-04)
+**Hard rule from the client:** the Sunny logo must appear on the hat, on the left or
+right chest of the polo, and across the back of the shirt. Color of the kit was fine;
+the logo was what was missing.
+
+Audited all 30 technician images in use. The `heroes/*` and `services/card-*` sets
+already carried the badge on the cap, the chest and the back where visible, as did
+`heating-work`, `heatpump-service` and `why-team`. Five failed, all in the same set:
+
+- services/team-air-conditioning.webp - job fc36242a-3080-492b-8f52-6db102ec6dec
+- services/team-drains.webp           - job 7570b485-c605-4486-81a2-77636d581123
+- services/team-heating.webp          - job 96c74b64-449d-474a-9c11-1f8308ca330c
+- services/team-plumbing.webp         - job d9e1599f-75d2-4cba-a295-8734f8df57a9
+- services/team-water-heater.webp     - job 65886e8b-b450-4b86-b173-57f4e1eb1ff4
+
+The old five wore a plain black cap and polo with no mark, or a small mark that was
+not Sunny's. They appear on 33 pages, under alt text that calls them Sunny Home
+Services technicians, so the branding mattered.
+
+Regenerated on gpt_image_2_5, 16:9, with `assets/brand-logo.png` passed as
+`image_references` (media 4bfecac9-878c-489a-a41b-0d9770e2cdbc). The badge was
+described in words as well as referenced, because the reference alone still drifts.
+
+Poses were chosen so the placement is actually provable: front-facing shots show the
+cap badge and the chest badge, rear shots show the large back print. A cap badge sits
+on the front panel, so a rear shot correctly shows a plain cap.
+
+The first pass returned the same man in all five. The set they replaced had a mix of
+people, so three were regenerated to keep that: the AC and heating technicians are
+Black men, the plumber is older with glasses.
+
+Resized to 2048x1152 to match the files they replaced, then `cwebp -q 82`.
