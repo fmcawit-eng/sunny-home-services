@@ -263,6 +263,12 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 4, 2026', 'No orphans',
+     'No heading, paragraph, list item or button now leaves a single word alone '
+     'on its last line, at any width from 360 to 1440. The last two words of '
+     '6,532 text blocks are tied together so they wrap as a pair, and a final '
+     'word containing a hyphen is held whole. Nothing was reworded: comparing '
+     'the visible text of every page before and after shows no word changed.'),
     ('November 4, 2026', 'Tiles everywhere',
      'Seventy five service grids across fifty pages were still the old cards, '
      'squeezed inside the narrow heading rail and running down the page. They are '

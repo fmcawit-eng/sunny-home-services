@@ -1448,3 +1448,10 @@ a.hub-tile-go { text-decoration: none; }
   .hub-cards-2, .hub-cards-3, .hub-cards-4, .hub-cards-5 { grid-template-columns: 1fr; }
   .hub-cards > .hub-card.is-wide { grid-column: auto; }
 }
+
+/* A hyphen is a legal place for the browser to break, so a last word like
+   "tune-ups." could still split and leave its tail alone on the final line.
+   Tying the last two words does not prevent that; this does. */
+.nb { white-space: nowrap; }
+/* The FAQ question is one flex item, so a nowrap span inside it stays in flow. */
+.hub-faq summary .faq-q { flex: 1 1 auto; min-width: 0; }
