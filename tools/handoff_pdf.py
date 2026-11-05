@@ -158,6 +158,138 @@ def main():
 
     F.append(PageBreak())
 
+    # ---------------- which file to change, and for what
+    F.append(Paragraph('Which file to change, and for what', H1))
+    F.append(Paragraph('Every page here is three kinds of file working together. '
+                       'Nothing is compiled or built: what you open is what runs in '
+                       'the browser.', SUB))
+    F.append(Spacer(1, 10))
+
+    kinds = [
+        ('HTML', 'The words, and the order they sit in',
+         'One file per page, named after the page: <font face="Courier">'
+         'millcreek-ut.html</font>. There are 114 of them.',
+         'Change one and you change what that one page says, or add and remove a '
+         'section on it. Nothing else is affected.'),
+        ('CSS', 'How all of it looks',
+         'Four files in <font face="Courier">css/</font>. They load in a set order '
+         'and the last one to mention something wins.',
+         'Change one and the look changes on every page at once: color, type size, '
+         'spacing, what happens when the pointer is over a tile.'),
+        ('JavaScript', 'What responds and what moves',
+         'One file, <font face="Courier">js/sunny-engine.js</font>.',
+         'Change it and behavior changes: the phone menu opening, a question '
+         'expanding, the sliding gallery. Every page still reads with this '
+         'switched off.'),
+    ]
+    data = [[Paragraph(c, HEADC) for c in
+             ('Kind', 'What it holds', 'Where it is', 'What changing it does')]]
+    for k, holds, where, does in kinds:
+        data.append([Paragraph(f'<b>{k}</b>', CELLB), Paragraph(holds, CELL),
+                     Paragraph(where, CELL), Paragraph(does, CELL)])
+    t = Table(data, colWidths=[W*0.09, W*0.21, W*0.30, W*0.40], repeatRows=1)
+    t.setStyle(TableStyle(PAD + [
+        ('BACKGROUND', (0,0), (-1,0), SKY_D),
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
+        ('TOPPADDING', (0,1), (-1,-1), 5), ('BOTTOMPADDING', (0,1), (-1,-1), 5)]))
+    F.append(t)
+
+    F.append(Paragraph('The four stylesheets, in the order they load', H2))
+    sheets = [
+        ('sunny-engine.css', 'The base. The reset, the brand colors and fonts, the '
+         'header and the footer. The only one all 114 pages load, including the four '
+         'mirrored ad pages.'),
+        ('sunny-landing.css', 'The landing page sections.'),
+        ('sunny-hub.css', 'The service and city page sections: heroes, tile grids, '
+         'ticked lists, numbered steps, the questions block, the call band.'),
+        ('sunny-home.css', 'Loads last, so it wins any disagreement. Every change '
+         'made in this round lives in here. If something looks different from what '
+         'the other three would do, this is why. Read this one first.'),
+    ]
+    data = [[Paragraph('File', HEADC), Paragraph('What is in it', HEADC)]]
+    for f_, d_ in sheets:
+        data.append([Paragraph(f'<font face="Courier" size="6.4">{f_}</font>', CELLB),
+                     Paragraph(d_, CELL)])
+    t = Table(data, colWidths=[W*0.17, W*0.83], repeatRows=1)
+    t.setStyle(TableStyle(PAD + [
+        ('BACKGROUND', (0,0), (-1,0), SKY_D),
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
+        ('TOPPADDING', (0,1), (-1,-1), 4), ('BOTTOMPADDING', (0,1), (-1,-1), 4)]))
+    F.append(t)
+
+    F.append(Paragraph('Three things load from outside', H2))
+    F.append(Paragraph(
+        'The pages pull GSAP, ScrollTrigger and Lenis from a public address rather '
+        'than shipping copies. GSAP and ScrollTrigger drive the sliding galleries '
+        'and the counters. Lenis smooths the scroll wheel. If the client\'s host '
+        'blocks outside scripts, nothing breaks: the pages read and every link '
+        'works, you lose the smoothing and the counters sit at their final number. '
+        'The contact page also embeds a Google map.', BODY))
+
+    F.append(Paragraph('If this is going into WordPress', H2))
+    F.append(Paragraph(
+        'The header and the footer are identical on all 114 pages, so they become '
+        'one shared layout and each page supplies only its own middle. The sections '
+        'in that middle repeat too: hero, tile grid, ticked list, numbered steps, '
+        'questions, call band. The markup for each is the same everywhere it '
+        'appears, so a handful of reusable blocks covers the whole site. Keep the '
+        'file names as they are; every link between pages is relative.', BODY))
+
+    F.append(PageBreak())
+
+    # ---------------- the pages we added
+    newrows = [r for r in body if r[3] == 'BUILT, NEW']
+    tmplrows = [r for r in body if r[3] == 'TEMPLATE']
+    F.append(Paragraph('The pages we added that are not on the live site yet', H1))
+    F.append(Paragraph(f'{len(newrows)} pages. Everything else in this package '
+                       'matches a page the client already has.', SUB))
+    F.append(Spacer(1, 10))
+
+    F.append(Paragraph('Two of these need a word of explanation', H2))
+    F.append(Paragraph(
+        '<b>The blog index</b> is <font face="Courier">blog.html</font>. It is the '
+        'one page that lists the articles, each as a card that links through to the '
+        'article itself. It holds no article wording of its own. Publish a '
+        'fourteenth post and you add a card here as well as the new page. One card '
+        'is set wide and runs across the top; keep the rest at a multiple of three '
+        'so no row is left half empty.', BODY))
+    F.append(Paragraph(
+        '<b>The blog template</b> is <font face="Courier">blog-template.html</font>. '
+        'It is not a page and must not be published. It is a copy of a finished '
+        'article with every moving part labeled: 33 notes that begin SWAP for what '
+        'changes from one post to the next, and 3 that begin KEEP for what must not '
+        'be touched. To add a post, duplicate it, rename it '
+        '<font face="Courier">blog-&lt;the url slug&gt;.html</font>, and work down '
+        'the SWAP notes. The 13 articles in this package were all built from it, so '
+        'a new one will match them.', BODY))
+
+    F.append(Paragraph('Every page added', H2))
+    data = [[Paragraph(c, HEADC) for c in
+             ('Page', 'Sits under', 'HTML file', 'Where the wording came from',
+              'Note')]]
+    for r in newrows + tmplrows:
+        data.append([
+            Paragraph(f'<b>{esc(r[0])}</b>', CELL),
+            Paragraph(esc(r[2]) or 'Top level', CELLM),
+            Paragraph(f'<font face="Courier" size="5.9">{esc(r[4])}</font>', CELL),
+            Paragraph(esc(r[7]), CELLM),
+            Paragraph(esc(r[8]), CELLM),
+        ])
+    t = Table(data, colWidths=[W*0.23, W*0.09, W*0.23, W*0.14, W*0.31], repeatRows=1)
+    t.setStyle(TableStyle(PAD + [
+        ('BACKGROUND', (0,0), (-1,0), SKY_D),
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
+        ('TOPPADDING', (0,1), (-1,-1), 4), ('BOTTOMPADDING', (0,1), (-1,-1), 4)]))
+    F.append(t)
+
+    F.append(PageBreak())
+
     # ---------------- page 2: revision log
     F.append(Paragraph('What changed, most recent first', H1))
     F.append(Spacer(1, 8))

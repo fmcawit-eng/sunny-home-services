@@ -263,6 +263,15 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 5, 2026', 'Published',
+     'Everything below is now on the preview link at '
+     'sunny-home-services.vercel.app. All 114 pages were loaded from it and '
+     'checked; every one answers. The pages are also served at addresses without '
+     'a .html ending, so /millcreek-ut reaches the Millcreek page, matching the '
+     'addresses listed in this log.'),
+    ('November 5, 2026', 'Two dead stylesheets',
+     'sunny-home-theme.css and sunny-v2.css were in the css folder but no page '
+     'loaded either one. Removed, so what ships is only what runs.'),
     ('November 4, 2026', 'No orphans',
      'No heading, paragraph, list item or button now leaves a single word alone '
      'on its last line, at any width from 360 to 1440. The last two words of '
