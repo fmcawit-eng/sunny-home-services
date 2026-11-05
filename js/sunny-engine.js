@@ -61,30 +61,23 @@ function typeInTitle(title, startDelay) {
 }
 
 /* ============================================================
-   HERO TITLE - typewriter entrance + interactive (hover, click, parallax)
+   HERO TITLE - typewriter on the flagged line, plus hover, click, parallax
 ============================================================ */
 function initInteractiveHero() {
   const title = document.getElementById("hero-title");
   if (!title) return;
   const words = [...title.querySelectorAll(".word")];
 
-  // If a line is flagged .alt-font, fade the rest of the title in first, then type the flagged line.
-  const altWords = words.filter(w => w.classList.contains("alt-font"));
-  const fadeWords = words.filter(w => !w.classList.contains("alt-font"));
-  if (altWords.length && fadeWords.length) {
-    gsap.set(fadeWords, { opacity: 0, y: 20 });
-    gsap.to(fadeWords, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", delay: 0.2 });
-    typeInTitle(title, 1100); // hides the typed line now, starts typing after the fade
-  } else {
-    typeInTitle(title, 280);
-  }
+  // The headline is on the page from the start. Only the line flagged
+  // .alt-font types itself in, and it starts straight away rather than
+  // waiting out a fade.
+  typeInTitle(title, 280);
 
-  // Supporting hero copy fades up after the headline sequence
   const heroSection = title.closest(".section-hero");
   if (heroSection) {
-    const support = heroSection.querySelectorAll(".hero-sub, .lead-on-video, .cta-row");
-    gsap.set(support, { y: 16, opacity: 0 });
-    gsap.to(support, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: "power3.out", delay: 1.4 });
+    // The sub-heading and the buttons used to wait 1.4 seconds and then fade
+    // up. They are simply there now.
+    void heroSection;
   }
 
   // Click → "pop" animation
@@ -165,18 +158,14 @@ function initParallax() {
 }
 
 /* ============================================================
-   FAMILY PLAN TILES - staggered slide-in on scroll
+   FAMILY PLAN TILES - no longer animated, see below
 ============================================================ */
 function initFamilyPlanTiles() {
   if (typeof ScrollTrigger === "undefined") return;
   document.querySelectorAll(".fp-right").forEach(group => {
-    const items = group.querySelectorAll(".fp-benefit");
-    if (!items.length) return;
-    gsap.set(items, { x: 50, opacity: 0 });
-    ScrollTrigger.create({
-      trigger: group, start: "top 82%", once: true,
-      onEnter: () => gsap.to(items, { x: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" }),
-    });
+    // These slid in from the right on scroll and started invisible. They are
+    // drawn with the page now, like every other block.
+    void group;
   });
 }
 
@@ -273,16 +262,18 @@ function initBookingTiles() {
 }
 
 /* ============================================================
-   HEADER - entrance animation (items reveal in sequence)
+   HEADER - no entrance animation, see below
 ============================================================ */
 function initHeaderEntrance() {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-  gsap.set(header, { y: -22, opacity: 0 });
-  gsap.to(header, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" });
-  const items = header.querySelectorAll(".header-logo, .header-nav a, .header-phone, .header-cta .btn");
-  gsap.set(items, { y: -10, opacity: 0 });
-  gsap.to(items, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out", delay: 0.12 });
+  // The header is drawn with the page, like everything else.
+  //
+  // This used to fade every header link in one after another. The selector
+  // ".header-nav a" catches the drop-down children too, 47 links on most
+  // pages, so at 0.06s apart the last ones did not appear for about three
+  // seconds. About Us and Contact Us sit at the end of that order, so anyone
+  // looking at the top of the page in the first few seconds saw a nav that
+  // stopped after Air Quality. Worse, if the animation library failed to
+  // load, the links stayed invisible for good.
 }
 
 /* ============================================================
