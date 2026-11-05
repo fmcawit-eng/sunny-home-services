@@ -170,15 +170,21 @@ NEEDS['ac-installation.html'] = (
     'Client confirms')
 
 NEEDS['blog.html'] = (
-    'No publish dates and no author byline anywhere in this set. The content '
-    'calendar lists all 13 posts as Scheduled to Post with no date, and no brief '
-    'names an author. Also carries the spelling "recognise" in one card, which is '
+    'THE BLOG INDEX. The one page that lists the articles. It carries a card for '
+    'each one linking through, and no article wording of its own. All 13 articles '
+    'in this package are on it. Publish a fourteenth and add its card here too. '
+    'Separately: no publish dates and no author byline exist anywhere in this set. '
+    'The content calendar lists all 13 as Scheduled to Post with no date, and no '
+    'brief names an author. One card carries the spelling "recognise", which is '
     'the brief\'s own wording.',
     'Client supplies dates and an author')
 
 NEEDS['blog-template.html'] = (
-    'Not a page. This is the file dev duplicates for post 14 onward. It carries '
-    'SWAP notes for what changes per post and KEEP notes for what does not.',
+    'THE BLOG TEMPLATE, a different thing from the blog index. Not a page, and it '
+    'must not be published. It is the file to duplicate to build post 14 onward: '
+    'rename the copy blog-<url slug>.html, work down its 32 SWAP notes for what '
+    'changes per post, leave the 3 KEEP notes alone, then add a card for it on the '
+    'blog index. Nothing links to it.',
     'Dev reference only')
 
 NEEDS['coming-soon.html'] = (

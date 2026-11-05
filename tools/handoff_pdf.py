@@ -100,12 +100,13 @@ def main():
     W = doc.width
     F = []
 
-    # ---------------- page 1: summary, what is waiting, how to run it
+    # ---------------- page 1: the numbers, then every page
     F.append(Paragraph('Sunny Home Services, developer handoff', H1))
     F.append(Paragraph(
-        f"Packaged {meta.get('Generated', '')}. "
-        f"Preview: {esc('https://sunny-home-services.vercel.app')} &nbsp;&middot;&nbsp; "
-        f"Live site: {esc('https://sunnyhomeservices.com')}", SUB))
+        f"Packaged {meta.get('Generated', '')}. Every address in the Link column "
+        f"hangs off {esc('https://sunny-home-services.vercel.app')}, and every "
+        f"address in the Live column off {esc('https://sunnyhomeservices.com')}.",
+        SUB))
     F.append(Spacer(1, 12))
 
     counts = [(r[0].strip(), r[1]) for r in rows[:hi]
@@ -120,205 +121,16 @@ def main():
         t.setStyle(TableStyle(PAD + [('VALIGN', (0,0), (-1,-1), 'TOP'),
                                      ('BOTTOMPADDING', (0,0), (-1,-1), 9)]))
         F.append(t)
+    F.append(Spacer(1, 6))
+
+    # ---------------- every page, straight after the numbers
+    F.append(Paragraph('Every page, and the file that holds it', H2))
     F.append(Spacer(1, 4))
 
-    F.append(Paragraph('What is waiting on a decision', H2))
-    openrows = [r for r in body if r[9].startswith('Client')]
-    data = [[Paragraph('Page', HEADC), Paragraph('What it is', HEADC),
-             Paragraph('Who decides', HEADC)]]
-    for r in openrows:
-        data.append([Paragraph(f'<b>{esc(r[0])}</b>', CELL),
-                     Paragraph(esc(r[8]), CELL),
-                     Paragraph(esc(r[9]), CELLM)])
-    t = Table(data, colWidths=[W*0.20, W*0.58, W*0.22], repeatRows=1)
-    t.setStyle(TableStyle(PAD + [
-        ('BACKGROUND', (0,0), (-1,0), SKY_D),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
-        ('TOPPADDING', (0,1), (-1,-1), 4), ('BOTTOMPADDING', (0,1), (-1,-1), 4)]))
-    F.append(t)
-
-    F.append(Paragraph('Running it', H2))
-    F.append(Paragraph(
-        'No build step and nothing to install. Open <b>HTMLs/home-page.html</b> in a '
-        'browser, or serve the folder: <font face="Courier">cd HTMLs &amp;&amp; '
-        'python3 -m http.server 8000</font>. To deploy, point a static host at '
-        '<b>HTMLs/</b>. <b>vercel.json</b> is already set up: clean URLs, so '
-        '/plumber serves plumber.html, and the root serves the home page.', BODY))
-    F.append(Paragraph(
-        'There is deliberately no index.html. The home page is <b>home-page.html</b>, '
-        'named for what it is. Every link between pages is relative, so keep the file '
-        'names as they are.', BODY))
-    F.append(Paragraph(
-        'The header and the footer are identical on all 114 pages. If you are '
-        'rebuilding this in WordPress, that is the piece to carry over first: header '
-        'and footer are one shared layout, and each page supplies only its own '
-        'sections.', BODY))
-
-    F.append(PageBreak())
-
-    # ---------------- which file to change, and for what
-    F.append(Paragraph('Which file to change, and for what', H1))
-    F.append(Paragraph('Every page here is three kinds of file working together. '
-                       'Nothing is compiled or built: what you open is what runs in '
-                       'the browser.', SUB))
-    F.append(Spacer(1, 10))
-
-    kinds = [
-        ('HTML', 'The words, and the order they sit in',
-         'One file per page, named after the page: <font face="Courier">'
-         'millcreek-ut.html</font>. There are 114 of them.',
-         'Change one and you change what that one page says, or add and remove a '
-         'section on it. Nothing else is affected.'),
-        ('CSS', 'How all of it looks',
-         'Four files in <font face="Courier">css/</font>. They load in a set order '
-         'and the last one to mention something wins.',
-         'Change one and the look changes on every page at once: color, type size, '
-         'spacing, what happens when the pointer is over a tile.'),
-        ('JavaScript', 'What responds and what moves',
-         'One file, <font face="Courier">js/sunny-engine.js</font>.',
-         'Change it and behavior changes: the phone menu opening, a question '
-         'expanding, the sliding gallery. Every page still reads with this '
-         'switched off.'),
-    ]
-    data = [[Paragraph(c, HEADC) for c in
-             ('Kind', 'What it holds', 'Where it is', 'What changing it does')]]
-    for k, holds, where, does in kinds:
-        data.append([Paragraph(f'<b>{k}</b>', CELLB), Paragraph(holds, CELL),
-                     Paragraph(where, CELL), Paragraph(does, CELL)])
-    t = Table(data, colWidths=[W*0.09, W*0.21, W*0.30, W*0.40], repeatRows=1)
-    t.setStyle(TableStyle(PAD + [
-        ('BACKGROUND', (0,0), (-1,0), SKY_D),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
-        ('TOPPADDING', (0,1), (-1,-1), 5), ('BOTTOMPADDING', (0,1), (-1,-1), 5)]))
-    F.append(t)
-
-    F.append(Paragraph('The four stylesheets, in the order they load', H2))
-    sheets = [
-        ('sunny-engine.css', 'The base. The reset, the brand colors and fonts, the '
-         'header and the footer. The only one all 114 pages load, including the four '
-         'mirrored ad pages.'),
-        ('sunny-landing.css', 'The landing page sections.'),
-        ('sunny-hub.css', 'The service and city page sections: heroes, tile grids, '
-         'ticked lists, numbered steps, the questions block, the call band.'),
-        ('sunny-home.css', 'Loads last, so it wins any disagreement. Every change '
-         'made in this round lives in here. If something looks different from what '
-         'the other three would do, this is why. Read this one first.'),
-    ]
-    data = [[Paragraph('File', HEADC), Paragraph('What is in it', HEADC)]]
-    for f_, d_ in sheets:
-        data.append([Paragraph(f'<font face="Courier" size="6.4">{f_}</font>', CELLB),
-                     Paragraph(d_, CELL)])
-    t = Table(data, colWidths=[W*0.17, W*0.83], repeatRows=1)
-    t.setStyle(TableStyle(PAD + [
-        ('BACKGROUND', (0,0), (-1,0), SKY_D),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
-        ('TOPPADDING', (0,1), (-1,-1), 4), ('BOTTOMPADDING', (0,1), (-1,-1), 4)]))
-    F.append(t)
-
-    F.append(Paragraph('Three things load from outside', H2))
-    F.append(Paragraph(
-        'The pages pull GSAP, ScrollTrigger and Lenis from a public address rather '
-        'than shipping copies. GSAP and ScrollTrigger drive the sliding galleries '
-        'and the counters. Lenis smooths the scroll wheel. If the client\'s host '
-        'blocks outside scripts, nothing breaks: the pages read and every link '
-        'works, you lose the smoothing and the counters sit at their final number. '
-        'The contact page also embeds a Google map.', BODY))
-
-    F.append(Paragraph('If this is going into WordPress', H2))
-    F.append(Paragraph(
-        'The header and the footer are identical on all 114 pages, so they become '
-        'one shared layout and each page supplies only its own middle. The sections '
-        'in that middle repeat too: hero, tile grid, ticked list, numbered steps, '
-        'questions, call band. The markup for each is the same everywhere it '
-        'appears, so a handful of reusable blocks covers the whole site. Keep the '
-        'file names as they are; every link between pages is relative.', BODY))
-
-    F.append(PageBreak())
-
-    # ---------------- the pages we added
-    newrows = [r for r in body if r[3] == 'BUILT, NEW']
-    tmplrows = [r for r in body if r[3] == 'TEMPLATE']
-    F.append(Paragraph('The pages we added that are not on the live site yet', H1))
-    F.append(Paragraph(f'{len(newrows)} pages. Everything else in this package '
-                       'matches a page the client already has.', SUB))
-    F.append(Spacer(1, 10))
-
-    F.append(Paragraph('Two of these need a word of explanation', H2))
-    F.append(Paragraph(
-        '<b>The blog index</b> is <font face="Courier">blog.html</font>. It is the '
-        'one page that lists the articles, each as a card that links through to the '
-        'article itself. It holds no article wording of its own. Publish a '
-        'fourteenth post and you add a card here as well as the new page. One card '
-        'is set wide and runs across the top; keep the rest at a multiple of three '
-        'so no row is left half empty.', BODY))
-    F.append(Paragraph(
-        '<b>The blog template</b> is <font face="Courier">blog-template.html</font>. '
-        'It is not a page and must not be published. It is a copy of a finished '
-        'article with every moving part labeled: 33 notes that begin SWAP for what '
-        'changes from one post to the next, and 3 that begin KEEP for what must not '
-        'be touched. To add a post, duplicate it, rename it '
-        '<font face="Courier">blog-&lt;the url slug&gt;.html</font>, and work down '
-        'the SWAP notes. The 13 articles in this package were all built from it, so '
-        'a new one will match them.', BODY))
-
-    F.append(Paragraph('Every page added', H2))
-    data = [[Paragraph(c, HEADC) for c in
-             ('Page', 'Sits under', 'HTML file', 'Where the wording came from',
-              'Note')]]
-    for r in newrows + tmplrows:
-        data.append([
-            Paragraph(f'<b>{esc(r[0])}</b>', CELL),
-            Paragraph(esc(r[2]) or 'Top level', CELLM),
-            Paragraph(f'<font face="Courier" size="5.9">{esc(r[4])}</font>', CELL),
-            Paragraph(esc(r[7]), CELLM),
-            Paragraph(esc(r[8]), CELLM),
-        ])
-    t = Table(data, colWidths=[W*0.23, W*0.09, W*0.23, W*0.14, W*0.31], repeatRows=1)
-    t.setStyle(TableStyle(PAD + [
-        ('BACKGROUND', (0,0), (-1,0), SKY_D),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
-        ('TOPPADDING', (0,1), (-1,-1), 4), ('BOTTOMPADDING', (0,1), (-1,-1), 4)]))
-    F.append(t)
-
-    F.append(PageBreak())
-
-    # ---------------- page 2: revision log
-    F.append(Paragraph('What changed, most recent first', H1))
-    F.append(Spacer(1, 8))
-    data = [[Paragraph('Date', HEADC), Paragraph('Area', HEADC),
-             Paragraph('What changed', HEADC)]]
-    for d, a, txt in [(r[0], r[1], r[2]) for r in revs]:
-        data.append([Paragraph(esc(d), CELL), Paragraph(f'<b>{esc(a)}</b>', CELLB),
-                     Paragraph(esc(txt), CELL)])
-    t = Table(data, colWidths=[W*0.13, W*0.15, W*0.72], repeatRows=1)
-    t.setStyle(TableStyle(PAD + [
-        ('BACKGROUND', (0,0), (-1,0), SKY_D),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LINEBELOW', (0,0), (-1,-1), 0.4, LINE),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, TINT]),
-        ('TOPPADDING', (0,1), (-1,-1), 5), ('BOTTOMPADDING', (0,1), (-1,-1), 5)]))
-    F.append(t)
-
-    F.append(PageBreak())
-
-    # ---------------- page 3 onward: every page
-    F.append(Paragraph('Every page in this package', H1))
-    F.append(Paragraph('Menu, page, the file that holds it, and where it lives on the '
-                       'client site today.', SUB))
-    F.append(Spacer(1, 8))
-
-    cols = ['#', 'Page', 'Menu', 'Under', 'Status', 'HTML file',
-            'Live page today', 'Copy from', 'Needs a decision']
-    widths = [W*0.025, W*0.15, W*0.065, W*0.065, W*0.065, W*0.145,
-              W*0.145, W*0.11, W*0.23]
+    cols = ['#', 'Page', 'Menu', 'Under', 'Status', 'Link on the preview',
+            'HTML file that holds it', 'Live page today', 'Note']
+    widths = [W*0.025, W*0.145, W*0.06, W*0.06, W*0.06, W*0.155,
+              W*0.155, W*0.13, W*0.21]
     data = [[Paragraph('#', HEADN)] + [Paragraph(c, HEADC) for c in cols[1:]]]
     style = [('BACKGROUND', (0,0), (-1,0), SKY_D),
              ('VALIGN', (0,0), (-1,-1), 'TOP'),
@@ -329,15 +141,16 @@ def main():
                             fontName='Helvetica-Bold', fontSize=6.1, leading=7.3)
         live = r[6]
         live_s = live.replace('https://sunnyhomeservices.com', '') if live.startswith('http') else live
+        prev = r[5].replace('https://sunny-home-services.vercel.app', '') or '/'
         data.append([
             Paragraph(str(i), NUM),
             Paragraph(f'<b>{esc(r[0])}</b>', CELL),
             Paragraph(esc(r[1]), CELLM),
             Paragraph(esc(r[2]), CELLM),
             Paragraph(esc(r[3]), st),
+            Paragraph(f'<font face="Courier" size="5.9">{esc(prev)}</font>', CELL),
             Paragraph(f'<font face="Courier" size="5.9">{esc(r[4])}</font>', CELL),
             Paragraph(f'<font size="6">{esc(live_s)}</font>', CELLM),
-            Paragraph(esc(r[7]), CELLM),
             Paragraph(esc(r[8]), CELLM),
         ])
         style.append(('BACKGROUND', (4, i), (4, i), bg))
