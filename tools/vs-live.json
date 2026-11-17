@@ -21,11 +21,11 @@
   "same": 0.9039
  },
  "ac-repair-experts.html": {
-  "live_only": 19,
+  "live_only": 773,
   "live_words": 1307,
-  "ours_only": 12,
-  "ours_words": 1300,
-  "same": 0.9881
+  "ours_only": 779,
+  "ours_words": 1313,
+  "same": 0.4076
  },
  "ac-repair.html": {
   "live_only": 139,
@@ -35,11 +35,11 @@
   "same": 0.9203
  },
  "ac-replacement-experts.html": {
-  "live_only": 38,
+  "live_only": 774,
   "live_words": 1321,
-  "ours_only": 31,
-  "ours_words": 1314,
-  "same": 0.9738
+  "ours_only": 770,
+  "ours_words": 1317,
+  "same": 0.4147
  },
  "air-conditioner.html": {
   "live_only": 50,
@@ -189,11 +189,11 @@
   "same": 0.9709
  },
  "furnace-repair-experts.html": {
-  "live_only": 57,
+  "live_only": 813,
   "live_words": 1307,
-  "ours_only": 56,
-  "ours_words": 1306,
-  "same": 0.9568
+  "ours_only": 791,
+  "ours_words": 1285,
+  "same": 0.3812
  },
  "furnace-repair.html": {
   "live_only": 63,
@@ -203,11 +203,11 @@
   "same": 0.9562
  },
  "furnace-replacement-experts.html": {
-  "live_only": 23,
+  "live_only": 750,
   "live_words": 1283,
-  "ours_only": 30,
-  "ours_words": 1290,
-  "same": 0.9794
+  "ours_only": 758,
+  "ours_words": 1291,
+  "same": 0.4141
  },
  "garbage-disposals.html": {
   "live_only": 19,
