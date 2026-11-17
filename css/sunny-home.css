@@ -1486,3 +1486,130 @@ html, body { overflow-x: clip; }
 .hub-prose a[href^="http"],
 .hub-rail-body a[href^="http"],
 .legal-body a[href^="http"] { overflow-wrap: anywhere; word-break: break-word; }
+
+/* ===========================================================================
+   Ad landing page bands (the two sections under the hero)
+   Only the four -experts pages use these classes. The rest of the site never
+   loads a .lp-band, so nothing here can reach another page.
+   Built because those two bands were flat fills, which reads as unfinished and
+   gives a winter heating page nothing to catch the eye.
+   =========================================================================== */
+.lp-band { position: relative; overflow: hidden; padding: 86px 0; }
+.lp-band > .container { position: relative; z-index: 2; }
+
+/* The photo sits behind a wash so the type keeps its contrast. */
+.lp-band > .section-bg img { opacity: 0.22; }
+.lp-band > .lp-wash { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+/* Opening band: warm, because the page is about getting heat back on. */
+.lp-band-intro { padding: 76px 0 68px; }
+.lp-band-intro > .section-bg img { opacity: 0.42; }
+.lp-band-intro .display-h1 { max-width: 980px; margin-left: auto; margin-right: auto; }
+.lp-band-intro > .lp-wash {
+  background:
+    radial-gradient(130% 95% at 50% 0%, rgba(255, 199, 4, 0.34) 0%, rgba(241, 118, 1, 0.10) 36%, rgba(255, 199, 4, 0) 66%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.86) 46%, rgba(255, 255, 255, 0.95) 100%);
+}
+.lp-band-intro .hub-prose { max-width: 860px; margin: 0 auto; }
+.lp-band-intro .hub-prose p { font-size: 17px; line-height: 1.72; color: var(--ink, #454545); }
+
+/* Cooling pages get the cool wash instead of the warm one. */
+.lp-band-intro.is-cooling > .lp-wash {
+  background:
+    radial-gradient(130% 95% at 50% 0%, rgba(3, 166, 204, 0.30) 0%, rgba(3, 166, 204, 0.08) 36%, rgba(3, 166, 204, 0) 66%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.86) 46%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+/* Problem band: the winter photo shows through, the lists sit on white cards. */
+.lp-band-problems > .section-bg img { opacity: 0.78; }
+.lp-band-problems > .lp-wash {
+  background: linear-gradient(180deg, rgba(11, 58, 74, 0.52) 0%, rgba(11, 58, 74, 0.34) 40%, rgba(11, 58, 74, 0.60) 100%);
+}
+.lp-band-problems .lp-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch;
+}
+.lp-card {
+  background: #fff; border-radius: 20px; padding: 34px 32px 30px;
+  box-shadow: 0 20px 48px rgba(6, 34, 44, 0.26);
+  display: flex; flex-direction: column;
+}
+.lp-card-icon {
+  width: 52px; height: 52px; border-radius: 15px; margin-bottom: 18px;
+  display: grid; place-items: center; color: #fff;
+  background: linear-gradient(140deg, var(--orange, #F17601), var(--yellow, #FFC704));
+}
+.lp-card.is-cool .lp-card-icon {
+  background: linear-gradient(140deg, #0288a8, var(--sky, #03A6CC));
+}
+.lp-card-icon svg { width: 26px; height: 26px; }
+.lp-card h2 { margin-bottom: 12px; }
+.lp-card .hub-prose p { margin-bottom: 0; }
+.lp-card .check-list { margin: 20px 0 0; }
+.lp-card .check-list .check { margin-bottom: 12px; }
+/* Brand-colored ticks. The site-wide green reads as a different company. */
+.lp-card .check-badge {
+  background: var(--sky, #03A6CC); color: #fff; box-shadow: none;
+}
+.lp-card.is-warm .check-badge { background: var(--orange, #F17601); }
+
+/* The closing line of each list, set apart so it is not mistaken for an item. */
+.lp-note {
+  margin-top: 18px; font-size: 15.5px; line-height: 1.6;
+  color: var(--muted, #6B7480);
+}
+/* The one line that is genuinely urgent gets to look urgent. */
+.lp-alert {
+  margin-top: 20px; margin-bottom: 0;
+  display: flex; gap: 12px; align-items: flex-start;
+  background: rgba(241, 118, 1, 0.10);
+  border-left: 4px solid var(--orange, #F17601);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 16px; font-size: 15.5px; line-height: 1.55;
+  color: #7a3d00;
+}
+.lp-alert svg { width: 20px; height: 20px; flex: 0 0 20px; margin-top: 2px; }
+
+@media (max-width: 860px) {
+  .lp-band { padding: 58px 0; }
+  .lp-band-intro { padding: 54px 0 48px; }
+  .lp-band-problems .lp-grid { grid-template-columns: 1fr; gap: 20px; }
+  .lp-card { padding: 26px 22px 24px; border-radius: 16px; }
+  .lp-card-icon { width: 46px; height: 46px; border-radius: 13px; margin-bottom: 14px; }
+}
+
+/* ---- Ad landing page hero ----------------------------------------------
+   Someone whose furnace just died is scanning for three things: can you come
+   today, do you work on my system, and what will it cost. The strip and the
+   line under the buttons answer all three without making them scroll. ---- */
+.lp-hero-meta {
+  margin: 16px 0 0; max-width: 520px;
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 15px; line-height: 1.5;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+.lp-hero-strip { background: rgba(2, 136, 168, 0.94); backdrop-filter: blur(2px); }
+.lp-hero-strip .subnav-track { justify-content: center; gap: 14px; }
+
+@media (max-width: 860px) {
+  /* The home page hides its strip on a phone. An ad landing page cannot
+     afford to: this is the answer the visitor came for. It stays pinned to the
+     bottom of the hero, and the hero copy is given room so nothing sits under
+     it. Left as a flex item it became a narrow column beside the copy. */
+  .section-hero-split .lp-hero-strip {
+    display: block; position: absolute; left: 0; right: 0; bottom: 0;
+    width: 100%; padding: 12px 0;
+  }
+  .section-hero-split.has-lp-strip .hero-content { padding-bottom: 168px; }
+  .lp-hero-strip .subnav-track {
+    /* 12px floor: anything smaller fails the phone check. */
+    font-size: 12px; letter-spacing: 0.08em; gap: 8px 10px; justify-content: center;
+  }
+  .lp-hero-strip .subnav-track .dot { display: none; }
+  .lp-hero-meta { font-size: 14px; margin-top: 14px; max-width: 100%; }
+}
+
+/* A phone number that breaks across two lines reads as two numbers. The call
+   buttons on the ad landing pages keep theirs on one line. */
+.btn-call-lp,
+.cta-row .btn.btn-call-lp,
+.cta-row-center .btn.btn-call-lp { white-space: nowrap; }

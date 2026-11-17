@@ -112,7 +112,7 @@
   </header>
 
   <!-- 01 Hero -->
-  <section class="section section-hero section-hero-split" id="hero">
+  <section class="section section-hero section-hero-split has-lp-strip" id="hero">
     <div class="hero-art"><img src="assets/hero-brand-art.webp" alt=""></div>
     <div class="hero-scrim"></div>
     <div class="hero-van-panel">
@@ -136,8 +136,15 @@
       <p class="lead lead-on-video">Our Wasatch Front AC installers are here to&nbsp;help.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13853986646">Call&nbsp;(385)&nbsp;398-6646</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:+13853986646">Call&nbsp;(385)&nbsp;398-6646</a>
       </div>
+      <p class="lp-hero-meta">Same-day appointments. Open 7am to 7pm, Monday to&nbsp;Friday.</p>
+    </div>
+
+    <!-- The strip answers the question someone with no heat is actually asking.
+         Every line is the client's own wording from this page. -->
+    <div class="hero-subnav lp-hero-strip">
+      <div class="container subnav-track"><span>Properly Sized Systems</span><span class="dot"></span><span>High-SEER Systems</span><span class="dot"></span><span>Financing Available</span><span class="dot"></span><span>Warranty And Workmanship Guarantee</span></div>
     </div>
   </section>
 
@@ -165,20 +172,27 @@
     </div>
   </section>
 
-  <!-- 03 Opening copy, word for word from the live landing page -->
-  <section class="section-hub section-intro reveal" data-animation="fade-up">
+  <!-- 03 Opening copy, word for word from the live landing page. The photo
+       behind it carries the season: a furnace on the heating pages. -->
+  <section class="section lp-band lp-band-intro is-cooling reveal" data-animation="fade-up" id="intro">
+    <div class="section-bg"><img src="assets/heroes/cooling.webp" alt="" data-parallax="12"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <h2 class="display-h2 align-center">Fast, Dependable AC Replacement in the Wasatch&nbsp;Front</h2>
+      <h2 class="display-h1 align-center">Fast, Dependable AC Replacement in the Wasatch&nbsp;Front</h2>
       <div class="hub-prose"><p>Needing an AC replacement is often unexpected, but it doesn&rsquo;t have to feel overwhelming. Our experienced team keeps the process simple and stress-free, from helping you choose the right system to completing a smooth, professional&nbsp;installation.</p><p>Sunny Home Services is your go-to AC company in Northern Utah, whether you&rsquo;re replacing your existing system or adding air conditioning to your home for the first time. We understand that a new AC system is a major investment, so our friendly, knowledgeable team will guide you through your options, answer your questions, and keep the entire process simple from the initial consultation through&nbsp;installation.</p></div>
     </div>
   </section>
 
 
-  <!-- 04 The two problem lists from the live landing page -->
-  <section class="section-hub is-tone reveal" data-animation="fade-up" id="problems">
+  <!-- 04 The two lists from the live landing page, on cards over a seasonal
+       photo. They used to sit on a flat grey fill. -->
+  <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="problems">
+    <div class="section-bg"><img src="assets/heroes/ac-repair.webp" alt="" data-parallax="14"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <div class="hub-split">
-        <div>
+      <div class="lp-grid">
+        <div class="lp-card is-warm">
+          <div class="lp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
           <h2 class="display-h2">Time for a New Air&nbsp;Conditioner?</h2>
           <div class="hub-prose"><p>If your AC is less than a decade old, repairing it usually makes sense. We generally recommend a replacement if your air&nbsp;conditioner:</p></div>
           <ul class="check-list">
@@ -187,16 +201,17 @@
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Doesn&rsquo;t cool your entire&nbsp;home</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Uses R-22 refrigerant</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Stops running efficiently</span></li></ul>
-          <div class="hub-prose"><p>If repairs cost 50% or more of a new system, or energy bills spike with no change in usage, replacement can save you&nbsp;more.</p></div>
+          <p class="lp-note">If repairs cost 50% or more of a new system, or energy bills spike with no change in usage, replacement can save you&nbsp;more.</p>
         </div>
-        <div>
+        <div class="lp-card is-cool">
+          <div class="lp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
           <h2 class="display-h2">Why Replacing Your AC Is a Good&nbsp;Idea</h2>
           <div class="hub-prose"><p>Utah&rsquo;s dry air strains cooling systems over time. Beyond avoiding repairs, a new AC&nbsp;brings:</p></div>
           <ul class="check-list">
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Lower energy bills (high-SEER&nbsp;systems)</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Improved comfort (Manual J load&nbsp;calculation)</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Full coverage (warranty and workmanship&nbsp;guarantee)</span></li></ul>
-          <div class="hub-prose"><p>We offer financing, so your replacement is covered with low monthly payments. Discounts, rebates, and tax credits may also be&nbsp;available.</p></div>
+          <p class="lp-note">We offer financing, so your replacement is covered with low monthly payments. Discounts, rebates, and tax credits may also be&nbsp;available.</p>
         </div>
       </div>
     </div>
@@ -258,7 +273,7 @@
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text"><strong>Same-day appointments:</strong> Same-day response for no-cool emergencies, with clear arrival&nbsp;windows.</span></li></ul>
           <div class="cta-row" style="margin-top:28px;">
             <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-            <a class="btn btn-outline btn-pill btn-lg" href="tel:+13853986646">Call&nbsp;(385)&nbsp;398-6646</a>
+            <a class="btn btn-outline btn-pill btn-lg btn-call-lp" href="tel:+13853986646">Call&nbsp;(385)&nbsp;398-6646</a>
           </div>
         </div>
         <div class="hub-split-media">
@@ -449,7 +464,7 @@
       <p>Our team calculates your home cooling needs and recommends the best AC options with upfront, flat-rate pricing. For same-day service and a free quote, contact Sunny Home Services&nbsp;today.</p>
       <div class="cta-row-center">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13853986646">Call&nbsp;(385)&nbsp;398-6646</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:+13853986646">Call&nbsp;(385)&nbsp;398-6646</a>
       </div>
     </div>
   </section>

@@ -69,15 +69,16 @@ PAGES = [
         col1_p='One furnace problem can quickly turn into an emergency, and the sooner you '
                'call, the more you save. Don&rsquo;t wait to reach out if your furnace&nbsp;is:',
         col1_l=['Not providing heat', 'Making strange sounds', 'Vibrating excessively',
-                'Turning on and off too quickly', 'Releasing burning or gas odors'],
+                'Turning on and off too quickly', 'Releasing burning or gas&nbsp;odors'],
         col1_f='If the pilot light won&rsquo;t stay on or your CO alarm goes off, that&rsquo;s '
                'an emergency. Call for help&nbsp;immediately.',
+        col1_alert=True,
         col2_h='We Keep Your Home&nbsp;Safe',
         col2_p='When bitter cold grips the region, you need a reliable furnace repair '
                'company. Any time of day, you can count on us&nbsp;for:',
         col2_l=['Same-day heating repair across the Wasatch Front',
                 'Furnace, heat pump, and mini-split service',
-                'Parts for every system and brand'],
+                'Parts for every system and&nbsp;brand'],
         col2_f='Every repair includes a final test and safety inspection, so your furnace '
                'runs efficiently with no&nbsp;hazards.',
         cta_h='Call Today for Fast Heating&nbsp;Repairs',
@@ -85,6 +86,8 @@ PAGES = [
               'heating emergency, fast. Our well-trained technicians diagnose and fix any '
               'issue. Call or contact us online now for furnace repair in Northern&nbsp;Utah.',
         why_h='Fast, Dependable Furnace Repair&nbsp;Service',
+        strip=['Same-Day Heating Repair', 'Furnace, Heat Pump, Mini-Split',
+               'Parts For Every System', 'Upfront Flat-Rate Pricing'],
     ),
     dict(
         slug='furnace-replacement-experts',
@@ -118,9 +121,9 @@ PAGES = [
         col2_p='Replacing your heating system brings immediate and long-term benefits. The '
                'upfront cost, which can be offset by manufacturer rebates, utility rebates, '
                'and seasonal promotions, is a direct path&nbsp;to:',
-        col2_l=['Up to 40% less on your gas bill (condensing furnace)',
-                'Increased safety (sealed combustion, better ventilation)',
-                'Improved comfort (modulating burners, variable blowers)'],
+        col2_l=['Up to 40% less on your gas bill (condensing&nbsp;furnace)',
+                'Increased safety (sealed combustion, better&nbsp;ventilation)',
+                'Improved comfort (modulating burners, variable&nbsp;blowers)'],
         col2_f='Furnaces rated up to 98% AFUE that qualify for rebates and credits offer the '
                'best opportunities to&nbsp;save.',
         cta_h='Call for Furnace Replacements Done&nbsp;Right',
@@ -129,6 +132,8 @@ PAGES = [
               'every step. Contact our experienced team for clear recommendations and a '
               'straightforward furnace replacement&nbsp;estimate.',
         why_h='Fast, Dependable Furnace Installation',
+        strip=['Properly Sized Systems', 'Up To 98% AFUE', 'Financing Available',
+               '100% Satisfaction Guarantee'],
     ),
     dict(
         slug='ac-repair-experts',
@@ -174,6 +179,8 @@ PAGES = [
         cta_p='If you live along the Wasatch Front, you can trust us for dependable AC '
               'repairs. Call or book online and we will be out to get your home cool&nbsp;again.',
         why_h='Fast, dependable AC repair service, and lasting comfort through hot,&nbsp;dry&nbsp;summers',
+        strip=['Same-Day AC Repair', 'All Makes And Models',
+               'Fully Stocked Vehicles', 'Upfront Flat-Rate Pricing'],
     ),
     dict(
         slug='ac-replacement-experts',
@@ -218,6 +225,8 @@ PAGES = [
               'with upfront, flat-rate pricing. For same-day service and a free quote, contact '
               'Sunny Home Services&nbsp;today.',
         why_h='Fast, dependable AC replacement service, and lasting comfort through hot,&nbsp;dry&nbsp;summers',
+        strip=['Properly Sized Systems', 'High-SEER Systems', 'Financing Available',
+               'Warranty And Workmanship Guarantee'],
     ),
 ]
 
@@ -243,6 +252,19 @@ TILES = {
         ('card-ac-emergency.webp', 'Emergency AC Repair', 'emergency-ac-repair.html',
          'No cool air on the hottest day of the year. We answer and we&nbsp;come.'),
     ]),
+}
+
+BANDS = {
+    'heating': dict(intro='heroes/heating.webp',
+                    problems='heroes/furnace-repair.webp',
+                    hero='hero-van.webp',
+                    heroalt='Sunny Home Services branded service van',
+                    icon1='flame', icon2='shield'),
+    'cooling': dict(intro='heroes/cooling.webp',
+                    problems='heroes/ac-repair.webp',
+                    hero='hero-van.webp',
+                    heroalt='Sunny Home Services branded service van',
+                    icon1='spark', icon2='clock'),
 }
 
 TEAM_PHOTO = {'heating': ('team-heating.webp', 'Sunny Home Services technician servicing a furnace'),
@@ -313,11 +335,11 @@ HEAD = '''<!doctype html>
 
 HERO = '''
   <!-- 01 Hero -->
-  <section class="section section-hero section-hero-split" id="hero">
+  <section class="section section-hero section-hero-split has-lp-strip" id="hero">
     <div class="hero-art"><img src="assets/hero-brand-art.webp" alt=""></div>
     <div class="hero-scrim"></div>
     <div class="hero-van-panel">
-      <img class="hero-video" src="assets/hero-van.webp" alt="Sunny Home Services branded service van">
+      <img class="hero-video" src="assets/{heroimg}" alt="{heroalt}">
     </div>
 
     <div class="container hero-content">
@@ -326,34 +348,49 @@ HERO = '''
       <p class="lead lead-on-video">{lede}</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:{tel}">Call&nbsp;{phone}</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:{tel}">Call&nbsp;{phone}</a>
       </div>
+      <p class="lp-hero-meta">Same-day appointments. Open 7am to 7pm, Monday to&nbsp;Friday.</p>
+    </div>
+
+    <!-- The strip answers the question someone with no heat is actually asking.
+         Every line is the client's own wording from this page. -->
+    <div class="hero-subnav lp-hero-strip">
+      <div class="container subnav-track">{strip}</div>
     </div>
   </section>
 '''
 
 INTRO = '''
-  <!-- 03 Opening copy, word for word from the live landing page -->
-  <section class="section-hub section-intro reveal" data-animation="fade-up">
+  <!-- 03 Opening copy, word for word from the live landing page. The photo
+       behind it carries the season: a furnace on the heating pages. -->
+  <section class="section lp-band lp-band-intro{cool} reveal" data-animation="fade-up" id="intro">
+    <div class="section-bg"><img src="assets/{bg}" alt="" data-parallax="12"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <h2 class="display-h2 align-center">{h}</h2>
+      <h2 class="display-h1 align-center">{h}</h2>
       <div class="hub-prose">{p}</div>
     </div>
   </section>
 '''
 
 SPLIT = '''
-  <!-- 04 The two problem lists from the live landing page -->
-  <section class="section-hub is-tone reveal" data-animation="fade-up" id="problems">
+  <!-- 04 The two lists from the live landing page, on cards over a seasonal
+       photo. They used to sit on a flat grey fill. -->
+  <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="problems">
+    <div class="section-bg"><img src="assets/{bg}" alt="" data-parallax="14"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <div class="hub-split">
-        <div>
+      <div class="lp-grid">
+        <div class="lp-card is-warm">
+          <div class="lp-card-icon" aria-hidden="true">{icon1}</div>
           <h2 class="display-h2">{h1}</h2>
           <div class="hub-prose"><p>{p1}</p></div>
           <ul class="check-list">{l1}</ul>
           {f1}
         </div>
-        <div>
+        <div class="lp-card is-cool">
+          <div class="lp-card-icon" aria-hidden="true">{icon2}</div>
           <h2 class="display-h2">{h2}</h2>
           <div class="hub-prose"><p>{p2}</p></div>
           <ul class="check-list">{l2}</ul>
@@ -363,6 +400,23 @@ SPLIT = '''
     </div>
   </section>
 '''
+
+SVG = dict(
+    flame='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" '
+          'stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s4 4.5 4 8a4 4 0 0 1-8 0c0-1.3.5-2.4 1-3.2"/>'
+          '<path d="M8.5 13A5.5 5.5 0 0 0 12 22a5.5 5.5 0 0 0 3.5-9"/></svg>',
+    shield='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" '
+           'stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5.5v6c0 5 3.4 9.2 8 10.5 '
+           '4.6-1.3 8-5.5 8-10.5v-6L12 2z"/><path d="m9 12 2 2 4-4"/></svg>',
+    clock='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" '
+          'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/>'
+          '<path d="M12 7v5l3 2"/></svg>',
+    spark='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" '
+          'stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>',
+    alert='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
+          'stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>'
+          '<path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
+)
 
 TILESEC = '''
   <!-- 05 Service tiles. Every tile on a heating page is a heating service. -->
@@ -389,7 +443,7 @@ WHY = '''
           <ul class="check-list">{points}</ul>
           <div class="cta-row" style="margin-top:28px;">
             <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-            <a class="btn btn-outline btn-pill btn-lg" href="tel:{tel}">Call&nbsp;{phone}</a>
+            <a class="btn btn-outline btn-pill btn-lg btn-call-lp" href="tel:{tel}">Call&nbsp;{phone}</a>
           </div>
         </div>
         <div class="hub-split-media">
@@ -430,7 +484,7 @@ CTA = '''
       <p>{p}</p>
       <div class="cta-row-center">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:{tel}">Call&nbsp;{phone}</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:{tel}">Call&nbsp;{phone}</a>
       </div>
     </div>
   </section>
@@ -484,6 +538,25 @@ def checks(items):
     return out
 
 
+def strip(items):
+    out = ''
+    for n, it in enumerate(items):
+        if n:
+            out += '<span class="dot"></span>'
+        out += f'<span>{it}</span>'
+    return out
+
+
+def footnote(text, alert):
+    """The line that closes a list. The one about a CO alarm is an emergency, so
+    it is set apart rather than left to read as one more bullet."""
+    if not text:
+        return ''
+    if alert:
+        return f'<p class="lp-alert">{SVG["alert"]}<span>{text}</span></p>'
+    return f'<p class="lp-note">{text}</p>'
+
+
 def tile(img, name, href, desc):
     return (f'''
         <a class="ac-tile" href="{href}">
@@ -518,20 +591,25 @@ def build(page, home, date):
                       'href="#contact">Book&nbsp;Now')
 
     tiles_h, tiles = TILES[page['season']]
+    band = BANDS[page['season']]
     parts = [
         HEAD.format(title=page['title'], desc=page['desc'], live=page['live'],
                     phone=page['phone'], date=date),
         header,
-        HERO.format(h1=headline(page['h1']), lede=page['lede'], tel=tel, phone=ph),
+        HERO.format(h1=headline(page['h1']), lede=page['lede'], tel=tel, phone=ph,
+                    strip=strip(page['strip']),
+                    heroimg=band['hero'], heroalt=band['heroalt']),
         trust,
         INTRO.format(h=page['intro_h'],
-                     p=''.join(f'<p>{x}</p>' for x in page['intro_p'])),
-        SPLIT.format(h1=page['col1_h'], p1=page['col1_p'], l1=checks(page['col1_l']),
-                     f1=(f'<div class="hub-prose"><p>{page["col1_f"]}</p></div>'
-                         if page['col1_f'] else ''),
+                     p=''.join(f'<p>{x}</p>' for x in page['intro_p']),
+                     bg=band['intro'],
+                     cool=' is-cooling' if page['season'] == 'cooling' else ''),
+        SPLIT.format(bg=band['problems'],
+                     icon1=SVG[band['icon1']], icon2=SVG[band['icon2']],
+                     h1=page['col1_h'], p1=page['col1_p'], l1=checks(page['col1_l']),
+                     f1=footnote(page['col1_f'], page.get('col1_alert')),
                      h2=page['col2_h'], p2=page['col2_p'], l2=checks(page['col2_l']),
-                     f2=(f'<div class="hub-prose"><p>{page["col2_f"]}</p></div>'
-                         if page['col2_f'] else '')),
+                     f2=footnote(page['col2_f'], False)),
         TILESEC.format(h=tiles_h, tiles=''.join(tile(*t) for t in tiles)),
         WHY.format(sub=page['why_h'] + '.',
                    points=checks(WHY_POINTS + [('Same-day appointments:',

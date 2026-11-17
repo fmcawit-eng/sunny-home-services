@@ -112,7 +112,7 @@
   </header>
 
   <!-- 01 Hero -->
-  <section class="section section-hero section-hero-split" id="hero">
+  <section class="section section-hero section-hero-split has-lp-strip" id="hero">
     <div class="hero-art"><img src="assets/hero-brand-art.webp" alt=""></div>
     <div class="hero-scrim"></div>
     <div class="hero-van-panel">
@@ -139,8 +139,15 @@
       <p class="lead lead-on-video">Professional furnace replacement along the Wasatch&nbsp;Front.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13854042530">Call&nbsp;(385)&nbsp;404-2530</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:+13854042530">Call&nbsp;(385)&nbsp;404-2530</a>
       </div>
+      <p class="lp-hero-meta">Same-day appointments. Open 7am to 7pm, Monday to&nbsp;Friday.</p>
+    </div>
+
+    <!-- The strip answers the question someone with no heat is actually asking.
+         Every line is the client's own wording from this page. -->
+    <div class="hero-subnav lp-hero-strip">
+      <div class="container subnav-track"><span>Properly Sized Systems</span><span class="dot"></span><span>Up To 98% AFUE</span><span class="dot"></span><span>Financing Available</span><span class="dot"></span><span>100% Satisfaction Guarantee</span></div>
     </div>
   </section>
 
@@ -168,20 +175,27 @@
     </div>
   </section>
 
-  <!-- 03 Opening copy, word for word from the live landing page -->
-  <section class="section-hub section-intro reveal" data-animation="fade-up">
+  <!-- 03 Opening copy, word for word from the live landing page. The photo
+       behind it carries the season: a furnace on the heating pages. -->
+  <section class="section lp-band lp-band-intro reveal" data-animation="fade-up" id="intro">
+    <div class="section-bg"><img src="assets/heroes/heating.webp" alt="" data-parallax="12"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <h2 class="display-h2 align-center">Reliable Furnace Replacements for Utah&nbsp;Winters</h2>
+      <h2 class="display-h1 align-center">Reliable Furnace Replacements for Utah&nbsp;Winters</h2>
       <div class="hub-prose"><p>Is your furnace showing its age? Sunny Home Services makes the process simple. We&rsquo;ll help you choose a reliable, energy-efficient system that is properly sized for your home, with transparent pricing, prompt service, and a 100% satisfaction&nbsp;guarantee.</p><p>When your furnace is outdated, struggling to keep up, or no longer dependable, Sunny Home Services makes replacement simple. We will assess the needs of your home, explain your options clearly, and install a properly sized, energy-efficient furnace designed to keep your home comfortable through even the coldest Wasatch Front&nbsp;winters.</p></div>
     </div>
   </section>
 
 
-  <!-- 04 The two problem lists from the live landing page -->
-  <section class="section-hub is-tone reveal" data-animation="fade-up" id="problems">
+  <!-- 04 The two lists from the live landing page, on cards over a seasonal
+       photo. They used to sit on a flat grey fill. -->
+  <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="problems">
+    <div class="section-bg"><img src="assets/heroes/furnace-repair.webp" alt="" data-parallax="14"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <div class="hub-split">
-        <div>
+      <div class="lp-grid">
+        <div class="lp-card is-warm">
+          <div class="lp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s4 4.5 4 8a4 4 0 0 1-8 0c0-1.3.5-2.4 1-3.2"/><path d="M8.5 13A5.5 5.5 0 0 0 12 22a5.5 5.5 0 0 0 3.5-9"/></svg></div>
           <h2 class="display-h2">Think You Need a New&nbsp;Furnace?</h2>
           <div class="hub-prose"><p>Old furnaces can leave you with a lot of headaches. In as little as a day, we can install a new one, especially if you&rsquo;re dealing with issues&nbsp;like:</p></div>
           <ul class="check-list">
@@ -192,14 +206,15 @@
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Constant noises</span></li></ul>
           
         </div>
-        <div>
+        <div class="lp-card is-cool">
+          <div class="lp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5.5v6c0 5 3.4 9.2 8 10.5 4.6-1.3 8-5.5 8-10.5v-6L12 2z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h2 class="display-h2">How Furnace Replacement Can Be&nbsp;Worth It</h2>
           <div class="hub-prose"><p>Replacing your heating system brings immediate and long-term benefits. The upfront cost, which can be offset by manufacturer rebates, utility rebates, and seasonal promotions, is a direct path&nbsp;to:</p></div>
           <ul class="check-list">
-            <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Up to 40% less on your gas bill (condensing furnace)</span></li>
-            <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Increased safety (sealed combustion, better ventilation)</span></li>
-            <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Improved comfort (modulating burners, variable blowers)</span></li></ul>
-          <div class="hub-prose"><p>Furnaces rated up to 98% AFUE that qualify for rebates and credits offer the best opportunities to&nbsp;save.</p></div>
+            <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Up to 40% less on your gas bill (condensing&nbsp;furnace)</span></li>
+            <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Increased safety (sealed combustion, better&nbsp;ventilation)</span></li>
+            <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Improved comfort (modulating burners, variable&nbsp;blowers)</span></li></ul>
+          <p class="lp-note">Furnaces rated up to 98% AFUE that qualify for rebates and credits offer the best opportunities to&nbsp;save.</p>
         </div>
       </div>
     </div>
@@ -261,7 +276,7 @@
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text"><strong>Same-day appointments:</strong> Same-day response for no-heat emergencies, with clear arrival&nbsp;windows.</span></li></ul>
           <div class="cta-row" style="margin-top:28px;">
             <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-            <a class="btn btn-outline btn-pill btn-lg" href="tel:+13854042530">Call&nbsp;(385)&nbsp;404-2530</a>
+            <a class="btn btn-outline btn-pill btn-lg btn-call-lp" href="tel:+13854042530">Call&nbsp;(385)&nbsp;404-2530</a>
           </div>
         </div>
         <div class="hub-split-media">
@@ -452,7 +467,7 @@
       <p>From evaluating your home&rsquo;s heating needs and properly sizing your new furnace to installation and final system testing, Sunny Home Services handles every step. Contact our experienced team for clear recommendations and a straightforward furnace replacement&nbsp;estimate.</p>
       <div class="cta-row-center">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13854042530">Call&nbsp;(385)&nbsp;404-2530</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:+13854042530">Call&nbsp;(385)&nbsp;404-2530</a>
       </div>
     </div>
   </section>

@@ -112,7 +112,7 @@
   </header>
 
   <!-- 01 Hero -->
-  <section class="section section-hero section-hero-split" id="hero">
+  <section class="section section-hero section-hero-split has-lp-strip" id="hero">
     <div class="hero-art"><img src="assets/hero-brand-art.webp" alt=""></div>
     <div class="hero-scrim"></div>
     <div class="hero-van-panel">
@@ -141,8 +141,15 @@
       <p class="lead lead-on-video">Our Utah AC repair experts are here to&nbsp;help.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13853986692">Call&nbsp;(385)&nbsp;398-6692</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:+13853986692">Call&nbsp;(385)&nbsp;398-6692</a>
       </div>
+      <p class="lp-hero-meta">Same-day appointments. Open 7am to 7pm, Monday to&nbsp;Friday.</p>
+    </div>
+
+    <!-- The strip answers the question someone with no heat is actually asking.
+         Every line is the client's own wording from this page. -->
+    <div class="hero-subnav lp-hero-strip">
+      <div class="container subnav-track"><span>Same-Day AC Repair</span><span class="dot"></span><span>All Makes And Models</span><span class="dot"></span><span>Fully Stocked Vehicles</span><span class="dot"></span><span>Upfront Flat-Rate Pricing</span></div>
     </div>
   </section>
 
@@ -170,20 +177,27 @@
     </div>
   </section>
 
-  <!-- 03 Opening copy, word for word from the live landing page -->
-  <section class="section-hub section-intro reveal" data-animation="fade-up">
+  <!-- 03 Opening copy, word for word from the live landing page. The photo
+       behind it carries the season: a furnace on the heating pages. -->
+  <section class="section lp-band lp-band-intro is-cooling reveal" data-animation="fade-up" id="intro">
+    <div class="section-bg"><img src="assets/heroes/cooling.webp" alt="" data-parallax="12"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <h2 class="display-h2 align-center">Quality Air Conditioner Repairs Along the Wasatch&nbsp;Front</h2>
+      <h2 class="display-h1 align-center">Quality Air Conditioner Repairs Along the Wasatch&nbsp;Front</h2>
       <div class="hub-prose"><p>In the Wasatch Front&rsquo;s hot, dry summers, AC problems always seem to strike at the worst time. Our well-trained professionals pinpoint the issue and deliver reliable repairs with upfront, flat-rate pricing and fast, same-day&nbsp;service.</p><p>Utah summers can be extremely hot, placing greater demand on your AC system. The harder it works, the more likely a small issue can turn into an unexpected breakdown. Sunny Home Services keeps your home cool and comfortable with flat-rate pricing, same-day appointments, and fast, dependable&nbsp;service.</p></div>
     </div>
   </section>
 
 
-  <!-- 04 The two problem lists from the live landing page -->
-  <section class="section-hub is-tone reveal" data-animation="fade-up" id="problems">
+  <!-- 04 The two lists from the live landing page, on cards over a seasonal
+       photo. They used to sit on a flat grey fill. -->
+  <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="problems">
+    <div class="section-bg"><img src="assets/heroes/ac-repair.webp" alt="" data-parallax="14"></div>
+    <div class="lp-wash"></div>
     <div class="container">
-      <div class="hub-split">
-        <div>
+      <div class="lp-grid">
+        <div class="lp-card is-warm">
+          <div class="lp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
           <h2 class="display-h2">Is It Time to Call an AC Repair&nbsp;Company?</h2>
           <div class="hub-prose"><p>One AC problem can quickly turn into a bigger one, and the sooner you call, the more you save. Don&rsquo;t wait to reach out if your&nbsp;AC:</p></div>
           <ul class="check-list">
@@ -192,16 +206,17 @@
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Doesn&rsquo;t respond to the&nbsp;thermostat</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Runs in short cycles or makes loud&nbsp;noises</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Leaks water or refrigerant</span></li></ul>
-          <div class="hub-prose"><p>A sudden jump in your electricity bill can also mean your air conditioner needs professional&nbsp;care.</p></div>
+          <p class="lp-note">A sudden jump in your electricity bill can also mean your air conditioner needs professional&nbsp;care.</p>
         </div>
-        <div>
+        <div class="lp-card is-cool">
+          <div class="lp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
           <h2 class="display-h2">How We Fix Your&nbsp;AC</h2>
           <div class="hub-prose"><p>Our technicians service all makes and models. They arrive promptly in fully stocked vehicles, diagnose the issue, provide a quote, and begin repairs as soon as you&nbsp;approve.</p></div>
           <ul class="check-list">
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Capacitor replacement and coil&nbsp;cleaning</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Refrigerant recharge and valve&nbsp;repair</span></li>
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text">Fan motor, blower and compressor&nbsp;repair</span></li></ul>
-          <div class="hub-prose"><p>Experienced and extensively trained, our team also handles condensate drains, thermostat replacement, electrical components, and much&nbsp;more.</p></div>
+          <p class="lp-note">Experienced and extensively trained, our team also handles condensate drains, thermostat replacement, electrical components, and much&nbsp;more.</p>
         </div>
       </div>
     </div>
@@ -263,7 +278,7 @@
             <li class="check"><span class="check-badge">&#10003;</span><span class="check-text"><strong>Same-day appointments:</strong> Same-day response for no-cool emergencies, with clear arrival&nbsp;windows.</span></li></ul>
           <div class="cta-row" style="margin-top:28px;">
             <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-            <a class="btn btn-outline btn-pill btn-lg" href="tel:+13853986692">Call&nbsp;(385)&nbsp;398-6692</a>
+            <a class="btn btn-outline btn-pill btn-lg btn-call-lp" href="tel:+13853986692">Call&nbsp;(385)&nbsp;398-6692</a>
           </div>
         </div>
         <div class="hub-split-media">
@@ -454,7 +469,7 @@
       <p>If you live along the Wasatch Front, you can trust us for dependable AC repairs. Call or book online and we will be out to get your home cool&nbsp;again.</p>
       <div class="cta-row-center">
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
-        <a class="btn btn-outline-light btn-pill btn-lg" href="tel:+13853986692">Call&nbsp;(385)&nbsp;398-6692</a>
+        <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:+13853986692">Call&nbsp;(385)&nbsp;398-6692</a>
       </div>
     </div>
   </section>
