@@ -57,7 +57,7 @@ PAGES = [
             ('Let&rsquo;s Get the Heat', True),
             ('Back On.', True)],
         lede='Sunny Home Services fixes any furnace&nbsp;problem.',
-        intro_h='Wasatch Front Furnace Repair&nbsp;Experts',
+        intro_h='The Wasatch Front Furnace Repair&nbsp;Experts',
         intro_p=['When your furnace stops working, you need answers fast. We will diagnose '
                  'the problem, explain exactly what&rsquo;s wrong, and give you upfront '
                  'repair options before any work&nbsp;begins.',
