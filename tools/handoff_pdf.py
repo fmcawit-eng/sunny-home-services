@@ -163,6 +163,35 @@ def main():
     t.setStyle(TableStyle(style))
     F.append(t)
 
+    # ---------------- the revision log, newest first
+    if revs:
+        F.append(PageBreak())
+        F.append(Paragraph('What changed, newest first', H1))
+        F.append(Paragraph(
+            'Every round of work on this build, most recent at the top. '
+            f'{len(revs)} entries.', SUB))
+        F.append(Spacer(1, 10))
+        rdata = [[Paragraph('Date', HEADC), Paragraph('What', HEADC),
+                  Paragraph('What changed', HEADC)]]
+        rstyle = [('BACKGROUND', (0,0), (-1,0), SKY_D),
+                  ('VALIGN', (0,0), (-1,-1), 'TOP'),
+                  ('LINEBELOW', (0,0), (-1,-1), 0.35, LINE)] + PAD
+        RCELL = S(name='RCELL', fontName='Helvetica', fontSize=7.6, leading=9.6,
+                  textColor=INK)
+        RDATE = S(name='RDATE', fontName='Helvetica', fontSize=7.6, leading=9.6,
+                  textColor=MUTED)
+        RWHAT = S(name='RWHAT', fontName='Helvetica-Bold', fontSize=7.6,
+                  leading=9.6, textColor=SKY_D)
+        for i, r in enumerate(revs, 1):
+            rdata.append([Paragraph(esc(r[0]), RDATE),
+                          Paragraph(esc(r[1]), RWHAT),
+                          Paragraph(esc(r[2]), RCELL)])
+            if i % 2 == 0:
+                rstyle.append(('BACKGROUND', (0, i), (-1, i), TINT))
+        rt = Table(rdata, colWidths=[W*0.10, W*0.17, W*0.73], repeatRows=1)
+        rt.setStyle(TableStyle(rstyle))
+        F.append(rt)
+
     doc.build(F, onFirstPage=chrome, onLaterPages=chrome, canvasmaker=Numbered)
     print(out)
 

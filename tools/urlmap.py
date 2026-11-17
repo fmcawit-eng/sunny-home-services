@@ -7,7 +7,7 @@ spreadsheet and a PDF of the same table.
 
 Run:  python3 tools/pagelog.py && python3 tools/urlmap.py
 """
-import csv, os
+import csv, os, datetime
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import landscape, letter
 from reportlab.lib.styles import ParagraphStyle as S
@@ -18,8 +18,9 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV  = os.path.join(ROOT, 'tools', 'pagelog.csv')
 LIVE = 'https://sunnyhomeservices.com'
-DATE = 'November 5, 2026'
-STAMP = '11-05-2026'
+_TODAY = datetime.date.today()
+DATE  = _TODAY.strftime('%B %-d, %Y')
+STAMP = _TODAY.strftime('%m-%d-%Y')
 
 # Addresses for the pages with no live page yet. Each one follows a pattern the
 # live site already uses, so none of this invents a structure. Dev confirms them.
