@@ -246,7 +246,10 @@ def copy_source(slug):
     if slug.startswith('blog-') and slug != 'blog-template.html':
         return 'Its own brief doc, verbatim'
     if slug.endswith('-experts.html'):
-        return 'Mirrored from the live page'
+        # Rebuilt in the site design on November 17, 2026. The wording is still
+        # the live landing page's own, apart from the fixes the client's review
+        # asked for. See tools/expertslp.py.
+        return 'The live landing page\u2019s wording, rebuilt in the site design'
     if slug in ('privacy-policy.html', 'terms-and-conditions.html'):
         return 'PLACEHOLDER, not real policy text'
     if slug in ('coming-soon.html', 'blog-template.html'):
