@@ -1633,43 +1633,6 @@ html, body { overflow-x: clip; }
 }
 
 /* The two tune-up coupons the copy doc puts in the hero */
-.hs-offers {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 26px;
-  max-width: 560px;
-}
-.hs-offer {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 16px;
-  padding: 18px 20px 16px;
-  border-top: 5px solid var(--sky, #03A6CC);
-  box-shadow: 0 16px 36px rgba(6, 34, 44, 0.30);
-}
-.hs-offer.is-gold { border-top-color: var(--gold, #FFC704); }
-.hs-offer-value {
-  font-family: var(--font-display, inherit);
-  font-size: 38px;
-  line-height: 1;
-  font-weight: 800;
-  color: var(--sky-d, #0288a8);
-}
-.hs-offer.is-gold .hs-offer-value { color: var(--orange, #F17601); }
-.hs-offer-label {
-  margin-top: 6px;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--ink, #454545);
-  text-wrap: balance;
-}
-.hs-offer-fine {
-  margin-top: 7px;
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--muted, #6B7480);
-  text-wrap: pretty;
-}
 
 /* A ticked list that runs two across, so eight items are four rows not eight */
 .hs-why-grid {
@@ -1833,7 +1796,6 @@ html, body { overflow-x: clip; }
 }
 @media (max-width: 860px) {
   .hs-subhead { font-size: 20px; }
-  .hs-offers { grid-template-columns: 1fr; gap: 12px; max-width: 100%; }
   .hs-why-grid { grid-template-columns: 1fr; }
   .hub-split-flip .hub-split-media { order: 0; }
 }
@@ -1856,7 +1818,11 @@ html, body { overflow-x: clip; }
 /* Heating Services: the repair band's two cards run full width and stack,
    so an eight item list has room for two readable columns */
 .lp-band-problems .lp-grid-stack { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-.hs-band-title { margin-bottom: 34px; }
+.lp-band-problems .hs-band-title {
+  margin-bottom: 34px;
+  color: #fff;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
+}
 
 /* .check-list carries max-width:720px for a reading column. The two stacked
    repair cards run the full band, so their lists need the whole width or the
@@ -1882,6 +1848,172 @@ html, body { overflow-x: clip; }
   .section-hero-split.has-hs-hero .hero-scrim {
     background: linear-gradient(180deg, rgba(8,40,52,0.82) 0%, rgba(8,40,52,0.72) 48%, rgba(8,40,52,0.86) 100%);
   }
-  .has-hs-hero .hs-offer { padding: 15px 18px 14px; }
-  .has-hs-hero .hs-offer-value { font-size: 32px; }
+}
+
+/* ---------- Heating Services: the coupon band under the hero ---------- */
+.section-hs-offers { position: relative; overflow: hidden; padding: 78px 0 84px; }
+.section-hs-offers > .container { position: relative; z-index: 2; }
+.section-hs-offers > .section-bg img { opacity: 0.5; }
+.section-hs-offers .hs-offers-wash {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255,199,4,0.30) 0%, rgba(241,118,1,0.10) 38%, rgba(255,199,4,0) 70%),
+    linear-gradient(180deg, rgba(10,46,60,0.80) 0%, rgba(10,46,60,0.72) 45%, rgba(10,46,60,0.86) 100%);
+}
+.section-hs-offers .display-h1,
+.section-hs-offers .lead { color: #fff; }
+.section-hs-offers .lead { margin-bottom: 0; text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+
+.hs-coupons {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hs-coupon {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 22px 50px rgba(5, 26, 34, 0.34);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hs-coupon:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 62px rgba(5, 26, 34, 0.42);
+}
+.hs-coupon-stub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 10px;
+  background: linear-gradient(160deg, #03A6CC 0%, #0288a8 100%);
+  position: relative;
+}
+.hs-coupon.is-gold .hs-coupon-stub {
+  background: linear-gradient(160deg, #FFC704 0%, #F17601 100%);
+}
+/* the perforation between the stub and the body */
+.hs-coupon-stub { border-right: 3px dashed rgba(255, 255, 255, 0.92); }
+.hs-coupon-value {
+  font-family: var(--font-display, inherit);
+  font-size: 50px;
+  line-height: 1;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+}
+.hs-coupon-main { padding: 26px 28px 26px 26px; }
+.hs-coupon-label {
+  margin: 0;
+  font-family: var(--font-display, inherit);
+  font-size: 24px;
+  line-height: 1.22;
+  font-weight: 700;
+  color: var(--sky-d, #0288a8);
+  text-wrap: balance;
+}
+.hs-coupon.is-gold .hs-coupon-label { color: var(--orange, #F17601); }
+.hs-coupon-fine {
+  margin: 9px 0 18px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted, #6B7480);
+  text-wrap: pretty;
+}
+.hs-coupon-btn { min-height: 46px; padding: 12px 24px; font-size: 14px; }
+
+/* ---------- a photograph beside the lists, instead of a card of ticks ---------- */
+.lp-band-problems .lp-card.hs-card-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.hs-card-split.is-flip .hs-split-media { order: 2; }
+.hs-split-media { position: relative; min-height: 320px; overflow: hidden; }
+.hs-split-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+.lp-card.hs-card-split:hover .hs-split-media img { transform: scale(1.05); }
+.hs-split-body { padding: 36px 38px 38px; }
+.hs-split-body .lp-card-icon { margin-bottom: 16px; }
+.lp-band-problems .hs-split-body .check-list { max-width: none; }
+
+@media (max-width: 1040px) {
+  .hs-coupons { max-width: 620px; grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 860px) {
+  .lp-band-problems .lp-card.hs-card-split { grid-template-columns: minmax(0, 1fr); }
+  .hs-card-split.is-flip .hs-split-media { order: 0; }
+  .hs-split-media { min-height: 228px; }
+  .hs-split-body { padding: 28px 24px 30px; }
+  .section-hs-offers { padding: 62px 0 66px; }
+}
+@media (max-width: 520px) {
+  .hs-coupon { grid-template-columns: 112px minmax(0, 1fr); }
+  .hs-coupon-value { font-size: 40px; }
+  .hs-coupon-main { padding: 22px 22px 22px 20px; }
+  .hs-coupon-label { font-size: 21px; }
+}
+
+/* Heating Services, third pass */
+
+/* Bigger, bolder coupons: they are the first thing under the hero now. */
+.hs-coupons { max-width: 1000px; gap: 30px; }
+.hs-coupon { grid-template-columns: 172px minmax(0, 1fr); border-radius: 22px; }
+.hs-coupon-value { font-size: 58px; }
+.hs-coupon-main { padding: 30px 30px 30px 28px; }
+.hs-coupon-label { font-size: 26px; }
+.hs-coupon-btn { min-height: 48px; padding: 13px 28px; font-size: 14.5px; }
+.section-hs-offers > .section-bg img { opacity: 0.6; }
+
+/* The emergency card is the only one in its band, so it gets an even split and
+   a wider frame. The narrow column was cutting the technician in half. */
+.lp-band-problems .lp-grid-emergency .lp-card { max-width: 1120px; }
+.lp-band-problems .lp-grid-emergency .lp-card.hs-card-split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+}
+.lp-grid-emergency .hs-split-media img { object-position: 62% center; }
+
+/* No max-height here: capping it leaves a band of white under the photograph
+   when the copy beside it runs longer. object-fit handles the tall crops. */
+
+@media (max-width: 860px) {
+  .lp-band-problems .lp-grid-emergency .lp-card.hs-card-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hs-coupon-value { font-size: 46px; }
+}
+
+/* Heating Services, phone sizing. This block must stay last in the file: the
+   third pass above re-declares the coupon base rules, and a media query adds
+   no specificity, so anything written before it would be overridden. */
+@media (max-width: 560px) {
+  .hs-coupons { gap: 18px; max-width: 100%; }
+  .hs-coupon { grid-template-columns: 94px minmax(0, 1fr); border-radius: 18px; }
+  .hs-coupon-stub { padding: 22px 6px; border-right-width: 2px; }
+  .hs-coupon-value { font-size: 36px; }
+  .hs-coupon-main { padding: 20px 18px 20px 18px; }
+  .hs-coupon-label { font-size: 19px; line-height: 1.2; }
+  .hs-coupon-fine { font-size: 13.5px; margin: 7px 0 14px; }
+  .hs-coupon-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 13px 10px;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+  }
+  /* "Furnace Tune-Up" was breaking at its hyphen and leaving "Up" alone */
+  .hs-coupon-label { hyphens: none; overflow-wrap: normal; word-break: keep-all; }
 }

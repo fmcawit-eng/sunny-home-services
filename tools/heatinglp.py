@@ -64,10 +64,14 @@ HERO_P = ('It&rsquo;s only a matter of time before sub-zero temperatures strike 
 # The two offers the copy doc puts in the hero. The labels are the doc's. The
 # fine print is not in the doc, so it is taken word for word from the client's
 # own offers page (offers.html), where both coupons already live.
-HERO_OFFERS = [
+OFFERS = [
     ('is-sky', '$49', 'Furnace&nbsp;Tune-Up', 'Mention this coupon when you&nbsp;book.'),
     ('is-gold', '$98', 'Heating &amp; AC&nbsp;Tune-Up', 'AC and furnace, tuned&nbsp;together.'),
 ]
+# Both labels are the copy doc's. The doc left the fine print blank, so it is
+# taken word for word from the client's own offers page, where both coupons
+# already live, along with the "Claim This Offer" wording on the buttons.
+OFFERS_LEAD = 'Mention the one you want when you&nbsp;call.'
 
 WHY = ['Locally Owned&nbsp;Company',
        '50+ Years Combined&nbsp;Experience',
@@ -260,11 +264,14 @@ def build():
     van = van.replace('href="#contact">Meet The&nbsp;Family', 'href="#contact">Book&nbsp;Now')
 
     offers = ''.join(f'''
-          <div class="hs-offer {tone}">
-            <div class="hs-offer-value">{value}</div>
-            <div class="hs-offer-label">{label}</div>
-            <div class="hs-offer-fine">{fine}</div>
-          </div>''' for tone, value, label, fine in HERO_OFFERS)
+          <article class="hs-coupon {tone}">
+            <div class="hs-coupon-stub"><span class="hs-coupon-value">{value}</span></div>
+            <div class="hs-coupon-main">
+              <h3 class="hs-coupon-label">{label}</h3>
+              <p class="hs-coupon-fine">{fine}</p>
+              <a class="btn btn-primary btn-pill hs-coupon-btn" href="#contact">Claim This&nbsp;Offer</a>
+            </div>
+          </article>''' for tone, value, label, fine in OFFERS)
 
     cards = ''.join(f'''
           <article class="hs-card">
@@ -338,12 +345,22 @@ def build():
         <a class="btn btn-primary btn-pill btn-lg" href="#contact">Book&nbsp;Now</a>
         <a class="btn btn-outline-light btn-pill btn-lg btn-call-lp" href="tel:{TEL}">Call&nbsp;{PH}</a>
       </div>
-      <div class="hs-offers">{offers}
+    </div>
+  </section>
+''', f'''
+  <!-- 02 The two coupons, in a band of their own under the hero -->
+  <section class="section section-hs-offers reveal" data-animation="fade-up" id="offers">
+    <div class="section-bg"><img src="assets/services/card-heating-maintenance.webp" alt="" data-parallax="12"></div>
+    <div class="hs-offers-wash"></div>
+    <div class="container">
+      <h2 class="display-h1 align-center">Current Specials and&nbsp;Offers</h2>
+      <p class="lead align-center">{OFFERS_LEAD}</p>
+      <div class="hs-coupons">{offers}
       </div>
     </div>
   </section>
 ''', f'''
-  <!-- 02 Why Sunny Home Services, the copy doc's eight lines -->
+  <!-- 03 Why Sunny Home Services, the copy doc's eight lines -->
   <section class="section section-why reveal" data-animation="fade-up" id="why" data-block="why-split">
     <div class="section-bg section-bg-faint"><img src="assets/bg/tools.webp" alt="" data-parallax="12"></div>
     <div class="container">
@@ -364,7 +381,7 @@ def build():
     </div>
   </section>
 ''', f'''
-  <!-- 03 Opening copy -->
+  <!-- 04 Opening copy -->
   <section class="section lp-band lp-band-intro reveal" data-animation="fade-up" id="intro">
     <div class="section-bg"><img src="assets/heroes/heating.webp" alt="" data-parallax="12"></div>
     <div class="lp-wash"></div>
@@ -374,9 +391,9 @@ def build():
     </div>
   </section>
 ''', f'''
-  <!-- 04 Heating installation, and the three systems the copy doc names -->
+  <!-- 05 Heating installation, and the three systems the copy doc names -->
   <section class="section section-services reveal" data-animation="fade-up" id="installation" data-block="install">
-    <div class="section-bg section-bg-faint"><img src="assets/bg/neighborhood.webp" alt="" data-parallax="12"></div>
+    <div class="section-bg section-bg-faint"><img src="assets/services/card-heating-install.webp" alt="" data-parallax="12"></div>
     <div class="bg-orb bg-orb-sky" style="top:-200px; left:-200px; width:540px;"></div>
     <div class="bg-orb bg-orb-orange" style="bottom:-220px; right:-100px; width:420px;"></div>
     <div class="container">
@@ -388,7 +405,7 @@ def build():
     </div>
   </section>
 ''', f'''
-  <!-- 05 Heating repair. Two cards stacked at full width rather than side by
+  <!-- 06 Heating repair. Two cards stacked at full width rather than side by
        side: the second list has eight items and the first has four, and in a
        half-width card eight items in two columns wrap to three lines each. -->
   <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="repair">
@@ -397,24 +414,34 @@ def build():
     <div class="container">
       <h3 class="display-h1 align-center hs-band-title">{REPAIR_H}</h3>
       <div class="lp-grid lp-grid-stack">
-        <div class="lp-card is-cool">
-          <div class="lp-card-icon" aria-hidden="true">{SVG_WRENCH}</div>
-          <div class="hub-prose"><p>{REPAIR_P}</p></div>
-          <ul class="check-list hs-why-grid">{checks(REPAIR_L)}
-          </ul>
+        <div class="lp-card is-cool hs-card-split">
+          <div class="hs-split-media">
+            <img src="assets/services/card-heating-repair.webp" alt="A Sunny Home Services technician testing a furnace" loading="lazy" data-parallax="6">
+          </div>
+          <div class="hs-split-body">
+            <div class="lp-card-icon" aria-hidden="true">{SVG_WRENCH}</div>
+            <div class="hub-prose"><p>{REPAIR_P}</p></div>
+            <ul class="check-list">{checks(REPAIR_L)}
+            </ul>
+          </div>
         </div>
-        <div class="lp-card is-warm">
-          <div class="lp-card-icon" aria-hidden="true">{SVG_ALERT}</div>
-          <h4 class="display-h2">{SIGNS_H}</h4>
-          <div class="hub-prose"><p>{SIGNS_P}</p></div>
-          <ul class="check-list hs-why-grid">{checks(SIGNS_L)}
-          </ul>
+        <div class="lp-card is-warm hs-card-split is-flip">
+          <div class="hs-split-media">
+            <img src="assets/services/team-heating.webp" alt="A Sunny Home Services technician checking a furnace with a meter" loading="lazy" data-parallax="6">
+          </div>
+          <div class="hs-split-body">
+            <div class="lp-card-icon" aria-hidden="true">{SVG_ALERT}</div>
+            <h4 class="display-h2">{SIGNS_H}</h4>
+            <div class="hub-prose"><p>{SIGNS_P}</p></div>
+            <ul class="check-list">{checks(SIGNS_L)}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 ''', f'''
-  <!-- 06 Preventative maintenance -->
+  <!-- 07 Preventative maintenance -->
   <section class="section section-why reveal" data-animation="fade-up" id="maintenance" data-block="maintenance">
     <div class="section-bg section-bg-faint"><img src="assets/heroes/furnace-maintenance.webp" alt="" data-parallax="12"></div>
     <div class="container">
@@ -432,28 +459,33 @@ def build():
     </div>
   </section>
 ''', f'''
-  <!-- 07 Emergency heating repair -->
+  <!-- 08 Emergency heating repair -->
   <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="emergency">
     <div class="section-bg"><img src="assets/heroes/emergency-heating-repair.webp" alt="" data-parallax="14"></div>
     <div class="lp-wash"></div>
     <div class="container">
       <div class="lp-grid lp-grid-emergency">
-        <div class="lp-card is-warm">
-          <div class="lp-card-icon" aria-hidden="true">{SVG_ALERT}</div>
-          <h3 class="display-h2">{EMERG_H}</h3>
-          <div class="hub-prose">{''.join(f'<p>{p}</p>' for p in EMERG_P)}</div>
-          <p class="hs-lead-in">{EMERG_LEAD}</p>
-          <ul class="check-list hs-signs-row">{checks(EMERG_L)}
-          </ul>
-          <div class="cta-row" style="margin-top:26px;">
-            <a class="btn btn-primary btn-pill btn-lg btn-call-lp" href="tel:{TEL}">Call&nbsp;{PH}</a>
+        <div class="lp-card is-warm hs-card-split">
+          <div class="hs-split-media">
+            <img src="assets/services/card-heating-emergency.webp" alt="A Sunny Home Services technician arriving at a snowbound home after dark" loading="lazy" data-parallax="6">
+          </div>
+          <div class="hs-split-body">
+            <div class="lp-card-icon" aria-hidden="true">{SVG_ALERT}</div>
+            <h3 class="display-h2">{EMERG_H}</h3>
+            <div class="hub-prose">{''.join(f'<p>{p}</p>' for p in EMERG_P)}</div>
+            <p class="hs-lead-in">{EMERG_LEAD}</p>
+            <ul class="check-list hs-signs-row">{checks(EMERG_L)}
+            </ul>
+            <div class="cta-row" style="margin-top:26px;">
+              <a class="btn btn-primary btn-pill btn-lg btn-call-lp" href="tel:{TEL}">Call&nbsp;{PH}</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 ''', van, f'''
-  <!-- 08 Closing call to action -->
+  <!-- 09 Closing call to action -->
   <section class="section section-cta-banner reveal" data-animation="fade-up" id="cta" data-block="final-cta">
     <div class="section-bg"><img src="assets/bg/wasatch.webp" alt="" data-parallax="15"></div>
     <div class="cta-overlay"></div>
@@ -467,7 +499,7 @@ def build():
     </div>
   </section>
 ''', f'''
-  <!-- 09 Reviews. Three real reviews, supplied by the client with the reviewer's
+  <!-- 10 Reviews. Three real reviews, supplied by the client with the reviewer's
        name. No city and no platform were given for any of them, so none is
        shown, and there is no overall star rating anywhere on this page. -->
   <section class="section section-testimonials reveal" data-animation="fade-up" id="reviews">
@@ -480,7 +512,7 @@ def build():
     </div>
   </section>
 ''', f'''
-  <!-- 10 Our services, the seven the copy doc lists -->
+  <!-- 11 Our services, the seven the copy doc lists -->
   <section class="section section-hs-services reveal" data-animation="fade-up" id="our-services">
     <div class="section-bg section-bg-faint"><img src="assets/heroes/service-area.webp" alt="" data-parallax="10"></div>
     <div class="container">
@@ -494,7 +526,7 @@ def build():
     </div>
   </section>
 ''', areas, f'''
-  <!-- 11 The form, with the fields the copy doc lists, then the map -->
+  <!-- 12 The form, with the fields the copy doc lists, then the map -->
   <section class="section section-contact reveal" data-animation="fade-up" id="contact">
     <div class="section-bg"><img src="assets/bg/skyline.webp" alt="" data-parallax="15"></div>
     <div class="accent-stripe accent-stripe-orange"></div>
