@@ -33,6 +33,7 @@ NEW = {
     'salt-lake-city-ut-heating.html':         ('/salt-lake-city-ut/heating/', 'Same shape as /sandy-ut/heating/. The parent /salt-lake-city-ut/ is already live.'),
     'salt-lake-city-ut-plumber.html':         ('/salt-lake-city-ut/plumber/', 'Same shape as /sandy-ut/plumber/. The parent /salt-lake-city-ut/ is already live.'),
     'whole-house-air-purifier.html':          ('/indoor-air-quality/whole-house-air-purifier/', 'Same shape as /indoor-air-quality/whole-home-humidifiers/.'),
+    'heating-services.html':                  ('/heating-services', 'The client\u2019s copy doc gives this address, written without a trailing slash. Every other address on the site has one, so confirm which it should be.'),
 }
 NOPUB = {
     'blog-template.html': 'Not a page. Dev duplicates this file to build article 14 and onward.',

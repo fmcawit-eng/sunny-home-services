@@ -15,9 +15,12 @@ import re, os, sys, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DRY = '--dry' in sys.argv
 
-# Mirrors of the client's live pages. They match the live site byte for byte.
+# Landing pages written by a build script, which ties the last two words of
+# every line itself. Running over them here would be undone on the next build.
+# tools/expertslp.py writes the first four, tools/heatinglp.py the last.
 SKIP_FILES = {'ac-repair-experts.html', 'ac-replacement-experts.html',
-              'furnace-repair-experts.html', 'furnace-replacement-experts.html'}
+              'furnace-repair-experts.html', 'furnace-replacement-experts.html',
+              'heating-services.html'}
 
 TAGS = r'h1|h2|h3|h4|p|li|summary|figcaption|blockquote'
 CLASSES = r'btn|check-text|hub-tile-title|hub-card-title|hub-lead-in|hub-tile-go|hub-card-link|hub-step-desc|hub-card-desc'

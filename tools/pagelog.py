@@ -196,6 +196,25 @@ for f in ('ac-repair-experts.html', 'ac-replacement-experts.html',
                 'Client supplies real reviews, confirms the two numbers, '
                 'and approves the lines marked as ours')
 
+NEEDS['heating-services.html'] = (
+    'THE GENERAL HEATING LANDING PAGE. Built November 24, 2026 from the '
+    'client\u2019s copy doc, "Unbounce Landing Page Copy - Sunny Home Services - '
+    'Heating Services Landing Page". Every heading, paragraph and bullet is '
+    'their wording. Four things in that doc are still open. Its call-tracked '
+    'number, (385) 438-4462, is new and is used in the header as well as the '
+    'body, which is not how the four "-experts" pages work. Its AWARDS and '
+    'CERTIFICATIONS block names no award, so nothing was put there: the only '
+    'certifications we can source are EPA and RMGA, both already in the Why '
+    'Sunny Home Services list. Its Branding Video block has no video: the two '
+    'clips in assets are a plumbing crawlspace and an air conditioner, so the '
+    'block was left out rather than wired to the wrong footage. The fine print '
+    'under the two tune-up coupons was blank, so it was taken word for word '
+    'from the client\u2019s own offers page. The three reviews are real and '
+    'came with the doc; no city or platform was given for any of them, so none '
+    'is shown.',
+    'Client supplies the awards, the branding video, the coupon fine print, '
+    'and confirms the phone number')
+
 NEEDS['furnace-repair-experts.html'] = (
     _lp_reviews('furnace-repair-experts.html') + ' ' +
     _LP_OURS['furnace-repair-experts.html'] +
@@ -292,6 +311,8 @@ NEEDS['millcreek-ut.html'] = (
 def copy_source(slug):
     if slug.startswith('blog-') and slug != 'blog-template.html':
         return 'Its own brief doc, verbatim'
+    if slug == 'heating-services.html':
+        return 'The client\u2019s heating services copy doc, verbatim'
     if slug.endswith('-experts.html'):
         # Rebuilt in the site design on November 17, 2026. The wording is still
         # the live landing page's own, apart from the fixes the client's review
@@ -353,6 +374,26 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 24, 2026', 'The heating services landing page',
+     'Built heating-services.html from the client\u2019s copy doc for it. It '
+     'is the general heating landing page: furnaces, heat pumps and ductless '
+     'mini-splits in one place, where furnace-repair-experts and '
+     'furnace-replacement-experts each cover one job. Every heading, '
+     'paragraph and bullet is the client\u2019s wording. It is built the same '
+     'way as the other four, lifting the header, the van band, the service '
+     'areas and the footer out of the home page, so it cannot drift from the '
+     'rest of the site. tools/heatinglp.py rebuilds it; do not hand-edit the '
+     'HTML. Four things in the copy doc are still open and are listed against '
+     'the page in the Note column.'),
+    ('November 24, 2026', 'Real reviews, for the first time',
+     'The copy doc supplied three real reviews, signed Samuel M., Annette D. '
+     'and Jared H. They are on the heating services page. No city and no '
+     'platform was given for any of them, so none is shown, and there is '
+     'still no overall star rating anywhere. Separately, the Google map '
+     'embed on that page now reports 5.0 from 89 Google reviews, which is the '
+     'first sourced rating we have seen for Sunny. If the client confirms it, '
+     'the reviews block can go back on the home page and the other four '
+     'landing pages, where it was removed for having no source.'),
     ('November 17, 2026', 'The four ad landing pages, rebuilt',
      'ac-repair-experts, ac-replacement-experts, furnace-repair-experts and '
      'furnace-replacement-experts were mirrors of the live pages, copied byte '
