@@ -2091,3 +2091,71 @@ html, body { overflow-x: clip; }
      wash do not apply. The phone scrim is set with the rest of the phone hero. */
   .section-hero-split.has-hs-hero { min-height: 82vh; }
 }
+
+/* ---------- Heating Services hero, fourth pass ----------
+   The subhead was capped at 560px and needed 582px to sit on one line, so it
+   always broke in two. It gets the room, a size up, and a measure wide enough
+   that it stays on one line all the way down to the phone breakpoint. The
+   hero grows to carry it. */
+.section-hero-split.has-hs-hero { min-height: 80vh; }
+.section-hero-split.has-hs-hero .hs-subhead {
+  font-size: clamp(17px, 1.52vw, 22px);
+  line-height: 1.26;
+  max-width: 820px;
+  margin-bottom: 16px;
+}
+.section-hero-split.has-hs-hero .hero-content .lead-on-video {
+  font-size: 17px;
+  line-height: 1.58;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+.section-hero-split.has-hs-hero .hero-content .cta-row { max-width: 700px; }
+
+@media (max-width: 1100px) {
+  .section-hero-split.has-hs-hero .hero-content .lead-on-video,
+  .section-hero-split.has-hs-hero .hero-content .cta-row { max-width: 600px; }
+}
+@media (max-width: 860px) {
+  .section-hero-split.has-hs-hero { min-height: 84vh; }
+  .section-hero-split.has-hs-hero .hs-subhead {
+    font-size: 16.5px;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  .section-hero-split.has-hs-hero .hero-content .lead-on-video {
+    font-size: 14.5px;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+}
+
+/* ---------- An outline on each coupon ----------
+   White cards on a dark band read as floating panels. A ring in the coupon's
+   own color frames it and makes it read as a ticket you could tear out. */
+.hs-coupon {
+  border: 3px solid var(--sky, #03A6CC);
+  box-shadow: 0 22px 50px rgba(5, 26, 34, 0.38);
+}
+.hs-coupon.is-gold { border-color: var(--orange, #F17601); }
+
+/* One coupon's fine print runs to two lines and the other's to one, which left
+   the two buttons at different heights. Sit them both at the foot of the card. */
+.hs-coupon-main { display: flex; flex-direction: column; }
+.hs-coupon-btn { margin-top: auto; align-self: flex-start; }
+.hs-coupon-fine { margin-bottom: 18px; }
+
+@media (max-width: 860px) {
+  /* The phone hero is one background photo, so the copy sits straight on the
+     van. Darken the middle of the wash where the bright blue panel falls, and
+     take back the empty room under the buttons. */
+  .section-hero-split.has-hs-hero { min-height: 78vh; }
+  .section-hero-split.has-hs-hero .hero-scrim {
+    background: linear-gradient(180deg,
+      rgba(8, 40, 52, 0.86) 0%,
+      rgba(8, 40, 52, 0.80) 42%,
+      rgba(8, 40, 52, 0.82) 70%,
+      rgba(8, 40, 52, 0.90) 100%);
+  }
+}
