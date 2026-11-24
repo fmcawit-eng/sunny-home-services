@@ -1995,9 +1995,9 @@ html, body { overflow-x: clip; }
   .hs-coupon-value { font-size: 46px; }
 }
 
-/* Heating Services, phone sizing. This block must stay last in the file: the
-   third pass above re-declares the coupon base rules, and a media query adds
-   no specificity, so anything written before it would be overridden. */
+/* Heating Services, phone sizing for the coupons. This block has to sit after
+   the third pass above, which re-declares the coupon base rules: a media query
+   adds no specificity, so written any earlier it would simply be overridden. */
 @media (max-width: 560px) {
   .hs-coupons { gap: 18px; max-width: 100%; }
   .hs-coupon { grid-template-columns: 94px minmax(0, 1fr); border-radius: 18px; }
@@ -2016,4 +2016,78 @@ html, body { overflow-x: clip; }
   }
   /* "Furnace Tune-Up" was breaking at its hyphen and leaving "Up" alone */
   .hs-coupon-label { hyphens: none; overflow-wrap: normal; word-break: keep-all; }
+}
+
+/* ---------- Heating Services hero: a bigger headline over tighter copy ----------
+   The shared hero caps the H1 at 3.3vw, which is 47px on a desktop and only
+   22px on a phone. This page leads on the headline, so it is raised and the
+   subhead, the paragraph and the gaps are pulled in to pay for the room.
+   Scoped to .has-hs-hero so the other four landing pages are untouched. */
+.section-hero-split.has-hs-hero .display-hero {
+  font-size: clamp(40px, 4.5vw, 70px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin-bottom: 18px;
+}
+.section-hero-split.has-hs-hero .hs-subhead {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 19px;
+  line-height: 1.3;
+  max-width: 560px;
+}
+.section-hero-split.has-hs-hero .hero-content .lead-on-video {
+  font-size: 16.5px;
+  line-height: 1.55;
+  max-width: 640px;
+  margin-bottom: 30px;
+}
+.section-hero-split.has-hs-hero .hero-content .cta-row { max-width: 640px; }
+
+@media (max-width: 1100px) {
+  .section-hero-split.has-hs-hero .hero-content .lead-on-video,
+  .section-hero-split.has-hs-hero .hero-content .cta-row { max-width: 560px; }
+}
+@media (max-width: 860px) {
+  .section-hero-split.has-hs-hero .display-hero {
+    font-size: clamp(28px, 7.8vw, 38px);
+    margin-bottom: 14px;
+  }
+  .section-hero-split.has-hs-hero .hs-subhead {
+    font-size: 16.5px;
+    line-height: 1.28;
+    margin-bottom: 10px;
+  }
+  .section-hero-split.has-hs-hero .hero-content .lead-on-video {
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 24px;
+    max-width: 100%;
+  }
+  .section-hero-split.has-hs-hero .hero-content { padding-top: 112px; padding-bottom: 38px; }
+}
+
+/* The van panel sits at z-index 2, above the hero scrim at 1, so nothing
+   darkens the van itself. With the headline this size it runs across the van
+   and the gold line lands on bright blue. Lift the scrim above the panel and
+   the copy above the scrim, and carry a soft wash further right. */
+.section-hero-split.has-hs-hero .hero-scrim {
+  z-index: 3;
+  background: linear-gradient(90deg,
+    rgba(9, 42, 55, 0.92) 0%,
+    rgba(9, 42, 55, 0.82) 28%,
+    rgba(9, 42, 55, 0.62) 46%,
+    rgba(9, 42, 55, 0.30) 62%,
+    rgba(9, 42, 55, 0.0) 76%);
+}
+.section-hero-split.has-hs-hero .hero-content { z-index: 4; }
+
+/* Less empty room above and below now that the copy block is shorter */
+.section-hero-split.has-hs-hero { min-height: 72vh; }
+
+@media (max-width: 860px) {
+  /* On a phone the hero is a single background image, so the panel and this
+     wash do not apply. The phone scrim is set with the rest of the phone hero. */
+  .section-hero-split.has-hs-hero { min-height: 82vh; }
 }
