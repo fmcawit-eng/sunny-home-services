@@ -376,7 +376,7 @@ INTRO = '''
 
 SPLIT = '''
   <!-- 04 The two lists from the live landing page, on cards over a seasonal
-       photo. They used to sit on a flat grey fill. -->
+       photo. They used to sit on a flat gray fill. -->
   <section class="section lp-band lp-band-problems reveal" data-animation="fade-up" id="problems">
     <div class="section-bg"><img src="assets/{bg}" alt="" data-parallax="14"></div>
     <div class="lp-wash"></div>

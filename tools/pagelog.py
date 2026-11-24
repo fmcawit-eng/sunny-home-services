@@ -149,13 +149,79 @@ def pretty(slug):
 # Keyed by file. Each entry is (what still needs doing, who decides).
 NEEDS = {}
 
+# Each page's own call-tracked number, the one in its body copy. The header
+# carries the main office number on all four, as the live pages do.
+_LP_PHONE = {
+    'furnace-repair-experts.html':      '(385) 398-6742',
+    'furnace-replacement-experts.html': '(385) 404-2530',
+    'ac-repair-experts.html':           '(385) 398-6692',
+    'ac-replacement-experts.html':      '(385) 398-6646',
+}
+
+def _lp_reviews(f):
+    return (
+    'Rebuilt in the site design on November 17, 2026, answering the client\u2019s '
+    'review. The reviews section is out: the live page signs its four reviews '
+    '\u201cCustomer A\u201d to \u201cCustomer D\u201d and shows a five star rating, '
+    'and none of it has a source. Put it back the day real reviews exist. Two '
+    'numbers on this page: the header carries the main office number '
+    '385.853.8116 and the body carries this page\u2019s call-tracked number, '
+    + _LP_PHONE[f] + ', which is how the live page does it.')
+
+# What on each page is ours rather than the live page's wording. Everything
+# not listed here is the live landing page's own copy, unchanged.
+_LP_OURS = {
+ 'furnace-repair-experts.html':
+   'Ours on this page, not the client\u2019s: the headline \u201cFurnace Down? '
+   'Let\u2019s Get the Heat Back On.\u201d, the first paragraph under the hero, and '
+   'the hero\u2019s three facts (same-day appointments, open 7am to 7pm Monday to '
+   'Friday, both taken from the office hours on the contact band).',
+ 'furnace-replacement-experts.html':
+   'Ours on this page, not the client\u2019s: the line under the headline, '
+   '\u201cProfessional furnace replacement along the Wasatch Front\u201d, and the '
+   'hero\u2019s three facts.',
+ 'ac-repair-experts.html':
+   'Ours on this page, not the client\u2019s: the headline \u201cHere in the '
+   'Wasatch, We\u2019ll Get Your AC Running Today\u201d, the closing heading '
+   '\u201cCall Sunny Home Services Today\u201d, the reasons heading, and the '
+   'hero\u2019s three facts.',
+ 'ac-replacement-experts.html':
+   'Ours on this page, not the client\u2019s: the reasons heading and the '
+   'hero\u2019s three facts.',
+}
+
 for f in ('ac-repair-experts.html', 'ac-replacement-experts.html',
           'furnace-repair-experts.html', 'furnace-replacement-experts.html'):
-    NEEDS[f] = ('Mirror of the live ad landing page, kept byte for byte. Its menu '
-                'button, Book Now and BBB badge are under 44px on a phone and the '
-                'review attributions are 10px. Those come from the live theme, not '
-                'from this build, and cannot be reached from our stylesheet.',
-                'Client, if they want the live page fixed')
+    NEEDS[f] = (_lp_reviews(f) + ' ' + _LP_OURS[f],
+                'Client supplies real reviews, confirms the two numbers, '
+                'and approves the lines marked as ours')
+
+NEEDS['heating-services.html'] = (
+    'THE GENERAL HEATING LANDING PAGE. Built November 24, 2026 from the '
+    'client\u2019s copy doc, "Unbounce Landing Page Copy - Sunny Home Services - '
+    'Heating Services Landing Page". Every heading, paragraph and bullet is '
+    'their wording. Four things in that doc are still open. Its call-tracked '
+    'number, (385) 438-4462, is new and is used in the header as well as the '
+    'body, which is not how the four "-experts" pages work. Its AWARDS and '
+    'CERTIFICATIONS block names no award, so nothing was put there: the only '
+    'certifications we can source are EPA and RMGA, both already in the Why '
+    'Sunny Home Services list. Its Branding Video block has no video: the two '
+    'clips in assets are a plumbing crawlspace and an air conditioner, so the '
+    'block was left out rather than wired to the wrong footage. The fine print '
+    'under the two tune-up coupons was blank, so it was taken word for word '
+    'from the client\u2019s own offers page. The three reviews are real and '
+    'came with the doc; no city or platform was given for any of them, so none '
+    'is shown.',
+    'Client supplies the awards, the branding video, the coupon fine print, '
+    'and confirms the phone number')
+
+NEEDS['furnace-repair-experts.html'] = (
+    _lp_reviews('furnace-repair-experts.html') + ' ' +
+    _LP_OURS['furnace-repair-experts.html'] +
+    ' One sentence in the client\u2019s own copy ends on a comma: '
+    '\u201chigh-quality heating repairs,\u201d. Left as written.',
+    'Client supplies real reviews, confirms the two numbers, approves the lines '
+    'marked as ours, and fixes the comma')
 
 for f in ('privacy-policy.html', 'terms-and-conditions.html'):
     NEEDS[f] = ('Built and styled, but the policy wording is a placeholder. The live '
@@ -245,6 +311,8 @@ NEEDS['millcreek-ut.html'] = (
 def copy_source(slug):
     if slug.startswith('blog-') and slug != 'blog-template.html':
         return 'Its own brief doc, verbatim'
+    if slug == 'heating-services.html':
+        return 'The client\u2019s heating services copy doc, verbatim'
     if slug.endswith('-experts.html'):
         # Rebuilt in the site design on November 17, 2026. The wording is still
         # the live landing page's own, apart from the fixes the client's review
@@ -306,6 +374,60 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 24, 2026', 'The heating services landing page',
+     'Built heating-services.html from the client\u2019s copy doc for it. It '
+     'is the general heating landing page: furnaces, heat pumps and ductless '
+     'mini-splits in one place, where furnace-repair-experts and '
+     'furnace-replacement-experts each cover one job. Every heading, '
+     'paragraph and bullet is the client\u2019s wording. It is built the same '
+     'way as the other four, lifting the header, the van band, the service '
+     'areas and the footer out of the home page, so it cannot drift from the '
+     'rest of the site. tools/heatinglp.py rebuilds it; do not hand-edit the '
+     'HTML. Four things in the copy doc are still open and are listed against '
+     'the page in the Note column.'),
+    ('November 24, 2026', 'Real reviews, for the first time',
+     'The copy doc supplied three real reviews, signed Samuel M., Annette D. '
+     'and Jared H. They are on the heating services page. No city and no '
+     'platform was given for any of them, so none is shown, and there is '
+     'still no overall star rating anywhere. Separately, the Google map '
+     'embed on that page now reports 5.0 from 89 Google reviews, which is the '
+     'first sourced rating we have seen for Sunny. If the client confirms it, '
+     'the reviews block can go back on the home page and the other four '
+     'landing pages, where it was removed for having no source.'),
+    ('November 17, 2026', 'The four ad landing pages, rebuilt',
+     'ac-repair-experts, ac-replacement-experts, furnace-repair-experts and '
+     'furnace-replacement-experts were mirrors of the live pages, copied byte '
+     'for byte. The client\u2019s review listed six problems with them, all of '
+     'which were on the live pages rather than in this build. They are now '
+     'built from the home page\u2019s own sections, so they cannot drift from '
+     'the rest of the site again: current specials, the current-wrap van, the '
+     'reasons strip reading EPA Certified and RMGA Certified with NATE gone, '
+     'the membership section, and furnace photographs and titles on the '
+     'heating pages instead of air conditioning ones. Almost all the wording '
+     'is still the live page\u2019s own; the few lines that are not are named '
+     'against each page in the Note column. They load the site stylesheets '
+     'now, so a global CSS change reaches them, and tools/expertslp.py '
+     'rebuilds all four.'),
+    ('November 17, 2026', 'Winter weighting',
+     'The two furnace pages lead with the $500 off furnace installation offer. '
+     'The hero answers the three questions a house with no heat has: how soon '
+     'someone can come, what it costs to find out, and who is coming. Under it '
+     'a photograph band carries the four furnace services, and a second band '
+     'names the signs a furnace is failing, with an emergency line for a house '
+     'that is already cold.'),
+    ('November 17, 2026', 'Reviews removed',
+     'The live landing pages carry four reviews signed \u201cCustomer A\u201d '
+     'to \u201cCustomer D\u201d under a five star rating. There is no source '
+     'for either: Sunny is a new company with no public reviews yet. The '
+     'section is out of all four pages, the same decision already taken on the '
+     'home page. Nothing was invented in its place.'),
+    ('November 17, 2026', 'Landing page tap targets',
+     'The four landing pages used to load hashed copies of the live theme CSS, '
+     'which put their menu button at 46x42, the Book Now button at 40px tall, '
+     'the BBB badge at 41px and the review attributions at 10px. That was '
+     'listed as a client decision because our stylesheet could not reach it. '
+     'The rebuild removes the theme CSS, so all four now pass at 360, 390 and '
+     '430 like every other page.'),
     ('November 5, 2026', 'Published',
      'Everything below is now on the preview link at '
      'sunny-home-services.vercel.app. All 114 pages were loaded from it and '

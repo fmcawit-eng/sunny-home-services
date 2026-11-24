@@ -71,13 +71,27 @@ def main():
     for f in glob.glob(os.path.join(ROOT, 'tools', '*')):
         if os.path.isfile(f) and not f.endswith(('.pdf',)):
             shutil.copy2(f, tools_out)
+    shutil.copytree(os.path.join(ROOT, 'tools', 'docs'),
+                    os.path.join(tools_out, 'docs'))
 
-    # ---- the two documents that explain it
-    DOCS = '/private/tmp/claude-501/-Users-lgm01-web-mockups/f14cef81-6ff3-4b94-bff3-2dc0abd5d8be/scratchpad/docs'
-    shutil.copy2(os.path.join(DOCS, 'READ_ME_FIRST.md'),
-                 os.path.join(SRC, 'READ ME FIRST.md'))
-    shutil.copy2(os.path.join(DOCS, 'BUILD_NOTES.md'),
-                 os.path.join(SRC, 'BUILD NOTES.md'))
+    # ---- the URL map: two columns, the HTML file and the address it goes live at.
+    # The PDF only. Dev asked for one short sheet, not a second spreadsheet.
+    urlmap = os.path.join(ROOT, 'tools', 'url-map.pdf')
+    if os.path.exists(urlmap):
+        shutil.copy2(urlmap, os.path.join(SRC, f'Sunny Home Services URL map - {STAMP}.pdf'))
+
+    # ---- the two documents that explain it. These live in the repo at
+    # tools/docs/ so a package can be rebuilt months from now.
+    DOCS = os.path.join(ROOT, 'tools', 'docs')
+    # {DATE} and {STAMP} in those files are filled in here, so a doc written
+    # months ago cannot still be naming last package's date.
+    stamps = {'{DATE}': TODAY.strftime('%B %-d, %Y'), '{STAMP}': STAMP}
+    for src_name, out_name in (('READ_ME_FIRST.md', 'READ ME FIRST.md'),
+                               ('BUILD_NOTES.md', 'BUILD NOTES.md')):
+        txt = open(os.path.join(DOCS, src_name), encoding='utf-8').read()
+        for k, v in stamps.items():
+            txt = txt.replace(k, v)
+        open(os.path.join(SRC, out_name), 'w', encoding='utf-8').write(txt)
 
     # ---- the page log, at the top where it is seen first
     pdf = os.path.join(ROOT, 'tools', 'page-log.pdf')
