@@ -374,6 +374,29 @@ def nav_place(slug):
 
 # ---------------------------------------------------------------- revisions
 REVISIONS = [
+    ('November 24, 2026', 'Heating page, icons off the repair cards',
+     'Three rounded icon badges sat at the top of the cards in the Heating '
+     'Repair band and the Emergency Heating Repair card: a wrench, and an '
+     'alert triangle twice. With a photograph now running down the side of '
+     'each card they were saying nothing the picture does not, so all three '
+     'came out.'),
+    ('November 24, 2026', 'Heating page, hero',
+     'The shared hero caps the H1 at 3.3vw, which came out at 47px on a '
+     'desktop and 22px on a phone. This page leads on its headline, so it is '
+     'now 65px and 30px. The subhead sits on one line, which it never did '
+     'before: it needs 582px and its box was capped at 560. The paragraph '
+     'came down to 17px on a wider measure, so it runs four lines instead of '
+     'seven. One thing the bigger headline exposed: the van photo sits above '
+     'the hero scrim, so nothing was darkening the van, and the gold line '
+     'landed on bright blue. The scrim now sits above the van and the copy '
+     'above that.'),
+    ('November 24, 2026', 'Heating page, offers and photographs',
+     'The two tune-up coupons came out of the hero into a band of their own '
+     'under it, built as real coupons: a colored stub with the price, a '
+     'perforation, the offer, its fine print, a Claim This Offer button and '
+     'a ring in the coupon\u2019s own color. Three sections were a white card '
+     'with a list of ticks and nothing else; each now runs a photograph down '
+     'one side, alternating so no two neighbours match.'),
     ('November 24, 2026', 'The heating services landing page',
      'Built heating-services.html from the client\u2019s copy doc for it. It '
      'is the general heating landing page: furnaces, heat pumps and ductless '
