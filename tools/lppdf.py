@@ -100,20 +100,25 @@ def main():
     W = landscape(letter)[0] - 68
 
     # ---------------------------------------------- the log
-    F = [Paragraph('Sunny Home Services, ad landing pages', H1),
-         Paragraph(f'Packaged {DATE}. The four pages the ads point at, rebuilt in the '
-                   f'site design. Every address in the Link column hangs off '
+    F = [Paragraph(L.HEADING, H1),
+         Paragraph(f'Packaged {DATE}. {L.BLURB} Every address in the Link column hangs off '
                    f'https://sunny-home-services.vercel.app, and every address in the '
                    f'Live column off {L.LIVE}.', SUB),
          Spacer(1, 12)]
-    F += tiles(W, [('Landing pages in this package', str(len(L.PAGES))),
-                   ('Files they load (images, fonts, CSS, script)', str(len(assets))),
-                   ('Pages their header and footer link to', str(len(links))),
-                   ('All four, live page needs updating', str(len(body))),
+    one = len(L.PAGES) == 1
+    F += tiles(W, [('Landing page in this package' if one else
+                    'Landing pages in this package', str(len(L.PAGES))),
+                   ('Files it loads (images, fonts, CSS, script)' if one else
+                    'Files they load (images, fonts, CSS, script)', str(len(assets))),
+                   ('Pages its header and footer link to' if one else
+                    'Pages their header and footer link to', str(len(links))),
+                   ('Finished, not live yet' if one else
+                    'All four, live page needs updating', str(len(body))),
                    ('Waiting on the client', str(sum(1 for r in body if r[9].strip()))),
-                   ('Rounds of work on them today', str(len(revs)))])
+                   ('Rounds of work on it today' if one else
+                    'Rounds of work on them today', str(len(revs)))])
     F.append(Spacer(1, 6))
-    F.append(Paragraph('The four pages', H2))
+    F.append(Paragraph('The page' if one else 'The four pages', H2))
 
     cols = ['Page', 'Status', 'Link on the preview', 'HTML file',
             'Live page today', 'How it differs from the live page', 'Note']
@@ -141,7 +146,9 @@ def main():
     if revs:
         F.append(PageBreak())
         F.append(Paragraph('What changed, newest first', H1))
-        F.append(Paragraph(f'Every round of work on these four pages. {len(revs)} entries.', SUB))
+        F.append(Paragraph(
+            f'Every round of work on this page. {len(revs)} entries.' if one
+            else f'Every round of work on these four pages. {len(revs)} entries.', SUB))
         F.append(Spacer(1, 10))
         rd = [[Paragraph('Date', HEADC), Paragraph('What', HEADC),
                Paragraph('What changed', HEADC)]]
@@ -156,22 +163,25 @@ def main():
         rt = Table(rd, colWidths=[W*0.10, W*0.17, W*0.73], repeatRows=1)
         rt.setStyle(TableStyle(rs)); F.append(rt)
 
-    log_pdf = os.path.join(pkg, f'Sunny Home Services landing pages log - {STAMP}.pdf')
-    build(log_pdf, 'Sunny Home Services, ad landing pages', F)
+    log_pdf = os.path.join(pkg, f'Sunny Home Services {L.LABEL} log - {STAMP}.pdf')
+    build(log_pdf, L.HEADING, F)
     shutil.copy2 = __import__('shutil').copy2
 
     # ---------------------------------------------- the URL map, two columns
-    F = [Paragraph('Sunny Home Services, landing page URL map', H1),
-         Paragraph(f'{DATE}. Each HTML file and the address it goes live at. The four '
-                   f'landing pages are at the top. Under them, every page their header '
-                   f'and footer link to, so you know where each link lands. The '
+    F = [Paragraph(f'Sunny Home Services, {L.LABEL} URL map', H1),
+         Paragraph(f'{DATE}. Each HTML file and the address it goes live at. '
+                   + ('This package\u2019s page is at the top. Under it, every page its '
+                      'header and footer link to, ' if one else
+                      'The four landing pages are at the top. Under them, every page their '
+                      'header and footer link to, ')
+                   + f'so you know where each link lands. The '
                    f'addresses in orange have no live page yet, so they need a yes from '
                    f'dev before they are used.', SUB),
          Spacer(1, 12)]
     URL_NEW = S(name='URL_NEW', fontName='Helvetica-Bold', fontSize=8, leading=10.2,
                 textColor=colors.HexColor('#C25A00'))
-    for heading, rows in (('The four landing pages', mine),
-                          ('Pages they link to', theirs)):
+    for heading, rows in ((('This page' if one else 'The four landing pages'), mine),
+                          (('Pages it links to' if one else 'Pages they link to'), theirs)):
         F.append(Paragraph(heading, H2))
         d = [[Paragraph('HTML file', HEADC), Paragraph('URL', HEADC)]]
         st = [('BACKGROUND', (0,0), (-1,0), SKY_D), ('VALIGN', (0,0), (-1,-1), 'TOP'),
@@ -185,8 +195,8 @@ def main():
         t = Table(d, colWidths=[W*0.38, W*0.62], repeatRows=1)
         t.setStyle(TableStyle(st)); F.append(t)
 
-    map_pdf = os.path.join(SRC, f'Sunny Home Services landing pages URL map - {STAMP}.pdf')
-    build(map_pdf, 'Sunny Home Services, landing page URL map', F)
+    map_pdf = os.path.join(SRC, f'Sunny Home Services {L.LABEL} URL map - {STAMP}.pdf')
+    build(map_pdf, f'Sunny Home Services, {L.LABEL} URL map', F)
     return pkg
 
 
