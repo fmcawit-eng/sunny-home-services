@@ -1946,7 +1946,6 @@ html, body { overflow-x: clip; }
 }
 .lp-card.hs-card-split:hover .hs-split-media img { transform: scale(1.05); }
 .hs-split-body { padding: 36px 38px 38px; }
-.hs-split-body .lp-card-icon { margin-bottom: 16px; }
 .lp-band-problems .hs-split-body .check-list { max-width: none; }
 
 @media (max-width: 1040px) {

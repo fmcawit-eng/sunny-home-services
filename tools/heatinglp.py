@@ -214,13 +214,6 @@ MAP = ('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.049617962597'
        '!4f13.1!3m3!1m2!1s0x87528f07da3cbdb7%3A0xac103968c1a5ce79'
        '!2sSunny%20Home%20Services!5e1!3m2!1sen!2sus!4v1789492771759!5m2!1sen!2sus')
 
-SVG_ALERT = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
-             'stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 '
-             '1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/>'
-             '<path d="M12 17h.01"/></svg>')
-SVG_WRENCH = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" '
-              'stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1 '
-              '5.3 5.2l-8.4 8.4a2.4 2.4 0 0 1-3.4-3.4l8.4-8.4z"/><path d="M9 7 4 2 2 4l5 5"/></svg>')
 
 
 # --------------------------------------------------------------------- render
@@ -419,7 +412,6 @@ def build():
             <img src="assets/services/card-heating-repair.webp" alt="A Sunny Home Services technician testing a furnace" loading="lazy" data-parallax="6">
           </div>
           <div class="hs-split-body">
-            <div class="lp-card-icon" aria-hidden="true">{SVG_WRENCH}</div>
             <div class="hub-prose"><p>{REPAIR_P}</p></div>
             <ul class="check-list">{checks(REPAIR_L)}
             </ul>
@@ -430,7 +422,6 @@ def build():
             <img src="assets/services/team-heating.webp" alt="A Sunny Home Services technician checking a furnace with a meter" loading="lazy" data-parallax="6">
           </div>
           <div class="hs-split-body">
-            <div class="lp-card-icon" aria-hidden="true">{SVG_ALERT}</div>
             <h4 class="display-h2">{SIGNS_H}</h4>
             <div class="hub-prose"><p>{SIGNS_P}</p></div>
             <ul class="check-list">{checks(SIGNS_L)}
@@ -470,7 +461,6 @@ def build():
             <img src="assets/services/card-heating-emergency.webp" alt="A Sunny Home Services technician arriving at a snowbound home after dark" loading="lazy" data-parallax="6">
           </div>
           <div class="hs-split-body">
-            <div class="lp-card-icon" aria-hidden="true">{SVG_ALERT}</div>
             <h3 class="display-h2">{EMERG_H}</h3>
             <div class="hub-prose">{''.join(f'<p>{p}</p>' for p in EMERG_P)}</div>
             <p class="hs-lead-in">{EMERG_LEAD}</p>
